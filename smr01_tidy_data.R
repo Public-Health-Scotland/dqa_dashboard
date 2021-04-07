@@ -16,4 +16,4 @@ SMR01_tidy <- SMR01_accuracy %>%
   mutate(Audit="SMR01")
 
 SMR01_tidy <- cbind(SMR01_tidy[4],SMR01_tidy[1:3])
-  
+
