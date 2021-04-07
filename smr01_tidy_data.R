@@ -35,4 +35,3 @@ SMR02_tidy <- SMR02_accuracy %>%
   pivot_longer(cols=2:3, names_to="Year", values_to = "Accuracy")%>%
   rename("DataItemName"= "Data item") %>%
   mutate(Audit="SMR02")
-  
