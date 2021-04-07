@@ -7,7 +7,6 @@ SMR01_accuracy <- read_excel("~/dqa dashboard/SMR01 accuracy by data item and ho
 View(SMR01_accuracy)
 
 
-
 ###Convert Data to Tidy Format###
 SMR01_accuracy$`2019/20` <- round(SMR01_accuracy$`2019/20`, 1)
 
