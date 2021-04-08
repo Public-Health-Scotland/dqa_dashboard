@@ -1,12 +1,19 @@
-library(readxl)
-library(tidyr)
+library(readxl) #read in excel files
+library(tidyr)  
 library(dplyr)
-library(tabulizer)
+library(tabulizer) #extract tables from pdf documents
+library(stringr)
 
 ###Load SMR0 Tables###
 SMR01_accuracy <- read_excel("~/dqa dashboard/SMR01 accuracy by data item and hospital.xls", sheet = 2)
+
 SMR02_accuracy <- read_excel("smr02_accuracy_summary_by_year.xlsx")
 
+pdf_path <- "https://www.isdscotland.org/Products-and-Services/Data-Quality/docs/Assessment-of-SMR04-Data-Scotland-2015-2016.pdf"
+tables <- extract_tables(pdf_path, output="data.frame", pages=c(28,29))
+
+SMR04_df1 <- tables[[1]]
+SMR04_df2 <- tables[[2]]
 
 ###House Keeping###
 
@@ -34,13 +41,23 @@ SMR02_tidy <- SMR02_accuracy %>%
   rename("DataItemName"= "Data item") %>%
   mutate(Audit="SMR02")
 
+SMR04_df1 <- SMR04_df1[c(3:4), c(1,5:6)]%>%
+  pivot_longer(cols =2:3, values_to="Accuracy")%>%
+  rename("DataItemName" = "Data.item")%>%
+  mutate(Year="2015/16")%>%
+  mutate(Audit="SMR04")
 
-pdf_path <- "https://www.isdscotland.org/Products-and-Services/Data-Quality/docs/Assessment-of-SMR04-Data-Scotland-2015-2016.pdf"
-table1 <- extract_tables(pdf_path, output="data.frame", pages=c(29))
-SMR04_table1 <- table1[[1]]
-SMR04_table1<- SMR04_table1[c(2:9), c(1,4)] %>%
+SMR04_df1$DataItemName<-paste(SMR04_df1$DataItemName, c("(3-digits)", "(4-digits)", "(3-digits)", "(4-digits)"), sep = " ")
+
+SMR04_df1 <- SMR04_df1[,-2]
+
+SMR04_df2<- SMR04_df2[c(2:9), c(1,4)] %>%
   rename(c("DataItemName"="Non.clinical.data.item", "Accuracy"="Percentage"))%>%
   mutate(Year="2015/16")%>%
   mutate(Audit="SMR04")
 
-SMR_tidy <- rbind(SMR01_tidy,SMR02_tidy,SMR04_table1)
+###Bind all of our tidy dataframes together and write to csv###
+SMR_tidy <- rbind(SMR01_tidy,SMR02_tidy,SMR04_df1,SMR04_df2)
+SMR_tidy$Accuracy <- as.numeric(SMR_tidy$Accuracy)
+
+write.csv(SMR_tidy, "SMR_accuracy.csv")
