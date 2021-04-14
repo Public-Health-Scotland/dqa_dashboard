@@ -2,10 +2,12 @@ library(tidyr)
 library(dplyr)
 library(readxl)
 library(stringr)
+library(ggplot2)
 
 #SMR01 2018/19, accuracy data split by hospital
-SMR01_2018<- read_excel("SMR01 accuracy by data item and hospital.xls", 
-                                                       sheet = "all data items by site")
+SMR01_2018<- read_excel("SMR01 accuracy by data item and hospital.xls", sheet = "all data items by site")
+SMR01_2018 <- SMR01_2018[-c(2,10,29,34,40),] #removing label rows
+
 tidy_df <- SMR01_2018 %>%
   pivot_longer(cols=4:14, names_to = "DataItemName", values_to = "Accuracy")%>%
   mutate(Healthboard = case_when(Hospital == "Scotland" ~ "NHS SCOTLAND",
@@ -41,8 +43,19 @@ tidy_df <- SMR01_2018 %>%
                                  Hospital == "Western Isles Hospital" ~ "NHS WESTERN ISLES",
                                  
                                  Hospital == "Golden Jubilee National Hospital" ~ "NHS GOLDEN JUBILEE"))
-tidy_df %>%
-  filter(is.na(Healthboard)) %>%
-  distinct(Hospital)
+
+#convert hospital type to factor variable
+tidy_df$`Hospital Type` <- factor(tidy_df$`Hospital Type`, levels=c("A1","A2","A31","A32","A4"), 
+                                     labels = c("Teaching Hospitals", "General Hospitals(Large)",
+                                                "General Hospitals(Medium)","General Hospitals(Small)", "Children's Hospitals" ))
 
 #create tidy_df_output formatted for the excel spreadsheet on the network
+
+###plots
+#healthboard means data set
+hm <- tidy_df %>%
+  group_by(Healthboard)%>%
+  summarise(accuracy = mean(Accuracy))
+
+ggplot(hm, aes(x=Healthboard, y=accuracy))+
+  geom_col()
