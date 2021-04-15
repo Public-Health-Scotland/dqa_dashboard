@@ -3,6 +3,7 @@ library(dplyr)
 library(readxl)
 library(stringr)
 library(ggplot2)
+library(ggrepel)
 
 #SMR01 2018/19, accuracy data split by hospital
 SMR01_2018<- read_excel("SMR01 accuracy by data item and hospital.xls", sheet = "all data items by site")
@@ -57,5 +58,27 @@ hm <- tidy_df %>%
   group_by(Healthboard)%>%
   summarise(accuracy = mean(Accuracy))
 
-ggplot(hm, aes(x=Healthboard, y=accuracy))+
-  geom_col()
+#site means data set
+sm <- tidy_df %>%
+  group_by(Hospital)%>%
+  summarise(accuracy = mean(Accuracy), Healthboard=Healthboard)%>%
+  distinct()
+sm$Healthboard <- as.factor(sm$Healthboard)
+  
+p <- ggplot(sm, aes(x=Healthboard, y=accuracy, color=Healthboard, fill=Healthboard))+
+  geom_point(size=0.85)+
+  geom_bar(data=hm, stat = "identity", alpha=.3)+
+  guides(color = "none", fill = "none") +
+  coord_flip()+
+  theme_bw()+
+  labs(
+    title = "SMR01 Average Accuracy Percentage per Health Board",
+    y = "Percentage Accuracy (%)",
+    x = "Health Board"
+  )
+
+
+p+geom_hline(yintercept=88.6, color = "blue")
+
+
+
