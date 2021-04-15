@@ -80,5 +80,6 @@ p <- ggplot(sm, aes(x=Healthboard, y=accuracy, color=Healthboard, fill=Healthboa
 
 p+geom_hline(yintercept=88.6, color = "blue")
 
-
+###CSV Outputs
+write.csv(tidy_df, "smr01_hospital_site_extract_2018.csv")
 
