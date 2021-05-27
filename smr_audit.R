@@ -2,7 +2,7 @@ library(readxl)
 library(tidyverse)
 
 #path to SMR accuracy audit results
-path <- "smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
+hb_path <- "~/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
 
 #collate and store smr accuracy in a df
 accuracy <- path %>%
