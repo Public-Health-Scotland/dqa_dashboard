@@ -1,7 +1,7 @@
 shinyServer(function(input, output) {
   
   output$gapminder_table <- renderDataTable({ 
-    SMR_mean        
+    hb_mean       
   },
   filter = 'top',
   rownames = FALSE)    
