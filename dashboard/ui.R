@@ -15,7 +15,32 @@ shinyUI(navbarPage(
       tabPanel("Home", "Panel one contents"),
       tabPanel("Completeness", "Panel two contents"),
       tabPanel("Timeliness", "Panel three contents"),
-      tabPanel("Accuracy Scores from SMR Audits", dataTableOutput("gapminder_table"))
+      tabPanel("Accuracy Scores from SMR Audits", 
+               fluidRow(
+                 column(4,
+                        dropdownButton(
+                          label = 'All Healthboards',
+                          circle = FALSE,
+                          status = "primary",
+                          inputId = 'dropdown',
+                          tagList(
+                            prettyCheckboxGroup(
+                              inputId = "checkboxes",
+                              label = NULL,
+                              status = "primary",
+                              choices = choices,
+                              selected = choices
+                            ),
+                            fluidRow(
+                              column(6, uiOutput('reset_button')),
+                              column(6, uiOutput('save_button'))
+                            )
+                          )
+                        )
+                 ),
+                 column(8, DTOutput('table'))
+               )
+      )
   )),
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
     title = "Coding Errors and Issues",
@@ -24,3 +49,5 @@ shinyUI(navbarPage(
       tabPanel("SMR02 Recording of Diabetes", "Panel one contents"),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
   ))))
+
+#dataTableOutput("gapminder_table")

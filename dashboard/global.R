@@ -4,7 +4,7 @@ library(readxl)
 library(shiny)
 library(tidyverse)
 library(DT)
-
+library(shinyWidgets)
 
 # In the lines below, import the files and process them.
 
@@ -58,15 +58,15 @@ SMR_mean <- SMR_ess %>%
 ### HB and Hospital Site Level data -----------------------------------------
 
 #set directory to dashboard folder
-setwd("~/dqa_dashboard/dashboard")
+#setwd("~/dqa_dashboard/dashboard")
 
 #Import data
-hb_path <- "~/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
+hb_path <- "~/dashboard/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
 
 hb_accuracy <- hb_path %>%
   excel_sheets()%>%
   set_names()%>%
-  map_df(~read_excel(path, sheet = .x), 
+  map_df(~read_excel(hb_path, sheet = .x), 
          col_types = c("text", "text", "text", "numeric", "text"), .id = "Healthboard")%>%
   select(c(1:6))
 
@@ -82,6 +82,9 @@ hb_accuracy[hb_accuracy$Year == "2004/2006", "Year"] <- "2004-2006"
 #Create a new accuracy data frame with a column with mean values grouped by SMR, Year and data item 
 hb_mean <- hb_accuracy %>%
   group_by(Audit, Year, DataItemName)%>%
-  mutate(MeanAccuracy = round(mean(Accuracy, na.rm=TRUE),2))
+  mutate(MeanAccuracyPerDataItem = round(mean(Accuracy, na.rm=TRUE),2))
 hb_mean$Accuracy <- round(hb_mean$Accuracy, 2)
+
+choices = unique(hb_mean$Healthboard)
+choices
 
