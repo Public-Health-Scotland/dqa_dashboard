@@ -5,6 +5,8 @@ library(shiny)
 library(tidyverse)
 library(DT)
 
+library(odbc)       #R library for Open Database Connectivity, used to connect to databases
+library(RODBC)      #Manage DB connections
 
 # In the lines below, import the files and process them.
 
@@ -66,7 +68,7 @@ hb_path <- "~/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
 hb_accuracy <- hb_path %>%
   excel_sheets()%>%
   set_names()%>%
-  map_df(~read_excel(path, sheet = .x), 
+  map_df(~read_excel(hb_path, sheet = .x), 
          col_types = c("text", "text", "text", "numeric", "text"), .id = "Healthboard")%>%
   select(c(1:6))
 
@@ -84,4 +86,53 @@ hb_mean <- hb_accuracy %>%
   group_by(Audit, Year, DataItemName)%>%
   mutate(MeanAccuracy = round(mean(Accuracy, na.rm=TRUE),2))
 hb_mean$Accuracy <- round(hb_mean$Accuracy, 2)
+
+
+
+
+### Coding Discrepancies Data -----------------------------------------------
+
+
+con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
+                 pwd = .rs.askForPassword("SMRA Password:"))
+
+
+# ##SMR01
+# odbcPreviewObject(con, table="ANALYSIS.SMR01_PI", rowLimit=0)
+# 
+# diagnosis1 <- dbGetQuery(con, "SELECT MAIN_CONDITION,DISCHARGE_TYPE, DISCHARGE_TRANSFER_TO_LOCATION, CIS_MARKER FROM ANALYSIS.SMR01_PI" )
+
+
+
+## SMR02
+
+#select diagnosis records where diabetes during pregnancy has either been clinically coded or hard coded, and where the baby was delivered (ie. condition on discharge==3)
+diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
+
+                              OTHER_CONDITION_4, OTHER_CONDITION_5, DIABETES, 
+                              
+                              EPISODE_RECORD_KEY, HBTREAT_CURRENTDATE, LOCATION
+
+                              FROM ANALYSIS.SMR02_PI
+
+                              WHERE CONDITION_ON_DISCHARGE = '3'
+                                    AND 
+                                      (DIABETES IN ('1', '2', '3') 
+                                      OR MAIN_CONDITION LIKE 'O24%'
+                                      OR OTHER_CONDITION_1 LIKE 'O24%'
+                                      OR OTHER_CONDITION_2 LIKE 'O24%'
+                                      OR OTHER_CONDITION_3 LIKE 'O24%'
+                                      OR OTHER_CONDITION_4 LIKE 'O24%'
+                                      OR OTHER_CONDITION_5 LIKE 'O24%')")
+
+RODBC::odbcCloseAll() #close all open rodbc connections
+
+glimpse(diagnosis2) #there should be at least one 024% code or a diabetes value in (1,2,3) in each row
+
+
+unique(diagnosis2$DIABETES) #we should have only numerical values or NAs
+
+
+
+
 
