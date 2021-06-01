@@ -92,24 +92,21 @@ hb_mean$Accuracy <- round(hb_mean$Accuracy, 2)
 
 ### Coding Discrepancies Data -----------------------------------------------
 
-hb_lookup <- read_csv("~/dqa_dashboard/lookups/hb_lookup.csv")
 
 con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
                  pwd = .rs.askForPassword("SMRA Password:"))
 
 
-##SMR01
-odbcPreviewObject(con, table="ANALYSIS.SMR01_PI", rowLimit=0) 
+# ##SMR01
+# odbcPreviewObject(con, table="ANALYSIS.SMR01_PI", rowLimit=0)
+# 
+# diagnosis1 <- dbGetQuery(con, "SELECT MAIN_CONDITION,DISCHARGE_TYPE, DISCHARGE_TRANSFER_TO_LOCATION, CIS_MARKER FROM ANALYSIS.SMR01_PI" )
 
-diagnosis1 <- dbGetQuery(con, "SELECT MAIN_CONDITION, CIS_MARKER FROM ANALYSIS.SMR01_PI")
+
 
 ## SMR02
 
-#preview column names
-odbcPreviewObject(con, table="ANALYSIS.SMR02_PI", rowLimit=0)
-
-
-#select diagnosis records where diabetes during pregnancy has either been clinically coded or hard coded
+#select diagnosis records where diabetes during pregnancy has either been clinically coded or hard coded, and where the baby was delivered (ie. condition on discharge==3)
 diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
 
                               OTHER_CONDITION_4, OTHER_CONDITION_5, DIABETES, 
@@ -118,22 +115,23 @@ diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_C
 
                               FROM ANALYSIS.SMR02_PI
 
-                              WHERE (DIABETES IN ('1', '2', '3') 
-                                    OR MAIN_CONDITION LIKE 'O24%'
-                                    OR OTHER_CONDITION_1 LIKE 'O24%'
-                                    OR OTHER_CONDITION_2 LIKE 'O24%'
-                                    OR OTHER_CONDITION_3 LIKE 'O24%'
-                                    OR OTHER_CONDITION_4 LIKE 'O24%'
-                                    OR OTHER_CONDITION_5 LIKE 'O24%')
+                              WHERE CONDITION_ON_DISCHARGE = '3'
+                                    AND 
+                                      (DIABETES IN ('1', '2', '3') 
+                                      OR MAIN_CONDITION LIKE 'O24%'
+                                      OR OTHER_CONDITION_1 LIKE 'O24%'
+                                      OR OTHER_CONDITION_2 LIKE 'O24%'
+                                      OR OTHER_CONDITION_3 LIKE 'O24%'
+                                      OR OTHER_CONDITION_4 LIKE 'O24%'
+                                      OR OTHER_CONDITION_5 LIKE 'O24%')")
 
-                                    AND CONDITION_ON_DISCHARGE = '3' ")
+RODBC::odbcCloseAll() #close all open rodbc connections
 
-RODBC::odbcCloseAll()
+glimpse(diagnosis2) #there should be at least one 024% code or a diabetes value in (1,2,3) in each row
 
-glimpse(diagnosis2)
+
 unique(diagnosis2$DIABETES) #we should have only numerical values or NAs
-unique(diagnosis2$MAIN_CONDITION)
-unique(diagnosis2$CONDITION_ON_DISCHARGE)
+
 
 
 
