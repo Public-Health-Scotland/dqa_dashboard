@@ -104,7 +104,9 @@ con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"
 
 
 
+
 ## SMR02
+
 
 #select diagnosis records where diabetes during pregnancy has either been clinically coded or hard coded, and where the baby was delivered (ie. condition on discharge==3)
 diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
@@ -127,12 +129,21 @@ diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_C
 
 RODBC::odbcCloseAll() #close all open rodbc connections
 
-glimpse(diagnosis2) #there should be at least one 024% code or a diabetes value in (1,2,3) in each row
 
+
+glimpse(diagnosis2) #there should be at least one 024% code or a diabetes value in (1,2,3) in each row
 
 unique(diagnosis2$DIABETES) #we should have only numerical values or NAs
 
+unique(diagnosis2$HBTREAT_CURRENTDATE) #HB_CURRENTDATE is the HB of treatment
+unique(diagnosis2$LOCATION) #only a handful of unique location codes for our data
 
+
+#Read in hb_lookup file:
+hb_lookup <- read_csv("~/dqa_dashboard/lookups/hb_lookup.csv")
+
+#append hb names to diagnosis2 dataframe
+diagnosis2 <- left_join(diagnosis2, hb_lookup[c(1:2)], by = c("HBTREAT_CURRENTDATE"="HB"))
 
 
 
