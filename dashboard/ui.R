@@ -3,7 +3,7 @@ shinyUI(navbarPage(
   theme = "styles.css",
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
     title = "Home",
-    navlistPanel( 
+    navlistPanel(
        id = "tabset",
        tabPanel("Summary Data Profile", "Panel one contents"),
        tabPanel("Info Panel", "Panel two contents")
@@ -15,31 +15,25 @@ shinyUI(navbarPage(
       tabPanel("Home", "Panel one contents"),
       tabPanel("Completeness", "Panel two contents"),
       tabPanel("Timeliness", "Panel three contents"),
-      tabPanel("Accuracy Scores from SMR Audits", 
+      tabPanel("Accuracy Scores from SMR Audits",
                fluidRow(
-                 column(4,
-                        dropdownButton(
-                          label = 'All Healthboards',
-                          circle = FALSE,
-                          status = "primary",
-                          inputId = 'dropdown',
-                          tagList(
-                            prettyCheckboxGroup(
-                              inputId = "checkboxes",
-                              label = NULL,
-                              status = "primary",
-                              choices = choices,
-                              selected = choices
-                            ),
-                            fluidRow(
-                              column(6, uiOutput('reset_button')),
-                              column(6, uiOutput('save_button'))
-                            )
-                          )
-                        )
+                 column(3,
+                        selectInput("SMRaudit", "SMR", choices = unique(hb_mean$Audit))
                  ),
-                 column(8, DTOutput('table'))
-               )
+                 column(3, selectInput("Year", "Year", choices = NULL)
+                  ),
+                 
+                 column(3, selectInput("Healthboard", "Health Board", choices = NULL)
+                  ),
+                 
+                  column(3, selectInput("DataItemName", "Data Item", choices = NULL)
+                         )
+
+                 ),
+               
+               fluidRow(
+                 tableOutput("data")
+                 )
       )
   )),
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
@@ -51,3 +45,29 @@ shinyUI(navbarPage(
   ))))
 
 #dataTableOutput("gapminder_table")
+
+
+
+
+
+
+### Nested filters test in separate UI --------------------------------------
+
+# ui <- fluidPage(
+#   
+#   sidebarLayout(
+#     sidebarPanel(
+#       selectInput("SMRaudit", "SMR", choices = unique(hb_mean$Audit)),
+#       selectInput("Year", "Year", choices = NULL),
+#       selectInput("Healthboard", "Health Board", choices = NULL),
+#       selectInput("DataItemName", "Data Item", choices = NULL)
+#     ),
+#     mainPanel(
+#       tableOutput("data")
+#     )
+#   )
+# )
+
+
+
+
