@@ -61,7 +61,7 @@ SMR_mean <- SMR_ess %>%
 #setwd("~/dqa_dashboard/dashboard")
 
 #Import data
-hb_path <- "~/dashboard/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
+hb_path <- "~/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
 
 hb_accuracy <- hb_path %>%
   excel_sheets()%>%
