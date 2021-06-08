@@ -4,23 +4,23 @@ shinyServer(function(input, output, session){
 
   SMRaudit <- reactive({
     filter(hb_mean, Audit == input$SMRaudit)
-  }) 
+  })
   observeEvent(SMRaudit(), {
     choices <- unique(SMRaudit()$Year)
-    updateSelectInput(inputId = "Year", choices = choices) 
+    updateSelectInput(inputId = "Year", choices = choices)
   })
-  
-  
-  
+
+
   Year <- reactive({
     req(input$Year)
     filter(SMRaudit(), Year == input$Year)
-  }) 
+  })
   observeEvent(Year(), {
     choices <- unique(Year()$Healthboard)
-    updateSelectInput(inputId = "Healthboard", choices = choices, selected = character()) 
+    updateSelectInput(inputId = "Healthboard", choices = choices, selected = character())
   })
-  
+
+
   Healthboard <- reactive({
     req(input$Healthboard)
     filter(Year(), Healthboard == input$Healthboard)
@@ -29,7 +29,8 @@ shinyServer(function(input, output, session){
     choices <- unique(Healthboard()$DataItemName)
     updateSelectInput(inputId = "DataItemName", choices=choices)
   })
-  
+
+
   selected <- reactive({
     req(input$DataItemName)
     Healthboard()%>%
@@ -38,8 +39,8 @@ shinyServer(function(input, output, session){
       rename("SMR" = "Audit", "Health Board" = "Healthboard", "Data Item" = "DataItemName", "Mean Accuracy Scotland" = "MeanAccuracy",
              "Mean Accuracy Hospital" = "Accuracy")
   })
-  
+
   output$data <- renderTable(selected())
-  
+
   })
 
