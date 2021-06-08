@@ -18,19 +18,18 @@ shinyUI(navbarPage(
       tabPanel("Accuracy Scores from SMR Audits",
                fluidRow(
                  column(3,
-                        selectInput("SMRaudit", "SMR", choices = unique(hb_mean$Audit))
+                        selectInput("SMRaudit", "SMR", choices = c("(All)", unique(hb_mean$Audit)))
                  ),
                  column(3, selectInput("Year", "Year", choices = NULL)
                   ),
-                 
+
                  column(3, selectInput("Healthboard", "Health Board", choices = NULL)
                   ),
-                 
+
                   column(3, selectInput("DataItemName", "Data Item", choices = NULL)
                          )
-
                  ),
-               
+
                fluidRow(
                  tableOutput("data")
                  )
@@ -44,7 +43,7 @@ shinyUI(navbarPage(
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
   ))))
 
-#dataTableOutput("gapminder_table")
+
 
 
 
@@ -54,10 +53,10 @@ shinyUI(navbarPage(
 ### Nested filters test in separate UI --------------------------------------
 
 # ui <- fluidPage(
-#   
+# 
 #   sidebarLayout(
 #     sidebarPanel(
-#       selectInput("SMRaudit", "SMR", choices = unique(hb_mean$Audit)),
+#       selectInput("SMRaudit", "SMR", choices = c("(All)", unique(hb_mean$Audit))),
 #       selectInput("Year", "Year", choices = NULL),
 #       selectInput("Healthboard", "Health Board", choices = NULL),
 #       selectInput("DataItemName", "Data Item", choices = NULL)
