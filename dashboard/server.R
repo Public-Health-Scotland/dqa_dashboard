@@ -1,8 +1,42 @@
 shinyServer(function(input, output) {
   
-  output$gapminder_table <- renderDataTable({ 
-    hb_mean       
+  output$error <- renderDataTable({ 
+    error_1_table       
   },
   filter = 'top',
   rownames = FALSE)    
-})
+
+
+#   output$error_2 <- renderDataTable({ 
+#     error_2_table       
+#   },
+#   filter = 'top',
+#   rownames = FALSE)    
+#  
+# 
+#   output$error_3 <- renderDataTable({ 
+#     error_3_table       
+#   },
+#   filter = 'top',
+#   rownames = FALSE)    
+# 
+# 
+#   output$error_4 <- renderDataTable({ 
+#     error_4_table       
+#   },
+#   filter = 'top',
+#   rownames = FALSE)    
+# 
+# 
+#   output$error_5 <- renderDataTable({ 
+#     error_5_table       
+#   },
+#   filter = 'top',
+#   rownames = FALSE)    
+# 
+#   output$error_6 <- renderDataTable({ 
+#   error_6_table       
+#   },
+#   filter = 'top',
+#   rownames = FALSE)    
+ })

@@ -21,6 +21,7 @@ shinyUI(navbarPage(
     title = "Coding Errors and Issues",
     navlistPanel(
       id = "tabset",
-      tabPanel("SMR02 Recording of Diabetes", "Panel one contents"),
+      tabPanel("SMR02 Recording of Diabetes",
+               dataTableOutput("error")),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
   ))))
