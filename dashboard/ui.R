@@ -22,6 +22,13 @@ shinyUI(navbarPage(
     navlistPanel(
       id = "tabset",
       tabPanel("SMR02 Recording of Diabetes",
-               dataTableOutput("error")),
+               tabsetPanel(
+                 tabPanel("Error 1", dataTableOutput("error_1")), 
+                 tabPanel("Error 2", dataTableOutput("error_2")),
+                 tabPanel("Error 3", dataTableOutput("error_3")),
+                 tabPanel("Error 4", dataTableOutput("error_4")),
+                 tabPanel("Error 5", dataTableOutput("error_5")),
+                 tabPanel("Error 6", dataTableOutput("error_6"))
+                 )),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
   ))))
