@@ -1,5 +1,6 @@
 # In the line below, import the shiny library so that it's available
 # in both ui.R and server.R
+
 library(readxl)
 library(shiny)
 library(tidyverse)
@@ -8,6 +9,8 @@ library(DT)
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases
 library(RODBC)      #Manage DB connections
 
+library(leaflet)    #both libraries necessary for creating maps
+library(rgdal)
 # In the lines below, import the files and process them.
 
 
@@ -306,3 +309,33 @@ error_6_table <- diagnosis2 %>%
   mutate(percentage_6 = round(error6/sum(error6)*100, digits = 2))
 error_6_table
 
+#MAPS
+
+ShapeFile = readOGR(dsn=("~/dashboard/dqa_dashboard/dashboard/map_files/HBShapefile.shp"), layer="HBShapefile")
+ShapeFile <- spTransform(ShapeFile, CRS("+init=epsg:4326"))
+leaflet() %>% 
+  addPolygons(data = ShapeFile)
+
+ShapeFile@data <- ShapeFile@data %>% 
+  rownames_to_column(var = "ID") %>% # Change row names to be an ID column
+  mutate(HBName = paste0("NHS ", HBName))
+ShapeFile@data <- ShapeFile@data %>% 
+     left_join(error_1_table)
+colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_1)
+
+leaflet() %>% 
+  addPolygons(data = ShapeFile,
+              fillColor = ~colourpal(percentage_1), # our colour palette function
+              fillOpacity = 0.7, # the opacity of the fill colour
+              color = "#2e2e30", # colour of shape outlines
+              weight = 2) # thickness of the shape outlines
+
+error1map <- leaflet(ShapeFile) %>% 
+  addPolygons(fillColor = ~colourpal(percentage_1), # our colour palette function
+              fillOpacity = 0.7, # the opacity of the fill colour
+              color = "#2e2e30", # colour of shape outlines
+              weight = 2) %>% # thickness of the shape outlines
+  addLegend("bottomright", pal = colourpal, values = ~percentage_1,
+            title = "Coding discrepancy 1",
+            labFormat = labelFormat(suffix = " %"),
+            opacity = 1)
