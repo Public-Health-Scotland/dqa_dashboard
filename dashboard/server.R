@@ -72,7 +72,7 @@ shinyServer(function(input, output, session){
       healthboard() %>%
         select(Audit, Year, Healthboard, Hospital, DataItemName, MeanAccuracy, Accuracy)%>%
         rename("SMR" = "Audit", "Health Board" = "Healthboard", "Data Item" = "DataItemName", "Mean Accuracy Scotland" = "MeanAccuracy",
-               "Mean Accuracy Hospital" = "Accuracy")
+               "Accuracy Hospital" = "Accuracy")
     }
   })
 })
