@@ -22,14 +22,25 @@ shinyUI(navbarPage(
     navlistPanel(
       id = "tabset",
       tabPanel("SMR02 Recording of Diabetes",
-               tabsetPanel(
-                 tabPanel("Error 1", dataTableOutput("error_1")), 
-                 tabPanel("Error 2", dataTableOutput("error_2")),
-                 tabPanel("Error 3", dataTableOutput("error_3")),
-                 tabPanel("Error 4", dataTableOutput("error_4")),
-                 tabPanel("Error 5", dataTableOutput("error_5")),
-                 tabPanel("Error 6", dataTableOutput("error_6")),
-                 tabPanel("Map error 1", leafletOutput("error1map", width = "40%", height = 600))
+               navbarPage('Errors',
+                 navbarMenu("Error 1",
+                            tabPanel('Table', dataTableOutput("error_1")),
+                            tabPanel('Map', leafletOutput("error1map", width = "50%", height = 700))),
+                 navbarMenu("Error 2", 
+                            tabPanel('Table', dataTableOutput("error_2")), 
+                            tabPanel('Map', leafletOutput("error2map", width = "50%", height = 700))),
+                 navbarMenu("Error 3", 
+                           tabPanel('Table', dataTableOutput("error_3")), 
+                           tabPanel('Map', leafletOutput("error3map", width = "50%", height = 700))),
+                 navbarMenu("Error 4", 
+                            tabPanel('Table', dataTableOutput("error_4")), 
+                            tabPanel('Map', leafletOutput("error4map", width = "50%", height = 700))),  
+                 navbarMenu("Error 5", 
+                            tabPanel('Table', dataTableOutput("error_5")), 
+                            tabPanel('Map', leafletOutput("error5map", width = "50%", height = 700))),
+                 navbarMenu("Error 6", 
+                            tabPanel('Table', dataTableOutput("error_6")), 
+                            tabPanel('Map', leafletOutput("error6map", width = "50%", height = 700)))
                  )),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
   ))))

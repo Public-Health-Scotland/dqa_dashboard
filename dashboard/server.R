@@ -42,6 +42,27 @@ shinyServer(function(input, output) {
    output$error1map <- renderLeaflet({
      error1map
    })
+   
+   output$error2map <- renderLeaflet({
+     error2map
+   })
+   
+   output$error3map <- renderLeaflet({
+     error3map
+   })
+   
+   output$error4map <- renderLeaflet({
+     error4map
+   })
+   
+   output$error5map <- renderLeaflet({
+     error5map
+   })
+   
+   output$error6map <- renderLeaflet({
+     error6map
+   })
+   
 
 
  })
