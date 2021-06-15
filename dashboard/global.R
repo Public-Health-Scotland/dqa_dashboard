@@ -4,24 +4,29 @@ library(readxl)
 library(shiny)
 library(tidyverse)
 library(DT)
+library(here)
 
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases
 library(RODBC)      #Manage DB connections
 
+
+
+
+
+
+here()
+
 # In the lines below, import the files and process them.
 
-
-SMR_accuracy <- read_csv("SMR_accuracy.csv")
-glimpse(SMR_accuracy)
+SMR_accuracy <- read_csv(here("./smr_data/SMR_accuracy.csv"))
 
 #Check the column names
 
-colnames <- colnames(SMR_accuracy)
-colnames
+col_names_smr <- colnames(SMR_accuracy)
 
 #Checking all the values in columns, looking for missing ones:
 
-for (column_name in colnames) {
+for (column_name in col_names_smr) {
   print("Unique values in the column:")
   print(column_name)
   print(unique(SMR_accuracy[[column_name]]))
@@ -59,11 +64,9 @@ SMR_mean <- SMR_ess %>%
 
 ### HB and Hospital Site Level data -----------------------------------------
 
-#set directory to dashboard folder
-setwd("~/dqa_dashboard/dashboard")
 
 #Import data
-hb_path <- "~/dqa_dashboard/smr_data/Hospital_SMR_accuracy_2004-Present.xlsx"
+hb_path <- here("./smr_data/Hospital_SMR_accuracy_2004-Present.xlsx")
 
 hb_accuracy <- hb_path %>%
   excel_sheets()%>%
@@ -71,12 +74,6 @@ hb_accuracy <- hb_path %>%
   map_df(~read_excel(hb_path, sheet = .x), 
          col_types = c("text", "text", "text", "numeric", "text"), .id = "Healthboard")%>%
   select(c(1:6))
-
-#quick summary of hb_accuracy layout
-#keeping NA values for now, but can be removed with na.omit() if needed
-glimpse(hb_accuracy)
-colnames(hb_accuracy)
-lapply(hb_accuracy, unique)
 
 #quick formatting cleanup
 hb_accuracy[hb_accuracy$Year == "2004/2006", "Year"] <- "2004-2006"
@@ -92,4 +89,22 @@ hb_mean$Accuracy <- round(hb_mean$Accuracy, 2)
 
 ### Coding Discrepancies Data -----------------------------------------------
 
-
+error_1_table <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 1) %>%
+  mutate(
+    error_1 = case_when(
+      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' |
+        MAIN_CONDITION == 'O243' | OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' |
+        OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_2 == 'O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' |
+        OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' |
+        OTHER_CONDITION_3 == 'O243'| OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' |
+        OTHER_CONDITION_4 == 'O243'| OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' |
+        OTHER_CONDITION_5 == 'O243' & MAIN_CONDITION != 'O244' & MAIN_CONDITION != 'O249' & OTHER_CONDITION_1 != 'O244' &
+        OTHER_CONDITION_1 != 'O249' & OTHER_CONDITION_2 != 'O244' & OTHER_CONDITION_2 != 'O249' & OTHER_CONDITION_3 != 'O244' &
+        OTHER_CONDITION_3 != 'O249' & OTHER_CONDITION_4 != 'O244' & OTHER_CONDITION_4 != 'O249' & OTHER_CONDITION_5 != 'O244' &
+        OTHER_CONDITION_5 != 'O249' ~ 'no error',
+      TRUE ~ 'error 1')
+  ) %>%
+  summarise(error1 = sum(error_1 == "error 1"), denominator = sum(DIABETES == 1))%>%
+  mutate(percentage_1 = round(error1/denominator*100, digits = 2))
