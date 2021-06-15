@@ -168,9 +168,9 @@ error_1_table <- diagnosis2 %>%
         OTHER_CONDITION_5 != 'O249' ~ 'no error',
       TRUE ~ 'error 1')
   ) %>%
-  filter(error_1 == "error 1") %>%
-  summarise(error1 = n()) %>%
-  mutate(percentage_1 = round(error1/nrow(filter(diagnosis2, DIABETES == 1))*100, digits = 2))
+  summarise(error1 = sum(error_1 == "error 1"), denominator = sum(DIABETES == 1))%>%
+  mutate(percentage_1 = round(error1/denominator*100, digits = 2))
+error_1_table <- error_1_table[, c('HBName', "error1", "percentage_1")]
 error_1_table
 
 error_2_table <- diagnosis2 %>%
@@ -182,9 +182,9 @@ error_2_table <- diagnosis2 %>%
         OTHER_CONDITION_3 == 'O244' | OTHER_CONDITION_4 == 'O244' | OTHER_CONDITION_5 == 'O244' ~ 'no error',
       TRUE ~ 'error 2')
   ) %>%
-  filter(error_2 == "error 2")%>%
-  summarise(error2 = n())%>%
-  mutate(percentage_2 = round(error2/nrow(filter(diagnosis2, DIABETES == 2))*100, digits = 2))
+  summarise(error2 = sum(error_2 == "error 2"), denominator = sum(DIABETES == 2))%>%
+  mutate(percentage_2 = round(error2/denominator*100, digits = 2))
+error_2_table <- error_2_table[, c('HBName', "error2", "percentage_2")]
 error_2_table
 
 error_3_table <- diagnosis2 %>%
@@ -196,9 +196,9 @@ error_3_table <- diagnosis2 %>%
         OTHER_CONDITION_3 == 'O249' | OTHER_CONDITION_4 == 'O249' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
       TRUE ~ 'error 3')
   ) %>%
-  filter(error_3 == "error 3")%>%
-  summarise(error3 = n())%>%
-  mutate(percentage_3 = round(error3/nrow(filter(diagnosis2, DIABETES == 3))*100, digits = 2))
+  summarise(error3 = sum(error_3 == "error 3"), denominator = sum(DIABETES == 3))%>%
+  mutate(percentage_3 = round(error3/denominator*100, digits = 2))
+error_3_table <- error_3_table[, c('HBName', "error3", "percentage_3")]
 error_3_table
 
 
@@ -221,9 +221,9 @@ error_4_table <- diagnosis2 %>%
       OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
     T ~ 'error 4')
     ) %>%
-  filter(error_4 == "error 4")%>%
-  summarise(error4 = n())%>%
-  mutate(percentage_4 = round(error4/nrow(filter(diagnosis2, DIABETES == 4))*100, digits = 2))
+  summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
+  mutate(percentage_4 = round(error4/denominator*100, digits = 2))
+error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
 error_4_table
 
 error_5_table <- diagnosis2 %>%
@@ -233,9 +233,9 @@ error_5_table <- diagnosis2 %>%
       !is.na(DIABETES) ~ 'no error',
       TRUE ~ 'error 5')
   ) %>%
-  filter(error_5 == "error 5")%>%
-  summarise(error5 = n())%>%
-  mutate(percentage_5 = round(error5/nrow(diagnosis2)*100, digits = 2))
+  summarise(error5 = sum(error_5 == "error 5"), denominator = n())%>%
+  mutate(percentage_5 = round(error5/denominator*100, digits = 2))
+error_5_table <- error_5_table[, c('HBName', "error5", "percentage_5")]
 error_5_table
 
 error_6_table <- diagnosis2 %>%
@@ -304,11 +304,10 @@ error_6_table <- diagnosis2 %>%
         OTHER_CONDITION_5 == 'E145' | OTHER_CONDITION_5 == 'E146' | OTHER_CONDITION_5 == 'E147' & OTHER_CONDITION_5 == 'E148' | OTHER_CONDITION_5 == 'E149' ~ 'error 6',
       T ~ 'no error')
   ) %>%
-  filter(error_6 == "error 6")%>%
-  summarise(error6 = n())%>%
-  mutate(percentage_6 = round(error6/nrow(diagnosis2)*100, digits = 2))
+  summarise(error6 = sum(error_6 == "error 6"), denominator = n())%>%
+  mutate(percentage_6 = round(error6/denominator*100, digits = 2))
+error_6_table <- error_6_table[, c("HBName", "error6", "percentage_6")]
 error_6_table
-
 #MAPS
 
 #read in the shapefile downloaded from the web and add the healthboard borders (polygons)
@@ -321,12 +320,13 @@ ShapeFile@data <- ShapeFile@data %>%
   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
   mutate(HBName = paste0("NHS ", HBName)) # add the NHS prefix to the names of the healthboards so they are uniform with the data files
 ShapeFile@data <- ShapeFile@data %>%
-     left_join(error_1_table) %>% #add each table one by one
-  left_join(error_2_table) %>%
-  left_join(error_3_table) %>%
-  left_join(error_4_table) %>%
-  left_join(error_5_table) %>%
-  left_join(error_6_table) 
+      left_join(error_1_table) %>% #add each table one by one
+      left_join(error_2_table) %>% 
+      left_join(error_3_table) %>% 
+      left_join(error_4_table) %>% 
+      left_join(error_5_table) %>% 
+      left_join(error_6_table)
+
 colourpal1 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_1) #create a colour palette for each map, can be simplified
 colourpal2 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_2)
 colourpal3 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_3)
