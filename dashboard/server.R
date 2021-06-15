@@ -1,7 +1,7 @@
 shinyServer(function(input, output) {
   
   output$error_1 <- DT::renderDataTable({
-    DT::datatable(error_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+    DT::datatable(error_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15)) #default the displayed rows
   },
   filter = 'top',
   rownames = FALSE)    
@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
   filter = 'top',
   rownames = FALSE)
    
-   output$error1map <- renderLeaflet({
+   output$error1map <- renderLeaflet({ #create maps
      error1map
    })
    

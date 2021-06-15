@@ -153,7 +153,7 @@ diagnosis2$HBName <- as.factor(diagnosis2$HBName)
 
 error_1_table <- diagnosis2 %>%
   group_by(HBName) %>%
-  filter(DIABETES == 1) %>%
+  filter(DIABETES == 1) %>% 
   mutate(
     error_1 = case_when(
       MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' |
@@ -168,11 +168,10 @@ error_1_table <- diagnosis2 %>%
         OTHER_CONDITION_5 != 'O249' ~ 'no error',
       TRUE ~ 'error 1')
   ) %>%
-  filter(error_1 == "error 1")%>%
-  summarise(error1 = n())%>%
+  filter(error_1 == "error 1") %>%
+  summarise(error1 = n()) %>%
   mutate(percentage_1 = round(error1/nrow(filter(diagnosis2, DIABETES == 1))*100, digits = 2))
 error_1_table
-
 
 error_2_table <- diagnosis2 %>%
   group_by(HBName) %>%
@@ -312,6 +311,7 @@ error_6_table
 
 #MAPS
 
+#read in the shapefile downloaded from the web and add the healthboard borders (polygons)
 ShapeFile = readOGR(dsn=("~/dashboard/dqa_dashboard/dashboard/map_files/HBShapefile.shp"), layer="HBShapefile")
 ShapeFile <- spTransform(ShapeFile, CRS("+init=epsg:4326"))
 leaflet() %>%
@@ -319,15 +319,15 @@ leaflet() %>%
 
 ShapeFile@data <- ShapeFile@data %>%
   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-  mutate(HBName = paste0("NHS ", HBName))
+  mutate(HBName = paste0("NHS ", HBName)) # add the NHS prefix to the names of the healthboards so they are uniform with the data files
 ShapeFile@data <- ShapeFile@data %>%
-     left_join(error_1_table) %>%
+     left_join(error_1_table) %>% #add each table one by one
   left_join(error_2_table) %>%
   left_join(error_3_table) %>%
   left_join(error_4_table) %>%
   left_join(error_5_table) %>%
   left_join(error_6_table) 
-colourpal1 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_1)
+colourpal1 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_1) #create a colour palette for each map, can be simplified
 colourpal2 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_2)
 colourpal3 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_3)
 colourpal4 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_4)
@@ -340,96 +340,58 @@ error1map <- leaflet(ShapeFile) %>%
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_1,
+  addLegend("bottomright", pal = colourpal1, values = ~percentage_1,
             title = "Coding discrepancy 1",
-            labFormat = labelFormat(suffix = " %"),
+            labFormat = labelFormat(suffix = " %"), #add the percentage suffix
             opacity = 1)
 
-# error2shape <- ShapeFile@data <- ShapeFile@data %>%
-#   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-#   mutate(HBName = paste0("NHS ", HBName))
-# ShapeFile@data <- ShapeFile@data %>%
-#   left_join(error_2_table)
-# colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_2)
-
-# 
 error2map <- leaflet(ShapeFile) %>%
   addPolygons(fillColor = ~colourpal2(percentage_2), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_2,
+  addLegend("bottomright", pal = colourpal2, values = ~percentage_2,
             title = "Coding discrepancy 2",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
-# error3shape <- ShapeFile@data <- ShapeFile@data %>%
-#   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-#   mutate(HBName = paste0("NHS ", HBName))
-# ShapeFile@data <- ShapeFile@data %>%
-#   left_join(error_3_table)
-# colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_3)
-# 
-# 
 error3map <- leaflet(ShapeFile) %>%
   addPolygons(fillColor = ~colourpal3(percentage_3), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_3,
+  addLegend("bottomright", pal = colourpal3, values = ~percentage_3,
             title = "Coding discrepancy 3",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
-# error4shape <- ShapeFile@data <- ShapeFile@data %>%
-#   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-#   mutate(HBName = paste0("NHS ", HBName))
-# ShapeFile@data <- ShapeFile@data %>%
-#   left_join(error_4_table)
-# colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_4)
-# 
-# 
 error4map <- leaflet(ShapeFile) %>%
   addPolygons(fillColor = ~colourpal4(percentage_4), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_4,
+  addLegend("bottomright", pal = colourpal4, values = ~percentage_4,
             title = "Coding discrepancy 4",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
-# error5shape <- ShapeFile@data <- ShapeFile@data %>%
-#   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-#   mutate(HBName = paste0("NHS ", HBName))
-# ShapeFile@data <- ShapeFile@data %>%
-#   left_join(error_5_table)
-# colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_5)
-# 
-# 
+
 error5map <- leaflet(ShapeFile) %>%
   addPolygons(fillColor = ~colourpal5(percentage_5), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_5,
+  addLegend("bottomright", pal = colourpal5, values = ~percentage_5,
             title = "Coding discrepancy 5",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
-# 
-# error6shape <- ShapeFile@data <- ShapeFile@data %>%
-#   rownames_to_column(var = "ID") %>% # Change row names to be an ID column
-#   mutate(HBName = paste0("NHS ", HBName))
-# ShapeFile@data <- ShapeFile@data %>%
-#   left_join(error_6_table)
-# colourpal <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_6)
-# 
+
 error6map <- leaflet(ShapeFile) %>%
   addPolygons(fillColor = ~colourpal6(percentage_6), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal, values = ~percentage_6,
+  addLegend("bottomright", pal = colourpal6, values = ~percentage_6,
             title = "Coding discrepancy 6",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)

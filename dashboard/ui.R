@@ -22,10 +22,10 @@ shinyUI(navbarPage(
     navlistPanel(
       id = "tabset",
       tabPanel("SMR02 Recording of Diabetes",
-               navbarPage('Errors',
-                 navbarMenu("Error 1",
-                            tabPanel('Table', dataTableOutput("error_1")),
-                            tabPanel('Map', leafletOutput("error1map", width = "50%", height = 700))),
+               navbarPage('Errors', #has to have a title otherwise will crash
+                 navbarMenu("Error 1", # one bar in the menu for each error
+                            tabPanel('Table', dataTableOutput("error_1")), #dropdown for table
+                            tabPanel('Map', leafletOutput("error1map", width = "50%", height = 700))), # dropdown for map including dimensions
                  navbarMenu("Error 2", 
                             tabPanel('Table', dataTableOutput("error_2")), 
                             tabPanel('Map', leafletOutput("error2map", width = "50%", height = 700))),
