@@ -15,7 +15,7 @@ shinyUI(navbarPage(
       tabPanel("Home", "Panel one contents"),
       tabPanel("Completeness", "Panel two contents"),
       tabPanel("Timeliness", "Panel three contents"),
-      tabPanel("Accuracy Scores from SMR Audits", dataTableOutput("gapminder_table"))
+      tabPanel("Accuracy Scores from SMR Audits", "Panel four contents")
   )),
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
     title = "Coding Errors and Issues",
