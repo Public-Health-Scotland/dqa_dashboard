@@ -1,6 +1,6 @@
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases
 library(RODBC)      #Manage DB connections
-
+library(readr)
 library(tidyr)
 library(dplyr)
 
@@ -301,5 +301,12 @@ error6map <- leaflet(ShapeFile) %>%
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
+#Save all the error tables
+write_csv(error_1_table, here::here("data", "error1.csv"))
+write_csv(error_2_table, here::here("data", "error2.csv"))
+write_csv(error_3_table, here::here("data", "error3.csv"))
+write_csv(error_4_table, here::here("data", "error4.csv"))
+write_csv(error_5_table, here::here("data", "error5.csv"))
+write_csv(error_6_table, here::here("data", "error6.csv"))
 
 
