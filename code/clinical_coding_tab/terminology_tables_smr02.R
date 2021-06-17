@@ -301,3 +301,5 @@ error6map <- leaflet(ShapeFile) %>%
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
+
+
