@@ -15,8 +15,26 @@ shinyUI(navbarPage(
       tabPanel("Home", "Panel one contents"),
       tabPanel("Completeness", "Panel two contents"),
       tabPanel("Timeliness", "Panel three contents"),
-      tabPanel("Accuracy Scores from SMR Audits", "Panel four contents")
-  )),
+      tabPanel("Accuracy Scores from SMR Audits",
+               fluidRow(
+                 column(3,
+                        selectInput("SMRaudit", "SMR", choices = c("(All)", unique(smr_audit$audit)))
+                 ),
+                 column(3, selectInput("Year", "Year", choices = NULL)
+                 ),
+                 
+                 column(3, selectInput("Healthboard", "Health Board", choices = NULL)
+                 ),
+                 
+                 column(3, selectInput("DataItemName", "Data Item", choices = NULL)
+                 )
+               ),
+               
+               fluidRow(
+                 tableOutput("data")
+               )
+      )
+    )),
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
     title = "Coding Discrepancies and Issues",
     navlistPanel(
