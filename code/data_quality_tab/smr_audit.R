@@ -1,3 +1,4 @@
+install.packages('janitor')
 library(openxlsx)
 library(readxl)   #needed to use excel_sheets() function
 library(readr)
