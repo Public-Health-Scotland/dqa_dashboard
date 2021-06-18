@@ -43,22 +43,22 @@ shinyUI(navbarPage(
                navbarPage('Errors', #has to have a title otherwise will crash
                           navbarMenu("Error 1", # one bar in the menu for each error
                                      tabPanel('Table', dataTableOutput("error_1")), #dropdown for table
-                                     tabPanel('Map', leafletOutput("error1map", width = "50%", height = 700))), # dropdown for map including dimensions
+                                     tabPanel('Map', leafletOutput("error1map", width = "80%", height = 700))), # dropdown for map including dimensions
                           navbarMenu("Error 2", 
                                      tabPanel('Table', dataTableOutput("error_2")), 
-                                     tabPanel('Map', leafletOutput("error2map", width = "50%", height = 700))),
+                                     tabPanel('Map', leafletOutput("error2map", width = "80%", height = 700))),
                           navbarMenu("Error 3", 
                                      tabPanel('Table', dataTableOutput("error_3")), 
-                                     tabPanel('Map', leafletOutput("error3map", width = "50%", height = 700))),
+                                     tabPanel('Map', leafletOutput("error3map", width = "80%", height = 700))),
                           navbarMenu("Error 4", 
                                      tabPanel('Table', dataTableOutput("error_4")), 
-                                     tabPanel('Map', leafletOutput("error4map", width = "50%", height = 700))),  
+                                     tabPanel('Map', leafletOutput("error4map", width = "80%", height = 700))),  
                           navbarMenu("Error 5", 
                                      tabPanel('Table', dataTableOutput("error_5")), 
-                                     tabPanel('Map', leafletOutput("error5map", width = "50%", height = 700))),
+                                     tabPanel('Map', leafletOutput("error5map", width = "80%", height = 700))),
                           navbarMenu("Error 6", 
                                      tabPanel('Table', dataTableOutput("error_6")), 
-                                     tabPanel('Map', leafletOutput("error6map", width = "50%", height = 700)))
+                                     tabPanel('Map', leafletOutput("error6map", width = "80%", height = 700)))
                )),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
     ))))
