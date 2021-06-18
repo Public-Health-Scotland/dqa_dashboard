@@ -10,8 +10,8 @@ library(tidyverse)
 
 # National(Scotland) SMR Audit data --------------------------------------
 
-scot_accuracy <- read_csv(here::here("data", "SMR_accuracy.csv"))%>%
-  select(-X1)%>%
+scot_accuracy <- read_csv(here::here("data", "Scotland_SMR_accuracy.csv"))%>%
+
   clean_names()%>%
   rename("accuracy_scotland"="accuracy")%>%
   mutate(year = case_when( year == "2004/06" ~"2004-2006", 
