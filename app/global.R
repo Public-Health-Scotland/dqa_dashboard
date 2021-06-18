@@ -16,6 +16,8 @@ library(rgdal)
 
 #smr audit data
 smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
+
+#smr02 clinical coding data
 error_1_table <- read_csv(here::here("data", "error1.csv"))
 error_2_table <- read_csv(here::here("data", "error2.csv"))
 error_3_table <- read_csv(here::here("data", "error3.csv"))
