@@ -11,7 +11,7 @@ library(DT)
 
 library(leaflet)    #both libraries necessary for creating maps
 library(rgdal)
-
+library(stringr)
 
 
 # Connect to database and extract data -----------------------------------------------------
@@ -103,6 +103,27 @@ error_3_table <- diagnosis2 %>%
 error_3_table <- error_3_table[, c('HBName', "error3", "percentage_3")]
 error_3_table
 
+error_split_3 <- diagnosis2 %>% 
+  group_by(HBName) %>%
+  filter(DIABETES == 3) %>%
+  mutate(
+    error_s3 = case_when(
+      MAIN_CONDITION == 'O249' | OTHER_CONDITION_1 == 'O249' | OTHER_CONDITION_2 == 'O249' |
+        OTHER_CONDITION_3 == 'O249' | OTHER_CONDITION_4 == 'O249' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
+      TRUE ~ 'error 3')
+  ) %>%
+  filter(error_s3 == 'error 3') %>% 
+  mutate(
+    error3_split = case_when(
+    str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+      str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+    TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(err3_wrong_ICD10 = sum(error3_split == "ICD present"), denominator = sum(error3_split == 'ICD present' | error3_split == 'ICD absent'))%>%
+  mutate(err3_wrong_ICD10_percent = round(err3_wrong_ICD10/denominator*100, digits = 2)) %>% 
+  mutate(err3_no_ICD10_percent = round(100 - err3_wrong_ICD10_percent, digits = 2))
+error_split_3 <- error_split_3[, c('HBName', "err3_wrong_ICD10_percent", "err3_no_ICD10_percent")]
+error_split_3
 
 error_4_table <- diagnosis2 %>%
   group_by(HBName) %>%
@@ -308,5 +329,5 @@ write_csv(error_3_table, here::here("data", "error3.csv"))
 write_csv(error_4_table, here::here("data", "error4.csv"))
 write_csv(error_5_table, here::here("data", "error5.csv"))
 write_csv(error_6_table, here::here("data", "error6.csv"))
-
+write_csv(error_split_3, here::here("data", "split3.csv"))
 
