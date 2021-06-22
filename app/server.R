@@ -117,8 +117,32 @@ shinyServer(function(input, output, session) {
   filter = 'top',
   rownames = FALSE)
   
+  output$split_1 <- DT::renderDataTable({
+    DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
+  output$split_2 <- DT::renderDataTable({
+    DT::datatable(split_2_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
   output$split_3 <- DT::renderDataTable({
     DT::datatable(split_3_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
+  output$split_4 <- DT::renderDataTable({
+    DT::datatable(split_4_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
+  output$split_5 <- DT::renderDataTable({
+    DT::datatable(split_5_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
   filter = 'top',
   rownames = FALSE)

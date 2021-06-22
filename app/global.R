@@ -24,7 +24,11 @@ error_3_table <- read_csv(here::here("data", "error3.csv"))
 error_4_table <- read_csv(here::here("data", "error4.csv"))
 error_5_table <- read_csv(here::here("data", "error5.csv"))
 error_6_table <- read_csv(here::here("data", "error6.csv"))
+split_1_table <- read.csv(here::here("data", "split1.csv"))
+split_2_table <- read.csv(here::here("data", "split2.csv"))
 split_3_table <- read.csv(here::here("data", "split3.csv"))
+split_4_table <- read.csv(here::here("data", "split4.csv"))
+split_5_table <- read.csv(here::here("data", "split5.csv"))
 
 # Error maps ------------------------------------------------------
 
