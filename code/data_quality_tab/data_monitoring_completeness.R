@@ -53,11 +53,27 @@ df <- df %>%
   select(-date_record_inserted)
   
 
-
 smr00_count <- df%>%
   group_by(hbres_currentdate, hb_name, year_record_inserted, month_record_inserted)%>%
   summarise_all(funs(sum(is.na(.)))) %>%
   pivot_longer(c(5:15), names_to = "data_item", values_to = "na_count")
 
+smr00_total <- df%>%
+  group_by(hbres_currentdate, hb_name, year_record_inserted, month_record_inserted)%>%
+  tally()%>%
+  rename("month_total"="n")
 
+smr00_full <- smr00_count %>%
+  left_join(smr00_total) %>%
+  mutate(percent_complete_month = round((month_total - na_count)/month_total*100, digits = 2)) %>%
+  mutate(month_record_inserted = case_when(month_record_inserted == 1 ~ "January",
+                                           month_record_inserted == 2 ~ "February",
+                                           month_record_inserted == 3 ~ "March",
+                                           month_record_inserted == 4 ~ "April",
+                                           month_record_inserted == 5 ~ "May"))
+
+
+# Write the Output --------------------------------------------------------
+
+write_csv(smr00_full, here::here("data", "smr_completeness.csv"))
 
