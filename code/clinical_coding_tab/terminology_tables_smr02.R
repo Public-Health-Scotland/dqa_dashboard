@@ -75,6 +75,36 @@ error_1_table <- diagnosis2 %>%
 error_1_table <- error_1_table[, c('HBName', "error1", "percentage_1")]
 error_1_table
 
+error_split_1 <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 1) %>% 
+  mutate(
+    error_s1 = case_when(
+      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' |
+        MAIN_CONDITION == 'O243' | OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' |
+        OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_2 == 'O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' |
+        OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' |
+        OTHER_CONDITION_3 == 'O243'| OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' |
+        OTHER_CONDITION_4 == 'O243'| OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' |
+        OTHER_CONDITION_5 == 'O243' & MAIN_CONDITION != 'O244' & MAIN_CONDITION != 'O249' & OTHER_CONDITION_1 != 'O244' &
+        OTHER_CONDITION_1 != 'O249' & OTHER_CONDITION_2 != 'O244' & OTHER_CONDITION_2 != 'O249' & OTHER_CONDITION_3 != 'O244' &
+        OTHER_CONDITION_3 != 'O249' & OTHER_CONDITION_4 != 'O244' & OTHER_CONDITION_4 != 'O249' & OTHER_CONDITION_5 != 'O244' &
+        OTHER_CONDITION_5 != 'O249' ~ 'no error',
+      TRUE ~ 'error 1')
+  ) %>%
+  filter(error_s1 == 'error 1') %>% 
+  mutate(
+    error1_split = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+      TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(err1_wrong_ICD10 = sum(error1_split == "ICD present"), denominator = sum(error1_split == 'ICD present' | error1_split == 'ICD absent'))%>%
+  mutate(err1_wrong_ICD10_percent = round(err1_wrong_ICD10/denominator*100, digits = 2)) %>% 
+  mutate(err1_no_ICD10_percent = round(100 - err1_wrong_ICD10_percent, digits = 2))
+error_split_1 <- error_split_1[, c('HBName', "err1_wrong_ICD10_percent", "err1_no_ICD10_percent")]
+error_split_1
+
 error_2_table <- diagnosis2 %>%
   group_by(HBName) %>%
   filter(DIABETES == 2) %>%
@@ -89,6 +119,28 @@ error_2_table <- diagnosis2 %>%
 error_2_table <- error_2_table[, c('HBName', "error2", "percentage_2")]
 error_2_table
 
+error_split_2 <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 2) %>%
+  mutate(
+    error_s2 = case_when(
+      MAIN_CONDITION == 'O244' | OTHER_CONDITION_1 == 'O244' | OTHER_CONDITION_2 == 'O244' |
+        OTHER_CONDITION_3 == 'O244' | OTHER_CONDITION_4 == 'O244' | OTHER_CONDITION_5 == 'O244' ~ 'no error',
+      TRUE ~ 'error 2')
+  ) %>% 
+  filter(error_s2 == 'error 2') %>% 
+  mutate(
+    error2_split = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+      TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(err2_wrong_ICD10 = sum(error2_split == "ICD present"), denominator = sum(error2_split == 'ICD present' | error2_split == 'ICD absent'))%>%
+  mutate(err2_wrong_ICD10_percent = round(err2_wrong_ICD10/denominator*100, digits = 2)) %>% 
+  mutate(err2_no_ICD10_percent = round(100 - err2_wrong_ICD10_percent, digits = 2))
+error_split_2 <- error_split_2[, c('HBName', "err2_wrong_ICD10_percent", "err2_no_ICD10_percent")]
+error_split_2
+  
 error_3_table <- diagnosis2 %>%
   group_by(HBName) %>%
   filter(DIABETES == 3) %>%
@@ -149,6 +201,38 @@ error_4_table <- diagnosis2 %>%
 error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
 error_4_table
 
+error_split_4 <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 4) %>%
+  mutate(
+    error_s4 = case_when(
+      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' | MAIN_CONDITION == 'O243' | MAIN_CONDITION == 'O244' |
+        MAIN_CONDITION == 'O245' | MAIN_CONDITION == 'O246' | MAIN_CONDITION == 'O247' | MAIN_CONDITION == 'O248' | MAIN_CONDITION == 'O249' |
+        OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' & OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_1 == 'O244' |
+        OTHER_CONDITION_1 == 'O245' | OTHER_CONDITION_1 == 'O246' | OTHER_CONDITION_1 == 'O247' & OTHER_CONDITION_1 == 'O248' | OTHER_CONDITION_1 == 'O249' |
+        OTHER_CONDITION_2 =='O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' & OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_2 == 'O244' |
+        OTHER_CONDITION_2 == 'O245' | OTHER_CONDITION_2 == 'O246' | OTHER_CONDITION_2 == 'O247' & OTHER_CONDITION_2 == 'O248' | OTHER_CONDITION_2 == 'O249' |
+        OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' & OTHER_CONDITION_3 == 'O243' | OTHER_CONDITION_3 == 'O244' |
+        OTHER_CONDITION_3 == 'O245' | OTHER_CONDITION_3 == 'O246' | OTHER_CONDITION_3 == 'O247' & OTHER_CONDITION_3 == 'O248' | OTHER_CONDITION_3 == 'O249' |
+        OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' & OTHER_CONDITION_4 == 'O243' | OTHER_CONDITION_4 == 'O244' |
+        OTHER_CONDITION_4 == 'O245' | OTHER_CONDITION_4 == 'O246' | OTHER_CONDITION_4 == 'O247' & OTHER_CONDITION_4 == 'O248' | OTHER_CONDITION_4 == 'O249' |
+        OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' & OTHER_CONDITION_5 == 'O243' | OTHER_CONDITION_5 == 'O244' |
+        OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
+      T ~ 'error 4')
+  ) %>%
+  filter(error_s4 == 'error 4') %>% 
+  mutate(
+    error4_split = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+      TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(err4_wrong_ICD10 = sum(error4_split == "ICD present"), denominator = sum(error4_split == 'ICD present' | error4_split == 'ICD absent'))%>%
+  mutate(err4_wrong_ICD10_percent = round(err4_wrong_ICD10/denominator*100, digits = 2)) %>% 
+  mutate(err4_no_ICD10_percent = round(100 - err4_wrong_ICD10_percent, digits = 2))
+error_split_4 <- error_split_4[, c('HBName', "err4_wrong_ICD10_percent", "err4_no_ICD10_percent")]
+error_split_4
+
 error_5_table <- diagnosis2 %>%
   group_by(HBName) %>%
   mutate(
@@ -160,6 +244,26 @@ error_5_table <- diagnosis2 %>%
   mutate(percentage_5 = round(error5/denominator*100, digits = 2))
 error_5_table <- error_5_table[, c('HBName', "error5", "percentage_5")]
 error_5_table
+
+error_split_5 <- diagnosis2 %>%
+  group_by(HBName) %>%
+  mutate(
+    error_s5 = case_when(
+      !is.na(DIABETES) ~ 'no error',
+      TRUE ~ 'error 5')
+  ) %>%
+  filter(error_s5 == 'error 5') %>% 
+  mutate(
+    error5_split = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+      TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(err5_wrong_ICD10 = sum(error5_split == "ICD present"), denominator = sum(error5_split == 'ICD present' | error5_split == 'ICD absent'))%>%
+  mutate(err5_ICD10_present_percent = round(err5_wrong_ICD10/denominator*100, digits = 2)) %>% 
+  mutate(err5_no_ICD10_percent = round(100 - err5_ICD10_present_percent, digits = 2))
+error_split_5 <- error_split_5[, c('HBName', "err5_ICD10_present_percent", "err5_no_ICD10_percent")]
+error_split_5
 
 error_6_table <- diagnosis2 %>%
   group_by(HBName) %>%
@@ -329,5 +433,9 @@ write_csv(error_3_table, here::here("data", "error3.csv"))
 write_csv(error_4_table, here::here("data", "error4.csv"))
 write_csv(error_5_table, here::here("data", "error5.csv"))
 write_csv(error_6_table, here::here("data", "error6.csv"))
+write_csv(error_split_1, here::here("data", "split1.csv"))
+write_csv(error_split_2, here::here("data", "split2.csv"))
 write_csv(error_split_3, here::here("data", "split3.csv"))
+write_csv(error_split_4, here::here("data", "split4.csv"))
+write_csv(error_split_5, here::here("data", "split5.csv"))
 
