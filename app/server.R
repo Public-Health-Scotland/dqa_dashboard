@@ -117,6 +117,12 @@ shinyServer(function(input, output, session) {
   filter = 'top',
   rownames = FALSE)
   
+  output$query <- DT::renderDataTable({
+    DT::datatable(query_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
   output$split_1 <- DT::renderDataTable({
     DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
@@ -171,6 +177,9 @@ shinyServer(function(input, output, session) {
     error6map
   })
   
+  output$querymap <- renderLeaflet({
+    query_map
+  })
   
   
 })

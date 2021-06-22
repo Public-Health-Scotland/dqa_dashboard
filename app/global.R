@@ -29,7 +29,7 @@ split_2_table <- read.csv(here::here("data", "split2.csv"))
 split_3_table <- read.csv(here::here("data", "split3.csv"))
 split_4_table <- read.csv(here::here("data", "split4.csv"))
 split_5_table <- read.csv(here::here("data", "split5.csv"))
-
+query_1_table <- read.csv(here::here("data", "query.csv"))
 # Error maps ------------------------------------------------------
 
 #read in the shapefile downloaded from the web and add the healthboard borders (polygons)
@@ -47,7 +47,8 @@ ShapeFile@data <- ShapeFile@data %>%
   left_join(error_3_table) %>% 
   left_join(error_4_table) %>% 
   left_join(error_5_table) %>% 
-  left_join(error_6_table)
+  left_join(error_6_table) %>% 
+  left_join(query_1_table)
 
 colourpal1 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_1) #create a colour palette for each map, can be simplified
 colourpal2 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_2)
@@ -55,6 +56,8 @@ colourpal3 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_3)
 colourpal4 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_4)
 colourpal5 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_5)
 colourpal6 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage_6)
+colourpal7 <- colorNumeric("RdPu", domain = ShapeFile@data$query_count)
+
 
 
 error1map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
@@ -126,6 +129,18 @@ error6map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_6)) %>% # thickness of the shape outlines
   addLegend("bottomright", pal = colourpal6, values = ~percentage_6,
+            title = "Coding discrepancy 6",
+            labFormat = labelFormat(suffix = " %"),
+            opacity = 1)
+
+query_map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
+                                                         dragging = FALSE)) %>%
+  addPolygons(fillColor = ~colourpal7(query_count), # our colour palette function
+              fillOpacity = 0.7, # the opacity of the fill colour
+              color = "#2e2e30", # colour of shape outlines
+              weight = 2,
+              popup = paste0("percentage error: ", ShapeFile@data$query_count)) %>% # thickness of the shape outlines
+  addLegend("bottomright", pal = colourpal7, values = ~query_count,
             title = "Coding discrepancy 6",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)

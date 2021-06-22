@@ -336,7 +336,19 @@ error_6_table <- diagnosis2 %>%
 error_6_table <- error_6_table[, c("HBName", "error6", "percentage_6")]
 error_6_table
 
-
+query_1_table <- diagnosis2 %>% 
+  group_by(HBName) %>% 
+  filter(DIABETES == 9) %>% 
+  mutate(
+    query = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+      TRUE ~ 'ICD absent'
+    )) %>%
+  summarise(query_count = sum(query == 'ICD present'), denominator = sum(DIABETES == 9)) %>% 
+  mutate(query_percentage = round(query_count/denominator*100, digits = 2))
+query_1_table <- query_1_table[, c("HBName", "query_count", "query_percentage")]
+query_1_table
 
 # Error maps ------------------------------------------------------
 
@@ -438,4 +450,5 @@ write_csv(error_split_2, here::here("data", "split2.csv"))
 write_csv(error_split_3, here::here("data", "split3.csv"))
 write_csv(error_split_4, here::here("data", "split4.csv"))
 write_csv(error_split_5, here::here("data", "split5.csv"))
+write_csv(query_1_table, here::here("data", "query.csv"))
 

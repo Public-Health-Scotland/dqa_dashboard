@@ -130,7 +130,17 @@ shinyUI(navbarPage(
                                        'The table displays error percentages per healthboard. 
                                        Click on a healthboard to see the exact values.'
                                      ),
-                                              leafletOutput("error6map", width = "80%", height = 700)))
+                                              leafletOutput("error6map", width = "80%", height = 700))),
+                          navbarMenu("Query 1", 
+                                     tabPanel('Table', p(
+                                       'SMR02 diabetes value recorded as ‘not known’, 
+                                       ICD10 diabetes code O24 is recorded.'
+                                     ), dataTableOutput("query")),
+                                     tabPanel('Map', p(
+                                       'The table displays counts qualifying for query 1 per healthboard. 
+                                       Click on a healthboard to see the exact values.'
+                                     ),
+                                     leafletOutput("querymap", width = "80%", height = 700)))
                )),
       tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
     ))))
