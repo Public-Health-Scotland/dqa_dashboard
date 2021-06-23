@@ -1,0 +1,991 @@
+hbres_currentdate,hb_name,year_record_inserted,month_record_inserted,data_item,na_count,percent_complete_month
+S08000015,NHS Ayrshire and Arran,2021,January,sex,0,100
+S08000015,NHS Ayrshire and Arran,2021,January,marital_status,7812,70.9
+S08000015,NHS Ayrshire and Arran,2021,January,ethnic_group,702,97.39
+S08000015,NHS Ayrshire and Arran,2021,January,specialty,0,100
+S08000015,NHS Ayrshire and Arran,2021,January,significant_facility,123,99.54
+S08000015,NHS Ayrshire and Arran,2021,January,patient_category,0,100
+S08000015,NHS Ayrshire and Arran,2021,January,referral_type,0,100
+S08000015,NHS Ayrshire and Arran,2021,January,clinic_attendance,0,100
+S08000015,NHS Ayrshire and Arran,2021,January,referral_source,19769,26.36
+S08000015,NHS Ayrshire and Arran,2021,January,attendance_follow_up,26847,0
+S08000015,NHS Ayrshire and Arran,2021,January,mode_of_clinical_interaction,7,99.97
+S08000015,NHS Ayrshire and Arran,2021,February,sex,0,100
+S08000015,NHS Ayrshire and Arran,2021,February,marital_status,8955,71.73
+S08000015,NHS Ayrshire and Arran,2021,February,ethnic_group,593,98.13
+S08000015,NHS Ayrshire and Arran,2021,February,specialty,0,100
+S08000015,NHS Ayrshire and Arran,2021,February,significant_facility,63,99.8
+S08000015,NHS Ayrshire and Arran,2021,February,patient_category,0,100
+S08000015,NHS Ayrshire and Arran,2021,February,referral_type,0,100
+S08000015,NHS Ayrshire and Arran,2021,February,clinic_attendance,0,100
+S08000015,NHS Ayrshire and Arran,2021,February,referral_source,23772,24.95
+S08000015,NHS Ayrshire and Arran,2021,February,attendance_follow_up,31675,0
+S08000015,NHS Ayrshire and Arran,2021,February,mode_of_clinical_interaction,32,99.9
+S08000015,NHS Ayrshire and Arran,2021,March,sex,0,100
+S08000015,NHS Ayrshire and Arran,2021,March,marital_status,11439,72.14
+S08000015,NHS Ayrshire and Arran,2021,March,ethnic_group,566,98.62
+S08000015,NHS Ayrshire and Arran,2021,March,specialty,0,100
+S08000015,NHS Ayrshire and Arran,2021,March,significant_facility,117,99.72
+S08000015,NHS Ayrshire and Arran,2021,March,patient_category,0,100
+S08000015,NHS Ayrshire and Arran,2021,March,referral_type,0,100
+S08000015,NHS Ayrshire and Arran,2021,March,clinic_attendance,0,100
+S08000015,NHS Ayrshire and Arran,2021,March,referral_source,31017,24.46
+S08000015,NHS Ayrshire and Arran,2021,March,attendance_follow_up,41062,0
+S08000015,NHS Ayrshire and Arran,2021,March,mode_of_clinical_interaction,17,99.96
+S08000015,NHS Ayrshire and Arran,2021,April,sex,0,100
+S08000015,NHS Ayrshire and Arran,2021,April,marital_status,9497,71.3
+S08000015,NHS Ayrshire and Arran,2021,April,ethnic_group,253,99.24
+S08000015,NHS Ayrshire and Arran,2021,April,specialty,0,100
+S08000015,NHS Ayrshire and Arran,2021,April,significant_facility,106,99.68
+S08000015,NHS Ayrshire and Arran,2021,April,patient_category,0,100
+S08000015,NHS Ayrshire and Arran,2021,April,referral_type,0,100
+S08000015,NHS Ayrshire and Arran,2021,April,clinic_attendance,0,100
+S08000015,NHS Ayrshire and Arran,2021,April,referral_source,24919,24.7
+S08000015,NHS Ayrshire and Arran,2021,April,attendance_follow_up,33092,0
+S08000015,NHS Ayrshire and Arran,2021,April,mode_of_clinical_interaction,6,99.98
+S08000015,NHS Ayrshire and Arran,2021,May,sex,0,100
+S08000015,NHS Ayrshire and Arran,2021,May,marital_status,11634,71.33
+S08000015,NHS Ayrshire and Arran,2021,May,ethnic_group,214,99.47
+S08000015,NHS Ayrshire and Arran,2021,May,specialty,0,100
+S08000015,NHS Ayrshire and Arran,2021,May,significant_facility,93,99.77
+S08000015,NHS Ayrshire and Arran,2021,May,patient_category,0,100
+S08000015,NHS Ayrshire and Arran,2021,May,referral_type,0,100
+S08000015,NHS Ayrshire and Arran,2021,May,clinic_attendance,0,100
+S08000015,NHS Ayrshire and Arran,2021,May,referral_source,28667,29.36
+S08000015,NHS Ayrshire and Arran,2021,May,attendance_follow_up,40579,0
+S08000015,NHS Ayrshire and Arran,2021,May,mode_of_clinical_interaction,21,99.95
+S08000016,NHS Borders,2021,January,sex,0,100
+S08000016,NHS Borders,2021,January,marital_status,15991,1.45
+S08000016,NHS Borders,2021,January,ethnic_group,11160,31.23
+S08000016,NHS Borders,2021,January,specialty,0,100
+S08000016,NHS Borders,2021,January,significant_facility,11150,31.29
+S08000016,NHS Borders,2021,January,patient_category,0,100
+S08000016,NHS Borders,2021,January,referral_type,0,100
+S08000016,NHS Borders,2021,January,clinic_attendance,0,100
+S08000016,NHS Borders,2021,January,referral_source,3139,80.66
+S08000016,NHS Borders,2021,January,attendance_follow_up,16227,0
+S08000016,NHS Borders,2021,January,mode_of_clinical_interaction,0,100
+S08000016,NHS Borders,2021,February,sex,0,100
+S08000016,NHS Borders,2021,February,marital_status,4287,4.2
+S08000016,NHS Borders,2021,February,ethnic_group,9,99.8
+S08000016,NHS Borders,2021,February,specialty,0,100
+S08000016,NHS Borders,2021,February,significant_facility,0,100
+S08000016,NHS Borders,2021,February,patient_category,0,100
+S08000016,NHS Borders,2021,February,referral_type,0,100
+S08000016,NHS Borders,2021,February,clinic_attendance,0,100
+S08000016,NHS Borders,2021,February,referral_source,2896,35.28
+S08000016,NHS Borders,2021,February,attendance_follow_up,4475,0
+S08000016,NHS Borders,2021,February,mode_of_clinical_interaction,1,99.98
+S08000016,NHS Borders,2021,March,sex,0,100
+S08000016,NHS Borders,2021,March,marital_status,11506,2.76
+S08000016,NHS Borders,2021,March,ethnic_group,5717,51.69
+S08000016,NHS Borders,2021,March,specialty,0,100
+S08000016,NHS Borders,2021,March,significant_facility,5709,51.75
+S08000016,NHS Borders,2021,March,patient_category,0,100
+S08000016,NHS Borders,2021,March,referral_type,0,100
+S08000016,NHS Borders,2021,March,clinic_attendance,0,100
+S08000016,NHS Borders,2021,March,referral_source,3626,69.36
+S08000016,NHS Borders,2021,March,attendance_follow_up,11833,0
+S08000016,NHS Borders,2021,March,mode_of_clinical_interaction,2,99.98
+S08000016,NHS Borders,2021,April,sex,0,100
+S08000016,NHS Borders,2021,April,marital_status,9822,2.68
+S08000016,NHS Borders,2021,April,ethnic_group,4945,51
+S08000016,NHS Borders,2021,April,specialty,0,100
+S08000016,NHS Borders,2021,April,significant_facility,4937,51.08
+S08000016,NHS Borders,2021,April,patient_category,0,100
+S08000016,NHS Borders,2021,April,referral_type,0,100
+S08000016,NHS Borders,2021,April,clinic_attendance,0,100
+S08000016,NHS Borders,2021,April,referral_source,3169,68.6
+S08000016,NHS Borders,2021,April,attendance_follow_up,10092,0
+S08000016,NHS Borders,2021,April,mode_of_clinical_interaction,15,99.85
+S08000016,NHS Borders,2021,May,sex,0,100
+S08000016,NHS Borders,2021,May,marital_status,21331,2.42
+S08000016,NHS Borders,2021,May,ethnic_group,11492,47.43
+S08000016,NHS Borders,2021,May,specialty,0,100
+S08000016,NHS Borders,2021,May,significant_facility,11490,47.44
+S08000016,NHS Borders,2021,May,patient_category,0,100
+S08000016,NHS Borders,2021,May,referral_type,0,100
+S08000016,NHS Borders,2021,May,clinic_attendance,0,100
+S08000016,NHS Borders,2021,May,referral_source,7960,63.59
+S08000016,NHS Borders,2021,May,attendance_follow_up,21860,0
+S08000016,NHS Borders,2021,May,mode_of_clinical_interaction,4276,80.44
+S08000017,NHS Dumfries and Galloway,2021,January,sex,0,100
+S08000017,NHS Dumfries and Galloway,2021,January,marital_status,6542,2.89
+S08000017,NHS Dumfries and Galloway,2021,January,ethnic_group,60,99.11
+S08000017,NHS Dumfries and Galloway,2021,January,specialty,0,100
+S08000017,NHS Dumfries and Galloway,2021,January,significant_facility,1,99.99
+S08000017,NHS Dumfries and Galloway,2021,January,patient_category,0,100
+S08000017,NHS Dumfries and Galloway,2021,January,referral_type,0,100
+S08000017,NHS Dumfries and Galloway,2021,January,clinic_attendance,0,100
+S08000017,NHS Dumfries and Galloway,2021,January,referral_source,4931,26.81
+S08000017,NHS Dumfries and Galloway,2021,January,attendance_follow_up,6737,0
+S08000017,NHS Dumfries and Galloway,2021,January,mode_of_clinical_interaction,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,sex,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,marital_status,7521,3.07
+S08000017,NHS Dumfries and Galloway,2021,February,ethnic_group,51,99.34
+S08000017,NHS Dumfries and Galloway,2021,February,specialty,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,significant_facility,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,patient_category,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,referral_type,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,clinic_attendance,0,100
+S08000017,NHS Dumfries and Galloway,2021,February,referral_source,5619,27.58
+S08000017,NHS Dumfries and Galloway,2021,February,attendance_follow_up,7759,0
+S08000017,NHS Dumfries and Galloway,2021,February,mode_of_clinical_interaction,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,sex,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,marital_status,4458,5.95
+S08000017,NHS Dumfries and Galloway,2021,March,ethnic_group,58,98.78
+S08000017,NHS Dumfries and Galloway,2021,March,specialty,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,significant_facility,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,patient_category,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,referral_type,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,clinic_attendance,0,100
+S08000017,NHS Dumfries and Galloway,2021,March,referral_source,3379,28.71
+S08000017,NHS Dumfries and Galloway,2021,March,attendance_follow_up,4740,0
+S08000017,NHS Dumfries and Galloway,2021,March,mode_of_clinical_interaction,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,sex,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,marital_status,11805,1.87
+S08000017,NHS Dumfries and Galloway,2021,April,ethnic_group,23,99.81
+S08000017,NHS Dumfries and Galloway,2021,April,specialty,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,significant_facility,2,99.98
+S08000017,NHS Dumfries and Galloway,2021,April,patient_category,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,referral_type,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,clinic_attendance,0,100
+S08000017,NHS Dumfries and Galloway,2021,April,referral_source,8251,31.41
+S08000017,NHS Dumfries and Galloway,2021,April,attendance_follow_up,12030,0
+S08000017,NHS Dumfries and Galloway,2021,April,mode_of_clinical_interaction,2,99.98
+S08000017,NHS Dumfries and Galloway,2021,May,sex,0,100
+S08000017,NHS Dumfries and Galloway,2021,May,marital_status,10916,2.37
+S08000017,NHS Dumfries and Galloway,2021,May,ethnic_group,26,99.77
+S08000017,NHS Dumfries and Galloway,2021,May,specialty,0,100
+S08000017,NHS Dumfries and Galloway,2021,May,significant_facility,12,99.89
+S08000017,NHS Dumfries and Galloway,2021,May,patient_category,0,100
+S08000017,NHS Dumfries and Galloway,2021,May,referral_type,0,100
+S08000017,NHS Dumfries and Galloway,2021,May,clinic_attendance,0,100
+S08000017,NHS Dumfries and Galloway,2021,May,referral_source,7621,31.84
+S08000017,NHS Dumfries and Galloway,2021,May,attendance_follow_up,11181,0
+S08000017,NHS Dumfries and Galloway,2021,May,mode_of_clinical_interaction,4,99.96
+S08000019,NHS Forth Valley,2021,January,sex,0,100
+S08000019,NHS Forth Valley,2021,January,marital_status,2145,92.24
+S08000019,NHS Forth Valley,2021,January,ethnic_group,245,99.11
+S08000019,NHS Forth Valley,2021,January,specialty,0,100
+S08000019,NHS Forth Valley,2021,January,significant_facility,43,99.84
+S08000019,NHS Forth Valley,2021,January,patient_category,0,100
+S08000019,NHS Forth Valley,2021,January,referral_type,0,100
+S08000019,NHS Forth Valley,2021,January,clinic_attendance,0,100
+S08000019,NHS Forth Valley,2021,January,referral_source,21846,20.95
+S08000019,NHS Forth Valley,2021,January,attendance_follow_up,27636,0
+S08000019,NHS Forth Valley,2021,January,mode_of_clinical_interaction,1,100
+S08000019,NHS Forth Valley,2021,February,sex,0,100
+S08000019,NHS Forth Valley,2021,February,marital_status,2000,93
+S08000019,NHS Forth Valley,2021,February,ethnic_group,227,99.21
+S08000019,NHS Forth Valley,2021,February,specialty,0,100
+S08000019,NHS Forth Valley,2021,February,significant_facility,35,99.88
+S08000019,NHS Forth Valley,2021,February,patient_category,0,100
+S08000019,NHS Forth Valley,2021,February,referral_type,0,100
+S08000019,NHS Forth Valley,2021,February,clinic_attendance,0,100
+S08000019,NHS Forth Valley,2021,February,referral_source,21768,23.82
+S08000019,NHS Forth Valley,2021,February,attendance_follow_up,28576,0
+S08000019,NHS Forth Valley,2021,February,mode_of_clinical_interaction,3,99.99
+S08000019,NHS Forth Valley,2021,March,sex,0,100
+S08000019,NHS Forth Valley,2021,March,marital_status,2368,92.51
+S08000019,NHS Forth Valley,2021,March,ethnic_group,223,99.29
+S08000019,NHS Forth Valley,2021,March,specialty,0,100
+S08000019,NHS Forth Valley,2021,March,significant_facility,64,99.8
+S08000019,NHS Forth Valley,2021,March,patient_category,0,100
+S08000019,NHS Forth Valley,2021,March,referral_type,0,100
+S08000019,NHS Forth Valley,2021,March,clinic_attendance,0,100
+S08000019,NHS Forth Valley,2021,March,referral_source,23945,24.24
+S08000019,NHS Forth Valley,2021,March,attendance_follow_up,31607,0
+S08000019,NHS Forth Valley,2021,March,mode_of_clinical_interaction,0,100
+S08000019,NHS Forth Valley,2021,April,sex,0,100
+S08000019,NHS Forth Valley,2021,April,marital_status,2445,93
+S08000019,NHS Forth Valley,2021,April,ethnic_group,103,99.71
+S08000019,NHS Forth Valley,2021,April,specialty,0,100
+S08000019,NHS Forth Valley,2021,April,significant_facility,48,99.86
+S08000019,NHS Forth Valley,2021,April,patient_category,0,100
+S08000019,NHS Forth Valley,2021,April,referral_type,0,100
+S08000019,NHS Forth Valley,2021,April,clinic_attendance,0,100
+S08000019,NHS Forth Valley,2021,April,referral_source,27763,20.54
+S08000019,NHS Forth Valley,2021,April,attendance_follow_up,34939,0
+S08000019,NHS Forth Valley,2021,April,mode_of_clinical_interaction,7,99.98
+S08000019,NHS Forth Valley,2021,May,sex,0,100
+S08000019,NHS Forth Valley,2021,May,marital_status,2647,92.48
+S08000019,NHS Forth Valley,2021,May,ethnic_group,93,99.74
+S08000019,NHS Forth Valley,2021,May,specialty,0,100
+S08000019,NHS Forth Valley,2021,May,significant_facility,39,99.89
+S08000019,NHS Forth Valley,2021,May,patient_category,0,100
+S08000019,NHS Forth Valley,2021,May,referral_type,0,100
+S08000019,NHS Forth Valley,2021,May,clinic_attendance,0,100
+S08000019,NHS Forth Valley,2021,May,referral_source,26398,25.05
+S08000019,NHS Forth Valley,2021,May,attendance_follow_up,35222,0
+S08000019,NHS Forth Valley,2021,May,mode_of_clinical_interaction,5,99.99
+S08000020,NHS Grampian,2021,January,sex,0,100
+S08000020,NHS Grampian,2021,January,marital_status,315,98.67
+S08000020,NHS Grampian,2021,January,ethnic_group,34,99.86
+S08000020,NHS Grampian,2021,January,specialty,0,100
+S08000020,NHS Grampian,2021,January,significant_facility,4,99.98
+S08000020,NHS Grampian,2021,January,patient_category,0,100
+S08000020,NHS Grampian,2021,January,referral_type,0,100
+S08000020,NHS Grampian,2021,January,clinic_attendance,0,100
+S08000020,NHS Grampian,2021,January,referral_source,16671,29.58
+S08000020,NHS Grampian,2021,January,attendance_follow_up,23673,0
+S08000020,NHS Grampian,2021,January,mode_of_clinical_interaction,38,99.84
+S08000020,NHS Grampian,2021,February,sex,0,100
+S08000020,NHS Grampian,2021,February,marital_status,282,98.63
+S08000020,NHS Grampian,2021,February,ethnic_group,26,99.87
+S08000020,NHS Grampian,2021,February,specialty,0,100
+S08000020,NHS Grampian,2021,February,significant_facility,2,99.99
+S08000020,NHS Grampian,2021,February,patient_category,0,100
+S08000020,NHS Grampian,2021,February,referral_type,0,100
+S08000020,NHS Grampian,2021,February,clinic_attendance,0,100
+S08000020,NHS Grampian,2021,February,referral_source,14510,29.56
+S08000020,NHS Grampian,2021,February,attendance_follow_up,20600,0
+S08000020,NHS Grampian,2021,February,mode_of_clinical_interaction,66,99.68
+S08000020,NHS Grampian,2021,March,sex,0,100
+S08000020,NHS Grampian,2021,March,marital_status,398,98.37
+S08000020,NHS Grampian,2021,March,ethnic_group,33,99.87
+S08000020,NHS Grampian,2021,March,specialty,0,100
+S08000020,NHS Grampian,2021,March,significant_facility,2,99.99
+S08000020,NHS Grampian,2021,March,patient_category,0,100
+S08000020,NHS Grampian,2021,March,referral_type,0,100
+S08000020,NHS Grampian,2021,March,clinic_attendance,0,100
+S08000020,NHS Grampian,2021,March,referral_source,17210,29.68
+S08000020,NHS Grampian,2021,March,attendance_follow_up,24474,0
+S08000020,NHS Grampian,2021,March,mode_of_clinical_interaction,51,99.79
+S08000020,NHS Grampian,2021,April,sex,0,100
+S08000020,NHS Grampian,2021,April,marital_status,414,98.29
+S08000020,NHS Grampian,2021,April,ethnic_group,20,99.92
+S08000020,NHS Grampian,2021,April,specialty,0,100
+S08000020,NHS Grampian,2021,April,significant_facility,7,99.97
+S08000020,NHS Grampian,2021,April,patient_category,0,100
+S08000020,NHS Grampian,2021,April,referral_type,0,100
+S08000020,NHS Grampian,2021,April,clinic_attendance,0,100
+S08000020,NHS Grampian,2021,April,referral_source,16635,31.24
+S08000020,NHS Grampian,2021,April,attendance_follow_up,24193,0
+S08000020,NHS Grampian,2021,April,mode_of_clinical_interaction,81,99.67
+S08000020,NHS Grampian,2021,May,sex,0,100
+S08000020,NHS Grampian,2021,May,marital_status,561,97.82
+S08000020,NHS Grampian,2021,May,ethnic_group,14,99.95
+S08000020,NHS Grampian,2021,May,specialty,0,100
+S08000020,NHS Grampian,2021,May,significant_facility,0,100
+S08000020,NHS Grampian,2021,May,patient_category,0,100
+S08000020,NHS Grampian,2021,May,referral_type,0,100
+S08000020,NHS Grampian,2021,May,clinic_attendance,0,100
+S08000020,NHS Grampian,2021,May,referral_source,17782,30.95
+S08000020,NHS Grampian,2021,May,attendance_follow_up,25754,0
+S08000020,NHS Grampian,2021,May,mode_of_clinical_interaction,42,99.84
+S08000022,NHS Highland,2021,January,sex,0,100
+S08000022,NHS Highland,2021,January,marital_status,3680,85.06
+S08000022,NHS Highland,2021,January,ethnic_group,530,97.85
+S08000022,NHS Highland,2021,January,specialty,0,100
+S08000022,NHS Highland,2021,January,significant_facility,155,99.37
+S08000022,NHS Highland,2021,January,patient_category,0,100
+S08000022,NHS Highland,2021,January,referral_type,0,100
+S08000022,NHS Highland,2021,January,clinic_attendance,0,100
+S08000022,NHS Highland,2021,January,referral_source,17718,28.06
+S08000022,NHS Highland,2021,January,attendance_follow_up,24628,0
+S08000022,NHS Highland,2021,January,mode_of_clinical_interaction,3,99.99
+S08000022,NHS Highland,2021,February,sex,0,100
+S08000022,NHS Highland,2021,February,marital_status,3840,85.52
+S08000022,NHS Highland,2021,February,ethnic_group,474,98.21
+S08000022,NHS Highland,2021,February,specialty,0,100
+S08000022,NHS Highland,2021,February,significant_facility,133,99.5
+S08000022,NHS Highland,2021,February,patient_category,0,100
+S08000022,NHS Highland,2021,February,referral_type,0,100
+S08000022,NHS Highland,2021,February,clinic_attendance,0,100
+S08000022,NHS Highland,2021,February,referral_source,19265,27.36
+S08000022,NHS Highland,2021,February,attendance_follow_up,26520,0
+S08000022,NHS Highland,2021,February,mode_of_clinical_interaction,1,100
+S08000022,NHS Highland,2021,March,sex,0,100
+S08000022,NHS Highland,2021,March,marital_status,5239,84.95
+S08000022,NHS Highland,2021,March,ethnic_group,638,98.17
+S08000022,NHS Highland,2021,March,specialty,0,100
+S08000022,NHS Highland,2021,March,significant_facility,327,99.06
+S08000022,NHS Highland,2021,March,patient_category,0,100
+S08000022,NHS Highland,2021,March,referral_type,0,100
+S08000022,NHS Highland,2021,March,clinic_attendance,0,100
+S08000022,NHS Highland,2021,March,referral_source,25128,27.79
+S08000022,NHS Highland,2021,March,attendance_follow_up,34800,0
+S08000022,NHS Highland,2021,March,mode_of_clinical_interaction,2,99.99
+S08000022,NHS Highland,2021,April,sex,0,100
+S08000022,NHS Highland,2021,April,marital_status,3951,84.83
+S08000022,NHS Highland,2021,April,ethnic_group,343,98.68
+S08000022,NHS Highland,2021,April,specialty,0,100
+S08000022,NHS Highland,2021,April,significant_facility,208,99.2
+S08000022,NHS Highland,2021,April,patient_category,0,100
+S08000022,NHS Highland,2021,April,referral_type,0,100
+S08000022,NHS Highland,2021,April,clinic_attendance,0,100
+S08000022,NHS Highland,2021,April,referral_source,18960,27.21
+S08000022,NHS Highland,2021,April,attendance_follow_up,26048,0
+S08000022,NHS Highland,2021,April,mode_of_clinical_interaction,1,100
+S08000022,NHS Highland,2021,May,sex,0,100
+S08000022,NHS Highland,2021,May,marital_status,4764,85.66
+S08000022,NHS Highland,2021,May,ethnic_group,139,99.58
+S08000022,NHS Highland,2021,May,specialty,0,100
+S08000022,NHS Highland,2021,May,significant_facility,1,100
+S08000022,NHS Highland,2021,May,patient_category,0,100
+S08000022,NHS Highland,2021,May,referral_type,0,100
+S08000022,NHS Highland,2021,May,clinic_attendance,0,100
+S08000022,NHS Highland,2021,May,referral_source,25387,23.59
+S08000022,NHS Highland,2021,May,attendance_follow_up,33225,0
+S08000022,NHS Highland,2021,May,mode_of_clinical_interaction,6,99.98
+S08000024,NHS Lothian,2021,January,sex,0,100
+S08000024,NHS Lothian,2021,January,marital_status,32070,41.01
+S08000024,NHS Lothian,2021,January,ethnic_group,91,99.83
+S08000024,NHS Lothian,2021,January,specialty,0,100
+S08000024,NHS Lothian,2021,January,significant_facility,107,99.8
+S08000024,NHS Lothian,2021,January,patient_category,0,100
+S08000024,NHS Lothian,2021,January,referral_type,0,100
+S08000024,NHS Lothian,2021,January,clinic_attendance,0,100
+S08000024,NHS Lothian,2021,January,referral_source,37736,30.58
+S08000024,NHS Lothian,2021,January,attendance_follow_up,54362,0
+S08000024,NHS Lothian,2021,January,mode_of_clinical_interaction,74,99.86
+S08000024,NHS Lothian,2021,February,sex,0,100
+S08000024,NHS Lothian,2021,February,marital_status,24682,40.94
+S08000024,NHS Lothian,2021,February,ethnic_group,66,99.84
+S08000024,NHS Lothian,2021,February,specialty,0,100
+S08000024,NHS Lothian,2021,February,significant_facility,67,99.84
+S08000024,NHS Lothian,2021,February,patient_category,0,100
+S08000024,NHS Lothian,2021,February,referral_type,0,100
+S08000024,NHS Lothian,2021,February,clinic_attendance,0,100
+S08000024,NHS Lothian,2021,February,referral_source,28287,32.32
+S08000024,NHS Lothian,2021,February,attendance_follow_up,41793,0
+S08000024,NHS Lothian,2021,February,mode_of_clinical_interaction,37,99.91
+S08000024,NHS Lothian,2021,March,sex,0,100
+S08000024,NHS Lothian,2021,March,marital_status,36524,40.78
+S08000024,NHS Lothian,2021,March,ethnic_group,65,99.89
+S08000024,NHS Lothian,2021,March,specialty,0,100
+S08000024,NHS Lothian,2021,March,significant_facility,109,99.82
+S08000024,NHS Lothian,2021,March,patient_category,0,100
+S08000024,NHS Lothian,2021,March,referral_type,0,100
+S08000024,NHS Lothian,2021,March,clinic_attendance,0,100
+S08000024,NHS Lothian,2021,March,referral_source,42511,31.08
+S08000024,NHS Lothian,2021,March,attendance_follow_up,61680,0
+S08000024,NHS Lothian,2021,March,mode_of_clinical_interaction,51,99.92
+S08000024,NHS Lothian,2021,April,sex,0,100
+S08000024,NHS Lothian,2021,April,marital_status,37174,39.98
+S08000024,NHS Lothian,2021,April,ethnic_group,39,99.94
+S08000024,NHS Lothian,2021,April,specialty,0,100
+S08000024,NHS Lothian,2021,April,significant_facility,266,99.57
+S08000024,NHS Lothian,2021,April,patient_category,0,100
+S08000024,NHS Lothian,2021,April,referral_type,0,100
+S08000024,NHS Lothian,2021,April,clinic_attendance,0,100
+S08000024,NHS Lothian,2021,April,referral_source,36273,41.44
+S08000024,NHS Lothian,2021,April,attendance_follow_up,61940,0
+S08000024,NHS Lothian,2021,April,mode_of_clinical_interaction,1151,98.14
+S08000024,NHS Lothian,2021,May,sex,0,100
+S08000024,NHS Lothian,2021,May,marital_status,64160,40.43
+S08000024,NHS Lothian,2021,May,ethnic_group,56,99.95
+S08000024,NHS Lothian,2021,May,specialty,0,100
+S08000024,NHS Lothian,2021,May,significant_facility,63,99.94
+S08000024,NHS Lothian,2021,May,patient_category,0,100
+S08000024,NHS Lothian,2021,May,referral_type,0,100
+S08000024,NHS Lothian,2021,May,clinic_attendance,0,100
+S08000024,NHS Lothian,2021,May,referral_source,73749,31.53
+S08000024,NHS Lothian,2021,May,attendance_follow_up,107713,0
+S08000024,NHS Lothian,2021,May,mode_of_clinical_interaction,149,99.86
+S08000025,NHS Orkney,2021,January,sex,0,100
+S08000025,NHS Orkney,2021,January,marital_status,14,98.7
+S08000025,NHS Orkney,2021,January,ethnic_group,6,99.44
+S08000025,NHS Orkney,2021,January,specialty,0,100
+S08000025,NHS Orkney,2021,January,significant_facility,0,100
+S08000025,NHS Orkney,2021,January,patient_category,0,100
+S08000025,NHS Orkney,2021,January,referral_type,0,100
+S08000025,NHS Orkney,2021,January,clinic_attendance,0,100
+S08000025,NHS Orkney,2021,January,referral_source,675,37.15
+S08000025,NHS Orkney,2021,January,attendance_follow_up,1074,0
+S08000025,NHS Orkney,2021,January,mode_of_clinical_interaction,0,100
+S08000025,NHS Orkney,2021,February,sex,0,100
+S08000025,NHS Orkney,2021,February,marital_status,22,98.29
+S08000025,NHS Orkney,2021,February,ethnic_group,4,99.69
+S08000025,NHS Orkney,2021,February,specialty,0,100
+S08000025,NHS Orkney,2021,February,significant_facility,0,100
+S08000025,NHS Orkney,2021,February,patient_category,0,100
+S08000025,NHS Orkney,2021,February,referral_type,0,100
+S08000025,NHS Orkney,2021,February,clinic_attendance,0,100
+S08000025,NHS Orkney,2021,February,referral_source,781,39.17
+S08000025,NHS Orkney,2021,February,attendance_follow_up,1284,0
+S08000025,NHS Orkney,2021,February,mode_of_clinical_interaction,0,100
+S08000025,NHS Orkney,2021,March,sex,0,100
+S08000025,NHS Orkney,2021,March,marital_status,27,98.11
+S08000025,NHS Orkney,2021,March,ethnic_group,1,99.93
+S08000025,NHS Orkney,2021,March,specialty,0,100
+S08000025,NHS Orkney,2021,March,significant_facility,0,100
+S08000025,NHS Orkney,2021,March,patient_category,0,100
+S08000025,NHS Orkney,2021,March,referral_type,0,100
+S08000025,NHS Orkney,2021,March,clinic_attendance,0,100
+S08000025,NHS Orkney,2021,March,referral_source,880,38.38
+S08000025,NHS Orkney,2021,March,attendance_follow_up,1428,0
+S08000025,NHS Orkney,2021,March,mode_of_clinical_interaction,0,100
+S08000025,NHS Orkney,2021,April,sex,0,100
+S08000025,NHS Orkney,2021,April,marital_status,36,97.25
+S08000025,NHS Orkney,2021,April,ethnic_group,9,99.31
+S08000025,NHS Orkney,2021,April,specialty,0,100
+S08000025,NHS Orkney,2021,April,significant_facility,9,99.31
+S08000025,NHS Orkney,2021,April,patient_category,0,100
+S08000025,NHS Orkney,2021,April,referral_type,0,100
+S08000025,NHS Orkney,2021,April,clinic_attendance,0,100
+S08000025,NHS Orkney,2021,April,referral_source,824,37
+S08000025,NHS Orkney,2021,April,attendance_follow_up,1308,0
+S08000025,NHS Orkney,2021,April,mode_of_clinical_interaction,0,100
+S08000025,NHS Orkney,2021,May,sex,0,100
+S08000025,NHS Orkney,2021,May,marital_status,21,98.48
+S08000025,NHS Orkney,2021,May,ethnic_group,4,99.71
+S08000025,NHS Orkney,2021,May,specialty,0,100
+S08000025,NHS Orkney,2021,May,significant_facility,3,99.78
+S08000025,NHS Orkney,2021,May,patient_category,0,100
+S08000025,NHS Orkney,2021,May,referral_type,0,100
+S08000025,NHS Orkney,2021,May,clinic_attendance,0,100
+S08000025,NHS Orkney,2021,May,referral_source,886,35.84
+S08000025,NHS Orkney,2021,May,attendance_follow_up,1381,0
+S08000025,NHS Orkney,2021,May,mode_of_clinical_interaction,1,99.93
+S08000026,NHS Shetland,2021,January,sex,0,100
+S08000026,NHS Shetland,2021,January,marital_status,12,98.69
+S08000026,NHS Shetland,2021,January,ethnic_group,4,99.56
+S08000026,NHS Shetland,2021,January,specialty,0,100
+S08000026,NHS Shetland,2021,January,significant_facility,0,100
+S08000026,NHS Shetland,2021,January,patient_category,0,100
+S08000026,NHS Shetland,2021,January,referral_type,0,100
+S08000026,NHS Shetland,2021,January,clinic_attendance,0,100
+S08000026,NHS Shetland,2021,January,referral_source,577,37.21
+S08000026,NHS Shetland,2021,January,attendance_follow_up,919,0
+S08000026,NHS Shetland,2021,January,mode_of_clinical_interaction,0,100
+S08000026,NHS Shetland,2021,February,sex,0,100
+S08000026,NHS Shetland,2021,February,marital_status,6,99.51
+S08000026,NHS Shetland,2021,February,ethnic_group,0,100
+S08000026,NHS Shetland,2021,February,specialty,0,100
+S08000026,NHS Shetland,2021,February,significant_facility,0,100
+S08000026,NHS Shetland,2021,February,patient_category,0,100
+S08000026,NHS Shetland,2021,February,referral_type,0,100
+S08000026,NHS Shetland,2021,February,clinic_attendance,0,100
+S08000026,NHS Shetland,2021,February,referral_source,705,41.98
+S08000026,NHS Shetland,2021,February,attendance_follow_up,1215,0
+S08000026,NHS Shetland,2021,February,mode_of_clinical_interaction,0,100
+S08000026,NHS Shetland,2021,March,sex,0,100
+S08000026,NHS Shetland,2021,March,marital_status,12,99.08
+S08000026,NHS Shetland,2021,March,ethnic_group,0,100
+S08000026,NHS Shetland,2021,March,specialty,0,100
+S08000026,NHS Shetland,2021,March,significant_facility,0,100
+S08000026,NHS Shetland,2021,March,patient_category,0,100
+S08000026,NHS Shetland,2021,March,referral_type,0,100
+S08000026,NHS Shetland,2021,March,clinic_attendance,0,100
+S08000026,NHS Shetland,2021,March,referral_source,803,38.18
+S08000026,NHS Shetland,2021,March,attendance_follow_up,1299,0
+S08000026,NHS Shetland,2021,March,mode_of_clinical_interaction,0,100
+S08000026,NHS Shetland,2021,April,sex,0,100
+S08000026,NHS Shetland,2021,April,marital_status,15,98.74
+S08000026,NHS Shetland,2021,April,ethnic_group,1,99.92
+S08000026,NHS Shetland,2021,April,specialty,0,100
+S08000026,NHS Shetland,2021,April,significant_facility,0,100
+S08000026,NHS Shetland,2021,April,patient_category,0,100
+S08000026,NHS Shetland,2021,April,referral_type,0,100
+S08000026,NHS Shetland,2021,April,clinic_attendance,0,100
+S08000026,NHS Shetland,2021,April,referral_source,776,35.01
+S08000026,NHS Shetland,2021,April,attendance_follow_up,1194,0
+S08000026,NHS Shetland,2021,April,mode_of_clinical_interaction,0,100
+S08000026,NHS Shetland,2021,May,sex,0,100
+S08000026,NHS Shetland,2021,May,marital_status,13,98.81
+S08000026,NHS Shetland,2021,May,ethnic_group,1,99.91
+S08000026,NHS Shetland,2021,May,specialty,0,100
+S08000026,NHS Shetland,2021,May,significant_facility,0,100
+S08000026,NHS Shetland,2021,May,patient_category,0,100
+S08000026,NHS Shetland,2021,May,referral_type,0,100
+S08000026,NHS Shetland,2021,May,clinic_attendance,0,100
+S08000026,NHS Shetland,2021,May,referral_source,727,33.24
+S08000026,NHS Shetland,2021,May,attendance_follow_up,1089,0
+S08000026,NHS Shetland,2021,May,mode_of_clinical_interaction,0,100
+S08000028,NHS Western Isles,2021,January,sex,0,100
+S08000028,NHS Western Isles,2021,January,marital_status,1760,13.09
+S08000028,NHS Western Isles,2021,January,ethnic_group,28,98.62
+S08000028,NHS Western Isles,2021,January,specialty,0,100
+S08000028,NHS Western Isles,2021,January,significant_facility,0,100
+S08000028,NHS Western Isles,2021,January,patient_category,0,100
+S08000028,NHS Western Isles,2021,January,referral_type,0,100
+S08000028,NHS Western Isles,2021,January,clinic_attendance,0,100
+S08000028,NHS Western Isles,2021,January,referral_source,1465,27.65
+S08000028,NHS Western Isles,2021,January,attendance_follow_up,2025,0
+S08000028,NHS Western Isles,2021,January,mode_of_clinical_interaction,0,100
+S08000028,NHS Western Isles,2021,February,sex,0,100
+S08000028,NHS Western Isles,2021,February,marital_status,2351,10.03
+S08000028,NHS Western Isles,2021,February,ethnic_group,28,98.93
+S08000028,NHS Western Isles,2021,February,specialty,0,100
+S08000028,NHS Western Isles,2021,February,significant_facility,0,100
+S08000028,NHS Western Isles,2021,February,patient_category,0,100
+S08000028,NHS Western Isles,2021,February,referral_type,0,100
+S08000028,NHS Western Isles,2021,February,clinic_attendance,0,100
+S08000028,NHS Western Isles,2021,February,referral_source,1823,30.23
+S08000028,NHS Western Isles,2021,February,attendance_follow_up,2613,0
+S08000028,NHS Western Isles,2021,February,mode_of_clinical_interaction,0,100
+S08000028,NHS Western Isles,2021,March,sex,0,100
+S08000028,NHS Western Isles,2021,March,marital_status,2273,12.78
+S08000028,NHS Western Isles,2021,March,ethnic_group,28,98.93
+S08000028,NHS Western Isles,2021,March,specialty,0,100
+S08000028,NHS Western Isles,2021,March,significant_facility,0,100
+S08000028,NHS Western Isles,2021,March,patient_category,0,100
+S08000028,NHS Western Isles,2021,March,referral_type,0,100
+S08000028,NHS Western Isles,2021,March,clinic_attendance,0,100
+S08000028,NHS Western Isles,2021,March,referral_source,1887,27.59
+S08000028,NHS Western Isles,2021,March,attendance_follow_up,2606,0
+S08000028,NHS Western Isles,2021,March,mode_of_clinical_interaction,0,100
+S08000028,NHS Western Isles,2021,April,sex,0,100
+S08000028,NHS Western Isles,2021,April,marital_status,2018,11.37
+S08000028,NHS Western Isles,2021,April,ethnic_group,20,99.12
+S08000028,NHS Western Isles,2021,April,specialty,0,100
+S08000028,NHS Western Isles,2021,April,significant_facility,0,100
+S08000028,NHS Western Isles,2021,April,patient_category,0,100
+S08000028,NHS Western Isles,2021,April,referral_type,0,100
+S08000028,NHS Western Isles,2021,April,clinic_attendance,0,100
+S08000028,NHS Western Isles,2021,April,referral_source,1686,25.96
+S08000028,NHS Western Isles,2021,April,attendance_follow_up,2277,0
+S08000028,NHS Western Isles,2021,April,mode_of_clinical_interaction,1,99.96
+S08000028,NHS Western Isles,2021,May,sex,0,100
+S08000028,NHS Western Isles,2021,May,marital_status,2726,10.83
+S08000028,NHS Western Isles,2021,May,ethnic_group,14,99.54
+S08000028,NHS Western Isles,2021,May,specialty,0,100
+S08000028,NHS Western Isles,2021,May,significant_facility,0,100
+S08000028,NHS Western Isles,2021,May,patient_category,0,100
+S08000028,NHS Western Isles,2021,May,referral_type,0,100
+S08000028,NHS Western Isles,2021,May,clinic_attendance,0,100
+S08000028,NHS Western Isles,2021,May,referral_source,2276,25.55
+S08000028,NHS Western Isles,2021,May,attendance_follow_up,3057,0
+S08000028,NHS Western Isles,2021,May,mode_of_clinical_interaction,0,100
+S08000029,NHS Fife,2021,January,sex,0,100
+S08000029,NHS Fife,2021,January,marital_status,6414,80.97
+S08000029,NHS Fife,2021,January,ethnic_group,33,99.9
+S08000029,NHS Fife,2021,January,specialty,0,100
+S08000029,NHS Fife,2021,January,significant_facility,3,99.99
+S08000029,NHS Fife,2021,January,patient_category,0,100
+S08000029,NHS Fife,2021,January,referral_type,0,100
+S08000029,NHS Fife,2021,January,clinic_attendance,0,100
+S08000029,NHS Fife,2021,January,referral_source,24601,27.02
+S08000029,NHS Fife,2021,January,attendance_follow_up,33707,0
+S08000029,NHS Fife,2021,January,mode_of_clinical_interaction,1,100
+S08000029,NHS Fife,2021,February,sex,0,100
+S08000029,NHS Fife,2021,February,marital_status,5576,81.55
+S08000029,NHS Fife,2021,February,ethnic_group,32,99.89
+S08000029,NHS Fife,2021,February,specialty,0,100
+S08000029,NHS Fife,2021,February,significant_facility,2,99.99
+S08000029,NHS Fife,2021,February,patient_category,0,100
+S08000029,NHS Fife,2021,February,referral_type,0,100
+S08000029,NHS Fife,2021,February,clinic_attendance,0,100
+S08000029,NHS Fife,2021,February,referral_source,21595,28.56
+S08000029,NHS Fife,2021,February,attendance_follow_up,30229,0
+S08000029,NHS Fife,2021,February,mode_of_clinical_interaction,0,100
+S08000029,NHS Fife,2021,March,sex,0,100
+S08000029,NHS Fife,2021,March,marital_status,5709,79.83
+S08000029,NHS Fife,2021,March,ethnic_group,34,99.88
+S08000029,NHS Fife,2021,March,specialty,0,100
+S08000029,NHS Fife,2021,March,significant_facility,10,99.96
+S08000029,NHS Fife,2021,March,patient_category,0,100
+S08000029,NHS Fife,2021,March,referral_type,0,100
+S08000029,NHS Fife,2021,March,clinic_attendance,0,100
+S08000029,NHS Fife,2021,March,referral_source,20764,26.63
+S08000029,NHS Fife,2021,March,attendance_follow_up,28301,0
+S08000029,NHS Fife,2021,March,mode_of_clinical_interaction,0,100
+S08000029,NHS Fife,2021,April,sex,0,100
+S08000029,NHS Fife,2021,April,marital_status,5369,80.11
+S08000029,NHS Fife,2021,April,ethnic_group,24,99.91
+S08000029,NHS Fife,2021,April,specialty,0,100
+S08000029,NHS Fife,2021,April,significant_facility,7,99.97
+S08000029,NHS Fife,2021,April,patient_category,0,100
+S08000029,NHS Fife,2021,April,referral_type,0,100
+S08000029,NHS Fife,2021,April,clinic_attendance,0,100
+S08000029,NHS Fife,2021,April,referral_source,19748,26.83
+S08000029,NHS Fife,2021,April,attendance_follow_up,26988,0
+S08000029,NHS Fife,2021,April,mode_of_clinical_interaction,13,99.95
+S08000029,NHS Fife,2021,May,sex,0,100
+S08000029,NHS Fife,2021,May,marital_status,7442,78.68
+S08000029,NHS Fife,2021,May,ethnic_group,12,99.97
+S08000029,NHS Fife,2021,May,specialty,0,100
+S08000029,NHS Fife,2021,May,significant_facility,2,99.99
+S08000029,NHS Fife,2021,May,patient_category,0,100
+S08000029,NHS Fife,2021,May,referral_type,0,100
+S08000029,NHS Fife,2021,May,clinic_attendance,0,100
+S08000029,NHS Fife,2021,May,referral_source,25524,26.86
+S08000029,NHS Fife,2021,May,attendance_follow_up,34899,0
+S08000029,NHS Fife,2021,May,mode_of_clinical_interaction,8,99.98
+S08000030,NHS Tayside,2021,January,sex,0,100
+S08000030,NHS Tayside,2021,January,marital_status,2108,94.07
+S08000030,NHS Tayside,2021,January,ethnic_group,43,99.88
+S08000030,NHS Tayside,2021,January,specialty,0,100
+S08000030,NHS Tayside,2021,January,significant_facility,0,100
+S08000030,NHS Tayside,2021,January,patient_category,0,100
+S08000030,NHS Tayside,2021,January,referral_type,0,100
+S08000030,NHS Tayside,2021,January,clinic_attendance,0,100
+S08000030,NHS Tayside,2021,January,referral_source,28035,21.09
+S08000030,NHS Tayside,2021,January,attendance_follow_up,35530,0
+S08000030,NHS Tayside,2021,January,mode_of_clinical_interaction,0,100
+S08000030,NHS Tayside,2021,February,sex,0,100
+S08000030,NHS Tayside,2021,February,marital_status,2553,93.94
+S08000030,NHS Tayside,2021,February,ethnic_group,33,99.92
+S08000030,NHS Tayside,2021,February,specialty,0,100
+S08000030,NHS Tayside,2021,February,significant_facility,0,100
+S08000030,NHS Tayside,2021,February,patient_category,0,100
+S08000030,NHS Tayside,2021,February,referral_type,0,100
+S08000030,NHS Tayside,2021,February,clinic_attendance,0,100
+S08000030,NHS Tayside,2021,February,referral_source,32393,23.05
+S08000030,NHS Tayside,2021,February,attendance_follow_up,42098,0
+S08000030,NHS Tayside,2021,February,mode_of_clinical_interaction,0,100
+S08000030,NHS Tayside,2021,March,sex,0,100
+S08000030,NHS Tayside,2021,March,marital_status,3014,93.9
+S08000030,NHS Tayside,2021,March,ethnic_group,38,99.92
+S08000030,NHS Tayside,2021,March,specialty,0,100
+S08000030,NHS Tayside,2021,March,significant_facility,0,100
+S08000030,NHS Tayside,2021,March,patient_category,0,100
+S08000030,NHS Tayside,2021,March,referral_type,0,100
+S08000030,NHS Tayside,2021,March,clinic_attendance,0,100
+S08000030,NHS Tayside,2021,March,referral_source,37638,23.77
+S08000030,NHS Tayside,2021,March,attendance_follow_up,49377,0
+S08000030,NHS Tayside,2021,March,mode_of_clinical_interaction,0,100
+S08000030,NHS Tayside,2021,April,sex,0,100
+S08000030,NHS Tayside,2021,April,marital_status,3263,93.7
+S08000030,NHS Tayside,2021,April,ethnic_group,23,99.96
+S08000030,NHS Tayside,2021,April,specialty,0,100
+S08000030,NHS Tayside,2021,April,significant_facility,1,100
+S08000030,NHS Tayside,2021,April,patient_category,0,100
+S08000030,NHS Tayside,2021,April,referral_type,0,100
+S08000030,NHS Tayside,2021,April,clinic_attendance,0,100
+S08000030,NHS Tayside,2021,April,referral_source,39804,23.12
+S08000030,NHS Tayside,2021,April,attendance_follow_up,51777,0
+S08000030,NHS Tayside,2021,April,mode_of_clinical_interaction,6,99.99
+S08000030,NHS Tayside,2021,May,sex,0,100
+S08000030,NHS Tayside,2021,May,marital_status,3048,92.94
+S08000030,NHS Tayside,2021,May,ethnic_group,31,99.93
+S08000030,NHS Tayside,2021,May,specialty,0,100
+S08000030,NHS Tayside,2021,May,significant_facility,0,100
+S08000030,NHS Tayside,2021,May,patient_category,0,100
+S08000030,NHS Tayside,2021,May,referral_type,0,100
+S08000030,NHS Tayside,2021,May,clinic_attendance,0,100
+S08000030,NHS Tayside,2021,May,referral_source,33722,21.84
+S08000030,NHS Tayside,2021,May,attendance_follow_up,43143,0
+S08000030,NHS Tayside,2021,May,mode_of_clinical_interaction,3,99.99
+S08000031,NHS Greater Glasgow and Clyde,2021,January,sex,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,January,marital_status,22016,78.2
+S08000031,NHS Greater Glasgow and Clyde,2021,January,ethnic_group,10375,89.73
+S08000031,NHS Greater Glasgow and Clyde,2021,January,specialty,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,January,significant_facility,7915,92.16
+S08000031,NHS Greater Glasgow and Clyde,2021,January,patient_category,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,January,referral_type,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,January,clinic_attendance,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,January,referral_source,70238,30.46
+S08000031,NHS Greater Glasgow and Clyde,2021,January,attendance_follow_up,101001,0
+S08000031,NHS Greater Glasgow and Clyde,2021,January,mode_of_clinical_interaction,20,99.98
+S08000031,NHS Greater Glasgow and Clyde,2021,February,sex,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,February,marital_status,21240,79.46
+S08000031,NHS Greater Glasgow and Clyde,2021,February,ethnic_group,8671,91.61
+S08000031,NHS Greater Glasgow and Clyde,2021,February,specialty,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,February,significant_facility,6769,93.45
+S08000031,NHS Greater Glasgow and Clyde,2021,February,patient_category,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,February,referral_type,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,February,clinic_attendance,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,February,referral_source,71803,30.55
+S08000031,NHS Greater Glasgow and Clyde,2021,February,attendance_follow_up,103389,0
+S08000031,NHS Greater Glasgow and Clyde,2021,February,mode_of_clinical_interaction,26,99.97
+S08000031,NHS Greater Glasgow and Clyde,2021,March,sex,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,March,marital_status,24099,80.37
+S08000031,NHS Greater Glasgow and Clyde,2021,March,ethnic_group,8470,93.1
+S08000031,NHS Greater Glasgow and Clyde,2021,March,specialty,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,March,significant_facility,6786,94.47
+S08000031,NHS Greater Glasgow and Clyde,2021,March,patient_category,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,March,referral_type,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,March,clinic_attendance,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,March,referral_source,87249,28.92
+S08000031,NHS Greater Glasgow and Clyde,2021,March,attendance_follow_up,122752,0
+S08000031,NHS Greater Glasgow and Clyde,2021,March,mode_of_clinical_interaction,30,99.98
+S08000031,NHS Greater Glasgow and Clyde,2021,April,sex,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,April,marital_status,19864,79.49
+S08000031,NHS Greater Glasgow and Clyde,2021,April,ethnic_group,7479,92.28
+S08000031,NHS Greater Glasgow and Clyde,2021,April,specialty,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,April,significant_facility,6788,92.99
+S08000031,NHS Greater Glasgow and Clyde,2021,April,patient_category,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,April,referral_type,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,April,clinic_attendance,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,April,referral_source,70785,26.93
+S08000031,NHS Greater Glasgow and Clyde,2021,April,attendance_follow_up,96867,0
+S08000031,NHS Greater Glasgow and Clyde,2021,April,mode_of_clinical_interaction,38,99.96
+S08000031,NHS Greater Glasgow and Clyde,2021,May,sex,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,marital_status,15791,85.15
+S08000031,NHS Greater Glasgow and Clyde,2021,May,ethnic_group,586,99.45
+S08000031,NHS Greater Glasgow and Clyde,2021,May,specialty,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,significant_facility,2,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,patient_category,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,referral_type,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,clinic_attendance,0,100
+S08000031,NHS Greater Glasgow and Clyde,2021,May,referral_source,80073,24.68
+S08000031,NHS Greater Glasgow and Clyde,2021,May,attendance_follow_up,106308,0
+S08000031,NHS Greater Glasgow and Clyde,2021,May,mode_of_clinical_interaction,47,99.96
+S08000032,NHS Lanarkshire,2021,January,sex,0,100
+S08000032,NHS Lanarkshire,2021,January,marital_status,5804,89.41
+S08000032,NHS Lanarkshire,2021,January,ethnic_group,1180,97.85
+S08000032,NHS Lanarkshire,2021,January,specialty,0,100
+S08000032,NHS Lanarkshire,2021,January,significant_facility,345,99.37
+S08000032,NHS Lanarkshire,2021,January,patient_category,0,100
+S08000032,NHS Lanarkshire,2021,January,referral_type,0,100
+S08000032,NHS Lanarkshire,2021,January,clinic_attendance,0,100
+S08000032,NHS Lanarkshire,2021,January,referral_source,40619,25.9
+S08000032,NHS Lanarkshire,2021,January,attendance_follow_up,54813,0
+S08000032,NHS Lanarkshire,2021,January,mode_of_clinical_interaction,1,100
+S08000032,NHS Lanarkshire,2021,February,sex,0,100
+S08000032,NHS Lanarkshire,2021,February,marital_status,5694,89
+S08000032,NHS Lanarkshire,2021,February,ethnic_group,1052,97.97
+S08000032,NHS Lanarkshire,2021,February,specialty,0,100
+S08000032,NHS Lanarkshire,2021,February,significant_facility,273,99.47
+S08000032,NHS Lanarkshire,2021,February,patient_category,0,100
+S08000032,NHS Lanarkshire,2021,February,referral_type,0,100
+S08000032,NHS Lanarkshire,2021,February,clinic_attendance,0,100
+S08000032,NHS Lanarkshire,2021,February,referral_source,38206,26.22
+S08000032,NHS Lanarkshire,2021,February,attendance_follow_up,51785,0
+S08000032,NHS Lanarkshire,2021,February,mode_of_clinical_interaction,4,99.99
+S08000032,NHS Lanarkshire,2021,March,sex,0,100
+S08000032,NHS Lanarkshire,2021,March,marital_status,6501,89
+S08000032,NHS Lanarkshire,2021,March,ethnic_group,999,98.31
+S08000032,NHS Lanarkshire,2021,March,specialty,0,100
+S08000032,NHS Lanarkshire,2021,March,significant_facility,305,99.48
+S08000032,NHS Lanarkshire,2021,March,patient_category,0,100
+S08000032,NHS Lanarkshire,2021,March,referral_type,0,100
+S08000032,NHS Lanarkshire,2021,March,clinic_attendance,0,100
+S08000032,NHS Lanarkshire,2021,March,referral_source,43449,26.5
+S08000032,NHS Lanarkshire,2021,March,attendance_follow_up,59114,0
+S08000032,NHS Lanarkshire,2021,March,mode_of_clinical_interaction,12,99.98
+S08000032,NHS Lanarkshire,2021,April,sex,0,100
+S08000032,NHS Lanarkshire,2021,April,marital_status,6369,89.89
+S08000032,NHS Lanarkshire,2021,April,ethnic_group,673,98.93
+S08000032,NHS Lanarkshire,2021,April,specialty,0,100
+S08000032,NHS Lanarkshire,2021,April,significant_facility,265,99.58
+S08000032,NHS Lanarkshire,2021,April,patient_category,0,100
+S08000032,NHS Lanarkshire,2021,April,referral_type,0,100
+S08000032,NHS Lanarkshire,2021,April,clinic_attendance,0,100
+S08000032,NHS Lanarkshire,2021,April,referral_source,47834,24.07
+S08000032,NHS Lanarkshire,2021,April,attendance_follow_up,62995,0
+S08000032,NHS Lanarkshire,2021,April,mode_of_clinical_interaction,27,99.96
+S08000032,NHS Lanarkshire,2021,May,sex,0,100
+S08000032,NHS Lanarkshire,2021,May,marital_status,5749,87.85
+S08000032,NHS Lanarkshire,2021,May,ethnic_group,354,99.25
+S08000032,NHS Lanarkshire,2021,May,specialty,0,100
+S08000032,NHS Lanarkshire,2021,May,significant_facility,9,99.98
+S08000032,NHS Lanarkshire,2021,May,patient_category,0,100
+S08000032,NHS Lanarkshire,2021,May,referral_type,0,100
+S08000032,NHS Lanarkshire,2021,May,clinic_attendance,0,100
+S08000032,NHS Lanarkshire,2021,May,referral_source,36541,22.78
+S08000032,NHS Lanarkshire,2021,May,attendance_follow_up,47319,0
+S08000032,NHS Lanarkshire,2021,May,mode_of_clinical_interaction,21,99.96
+S08200001,England/Wales/Northern Ireland,2021,January,sex,0,100
+S08200001,England/Wales/Northern Ireland,2021,January,marital_status,208,22.39
+S08200001,England/Wales/Northern Ireland,2021,January,ethnic_group,27,89.93
+S08200001,England/Wales/Northern Ireland,2021,January,specialty,0,100
+S08200001,England/Wales/Northern Ireland,2021,January,significant_facility,21,92.16
+S08200001,England/Wales/Northern Ireland,2021,January,patient_category,0,100
+S08200001,England/Wales/Northern Ireland,2021,January,referral_type,0,100
+S08200001,England/Wales/Northern Ireland,2021,January,clinic_attendance,0,100
+S08200001,England/Wales/Northern Ireland,2021,January,referral_source,162,39.55
+S08200001,England/Wales/Northern Ireland,2021,January,attendance_follow_up,268,0
+S08200001,England/Wales/Northern Ireland,2021,January,mode_of_clinical_interaction,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,sex,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,marital_status,186,17.7
+S08200001,England/Wales/Northern Ireland,2021,February,ethnic_group,11,95.13
+S08200001,England/Wales/Northern Ireland,2021,February,specialty,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,significant_facility,4,98.23
+S08200001,England/Wales/Northern Ireland,2021,February,patient_category,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,referral_type,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,clinic_attendance,0,100
+S08200001,England/Wales/Northern Ireland,2021,February,referral_source,149,34.07
+S08200001,England/Wales/Northern Ireland,2021,February,attendance_follow_up,226,0
+S08200001,England/Wales/Northern Ireland,2021,February,mode_of_clinical_interaction,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,sex,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,marital_status,227,21.18
+S08200001,England/Wales/Northern Ireland,2021,March,ethnic_group,24,91.67
+S08200001,England/Wales/Northern Ireland,2021,March,specialty,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,significant_facility,15,94.79
+S08200001,England/Wales/Northern Ireland,2021,March,patient_category,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,referral_type,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,clinic_attendance,0,100
+S08200001,England/Wales/Northern Ireland,2021,March,referral_source,183,36.46
+S08200001,England/Wales/Northern Ireland,2021,March,attendance_follow_up,288,0
+S08200001,England/Wales/Northern Ireland,2021,March,mode_of_clinical_interaction,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,sex,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,marital_status,215,19.78
+S08200001,England/Wales/Northern Ireland,2021,April,ethnic_group,6,97.76
+S08200001,England/Wales/Northern Ireland,2021,April,specialty,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,significant_facility,4,98.51
+S08200001,England/Wales/Northern Ireland,2021,April,patient_category,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,referral_type,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,clinic_attendance,0,100
+S08200001,England/Wales/Northern Ireland,2021,April,referral_source,149,44.4
+S08200001,England/Wales/Northern Ireland,2021,April,attendance_follow_up,268,0
+S08200001,England/Wales/Northern Ireland,2021,April,mode_of_clinical_interaction,1,99.63
+S08200001,England/Wales/Northern Ireland,2021,May,sex,0,100
+S08200001,England/Wales/Northern Ireland,2021,May,marital_status,413,18.54
+S08200001,England/Wales/Northern Ireland,2021,May,ethnic_group,18,96.45
+S08200001,England/Wales/Northern Ireland,2021,May,specialty,0,100
+S08200001,England/Wales/Northern Ireland,2021,May,significant_facility,14,97.24
+S08200001,England/Wales/Northern Ireland,2021,May,patient_category,0,100
+S08200001,England/Wales/Northern Ireland,2021,May,referral_type,0,100
+S08200001,England/Wales/Northern Ireland,2021,May,clinic_attendance,0,100
+S08200001,England/Wales/Northern Ireland,2021,May,referral_source,387,23.67
+S08200001,England/Wales/Northern Ireland,2021,May,attendance_follow_up,507,0
+S08200001,England/Wales/Northern Ireland,2021,May,mode_of_clinical_interaction,151,70.22
+S08200002,No Fixed Abode,2021,January,sex,0,100
+S08200002,No Fixed Abode,2021,January,marital_status,12,29.41
+S08200002,No Fixed Abode,2021,January,ethnic_group,10,41.18
+S08200002,No Fixed Abode,2021,January,specialty,0,100
+S08200002,No Fixed Abode,2021,January,significant_facility,10,41.18
+S08200002,No Fixed Abode,2021,January,patient_category,0,100
+S08200002,No Fixed Abode,2021,January,referral_type,0,100
+S08200002,No Fixed Abode,2021,January,clinic_attendance,0,100
+S08200002,No Fixed Abode,2021,January,referral_source,2,88.24
+S08200002,No Fixed Abode,2021,January,attendance_follow_up,17,0
+S08200002,No Fixed Abode,2021,January,mode_of_clinical_interaction,0,100
+S08200002,No Fixed Abode,2021,February,sex,0,100
+S08200002,No Fixed Abode,2021,February,marital_status,9,43.75
+S08200002,No Fixed Abode,2021,February,ethnic_group,8,50
+S08200002,No Fixed Abode,2021,February,specialty,0,100
+S08200002,No Fixed Abode,2021,February,significant_facility,8,50
+S08200002,No Fixed Abode,2021,February,patient_category,0,100
+S08200002,No Fixed Abode,2021,February,referral_type,0,100
+S08200002,No Fixed Abode,2021,February,clinic_attendance,0,100
+S08200002,No Fixed Abode,2021,February,referral_source,6,62.5
+S08200002,No Fixed Abode,2021,February,attendance_follow_up,16,0
+S08200002,No Fixed Abode,2021,February,mode_of_clinical_interaction,0,100
+S08200002,No Fixed Abode,2021,March,sex,0,100
+S08200002,No Fixed Abode,2021,March,marital_status,7,46.15
+S08200002,No Fixed Abode,2021,March,ethnic_group,6,53.85
+S08200002,No Fixed Abode,2021,March,specialty,0,100
+S08200002,No Fixed Abode,2021,March,significant_facility,6,53.85
+S08200002,No Fixed Abode,2021,March,patient_category,0,100
+S08200002,No Fixed Abode,2021,March,referral_type,0,100
+S08200002,No Fixed Abode,2021,March,clinic_attendance,0,100
+S08200002,No Fixed Abode,2021,March,referral_source,4,69.23
+S08200002,No Fixed Abode,2021,March,attendance_follow_up,13,0
+S08200002,No Fixed Abode,2021,March,mode_of_clinical_interaction,0,100
+S08200002,No Fixed Abode,2021,April,sex,0,100
+S08200002,No Fixed Abode,2021,April,marital_status,9,71.88
+S08200002,No Fixed Abode,2021,April,ethnic_group,5,84.38
+S08200002,No Fixed Abode,2021,April,specialty,0,100
+S08200002,No Fixed Abode,2021,April,significant_facility,5,84.38
+S08200002,No Fixed Abode,2021,April,patient_category,0,100
+S08200002,No Fixed Abode,2021,April,referral_type,0,100
+S08200002,No Fixed Abode,2021,April,clinic_attendance,0,100
+S08200002,No Fixed Abode,2021,April,referral_source,14,56.25
+S08200002,No Fixed Abode,2021,April,attendance_follow_up,32,0
+S08200002,No Fixed Abode,2021,April,mode_of_clinical_interaction,5,84.38
+S08200002,No Fixed Abode,2021,May,sex,0,100
+S08200002,No Fixed Abode,2021,May,marital_status,1,93.75
+S08200002,No Fixed Abode,2021,May,ethnic_group,0,100
+S08200002,No Fixed Abode,2021,May,specialty,0,100
+S08200002,No Fixed Abode,2021,May,significant_facility,0,100
+S08200002,No Fixed Abode,2021,May,patient_category,0,100
+S08200002,No Fixed Abode,2021,May,referral_type,0,100
+S08200002,No Fixed Abode,2021,May,clinic_attendance,0,100
+S08200002,No Fixed Abode,2021,May,referral_source,13,18.75
+S08200002,No Fixed Abode,2021,May,attendance_follow_up,16,0
+S08200002,No Fixed Abode,2021,May,mode_of_clinical_interaction,0,100
+S08200003,Not Known,2021,January,sex,0,100
+S08200003,Not Known,2021,January,marital_status,80,80.95
+S08200003,Not Known,2021,January,ethnic_group,1,99.76
+S08200003,Not Known,2021,January,specialty,0,100
+S08200003,Not Known,2021,January,significant_facility,1,99.76
+S08200003,Not Known,2021,January,patient_category,0,100
+S08200003,Not Known,2021,January,referral_type,0,100
+S08200003,Not Known,2021,January,clinic_attendance,0,100
+S08200003,Not Known,2021,January,referral_source,230,45.24
+S08200003,Not Known,2021,January,attendance_follow_up,420,0
+S08200003,Not Known,2021,January,mode_of_clinical_interaction,1,99.76
+S08200003,Not Known,2021,February,sex,0,100
+S08200003,Not Known,2021,February,marital_status,87,79.86
+S08200003,Not Known,2021,February,ethnic_group,2,99.54
+S08200003,Not Known,2021,February,specialty,0,100
+S08200003,Not Known,2021,February,significant_facility,2,99.54
+S08200003,Not Known,2021,February,patient_category,0,100
+S08200003,Not Known,2021,February,referral_type,0,100
+S08200003,Not Known,2021,February,clinic_attendance,0,100
+S08200003,Not Known,2021,February,referral_source,271,37.27
+S08200003,Not Known,2021,February,attendance_follow_up,432,0
+S08200003,Not Known,2021,February,mode_of_clinical_interaction,1,99.77
+S08200003,Not Known,2021,March,sex,0,100
+S08200003,Not Known,2021,March,marital_status,140,72.39
+S08200003,Not Known,2021,March,ethnic_group,1,99.8
+S08200003,Not Known,2021,March,specialty,0,100
+S08200003,Not Known,2021,March,significant_facility,0,100
+S08200003,Not Known,2021,March,patient_category,0,100
+S08200003,Not Known,2021,March,referral_type,0,100
+S08200003,Not Known,2021,March,clinic_attendance,0,100
+S08200003,Not Known,2021,March,referral_source,315,37.87
+S08200003,Not Known,2021,March,attendance_follow_up,507,0
+S08200003,Not Known,2021,March,mode_of_clinical_interaction,1,99.8
+S08200003,Not Known,2021,April,sex,0,100
+S08200003,Not Known,2021,April,marital_status,172,70.09
+S08200003,Not Known,2021,April,ethnic_group,2,99.65
+S08200003,Not Known,2021,April,specialty,0,100
+S08200003,Not Known,2021,April,significant_facility,2,99.65
+S08200003,Not Known,2021,April,patient_category,0,100
+S08200003,Not Known,2021,April,referral_type,0,100
+S08200003,Not Known,2021,April,clinic_attendance,0,100
+S08200003,Not Known,2021,April,referral_source,309,46.26
+S08200003,Not Known,2021,April,attendance_follow_up,575,0
+S08200003,Not Known,2021,April,mode_of_clinical_interaction,34,94.09
+S08200003,Not Known,2021,May,sex,0,100
+S08200003,Not Known,2021,May,marital_status,350,56.79
+S08200003,Not Known,2021,May,ethnic_group,0,100
+S08200003,Not Known,2021,May,specialty,0,100
+S08200003,Not Known,2021,May,significant_facility,0,100
+S08200003,Not Known,2021,May,patient_category,0,100
+S08200003,Not Known,2021,May,referral_type,0,100
+S08200003,Not Known,2021,May,clinic_attendance,0,100
+S08200003,Not Known,2021,May,referral_source,464,42.72
+S08200003,Not Known,2021,May,attendance_follow_up,810,0
+S08200003,Not Known,2021,May,mode_of_clinical_interaction,23,97.16
+S08200004,Outside U.K.,2021,January,sex,0,100
+S08200004,Outside U.K.,2021,January,marital_status,6,33.33
+S08200004,Outside U.K.,2021,January,ethnic_group,0,100
+S08200004,Outside U.K.,2021,January,specialty,0,100
+S08200004,Outside U.K.,2021,January,significant_facility,0,100
+S08200004,Outside U.K.,2021,January,patient_category,0,100
+S08200004,Outside U.K.,2021,January,referral_type,0,100
+S08200004,Outside U.K.,2021,January,clinic_attendance,0,100
+S08200004,Outside U.K.,2021,January,referral_source,7,22.22
+S08200004,Outside U.K.,2021,January,attendance_follow_up,9,0
+S08200004,Outside U.K.,2021,January,mode_of_clinical_interaction,0,100
+S08200004,Outside U.K.,2021,February,sex,0,100
+S08200004,Outside U.K.,2021,February,marital_status,4,33.33
+S08200004,Outside U.K.,2021,February,ethnic_group,0,100
+S08200004,Outside U.K.,2021,February,specialty,0,100
+S08200004,Outside U.K.,2021,February,significant_facility,0,100
+S08200004,Outside U.K.,2021,February,patient_category,0,100
+S08200004,Outside U.K.,2021,February,referral_type,0,100
+S08200004,Outside U.K.,2021,February,clinic_attendance,0,100
+S08200004,Outside U.K.,2021,February,referral_source,2,66.67
+S08200004,Outside U.K.,2021,February,attendance_follow_up,6,0
+S08200004,Outside U.K.,2021,February,mode_of_clinical_interaction,0,100
+S08200004,Outside U.K.,2021,March,sex,0,100
+S08200004,Outside U.K.,2021,March,marital_status,3,57.14
+S08200004,Outside U.K.,2021,March,ethnic_group,0,100
+S08200004,Outside U.K.,2021,March,specialty,0,100
+S08200004,Outside U.K.,2021,March,significant_facility,0,100
+S08200004,Outside U.K.,2021,March,patient_category,0,100
+S08200004,Outside U.K.,2021,March,referral_type,0,100
+S08200004,Outside U.K.,2021,March,clinic_attendance,0,100
+S08200004,Outside U.K.,2021,March,referral_source,3,57.14
+S08200004,Outside U.K.,2021,March,attendance_follow_up,7,0
+S08200004,Outside U.K.,2021,March,mode_of_clinical_interaction,0,100
+S08200004,Outside U.K.,2021,April,sex,0,100
+S08200004,Outside U.K.,2021,April,marital_status,13,27.78
+S08200004,Outside U.K.,2021,April,ethnic_group,0,100
+S08200004,Outside U.K.,2021,April,specialty,0,100
+S08200004,Outside U.K.,2021,April,significant_facility,0,100
+S08200004,Outside U.K.,2021,April,patient_category,0,100
+S08200004,Outside U.K.,2021,April,referral_type,0,100
+S08200004,Outside U.K.,2021,April,clinic_attendance,0,100
+S08200004,Outside U.K.,2021,April,referral_source,5,72.22
+S08200004,Outside U.K.,2021,April,attendance_follow_up,18,0
+S08200004,Outside U.K.,2021,April,mode_of_clinical_interaction,0,100
+S08200004,Outside U.K.,2021,May,sex,0,100
+S08200004,Outside U.K.,2021,May,marital_status,12,14.29
+S08200004,Outside U.K.,2021,May,ethnic_group,0,100
+S08200004,Outside U.K.,2021,May,specialty,0,100
+S08200004,Outside U.K.,2021,May,significant_facility,0,100
+S08200004,Outside U.K.,2021,May,patient_category,0,100
+S08200004,Outside U.K.,2021,May,referral_type,0,100
+S08200004,Outside U.K.,2021,May,clinic_attendance,0,100
+S08200004,Outside U.K.,2021,May,referral_source,11,21.43
+S08200004,Outside U.K.,2021,May,attendance_follow_up,14,0
+S08200004,Outside U.K.,2021,May,mode_of_clinical_interaction,0,100

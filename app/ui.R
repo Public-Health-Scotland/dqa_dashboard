@@ -13,7 +13,25 @@ shinyUI(navbarPage(
     navlistPanel(
       id = "tabset",
       tabPanel("Home", "Panel one contents"),
-      tabPanel("Completeness", "Panel two contents"),
+      tabPanel("Completeness", "Panel two contents",
+               fluidRow(
+                   column(3,
+                          selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
+                          ),
+                   column(3,
+                          selectInput("month_in", "Month", choices = c("(All)", unique(smr_completeness$month_record_inserted)))
+                          ),
+                   column(3,
+                          selectInput("data_item_in", "Data Item", choices = c("(All)", unique(smr_completeness$data_item)))
+                          ),
+                   column(3,
+                          selectInput("percentage_in", "Percentage Complete", choices = c("(All)","0% - 20%", "20% <", "50% <", "80% <", "100%" ))
+                   )
+                        ),
+               fluidRow(
+                 tableOutput("completeness_table")
+                      )
+               ),
       tabPanel("Timeliness", "Panel three contents"),
       tabPanel("Accuracy Scores from SMR Audits",
                fluidRow(
@@ -31,7 +49,7 @@ shinyUI(navbarPage(
                ),
                
                fluidRow(
-                 tableOutput("data")
+                 tableOutput("audit_data")
                )
       )
     )),
