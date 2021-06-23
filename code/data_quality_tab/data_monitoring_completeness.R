@@ -24,9 +24,7 @@ hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland")
                   c("S08200004", "Outside U.K."))) %>%
     rename("hb"="V1", "hb_name"="V2")
 
-hb_lookup <- rbind(hb2019, hb_other) %>%
-  mutate(hb_name = case_when(hb_name == "NHS Greater Glasgow and C" ~ "NHS Greater Glasgow and Clyde",
-                             TRUE ~ hb_name))
+hb_lookup <- rbind(hb2019, hb_other)
 
 
 
