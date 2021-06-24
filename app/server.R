@@ -165,6 +165,12 @@ shinyServer(function(input, output, session) {
   filter = 'top',
   rownames = FALSE)
   
+  output$RCodes <- DT::renderDataTable({
+    DT::datatable(RCodes_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  },
+  filter = 'top',
+  rownames = FALSE)
+  
   output$split_1 <- DT::renderDataTable({
     DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },

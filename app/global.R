@@ -36,6 +36,7 @@ split_3_table <- read.csv(here::here("data", "split3.csv"))
 split_4_table <- read.csv(here::here("data", "split4.csv"))
 split_5_table <- read.csv(here::here("data", "split5.csv"))
 query_1_table <- read.csv(here::here("data", "query.csv"))
+RCodes_table <- read.csv(here::here("data", "RCodes.csv"))
 # Error maps ------------------------------------------------------
 
 #read in the shapefile downloaded from the web and add the healthboard borders (polygons)
