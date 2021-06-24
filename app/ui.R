@@ -160,5 +160,5 @@ shinyUI(navbarPage(
                                      ),
                                      leafletOutput("querymap", width = "80%", height = 700)))
                )),
-      tabPanel("SMR01 ICD-10 Symptom R Codes", "Panel two contents")
+      tabPanel("SMR01 ICD-10 Symptom R Codes", dataTableOutput("RCodes"))
     ))))
