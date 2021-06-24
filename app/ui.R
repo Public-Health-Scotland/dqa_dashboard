@@ -15,19 +15,22 @@ shinyUI(navbarPage(
       tabPanel("Home", "Panel one contents"),
       tabPanel("Completeness", "Panel two contents",
                fluidRow(
-                   column(3,
+                   column(4,
                           selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
                           ),
-                   column(3,
+                   column(4,
                           selectInput("month_in", "Month", choices = c("(All)", unique(smr_completeness$month_record_inserted)))
                           ),
-                   column(3,
-                          selectInput("data_item_in", "Data Item", choices = c("(All)", unique(smr_completeness$data_item)))
-                          ),
-                   column(3,
-                          selectInput("percentage_in", "Percentage Complete", choices = c("(All)","0% - 20%", "20% <", "50% <", "80% <", "100%" ))
-                   )
+                   column(4, selectInput("mandatory_in", "Mandatory ?", choices = c("(All)", "Mandatory data items", "Non-mandatory data items")))
+                   
+                      ),
+              fluidRow(
+                 column(3,
+                        selectInput("data_item_in", "Data Item", choices = c("(All)", unique(smr_completeness$data_item)))
                         ),
+                 column(3,
+                        sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0))
+                      ),
                fluidRow(
                  tableOutput("completeness_table")
                       )
