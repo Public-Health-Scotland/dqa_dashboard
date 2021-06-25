@@ -26,7 +26,7 @@ shinyUI(navbarPage(
                       ),
               fluidRow(
                  column(3,
-                        selectInput("data_item_in", "Data Item", choices = c("(All)", unique(smr_completeness$data_item)))
+                        selectInput("data_item_in", "Data Item", choices = NULL)
                         ),
                  column(3,
                         sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0))
@@ -44,7 +44,7 @@ shinyUI(navbarPage(
                  column(3, selectInput("Year", "Year", choices = NULL)
                  ),
                  
-                 column(3, selectInput("Healthboard", "Health Board", choices = NULL)
+                 column(3, selectInput("Healthboard", "Health Board", choices = unique(smr_audit$healthboard))
                  ),
                  
                  column(3, selectInput("DataItemName", "Data Item", choices = NULL)
