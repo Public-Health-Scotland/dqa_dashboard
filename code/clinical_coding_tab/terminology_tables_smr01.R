@@ -57,7 +57,7 @@ RCodes <- last_episode1 %>%
       str_detect(main_condition, "^R55") | str_detect(main_condition, "^R56") ~ 'collapse/convuls',
       TRUE ~ 'other')) %>% 
   summarise(
-    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls')
+    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls'), all = sum(r_code == 1)
   )
 
 RCodes
