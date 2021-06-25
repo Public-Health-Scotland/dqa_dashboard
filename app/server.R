@@ -1,72 +1,47 @@
 shinyServer(function(input, output, session) {
 
-### SMR Completeness
-  ##setting the selection filter settings for the table
+
+### SMR Completeness --------------------------------------------------------
+
+  ## Filters for HB, Month, Mandatory, Percentage Threshold
+  main_filters_completeness <- reactive({ 
+  smr_completeness %>%
+  filter(case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
+                       TRUE ~ hb_name==hb_name),
+         case_when(input$month_in %in% unique(smr_completeness$month_record_inserted) ~ 
+                     hb_name == input$month_in,
+                   TRUE ~ month_record_inserted==month_record_inserted),
+        case_when(input$mandatory_in == "Mandatory data items" ~ mandatory == "mandatory",
+                            input$mandatory_in == "Non-mandatory data items" ~ mandatory == "not mandatory",
+                            TRUE ~ mandatory == mandatory),
+        percent_complete_month >= input$percentage_in
+        )
+      })
   
-  # Health Board filter
-  hb_completeness <- reactive({
-    if(input$hb_in %in% unique(smr_completeness$hb_name)){
-      smr_completeness %>%
-        filter(hb_name==input$hb_in)
-    }
-    else{
-      smr_completeness
-    }
-  })
-  
-  #Month filter
-  month_completeness <- reactive({
-    if(input$month_in %in% unique(hb_completeness()$month_record_inserted)){
-      hb_completeness() %>%
-        filter(month_record_inserted==input$month_in)
-    }
-    else{
-      hb_completeness()
-    }
-  })
- 
-  #Mandatory data items filter 
-  mandatory_completeness <- reactive({ 
-    month_completeness() %>%
-    filter(case_when(input$mandatory_in == "Mandatory data items" ~ mandatory == "mandatory",
-                     input$mandatory_in == "Non-mandatory data items" ~ mandatory == "not mandatory",
-                     TRUE ~ mandatory == mandatory))
-  })
-  
-  #Depending on the user's selection in the Mandatory filter, the list of possible data items is 
-  # updated with updateSelectInput()
-  
-    observeEvent(input$mandatory_in, {
+  ## Filter for data item (the data item filter is nested and depends on the user's input in the Mandatory filter)
+   
+   #update Data Item selection list based on input$mandatory_in
+  observeEvent(input$mandatory_in, {
     updateSelectInput(session, inputId = "data_item_in",
-                      choices = c("(All)", unique(mandatory_completeness()$data_item)))
+                      choices = c("(All)", unique(main_filters_completeness()$data_item)))
   })
-  
-    #Data Item filter
+    #implement filter
   data_item_completeness <- reactive({
-    if(input$data_item_in %in% unique(mandatory_completeness()$data_item)){
-      mandatory_completeness()%>%
-        filter(data_item==input$data_item_in)
-    }
-    else{
-      mandatory_completeness()
-    }
-  })
-
-  #Percentage complete filter
-    #The user selects a threshold percentage using the slider, 
-    #and the table filters all the rows with a percentage above the threshold
-  data_item_percent <- reactive({
-    mandatory_completeness()%>%
-      filter(percent_complete_month >= input$percentage_in)%>%
-      arrange(percent_complete_month)
+    main_filters_completeness()%>%
+    filter(case_when(input$data_item_in %in% unique(main_filters_completeness()$data_item) ~
+                       data_item == input$data_item_in,
+                     TRUE ~ data_item == data_item))
   })
   
-  output$completeness_table <- renderTable(data_item_percent()%>%
-                                             select(-na_count, -month_total, -mandatory))
+  ## Render the final table
+  output$completeness_table <- renderTable(data_item_completeness()%>%
+                                             select(-na_count, -month_total, -mandatory) %>%
+                                             arrange(percent_complete_month))
   
 
-  
-### SMR Audit
+### SMR Audit ---------------------------------------------------------------
+
+
   #If user selects an audit, filter the data for selected audit, if they select (All) return unfiltered table 
   audit <- reactive({
     if(input$SMRaudit %in% smr_audit$audit){
