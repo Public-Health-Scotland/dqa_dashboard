@@ -119,13 +119,7 @@ shinyUI(navbarPage(
                                        'The table displays error percentages per healthboard. 
                                        Click on a healthboard to see the exact values.'
                                      ),
-                                              leafletOutput("error4map", width = "80%", height = 700)),
-                                     tabPanel('Error Split', p(
-                                       'This table shows what percentage of each coding discrepancy is attributable 
-                                       to the actual condition (wrong ICD-10 "O24x" code) and what percentage is due to
-                                       the "O24x" code being omitted whatsoever.'
-                                     ),
-                                              dataTableOutput('split_4'))),  
+                                              leafletOutput("error4map", width = "80%", height = 700))),
                           navbarMenu("Error 5", 
                                      tabPanel('Table', p(
                                        'Mandatory SMR02 diabetes value is not recorded.'

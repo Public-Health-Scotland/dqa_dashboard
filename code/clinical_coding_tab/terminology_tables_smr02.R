@@ -172,56 +172,36 @@ error_4_table <- diagnosis2 %>%
   filter(DIABETES == 4) %>%
   mutate(
     error_4 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' | MAIN_CONDITION == 'O243' | MAIN_CONDITION == 'O244' |
-        MAIN_CONDITION == 'O245' | MAIN_CONDITION == 'O246' | MAIN_CONDITION == 'O247' | MAIN_CONDITION == 'O248' | MAIN_CONDITION == 'O249' |
-        OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' & OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_1 == 'O244' |
-        OTHER_CONDITION_1 == 'O245' | OTHER_CONDITION_1 == 'O246' | OTHER_CONDITION_1 == 'O247' & OTHER_CONDITION_1 == 'O248' | OTHER_CONDITION_1 == 'O249' |
-        OTHER_CONDITION_2 =='O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' & OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_2 == 'O244' |
-        OTHER_CONDITION_2 == 'O245' | OTHER_CONDITION_2 == 'O246' | OTHER_CONDITION_2 == 'O247' & OTHER_CONDITION_2 == 'O248' | OTHER_CONDITION_2 == 'O249' |
-        OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' & OTHER_CONDITION_3 == 'O243' | OTHER_CONDITION_3 == 'O244' |
-        OTHER_CONDITION_3 == 'O245' | OTHER_CONDITION_3 == 'O246' | OTHER_CONDITION_3 == 'O247' & OTHER_CONDITION_3 == 'O248' | OTHER_CONDITION_3 == 'O249' |
-        OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' & OTHER_CONDITION_4 == 'O243' | OTHER_CONDITION_4 == 'O244' |
-        OTHER_CONDITION_4 == 'O245' | OTHER_CONDITION_4 == 'O246' | OTHER_CONDITION_4 == 'O247' & OTHER_CONDITION_4 == 'O248' | OTHER_CONDITION_4 == 'O249' |
-        OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' & OTHER_CONDITION_5 == 'O243' | OTHER_CONDITION_5 == 'O244' |
-        OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
-      T ~ 'error 4')
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
+      T ~ 'no error')
   ) %>%
   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
 error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
 error_4_table
 
-error_split_4 <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 4) %>%
-  mutate(
-    error_s4 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' | MAIN_CONDITION == 'O243' | MAIN_CONDITION == 'O244' |
-        MAIN_CONDITION == 'O245' | MAIN_CONDITION == 'O246' | MAIN_CONDITION == 'O247' | MAIN_CONDITION == 'O248' | MAIN_CONDITION == 'O249' |
-        OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' & OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_1 == 'O244' |
-        OTHER_CONDITION_1 == 'O245' | OTHER_CONDITION_1 == 'O246' | OTHER_CONDITION_1 == 'O247' & OTHER_CONDITION_1 == 'O248' | OTHER_CONDITION_1 == 'O249' |
-        OTHER_CONDITION_2 =='O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' & OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_2 == 'O244' |
-        OTHER_CONDITION_2 == 'O245' | OTHER_CONDITION_2 == 'O246' | OTHER_CONDITION_2 == 'O247' & OTHER_CONDITION_2 == 'O248' | OTHER_CONDITION_2 == 'O249' |
-        OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' & OTHER_CONDITION_3 == 'O243' | OTHER_CONDITION_3 == 'O244' |
-        OTHER_CONDITION_3 == 'O245' | OTHER_CONDITION_3 == 'O246' | OTHER_CONDITION_3 == 'O247' & OTHER_CONDITION_3 == 'O248' | OTHER_CONDITION_3 == 'O249' |
-        OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' & OTHER_CONDITION_4 == 'O243' | OTHER_CONDITION_4 == 'O244' |
-        OTHER_CONDITION_4 == 'O245' | OTHER_CONDITION_4 == 'O246' | OTHER_CONDITION_4 == 'O247' & OTHER_CONDITION_4 == 'O248' | OTHER_CONDITION_4 == 'O249' |
-        OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' & OTHER_CONDITION_5 == 'O243' | OTHER_CONDITION_5 == 'O244' |
-        OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
-      T ~ 'error 4')
-  ) %>%
-  filter(error_s4 == 'error 4') %>% 
-  mutate(
-    error4_split = case_when(
-      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
-        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
-      TRUE ~ 'ICD absent'
-    )) %>%
-  summarise(err4_wrong_ICD10 = sum(error4_split == "ICD present"), denominator = sum(error4_split == 'ICD present' | error4_split == 'ICD absent'))%>%
-  mutate(err4_wrong_ICD10_percent = round(err4_wrong_ICD10/denominator*100, digits = 2)) %>% 
-  mutate(err4_no_ICD10_percent = round(100 - err4_wrong_ICD10_percent, digits = 2))
-error_split_4 <- error_split_4[, c('HBName', "err4_wrong_ICD10_percent", "err4_no_ICD10_percent")]
-error_split_4
+# error_split_4 <- diagnosis2 %>%
+#   group_by(HBName) %>%
+#   filter(DIABETES == 4) %>%
+#   mutate(
+#     error_s4 = case_when(
+#       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+#         str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
+#       T ~ 'error 4')
+#   ) %>%
+#   filter(error_s4 == 'error 4') %>% 
+#   mutate(
+#     error4_split = case_when(
+#       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+#         str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+#       TRUE ~ 'ICD absent'
+#     )) %>%
+#   summarise(err4_wrong_ICD10 = sum(error4_split == "ICD present"), denominator = sum(error4_split == 'ICD present' | error4_split == 'ICD absent'))%>%
+#   mutate(err4_wrong_ICD10_percent = round(err4_wrong_ICD10/denominator*100, digits = 2)) %>% 
+#   mutate(err4_no_ICD10_percent = round(100 - err4_wrong_ICD10_percent, digits = 2))
+# error_split_4 <- error_split_4[, c('HBName', "err4_wrong_ICD10_percent", "err4_no_ICD10_percent")]
+# error_split_4
 
 error_5_table <- diagnosis2 %>%
   group_by(HBName) %>%
