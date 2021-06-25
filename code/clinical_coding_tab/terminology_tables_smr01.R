@@ -6,8 +6,14 @@ library(dplyr)
 library(janitor)
 library(stringr)
 
+###Open a connection to the SMRA database
 con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
                  pwd = .rs.askForPassword("SMRA Password:"))
+
+###Extract the main_condition codes for the desired time period:
+#hbres_currentdate condains the patient's health board of treatment
+#link_no and cis_marker are used to order Continuous Inpatient Stay (CIS) episodes
+#main_condition contains the main ICD10 clinical code for an episode
 
 diagnosis1 <- dbGetQuery(con, "SELECT hbres_currentdate, link_no, cis_marker, main_condition
                          FROM analysis.smr01_pi
@@ -15,6 +21,8 @@ diagnosis1 <- dbGetQuery(con, "SELECT hbres_currentdate, link_no, cis_marker, ma
                  AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};") %>%
   clean_names()
 
+###Filter the last episode of every multi-episode CIS set 
+#(we're looking at sets where there's more than 1 episode and the patient has been transfered)
 last_episode <- diagnosis1 %>%
   group_by(hbres_currentdate, link_no, cis_marker)%>%
   mutate(epinum = dplyr::row_number(), last_epi = max(epinum))%>% #generate episode number and last_episode
