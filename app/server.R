@@ -34,7 +34,7 @@ shinyServer(function(input, output, session) {
   })
   
   ## Render the final table
-  output$completeness_table <- renderTable(data_item_completeness()%>%
+  output$completeness_table <- DT::renderDataTable(data_item_completeness()%>%
                                              select(-na_count, -month_total, -mandatory) %>%
                                              arrange(percent_complete_month))
   
@@ -75,7 +75,7 @@ shinyServer(function(input, output, session) {
   })
   
   ##Render final table
-  output$audit_data <- renderTable({
+  output$audit_data <- DT::renderDataTable({
     filters2() %>%
       select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
       rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Accuracy Scotland" = "accuracy_scotland",
@@ -84,8 +84,9 @@ shinyServer(function(input, output, session) {
   })
   
   
-  
-###the following lines relate to SMR02 coding discrepancies
+
+# Clinical Coding Discrepancies SMR02 -------------------------------------
+
   output$error_1 <- DT::renderDataTable({
     DT::datatable(error_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15)) #default the displayed rows
   },

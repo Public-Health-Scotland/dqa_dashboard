@@ -1,19 +1,28 @@
 shinyUI(navbarPage(
+  
   title = "Data Quality Dashboard",
+  
   theme = "styles.css",
+  
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
+  
     title = "Home",
     navlistPanel( 
        id = "tabset",
        tabPanel("Summary Data Profile", "Panel one contents"),
        tabPanel("Info Panel", "Panel two contents")
-           )),
+           )
+    ),
+  
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for data quality
+    
     title = "Data Quality",
     navlistPanel(
       id = "tabset",
       tabPanel("Home", "Panel one contents"),
+      
       tabPanel("Completeness", "Panel two contents",
+               
                fluidRow(
                    column(4,
                           selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
@@ -31,12 +40,16 @@ shinyUI(navbarPage(
                  column(3,
                         sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0))
                       ),
+              
                fluidRow(
-                 tableOutput("completeness_table")
+                 DT::dataTableOutput("completeness_table")
                       )
                ),
+      
       tabPanel("Timeliness", "Panel three contents"),
+      
       tabPanel("Accuracy Scores from SMR Audits",
+               
                fluidRow(
                  column(3,
                         selectInput("SMRaudit", "SMR", choices = c("(All)", unique(smr_audit$audit)))
@@ -44,7 +57,7 @@ shinyUI(navbarPage(
                  column(3, selectInput("Year", "Year", choices = NULL)
                  ),
                  
-                 column(3, selectInput("Healthboard", "Health Board", choices = unique(smr_audit$healthboard))
+                 column(3, selectInput("Healthboard", "Health Board", choices = c("(All)",unique(smr_audit$healthboard)))
                  ),
                  
                  column(3, selectInput("DataItemName", "Data Item", choices = NULL)
@@ -52,7 +65,7 @@ shinyUI(navbarPage(
                ),
                
                fluidRow(
-                 tableOutput("audit_data")
+                 DT::dataTableOutput("audit_data")
                )
       )
     )),
