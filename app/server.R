@@ -12,25 +12,18 @@ shinyServer(function(input, output, session) {
         case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
                        TRUE ~ hb_name==hb_name),
          
-         case_when(input$month_in %in% unique(smr_completeness$month_record_inserted) ~ 
-                     month_record_inserted == input$month_in,
-                   TRUE ~ month_record_inserted==month_record_inserted),
-         
-        case_when(input$mandatory_in == "Mandatory data items" ~ mandatory == "mandatory",
-                            input$mandatory_in == "Non-mandatory data items" ~ mandatory == "not mandatory",
-                            TRUE ~ mandatory == mandatory),
+         case_when(input$month_in %in% unique(smr_completeness$event_month) ~ 
+                     event_month == input$month_in,
+                   TRUE ~ event_month==event_month),
         
         percent_complete_month >= input$percentage_in
         )
       })
   
-  ## Filter for data item (the data item filter is nested and depends on the user's SMR and Mandatory selection)
-  to_listen_completeness <- reactive({
-    list(input$smr_in, input$mandatory_in)
-  })
-  
+  ## Filter for data item (the data item filter is nested and depends on the user's SMR selection)
+
    #update Data Item selection list based on SMR and Mandatory selection
-  observeEvent(to_listen_completeness(), {
+  observeEvent(input$smr_in, {
     updateSelectInput(session, inputId = "data_item_in",
                       choices = c("(All)", unique(main_filters_completeness()$data_item)))
   })
@@ -44,9 +37,9 @@ shinyServer(function(input, output, session) {
   
   ## Render the final table
   output$completeness_table <- DT::renderDataTable(data_item_completeness()%>%
-                                             select(smr, hb_name, month_record_inserted,
-                                                    mandatory, data_item, percent_complete_month) %>%
-                                             arrange(percent_complete_month))
+                                             select(smr, hb_name, event_month,
+                                                    data_item, percent_complete_month)
+                                                  )
   
 
 ### SMR Audit ---------------------------------------------------------------
