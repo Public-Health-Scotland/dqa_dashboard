@@ -6,22 +6,31 @@ shinyServer(function(input, output, session) {
   ## Filters for HB, Month, Mandatory, Percentage Threshold
   main_filters_completeness <- reactive({ 
   smr_completeness %>%
-  filter(case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
+  filter(case_when(input$smr_in %in% unique(smr_completeness$smr)~smr == input$smr_in,
+                   TRUE ~ smr == smr),
+         
+        case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
                        TRUE ~ hb_name==hb_name),
+         
          case_when(input$month_in %in% unique(smr_completeness$month_record_inserted) ~ 
-                     hb_name == input$month_in,
+                     month_record_inserted == input$month_in,
                    TRUE ~ month_record_inserted==month_record_inserted),
+         
         case_when(input$mandatory_in == "Mandatory data items" ~ mandatory == "mandatory",
                             input$mandatory_in == "Non-mandatory data items" ~ mandatory == "not mandatory",
                             TRUE ~ mandatory == mandatory),
+        
         percent_complete_month >= input$percentage_in
         )
       })
   
-  ## Filter for data item (the data item filter is nested and depends on the user's input in the Mandatory filter)
-   
-   #update Data Item selection list based on input$mandatory_in
-  observeEvent(input$mandatory_in, {
+  ## Filter for data item (the data item filter is nested and depends on the user's SMR and Mandatory selection)
+  to_listen_completeness <- reactive({
+    list(input$smr_in, input$mandatory_in)
+  })
+  
+   #update Data Item selection list based on SMR and Mandatory selection
+  observeEvent(to_listen_completeness(), {
     updateSelectInput(session, inputId = "data_item_in",
                       choices = c("(All)", unique(main_filters_completeness()$data_item)))
   })
@@ -35,7 +44,8 @@ shinyServer(function(input, output, session) {
   
   ## Render the final table
   output$completeness_table <- DT::renderDataTable(data_item_completeness()%>%
-                                             select(-na_count, -month_total, -mandatory) %>%
+                                             select(smr, hb_name, month_record_inserted,
+                                                    mandatory, data_item, percent_complete_month) %>%
                                              arrange(percent_complete_month))
   
 
@@ -54,15 +64,15 @@ shinyServer(function(input, output, session) {
   ##Filters for the Year and Data Item Name, they both depend on the SMR and HB chosen by user
   
     #Since Data Item Name and SMR depend on multiple inputs, we store the inputs they rely on in a reactive list
-  to_listen <- reactive({
+  to_listen_audit <- reactive({
     list(input$SMRaudit, input$Healthboard)
   })
     #Update Year selection based on inputs
-  observeEvent(to_listen(), {
+  observeEvent(to_listen_audit(), {
     updateSelectInput(session, inputId = "Year", choices = c("(All)",unique(filters1()$year)))
   })
     #Update Data Item Name selection based on inputs
-  observeEvent(to_listen(), {
+  observeEvent(to_listen_audit(), {
     updateSelectInput(session,"DataItemName", choices = c("(All)",unique(filters1()$data_item_name)))
   })  
     #Apply Year and Data Item Name filters to data
