@@ -50,6 +50,14 @@ completeness <- function(smr_data, select_cols, list_mandatory){
 }
 
 
+
+#append_source() takes a vector of names of df you want to rbind and appends a source column with the name of the dfs
+append_source <- function(df_names) {
+  do.call(rbind, lapply(df_names, function(x) {
+    cbind(get(x), source = x)
+  }))
+}
+
 # Import lookup ----------------------------------------------------------
 
 
@@ -101,7 +109,7 @@ raw_smr04 <- dbGetQuery(con, statement = "SELECT *
 
 
 #vectors of names of the SMR data items we want to monitor completeness for
-smr00_cols <- c("dob", "sex", "postcode","ethnic_group", "main_condition",
+smr00_cols <- c("dob", "sex", "postcode","ethnic_group", "main_operation",
                 "significant_facility", "referral_source", "mode_of_clinical_interaction", "referral_type", "specialty")
 
 smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "significant_facility",
@@ -143,19 +151,26 @@ smr01_completeness <- completeness(raw_smr01, smr01_cols, mandatory_other)
 smr02_completeness <- completeness(raw_smr02, smr02_cols, mandatory_other)
 smr04_completeness <- completeness(raw_smr04, smr04_cols, mandatory_other)
 
+df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness", "smr04_completeness")
+
+
 #Bind and format final completeness data frame
 
-smr_completeness <- rbind(smr00_completeness, smr01_completeness, 
-                          smr02_completeness, smr04_completeness,
-                          make.row.names=TRUE) %>%
+smr_completeness <- append_source(df_names)%>%
   left_join(hb_lookup, by = c("hbres_currentdate" = "hb")) %>%
   mutate(month_record_inserted =
            recode_factor(as.factor(month_record_inserted),
                          `1`="January", `2`="February", `3`="March", `4`="April",
                          `5`="May", `6`="June", `7`="July", `8`="August",
-                         `9`="September", `10`="October", `11`="November", `12`="December"))
+                         `9`="September", `10`="October", `11`="November", `12`="December"),
+         source = case_when(source=="smr00_completeness" ~ "SMR00", 
+                            source=="smr01_completeness" ~ "SMR01", 
+                            source == "smr02_completeness" ~ "SMR02", 
+                            source == "smr04_completeness" ~ "SMR04"))%>%
+  rename("smr"="source")
+
 # Write the Output --------------------------------------------------------
 
 #write out the output so that it can be imported in global.R
-write_csv(smr00_full, here::here("data", "smr_completeness.csv"))
+write_csv(smr_completeness, here::here("data", "smr_completeness.csv"))
 

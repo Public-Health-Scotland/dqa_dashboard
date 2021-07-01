@@ -23,16 +23,20 @@ shinyUI(navbarPage(
       
       tabPanel("Completeness", "Panel two contents",
                
-               fluidRow(
-                   column(4,
-                          selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
+              fluidRow(
+                column(3, 
+                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                       ),
+                column(3,
+                       selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
                           ),
-                   column(4,
-                          selectInput("month_in", "Month", choices = c("(All)", unique(smr_completeness$month_record_inserted)))
+                column(3,
+                       selectInput("month_in", "Month", choices = c("(All)", unique(smr_completeness$month_record_inserted)))
                           ),
-                   column(4, selectInput("mandatory_in", "Mandatory ?", choices = c("(All)", "Mandatory data items", "Non-mandatory data items")))
-                   
-                      ),
+                column(3, selectInput("mandatory_in", "Mandatory ?", choices = c("(All)", "Mandatory data items", "Non-mandatory data items"))
+                          )
+                     ),
+              
               fluidRow(
                  column(3,
                         selectInput("data_item_in", "Data Item", choices = NULL)
@@ -41,7 +45,7 @@ shinyUI(navbarPage(
                         sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0))
                       ),
               
-               fluidRow(
+              fluidRow(
                  DT::dataTableOutput("completeness_table")
                       )
                ),
