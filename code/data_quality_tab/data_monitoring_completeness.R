@@ -15,36 +15,33 @@ library(lubridate)
 # Load Function(s) --------------------------------------------------------
 
 #completeness() returns a data frame of completeness percentage per data item
-#The function takes raw smr data,
-#a vector of data item names we want to calculate completeness for, 
-#and a vector of the mandatory data item names.
+#The function takes raw smr data, and a vector of data item names we want to calculate completeness for.
 
-completeness <- function(smr_data, select_cols, list_mandatory){
+completeness <- function(smr_data, select_cols){
   
   #format our smr data and select columns we want to calculate completeness for
   df <- smr_data %>%
-    select(date_record_inserted, hbres_currentdate, select_cols) %>%
-    mutate(year_record_inserted = year(date_record_inserted), 
-           month_record_inserted = month(date_record_inserted))%>%
-    select(-date_record_inserted)
+    select(event_date, hbres_currentdate, select_cols) %>%
+    mutate(event_year = year(event_date), 
+           event_month = month(event_date))%>%
+    select(-event_date)
   
   #count the number of NAs for each data item of interest
   na_count <- df%>%
-    group_by(hbres_currentdate, year_record_inserted, month_record_inserted)%>%
+    group_by(hbres_currentdate, event_year, event_month)%>%
     summarise_all(funs(sum(is.na(.)))) %>%
     pivot_longer(all_of(select_cols), names_to = "data_item", values_to = "na_count")
   
   #total number of records per month
   total_records_month <- df%>%
-    group_by(hbres_currentdate, year_record_inserted, month_record_inserted)%>%
+    group_by(hbres_currentdate, event_year, event_month)%>%
     tally()%>%
     rename("month_total"="n")
   
   #calculate completeness percentage per data item
   completeness_df <- na_count %>% 
     left_join(total_records_month)%>%
-    mutate(percent_complete_month = round((month_total - na_count)/month_total*100, digits = 2),
-           mandatory = case_when(data_item %in% mandatory_smr00 ~ "mandatory", TRUE ~ "not mandatory"))
+    mutate(percent_complete_month = round((month_total - na_count)/month_total*100, digits = 2))
   
   return(completeness_df)
 }
@@ -81,75 +78,68 @@ hb_lookup <- rbind(hb2019, hb_other)
 con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
                  pwd = .rs.askForPassword("SMRA Password:"))
 
-#select records uploaded over a specific time period from smr00, smr01, smr02 and smr04
+#select records  over a specific time period from smr00, smr01, smr02 and smr04
+
+#smr00 contains outpatient data so the records are filtered by clinic date
 raw_smr00 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR00_PI
-                 WHERE DATE_RECORD_INSERTED BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
+                 WHERE clinic_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
                  AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
-  clean_names()
+  clean_names()%>%
+  rename_smr("event_date"="clinic_date")
 
+#for the remaining datasets smr01, 02 and 04, the data is filtered by discharge date
 raw_smr01 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR01_PI
-                 WHERE DATE_RECORD_INSERTED BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
+                 WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
                  AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
-  clean_names()
+  clean_names() %>%
+  rename("event_date"="discharge_date")
 
 raw_smr02 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR02_PI
-           WHERE DATE_RECORD_INSERTED BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
+           WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
            AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
-  clean_names()
+  clean_names() %>% 
+  rename("event_date"="discharge_date")
+
 
 raw_smr04 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR04_PI
-                 WHERE DATE_RECORD_INSERTED BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
+                 WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
                  AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
-  clean_names()
+  clean_names() %>% 
+  rename("event_date"="discharge_date")
+
 
 
 
 #vectors of names of the SMR data items we want to monitor completeness for
-smr00_cols <- c("dob", "sex", "postcode","ethnic_group", "main_operation",
-                "significant_facility", "referral_source", "mode_of_clinical_interaction", "referral_type", "specialty")
 
-smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "significant_facility",
-                "admission_type", "admission_transfer_from",
-                "admission_transfer_from_loc", "discharge_transfer_to", 
-                "discharge_transfer_to_location", "management_of_patient",
-                "specialty")
-
-smr02_cols <- c("dob", "sex", "postcode", "ethnic_group", "condition_on_discharge",
-                "admission_type", "admission_transfer_from",
-                "admission_transfer_from_loc", "discharge_transfer_to", 
-                "discharge_transfer_to_location", "management_of_patient",
-                "specialty")
-
-smr04_cols <- c("dob", "sex", "postcode", "ethnic_group",
-                "admission_type", "admission_transfer_from",
-                "admission_transfer_from_loc", "discharge_transfer_to", 
-                "discharge_transfer_to_location", "management_of_patient",
-                "specialty")
-
-
-#vectors of the data items that are mandatory out of the ones we've selected to monitor
-
-#list of mandatory data items for smr00
-mandatory_smr00 <- c("dob", "sex", "postcode", "ethnic_group", 
+#list of data items for smr00
+smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
                      "mode_of_clinical_interaction", "referral_type", "specialty")
 
-#list of mandatory items for smr01, smr02, and smr04
-mandatory_other <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+#list of data items for smr01 and smr04
+smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
                      "significant_facility","admission_transfer_from", 
-                     "discharge_transfer_to", "management_of_patient", "specialty",
-                     "condition_on_discharge")
+                     "discharge_transfer_to", "management_of_patient", "specialty")
 
+smr02_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+                "admission_transfer_from", "discharge_transfer_to", 
+                "management_of_patient", "specialty",
+                "condition_on_discharge")
+
+smr04_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+                "admission_transfer_from", 
+                "discharge_transfer_to", "management_of_patient", "specialty")
 
 #Output completeness for each smr
 
-smr00_completeness <- completeness(raw_smr00, smr00_cols, mandatory_smr00)
-smr01_completeness <- completeness(raw_smr01, smr01_cols, mandatory_other)
-smr02_completeness <- completeness(raw_smr02, smr02_cols, mandatory_other)
-smr04_completeness <- completeness(raw_smr04, smr04_cols, mandatory_other)
+smr00_completeness <- completeness(raw_smr00, smr00_cols)
+smr01_completeness <- completeness(raw_smr01, other_cols)
+smr02_completeness <- completeness(raw_smr02, smr02_cols)
+smr04_completeness <- completeness(raw_smr04, other_cols)
 
 df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness", "smr04_completeness")
 
@@ -158,8 +148,8 @@ df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness", 
 
 smr_completeness <- append_source(df_names)%>%
   left_join(hb_lookup, by = c("hbres_currentdate" = "hb")) %>%
-  mutate(month_record_inserted =
-           recode_factor(as.factor(month_record_inserted),
+  mutate(event_month =
+           recode_factor(as.factor(event_month),
                          `1`="January", `2`="February", `3`="March", `4`="April",
                          `5`="May", `6`="June", `7`="July", `8`="August",
                          `9`="September", `10`="October", `11`="November", `12`="December"),
