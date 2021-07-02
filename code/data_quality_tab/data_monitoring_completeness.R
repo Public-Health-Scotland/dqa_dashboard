@@ -84,22 +84,22 @@ con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"
 raw_smr00 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR00_PI
                  WHERE clinic_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
+                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
   clean_names()%>%
-  rename_smr("event_date"="clinic_date")
+  rename("event_date"="clinic_date")
 
 #for the remaining datasets smr01, 02 and 04, the data is filtered by discharge date
 raw_smr01 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR01_PI
                  WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
+                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
   clean_names() %>%
   rename("event_date"="discharge_date")
 
 raw_smr02 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR02_PI
            WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-           AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
+           AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
@@ -107,7 +107,7 @@ raw_smr02 <- dbGetQuery(con, statement = "SELECT *
 raw_smr04 <- dbGetQuery(con, statement = "SELECT *
                  FROM ANALYSIS.SMR04_PI
                  WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};" )%>%
+                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
@@ -144,11 +144,11 @@ smr04_completeness <- completeness(raw_smr04, other_cols)
 df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness", "smr04_completeness")
 
 
-#Bind and format final completeness data frame
+#Bind and format completeness data frame
 
 smr_completeness <- append_source(df_names)%>%
   left_join(hb_lookup, by = c("hbres_currentdate" = "hb")) %>%
-  mutate(event_month =
+  mutate(month_name =
            recode_factor(as.factor(event_month),
                          `1`="January", `2`="February", `3`="March", `4`="April",
                          `5`="May", `6`="June", `7`="July", `8`="August",
@@ -159,8 +159,23 @@ smr_completeness <- append_source(df_names)%>%
                             source == "smr04_completeness" ~ "SMR04"))%>%
   rename("smr"="source")
 
+
+# Generate sparkline plots for % completeness over previous months
+# plots are stored in html and will be executed by the shiny app
+
+completeness_plots <- smr_completeness %>%
+  group_by(smr, hb_name, data_item, event_year)%>%
+  arrange(event_month)%>%
+  summarise(mini_plot = spk_chr(percent_complete_month, type="bar"))
+
+#Join the plots to the main table and filter through last month's figures only
+smr_completeness_2 <- smr_completeness %>%
+  filter(event_month == month(Sys.Date())-1) %>% 
+  left_join(completeness_plots)
+
+
 # Write the Output --------------------------------------------------------
 
 #write out the output so that it can be imported in global.R
-write_csv(smr_completeness, here::here("data", "smr_completeness.csv"))
+write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
 

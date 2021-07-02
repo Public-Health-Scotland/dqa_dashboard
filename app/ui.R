@@ -31,17 +31,14 @@ shinyUI(navbarPage(
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
                           ),
                 column(4,
-                       selectInput("month_in", "Month", choices = c("(All)", unique(smr_completeness$month_record_inserted)))
+                       selectInput("data_item_in", "Data Item", choices = NULL)
                           )
                      ),
               
               fluidRow(
-                 column(4,
-                        selectInput("data_item_in", "Data Item", choices = NULL)
-                        ),
-                 column(8,
-                        sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0))
+                  sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0
                       ),
+                      
               
               fluidRow(
                  DT::dataTableOutput("completeness_table")

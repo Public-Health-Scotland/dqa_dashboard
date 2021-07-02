@@ -3,26 +3,24 @@ shinyServer(function(input, output, session) {
 
 ### SMR Completeness --------------------------------------------------------
 
-  ## Filters for HB, Month, Mandatory, Percentage Threshold
+  ## Setting the main filters for SMR, HB and Percentage Threshold
   main_filters_completeness <- reactive({ 
+    
   smr_completeness %>%
+      
   filter(case_when(input$smr_in %in% unique(smr_completeness$smr)~smr == input$smr_in,
                    TRUE ~ smr == smr),
          
         case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
                        TRUE ~ hb_name==hb_name),
-         
-         case_when(input$month_in %in% unique(smr_completeness$event_month) ~ 
-                     event_month == input$month_in,
-                   TRUE ~ event_month==event_month),
         
         percent_complete_month >= input$percentage_in
         )
       })
   
-  ## Filter for data item (the data item filter is nested and depends on the user's SMR selection)
-
-   #update Data Item selection list based on SMR and Mandatory selection
+  ## Set a filter for data item (the data item filter is nested and depends on the user's SMR selection)
+   
+  #update Data Item selection list based on SMR and Mandatory selection
   observeEvent(input$smr_in, {
     updateSelectInput(session, inputId = "data_item_in",
                       choices = c("(All)", unique(main_filters_completeness()$data_item)))
@@ -36,10 +34,29 @@ shinyServer(function(input, output, session) {
   })
   
   ## Render the final table
-  output$completeness_table <- DT::renderDataTable(data_item_completeness()%>%
-                                             select(smr, hb_name, event_month,
-                                                    data_item, percent_complete_month)
-                                                  )
+  output$completeness_table <- DT::renderDataTable({
+    
+    cb <- htmlwidgets::JS('function(){debugger;HTMLWidgets.staticRender();}')
+    
+    data <- data_item_completeness()%>%
+      select(smr, hb_name, data_item, percent_complete_month, mini_plot)
+    
+    dtable_completeness <- datatable(data = data,
+                                     escape = FALSE,
+                                     rownames = FALSE,
+                                     selection = 'none',
+                                     options = list(
+                                       rowsGroup = list(0),
+                                       drawCallback =  cb
+                                       # rowCallback = JS(tooltips)
+                                                    )
+                                     )%>%
+                          spk_add_deps()
+    
+    dtable_completeness
+    
+  })
+
   
 
 ### SMR Audit ---------------------------------------------------------------
