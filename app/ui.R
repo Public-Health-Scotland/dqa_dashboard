@@ -26,7 +26,7 @@ shinyUI(navbarPage(
               fluidRow(
                 column(4, 
                        selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
-                       ),
+                          ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
                           ),
@@ -36,13 +36,13 @@ shinyUI(navbarPage(
                      ),
               
               fluidRow(
-                  sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0
-                      ),
+                  sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0)
+                    ),
                       
               
               fluidRow(
                  DT::dataTableOutput("completeness_table")
-                      )
+                    )
                ),
       
       tabPanel("Timeliness", "Panel three contents"),
