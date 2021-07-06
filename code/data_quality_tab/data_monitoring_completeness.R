@@ -67,10 +67,10 @@ append_source <- function(df_names) {
 }
 
 
-create_symbol <- function(data){
+
+create_change_symbol <- function(data){
 
   data %>%
-    group_by(smr, hb_name, data_item)%>%
     filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
     mutate(change = case_when(percent_complete_month > lag(percent_complete_month) ~
                                 2,
@@ -80,7 +80,7 @@ create_symbol <- function(data){
                                 0)
            )%>%
     filter(!is.na(change))%>%
-    mutate(symbol = case_when(
+    mutate(change_symbol = case_when(
       change == 1 ~ str_c(icon("arrow-down", lib = "glyphicon"),
                           tags$span(class = "sr-only", "Decrease from previous month"),
                           sep = " "),
@@ -97,6 +97,27 @@ create_symbol <- function(data){
 }
 
 
+create_flag_symbol <- function(data){
+  data %>%
+    filter(event_month == month(Sys.Date())-1)%>%
+    mutate(flag = case_when(percent_complete_month >= 60 ~ 1,
+                            percent_complete_month >= 40 ~ 2,
+                            percent_complete_month < 40 ~ 3)
+           )%>%
+    filter(!is.na(flag))%>%
+    mutate(flag_symbol = case_when(
+      flag == 1 ~ str_c(icon("smile", lib = "glyphicon"),
+                  tags$span(class = "sr-only", "Above 60% complete"),
+                  sep = " "),
+      flag == 2 ~ str_c(icon("meh", lib = "glyphicon"),
+                       tags$span(class = "sr-only", "Between 40% and 60% complete"),
+                       sep = " "),
+      flag == 3 ~ str_c(icon("frown", lib = "glyphicon"),
+                       tags$span(class = "sr-only", "Below 40% complete"),
+                       sep = " ")
+                      )
+           )
+}
 
 # Import lookup ----------------------------------------------------------
 
@@ -212,6 +233,8 @@ completeness_plots <- smr_completeness %>%
   summarise(mini_plot = spk_chr(percent_complete_month,
                                 height = "40px",
                                 width = 100,
+                                chartRangeMin = 0,
+                                chartRangeMax = max(percent_complete_month),
                                 type="bar",
                                 numberDigitGroupSep = "",
                                 barWidth = 10,
@@ -220,13 +243,15 @@ completeness_plots <- smr_completeness %>%
                                 )
             )
 
-change_symbols <- create_symbol(smr_completeness)
+change_df <- create_change_symbol(smr_completeness)
+flag_df <- create_flag_symbol(smr_completeness)
 
 #Join the plots to the main table and filter through last month's figures only
 smr_completeness_2 <- smr_completeness %>%
   filter(event_month == month(Sys.Date())-1) %>% 
   left_join(completeness_plots) %>%
-  left_join(change_symbols)
+  left_join(change_df)%>%
+  left_join(flag_df)
 
 
 # Write the Output --------------------------------------------------------
