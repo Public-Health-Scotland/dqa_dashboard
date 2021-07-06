@@ -14,6 +14,12 @@ library(lubridate)
 
 # Load Function(s) --------------------------------------------------------
 
+################################
+
+## Completeness per data item ##
+
+###############################
+
 #completeness() returns a data frame of completeness percentage per data item
 #The function takes raw smr data, and a vector of data item names we want to calculate completeness for.
 
@@ -46,6 +52,11 @@ completeness <- function(smr_data, select_cols){
   return(completeness_df)
 }
 
+#########################################
+
+## Bind data frames and append source ##
+
+########################################
 
 
 #append_source() takes a vector of names of df you want to rbind and appends a source column with the name of the dfs
@@ -54,6 +65,38 @@ append_source <- function(df_names) {
     cbind(get(x), source = x)
   }))
 }
+
+
+create_symbol <- function(data){
+
+  data %>%
+    group_by(smr, hb_name, data_item)%>%
+    filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
+    mutate(change = case_when(percent_complete_month > lag(percent_complete_month) ~
+                                2,
+                              percent_complete_month < lag(percent_complete_month) ~
+                                1,
+                              percent_complete_month == lag(percent_complete_month) ~
+                                0)
+           )%>%
+    filter(!is.na(change))%>%
+    mutate(symbol = case_when(
+      change == 1 ~ str_c(icon("arrow-down", lib = "glyphicon"),
+                          tags$span(class = "sr-only", "Decrease from previous month"),
+                          sep = " "),
+      change == 2 ~ str_c(icon("arrow-up", lib = "glyphicon"),
+                          tags$span(class = "sr-only", "Increase from previous month"),
+                          sep = " "),
+      change == 0 ~ str_c(icon("minus", lib = "glyphicon"),
+                          tags$span(class = "sr-only", "No change from previous month"),
+                          sep = " ")
+                          )
+          )
+  
+ 
+}
+
+
 
 # Import lookup ----------------------------------------------------------
 
@@ -137,9 +180,9 @@ smr04_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
 #Output completeness for each smr
 
 smr00_completeness <- completeness(raw_smr00, smr00_cols)
-smr01_completeness <- completeness(raw_smr01, other_cols)
+smr01_completeness <- completeness(raw_smr01, smr01_cols)
 smr02_completeness <- completeness(raw_smr02, smr02_cols)
-smr04_completeness <- completeness(raw_smr04, other_cols)
+smr04_completeness <- completeness(raw_smr04, smr04_cols)
 
 df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness", "smr04_completeness")
 
@@ -166,12 +209,24 @@ smr_completeness <- append_source(df_names)%>%
 completeness_plots <- smr_completeness %>%
   group_by(smr, hb_name, data_item, event_year)%>%
   arrange(event_month)%>%
-  summarise(mini_plot = spk_chr(percent_complete_month, type="bar"))
+  summarise(mini_plot = spk_chr(percent_complete_month,
+                                height = "40px",
+                                width = 100,
+                                type="bar",
+                                numberDigitGroupSep = "",
+                                barWidth = 10,
+                                barSpacing = 2,
+                                tooltipFormat = paste0('{{value}}', '%')
+                                )
+            )
+
+change_symbols <- create_symbol(smr_completeness)
 
 #Join the plots to the main table and filter through last month's figures only
 smr_completeness_2 <- smr_completeness %>%
   filter(event_month == month(Sys.Date())-1) %>% 
-  left_join(completeness_plots)
+  left_join(completeness_plots) %>%
+  left_join(change_symbols)
 
 
 # Write the Output --------------------------------------------------------

@@ -39,7 +39,7 @@ shinyServer(function(input, output, session) {
     cb <- htmlwidgets::JS('function(){debugger;HTMLWidgets.staticRender();}')
     
     data <- data_item_completeness()%>%
-      select(smr, hb_name, data_item, percent_complete_month, mini_plot)
+      select(smr, hb_name, data_item, percent_complete_month, mini_plot, symbol)
     
     dtable_completeness <- datatable(data = data,
                                      escape = FALSE,
