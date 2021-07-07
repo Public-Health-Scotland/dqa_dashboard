@@ -36,12 +36,22 @@ shinyUI(navbarPage(
                      ),
               
               fluidRow(
-                  sliderInput("percentage_in", "Completeness % Threshold", min=0, max = 100, value = 0)
+                checkboxGroupInput("percentage_in", 
+                                   "Completeness percentage range",
+                                   choices = list("Above 60% complete" = 1,
+                                                  "Between 40% and 60% complete" = 2,
+                                                  "Below 40% complete" = 3),
+                                   selected = 1
+                                   )
                     ),
                       
               
               fluidRow(
-                 DT::dataTableOutput("completeness_table")
+                #add icon colors
+                tags$style(".glyphicon-ok {color:#2BE532}
+                          .glyphicon-warning-sign {color:#FFC300}
+                          .glyphicon-flag {color:#C70039}"),
+                DT::dataTableOutput("completeness_table")
                     )
                ),
       
@@ -64,6 +74,7 @@ shinyUI(navbarPage(
                ),
                
                fluidRow(
+                 
                  DT::dataTableOutput("audit_data")
                )
       )

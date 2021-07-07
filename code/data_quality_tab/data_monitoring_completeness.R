@@ -14,110 +14,22 @@ library(lubridate)
 
 # Load Function(s) --------------------------------------------------------
 
-################################
+#outputs data frame with completeness percentage per data item
+source(here::here("functions", "completeness.R"))
 
-## Completeness per data item ##
+#binds the df outputs from completeness() and appends the df names in a 
+#new column called source
+source(here::here("functions", "append_source.R"))
 
-###############################
+#takes the output from append_source() and outputs symbols indicating trend
+#in completeness percentages compared to previous month
+source(here::here("functions", "create_change_symbol.R"))
 
-#completeness() returns a data frame of completeness percentage per data item
-#The function takes raw smr data, and a vector of data item names we want to calculate completeness for.
-
-completeness <- function(smr_data, select_cols){
-  
-  #format our smr data and select columns we want to calculate completeness for
-  df <- smr_data %>%
-    select(event_date, hbres_currentdate, select_cols) %>%
-    mutate(event_year = year(event_date), 
-           event_month = month(event_date))%>%
-    select(-event_date)
-  
-  #count the number of NAs for each data item of interest
-  na_count <- df%>%
-    group_by(hbres_currentdate, event_year, event_month)%>%
-    summarise_all(funs(sum(is.na(.)))) %>%
-    pivot_longer(all_of(select_cols), names_to = "data_item", values_to = "na_count")
-  
-  #total number of records per month
-  total_records_month <- df%>%
-    group_by(hbres_currentdate, event_year, event_month)%>%
-    tally()%>%
-    rename("month_total"="n")
-  
-  #calculate completeness percentage per data item
-  completeness_df <- na_count %>% 
-    left_join(total_records_month)%>%
-    mutate(percent_complete_month = round((month_total - na_count)/month_total*100, digits = 2))
-  
-  return(completeness_df)
-}
-
-#########################################
-
-## Bind data frames and append source ##
-
-########################################
+#takes the output from append_source() and outputs symbols indicating range of
+#completeness percentage values, data items where percentage too low are flagged.
+source(here::here("functions", "create_flag_symbol.R"))
 
 
-#append_source() takes a vector of names of df you want to rbind and appends a source column with the name of the dfs
-append_source <- function(df_names) {
-  do.call(rbind, lapply(df_names, function(x) {
-    cbind(get(x), source = x)
-  }))
-}
-
-
-
-create_change_symbol <- function(data){
-
-  data %>%
-    filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
-    mutate(change = case_when(percent_complete_month > lag(percent_complete_month) ~
-                                2,
-                              percent_complete_month < lag(percent_complete_month) ~
-                                1,
-                              percent_complete_month == lag(percent_complete_month) ~
-                                0)
-           )%>%
-    filter(!is.na(change))%>%
-    mutate(change_symbol = case_when(
-      change == 1 ~ str_c(icon("arrow-down", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "Decrease from previous month"),
-                          sep = " "),
-      change == 2 ~ str_c(icon("arrow-up", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "Increase from previous month"),
-                          sep = " "),
-      change == 0 ~ str_c(icon("minus", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "No change from previous month"),
-                          sep = " ")
-                          )
-          )
-  
- 
-}
-
-
-create_flag_symbol <- function(data){
-  data %>%
-    filter(event_month == month(Sys.Date())-1)%>%
-    mutate(flag = case_when(percent_complete_month >= 60 ~ 1,
-                            percent_complete_month >= 40 ~ 2,
-                            percent_complete_month < 40 ~ 3)
-           )%>%
-    filter(!is.na(flag))%>%
-    mutate(flag_symbol = case_when(
-      flag == 1 ~ str_c(icon("smile", lib = "glyphicon"),
-                  tags$span(class = "sr-only", "Above 60% complete"),
-                  sep = " "),
-      flag == 2 ~ str_c(icon("meh", lib = "glyphicon"),
-                       tags$span(class = "sr-only", "Between 40% and 60% complete"),
-                       sep = " "),
-      flag == 3 ~ str_c(icon("frown", lib = "glyphicon"),
-                       tags$span(class = "sr-only", "Below 40% complete"),
-                       sep = " ")
-                      )
-           )
-}
 
 # Import lookup ----------------------------------------------------------
 
@@ -180,11 +92,12 @@ raw_smr04 <- dbGetQuery(con, statement = "SELECT *
 
 #vectors of names of the SMR data items we want to monitor completeness for
 
-#list of data items for smr00
+#list of data items per smr
+
 smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
                      "mode_of_clinical_interaction", "referral_type", "specialty")
 
-#list of data items for smr01 and smr04
+
 smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
                      "significant_facility","admission_transfer_from", 
                      "discharge_transfer_to", "management_of_patient", "specialty")
