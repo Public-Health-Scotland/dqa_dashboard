@@ -1,7 +1,9 @@
 # In the line below, import the shiny library so that it's available
 # in both ui.R and server.R
-library(openxlsx)
 library(shiny)
+library(shinyWidgets)
+
+library(openxlsx)
 library(tidyverse)
 library(DT)
 library(sparkline)

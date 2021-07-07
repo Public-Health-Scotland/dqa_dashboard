@@ -41,7 +41,8 @@ shinyUI(navbarPage(
                                    choices = list("Above 60% complete" = 1,
                                                   "Between 40% and 60% complete" = 2,
                                                   "Below 40% complete" = 3),
-                                   selected = 1
+                                   selected = c(1,2,3),
+                                   inline = TRUE
                                    )
                     ),
                       
