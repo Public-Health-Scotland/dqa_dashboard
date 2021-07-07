@@ -18,11 +18,8 @@ shinyServer(function(input, output, session) {
                   
                        TRUE ~ hb_name==hb_name),
         
-        
-        case_when(input$percentage_in %in% unique(smr_completeness$flag) 
-                  ~ flag == input$percentage_in,
-                  
-                  TRUE ~ flag == flag)
+       flag %in% input$percentage_in 
+       
         )
       })
   
