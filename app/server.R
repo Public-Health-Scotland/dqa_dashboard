@@ -3,29 +3,38 @@ shinyServer(function(input, output, session) {
 
 ### SMR Completeness --------------------------------------------------------
 
-  ## Setting the main filters for SMR, HB and Percentage Threshold
+  ## Setting the main filters for SMR, HB and Percentage flag
   main_filters_completeness <- reactive({ 
     
   smr_completeness %>%
       
-  filter(case_when(input$smr_in %in% unique(smr_completeness$smr)~smr == input$smr_in,
+  filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
+                   ~smr == input$smr_in,
+                   
                    TRUE ~ smr == smr),
          
-        case_when(input$hb_in %in% unique(smr_completeness$hb_name) ~ hb_name == input$hb_in,
+        case_when(input$hb_in %in% unique(smr_completeness$hb_name)
+                  ~ hb_name == input$hb_in,
+                  
                        TRUE ~ hb_name==hb_name),
         
-        percent_complete_month >= input$percentage_in
+        
+        case_when(input$percentage_in %in% unique(smr_completeness$flag) 
+                  ~ flag == input$percentage_in,
+                  
+                  TRUE ~ flag == flag)
         )
       })
   
   ## Set a filter for data item (the data item filter is nested and depends on the user's SMR selection)
    
-  #update Data Item selection list based on SMR and Mandatory selection
+  #update Data Item selection list based on SMR selection
   observeEvent(input$smr_in, {
     updateSelectInput(session, inputId = "data_item_in",
                       choices = c("(All)", unique(main_filters_completeness()$data_item)))
   })
-    #implement filter
+  
+  #implement filter
   data_item_completeness <- reactive({
     main_filters_completeness()%>%
     filter(case_when(input$data_item_in %in% unique(main_filters_completeness()$data_item) ~
