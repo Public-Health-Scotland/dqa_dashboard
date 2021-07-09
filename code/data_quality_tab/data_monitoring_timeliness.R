@@ -11,6 +11,17 @@ library(janitor)
 library(lubridate)
 
 
+# Functions ---------------------------------------------------------------
+
+count_events_month <- function(data, date_col){
+  data %>%
+    mutate(event_year = year({{date_col}}), event_month = month({{date_col}}))%>%
+    group_by(hbres_currentdate, event_year, event_month) %>% 
+    summarise(event_count = n())
+} 
+
+
+
 # Import lookup ----------------------------------------------------------
 
 
@@ -63,29 +74,71 @@ smr04_raw <- dbGetQuery(con, "SELECT *
 
 
 
-# Count -------------------------------------------------------------------
 
-#count of smr00 events by month for each HB
-#fyi: the filters are keeping only new outpatients(referral_type) 
-#who were seen(clinic_attendance)
+# Selection criteria -----------------------------------------------------------------
+# implementing the different selection criteria for each smr
 
-smr00_monthly_event <- smr00_raw %>%
-  filter(referral_type != 3, clinic_attendance ==1) %>%      
-  mutate(event_year = year(clinic_date), event_month = month(clinic_date))%>%
-  group_by(hbres_currentdate, event_year, event_month) %>% 
-  summarise(event_count = n())
 
-sum(smr00_monthly_event[smr00_monthly_event$event_month==3, 'event_count']$event_count)
+#smr00 selection criteria
+smr00_filt <- smr00_raw%>%
+  filter(referral_type != 3,
+         clinic_attendance ==1,
+         current_trust_dmu %in% c('SAA20','SBA20','SDA02',
+                                  'SFA20', 'SGA20', 'SHA20',
+                                  'SLA20','SNA20','SRA01',
+                                  'STA20','SSA20','SWA01',
+                                  'SYA20','SVA20', 'SZA01'),
+         !str_detect(location, "^(V|J|K)"),
+         !is.na(date_record_inserted)
+         )   
 
-#count of smr00 record submissions by month for each HB
-# smr00_monthly_sub <- smr00_raw %>% 
-#   mutate(sub_year = year(date_record_inserted), 
-#          sub_month = month(date_record_inserted))%>%
-#   group_by(hbres_currentdate, sub_year, sub_month)%>%
-#   summarise(sub_count = n())
+#smr01 selection criteria
+smr01_filt <- smr01_raw%>%
+  filter(current_trust_dmu %in% c('SAA20','SBA20','SDA02',
+                                  'SFA20', 'SGA20', 'SHA20',
+                                  'SLA20','SNA20','SRA01',
+                                  'STA20','SSA20','SWA01',
+                                  'SYA20','SVA20', 'SZA01'),
+         location != 'D201N',
+         !str_detect(location, "^(V|J|K)"),
+         !is.na(date_record_inserted)
+         )
 
-#join the event count and sub count
-inner_join(smr00_monthly_event, smr00_monthly_sub)
+#smr02 selection criteria
+smr02_filt <- smr02_raw%>%
+  filter(current_trust_dmu %in% c('SAA20','SBA20','SDA02',
+                                  'SFA20', 'SGA20', 'SHA20',
+                                  'SLA20','SNA20','SRA01',
+                                  'STA20','SSA20','SWA01',
+                                  'SYA20','SVA20', 'SZA01'),
+         condition_on_discharge == 3,
+         location != 'D201N',
+         !str_detect(location, "^(V|J|K)"),
+         !is.na(date_record_inserted)
+         )
+
+#smr04 selection criteria
+smr04_filt <- smr04_raw%>%
+  filter(current_trust_dmu %in% c('SAA20','SBA20','SDA01',
+                                  'SDA02','SFA20', 'SGA20',
+                                  'SHA20','SLA20','SNA20',
+                                  'SRA01','STA20','SSA20',
+                                  'SWA01','SYA20','SVA20', 
+                                  'SZA01'),
+         location != 'D201N',
+         !str_detect(location, "^(V|J|K)"),
+         !is.na(date_record_inserted)
+         )
+
+# Counts ------------------------------------------------------------------
+
+
+#count of smr events by month for each HB
+smr00_monthly_event <- count_events_month(smr00_filt, clinic_date)
+smr01_monthly_event <- count_events_month(smr01_filt, discharge_date)
+smr02_monthly_event <- count_events_month(smr02_filt, discharge_date)
+smr04_monthly_event <- count_events_month(smr04_filt, discharge_date)
+
 
 #seq of first day of every month in 2021
 first_day_month <- seq.Date(from = as.Date("2021-01-01 00:00:00.00"),
@@ -104,7 +157,10 @@ sub_deadline <- last_day_month + 42 #6 weeks is 42 days
 
 
 
+smr00_march <- smr00_filt %>%
+  filter(year(clinic_date)==2021,
+         month(clinic_date)==3,
+         date_record_inserted <= sub_deadline[3])%>%
+  select(clinic_date, date_record_inserted)
 
-smr00_jan <- smr00_raw %>%
-  filter(month(clinic_date)==1 & year(clinic_date)==2021)%>%
-  select(hbres_currentdate, clinic_date, date_record_inserted)
+sum(smr00_monthly_event[smr00_monthly_event$event_month==3, 'event_count']$event_count)
