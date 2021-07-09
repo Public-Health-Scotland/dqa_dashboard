@@ -83,13 +83,14 @@ smr04_raw <- dbGetQuery(con, "SELECT *
 smr00_filt <- smr00_raw%>%
   filter(referral_type != 3,
          clinic_attendance ==1,
-         current_trust_dmu %in% c('SAA20','SBA20','SDA02',
-                                  'SFA20', 'SGA20', 'SHA20',
-                                  'SLA20','SNA20','SRA01',
-                                  'STA20','SSA20','SWA01',
-                                  'SYA20','SVA20', 'SZA01'),
-         !str_detect(location, "^(V|J|K)"),
-         !is.na(date_record_inserted)
+         current_trust_dmu %in% c('SAA20', 'SBA20', 'SDA01',
+                                  'SDA02', 'SFA20', 'SGA20',
+                                  'SHA20', 'SLA20', 'SNA20',
+                                  'SRA01', 'SSA20', 'STA20',
+                                  'SVA20', 'SWA01', 'SYA20',
+                                  'SZA01'),
+         !str_detect(location, "(V|J|K)$"), # if location doesnt end with V, J, or K include it.
+         !is.na(date_record_inserted) #date when record recieved
          )   
 
 #smr01 selection criteria
@@ -100,7 +101,7 @@ smr01_filt <- smr01_raw%>%
                                   'STA20','SSA20','SWA01',
                                   'SYA20','SVA20', 'SZA01'),
          location != 'D201N',
-         !str_detect(location, "^(V|J|K)"),
+         !str_detect(location, "(V|J|K)$"),
          !is.na(date_record_inserted)
          )
 
@@ -113,7 +114,7 @@ smr02_filt <- smr02_raw%>%
                                   'SYA20','SVA20', 'SZA01'),
          condition_on_discharge == 3,
          location != 'D201N',
-         !str_detect(location, "^(V|J|K)"),
+         !str_detect(location, "(V|J|K)$"),
          !is.na(date_record_inserted)
          )
 
@@ -126,7 +127,7 @@ smr04_filt <- smr04_raw%>%
                                   'SWA01','SYA20','SVA20', 
                                   'SZA01'),
          location != 'D201N',
-         !str_detect(location, "^(V|J|K)"),
+         !str_detect(location, "(V|J|K)$"),
          !is.na(date_record_inserted)
          )
 
