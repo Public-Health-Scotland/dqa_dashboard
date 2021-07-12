@@ -60,15 +60,15 @@ shinyUI(navbarPage(
       tabPanel("SMR02 Recording of Diabetes",
                navbarPage('Errors', #has to have a title otherwise will crash
                           navbarMenu("Error 1", # one bar in the menu for each error
-                                     tabPanel('Table', p(
+                                     tabPanel(
+                                       'Table', p(
                                        'Pre-existing diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘pre-existing diabetes.’'
-                                     ),
-                                              dataTableOutput("error_1")), #dropdown for table
+                                     ), dataTableOutput("error_1")),  #dropdown for table
                                      tabPanel('Map', p(
                                        'The table displays error percentages per healthboard. 
                                        Click on a healthboard to see the exact values.'
-                                     ),
+                                     ), 
                                               leafletOutput("error1map", width = "80%", height = 700)),
                                      tabPanel('Error Split', p(
                                        'This table shows what percentage of each coding discrepancy is attributable 
@@ -154,5 +154,7 @@ shinyUI(navbarPage(
                                      ),
                                      leafletOutput("querymap", width = "80%", height = 700)))
                )),
-      tabPanel("SMR01 ICD-10 Symptom R Codes", dataTableOutput("RCodes"))
+      tabPanel("SMR01 ICD-10 Symptom R Codes", selectInput('year', 'Choose year:', 
+                                                           choices = unique(RCodes$year)),
+                                                             tableOutput("RCodes"))
     ))))

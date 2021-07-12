@@ -15,7 +15,7 @@ con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"
 #link_no and cis_marker are used to order Continuous Inpatient Stay (CIS) episodes
 #main_condition contains the main ICD10 clinical code for an episode
 
-diagnosis1 <- dbGetQuery(con, "SELECT hbres_currentdate, link_no, cis_marker, main_condition
+diagnosis1 <- dbGetQuery(con, "SELECT hbres_currentdate, discharge_date, link_no, cis_marker, main_condition
                          FROM analysis.smr01_pi
                          WHERE date_record_inserted BETWEEN {d TO_DATE('2020-01-01', 'YYYY-MM-DD')} 
                  AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};") %>%
@@ -39,8 +39,13 @@ last_episode1 <- left_join(last_episode, hb_lookup[c(1:2)], by = c("hbres_curren
 last_episode1
 unique(last_episode1$main_condition)
 
-RCodes <- last_episode1 %>% 
-  group_by(HBName) %>% 
+last_episode2 <- last_episode1 %>% 
+  mutate(
+    year = (substr(discharge_date, 1, 4))
+  )
+
+RCodes <- last_episode2 %>% 
+  group_by(HBName, year) %>% 
   filter(r_code == 1) %>%
   filter(!is.na(HBName)) %>% 
   mutate(
