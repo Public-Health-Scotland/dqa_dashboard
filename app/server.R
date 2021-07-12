@@ -120,23 +120,21 @@ shinyServer(function(input, output, session) {
 
   
 ###the following lines relate to SMR02 coding discrepancies
+
   output$error_1 <- DT::renderDataTable({
-    DT::datatable(error_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15)) #default the displayed rows
+    DT::datatable(error_1_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
-  filter = 'top',
-  rownames = FALSE)    
+  rownames = FALSE) 
   
   output$error_2 <- DT::renderDataTable({
-    DT::datatable(error_2_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+    DT::datatable(error_2_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
-  filter = 'top',
   rownames = FALSE) 
   
   
   output$error_3 <- DT::renderDataTable({
-    DT::datatable(error_3_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+    DT::datatable(error_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
-  filter = 'top',
   rownames = FALSE)
   
   
@@ -165,16 +163,14 @@ shinyServer(function(input, output, session) {
   filter = 'top',
   rownames = FALSE)
   
-  output$RCodes <- DT::renderDataTable({
-    DT::datatable(RCodes_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
+  output$RCodes <- renderTable({
+    RCodes_table %>%
+      filter(year == input$year)
+  })
   
   output$split_1 <- DT::renderDataTable({
     DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
-  filter = 'top',
   rownames = FALSE)
   
   output$split_2 <- DT::renderDataTable({
@@ -184,9 +180,8 @@ shinyServer(function(input, output, session) {
   rownames = FALSE)
   
   output$split_3 <- DT::renderDataTable({
-    DT::datatable(split_3_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+    DT::datatable(split_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   },
-  filter = 'top',
   rownames = FALSE)
   
   output$split_4 <- DT::renderDataTable({
