@@ -9,18 +9,37 @@ library(dplyr)
 library(tidyr)
 library(janitor)
 library(lubridate)
+library(stringr)
 
 
 # Functions ---------------------------------------------------------------
 
-count_events_month <- function(data, date_col){
-  data %>%
-    mutate(event_year = year({{date_col}}), event_month = month({{date_col}}))%>%
-    group_by(hbres_currentdate, event_year, event_month) %>% 
-    summarise(event_count = n())
-} 
-
-
+count_submissions <- function(data, date_col, deadlines){
+  
+  df_list <- list()
+  months <- data %>%
+    distinct(month({{date_col}})) %>% 
+    pull()
+    
+  
+  for(i in months){
+    submissions <- data %>% 
+      mutate(event_year=year({{date_col}}), 
+             event_month=month({{date_col}}))%>%
+      group_by(hbres_currentdate, event_month) %>%
+      filter(event_month==i) %>% 
+      summarize(
+        total_submissions = n(),
+        on_time = sum(date_record_inserted <= deadlines[i]), 
+        late = sum(date_record_inserted > deadlines[i])
+      )
+    
+    df_list[[i]] <- submissions
+    
+  }
+  
+  return(df_list)
+}
 
 # Import lookup ----------------------------------------------------------
 
@@ -158,10 +177,8 @@ sub_deadline <- last_day_month + 42 #6 weeks is 42 days
 
 
 
-smr00_march <- smr00_filt %>%
-  filter(year(clinic_date)==2021,
-         month(clinic_date)==3,
-         date_record_inserted <= sub_deadline[3])%>%
-  select(clinic_date, date_record_inserted)
+# Submission counts -------------------------------------------------------
 
-sum(smr00_monthly_event[smr00_monthly_event$event_month==3, 'event_count']$event_count)
+df_list <- count_submissions(smr00_filt, clinic_date, sub_deadline)
+submissions <- do.call(rbind, df_list)
+
