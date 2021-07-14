@@ -5,21 +5,14 @@ shinyServer(function(input, output, session) {
 
   ## Setting the main filters for SMR, HB and Percentage flag
   main_filters_completeness <- reactive({ 
-    
-  smr_completeness %>%
-      
-  filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
-                   ~smr == input$smr_in,
-                   
-                   TRUE ~ smr == smr),
-         
+      smr_completeness %>%
+      filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
+                       ~smr == input$smr_in,
+                       TRUE ~ smr == smr),
         case_when(input$hb_in %in% unique(smr_completeness$hb_name)
-                  ~ hb_name == input$hb_in,
-                  
+                       ~ hb_name == input$hb_in,
                        TRUE ~ hb_name==hb_name),
-        
        flag %in% input$percentage_in 
-       
         )
       })
   
