@@ -6,7 +6,6 @@ library(openxlsx)
 library(tidyverse)
 library(DT)
 library(sparkline)
-
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases
 library(RODBC)      #Manage DB connections
 
