@@ -123,45 +123,45 @@ shinyServer(function(input, output, session) {
 
   output$error_1 <- renderTable({
     error_1_table %>%
-      filter(year == input$year)
+      filter(year == input$year1)
   })
   
   output$error_2 <- renderTable({
     error_2_table %>%
-      filter(year == input$year)
+      filter(year == input$year2)
   })
   
   
   output$error_3 <- renderTable({
     error_3_table %>%
-      filter(year == input$year)
+      filter(year == input$year3)
   })
   
   
   output$error_4 <- renderTable({
     error_4_table %>%
-      filter(year == input$year)
+      filter(year == input$year4)
   })  
   
   
   output$error_5 <- renderTable({
     error_5_table %>%
-      filter(year == input$year)
+      filter(year == input$year5)
   })
   
   output$error_6 <- renderTable({
     error_6_table %>%
-      filter(year == input$year)
+      filter(year == input$year6)
   })
   
   output$query <- renderTable({
     query_1_table %>%
-      filter(year == input$year)
+      filter(year == input$yearQ)
   })
   
   output$RCodes <- renderTable({
     RCodes_table %>%
-      filter(year == input$year)
+      filter(year == input$yearR)
   })
   
   # output$split_1 <- DT::renderDataTable({
