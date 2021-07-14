@@ -20,8 +20,12 @@ shinyServer(function(input, output, session) {
    
   #update Data Item selection list based on SMR selection
   observeEvent(input$smr_in, {
-    updateSelectInput(session, inputId = "data_item_in",
-                      choices = c("(All)", unique(main_filters_completeness()$data_item)))
+    if(!(input$data_item_in %in% unique(main_filters_completeness()$data_item))){
+      updateSelectInput(session, inputId = "data_item_in",
+                        choices = c("(All)", unique(main_filters_completeness()$data_item))
+                        )  
+    }
+
   })
   
   #implement filter
@@ -79,11 +83,16 @@ shinyServer(function(input, output, session) {
   })
     #Update Year selection based on inputs
   observeEvent(to_listen_audit(), {
-    updateSelectInput(session, inputId = "Year", choices = c("(All)",unique(filters1()$year)))
+    if(!(input$Year %in% unique(filters1()$year))){
+      updateSelectInput(session, inputId = "Year", choices = c("(All)",unique(filters1()$year)))
+      
+    }
   })
     #Update Data Item Name selection based on inputs
   observeEvent(to_listen_audit(), {
-    updateSelectInput(session,"DataItemName", choices = c("(All)",unique(filters1()$data_item_name)))
+    if(!(input$Year %in% unique(filters1()$data_item_name))){
+      updateSelectInput(session,"DataItemName", choices = c("(All)",unique(filters1()$data_item_name)))
+    }
   })  
     #Apply Year and Data Item Name filters to data
   filters2 <- reactive({

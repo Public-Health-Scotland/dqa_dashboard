@@ -3,7 +3,12 @@
 library(shiny)
 library(shinyWidgets)
 library(openxlsx)
-library(tidyverse)
+library(readr)
+
+library(dplyr)
+library(tidyr)
+library(tibble)
+
 library(DT)
 library(sparkline)
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases

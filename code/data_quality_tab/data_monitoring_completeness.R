@@ -11,11 +11,8 @@ library(purrr)
 library(lubridate)
 
 
-
-library(purrr)
-
 # Load Function(s) --------------------------------------------------------
-walk(list.files(here("functions"), full.names = TRUE), source)
+walk(list.files(here::here("functions"), full.names = TRUE), source)
 
 
 

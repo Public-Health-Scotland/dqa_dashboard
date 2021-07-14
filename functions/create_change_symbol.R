@@ -10,14 +10,16 @@
 create_change_symbol <- function(data){
   
   data %>%
-    filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
-    mutate(change = case_when(percent_complete_month > lag(percent_complete_month) ~
-                                2,
-                              percent_complete_month < lag(percent_complete_month) ~
-                                1,
-                              percent_complete_month == lag(percent_complete_month) ~
-                                0)
-    )%>%
+      select(smr,hb_name,event_year,data_item, event_month, percent_complete_month)%>%
+      filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
+      arrange(event_month) %>% 
+      pivot_wider(names_from = event_month,
+                  values_from = percent_complete_month)%>%
+      rename(lag1 = 7, lag2 = 6)%>%
+      mutate(change = case_when(lag1 > lag2 ~ 2,
+                                lag1 < lag2 ~ 1,
+                                TRUE ~0)
+      ) %>% 
     filter(!is.na(change))%>%
     mutate(change_symbol = case_when(
       change == 1 ~ str_c(icon("arrow-down", lib = "glyphicon"),
