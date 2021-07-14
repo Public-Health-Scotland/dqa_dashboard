@@ -1,3 +1,7 @@
+#set sidebar width
+ 
+sb_width <- c(3,9)
+
 shinyUI(navbarPage(
   
   title = "Data Quality Dashboard",
@@ -9,6 +13,7 @@ shinyUI(navbarPage(
     title = "Home",
     navlistPanel( 
        id = "tabset",
+       widths = sb_width,
        tabPanel("Summary Data Profile", "Panel one contents"),
        tabPanel("Info Panel", "Panel two contents")
            )
@@ -19,6 +24,7 @@ shinyUI(navbarPage(
     title = "Data Quality",
     navlistPanel(
       id = "tabset",
+      widths = sb_width,
       tabPanel("Home", "Panel one contents"),
       
       tabPanel("Completeness", "Panel two contents",
@@ -26,35 +32,43 @@ shinyUI(navbarPage(
               fluidRow(
                 column(4, 
                        selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
-                          ),
+                ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
-                          ),
+                ),
                 column(4,
-                       selectInput("data_item_in", "Data Item", choices = NULL)
-                          )
-                     ),
+                       selectInput("data_item_in", "Data Item", choices = c("(All)",
+                                                                            unique(smr_completeness$data_item)))
+                )
+              ),
               
               fluidRow(
-                checkboxGroupInput("percentage_in", 
-                                   "Completeness percentage range",
-                                   choices = list("Above 60% complete" = 1,
-                                                  "Between 40% and 60% complete" = 2,
-                                                  "Below 40% complete" = 3),
-                                   selected = c(1,2,3),
-                                   inline = TRUE
-                                   )
-                    ),
+                column(12,
+                       checkboxGroupInput("percentage_in", 
+                                          "Completeness percentage range",
+                                          choices = list("Above 60% complete" = 1,
+                                                         "Between 40% and 60% complete" = 2,
+                                                         "Below 40% complete" = 3),
+                                          selected = c(1,2,3),
+                                          inline = TRUE
+                       )
+                       
+                )
+                
+            ),
                       
               
               fluidRow(
-                #add icon colors
-                tags$style(".glyphicon-ok {color:#2BE532}
+                column(12, 
+                       tags$style(".glyphicon-ok {color:#2BE532}
                           .glyphicon-warning-sign {color:#FFC300}
                           .glyphicon-flag {color:#C70039}"),
-                DT::dataTableOutput("completeness_table")
-                    )
-               ),
+                       DT::dataTableOutput("completeness_table")
+                )
+              )
+                #add icon colors
+                
+      ),
       
       tabPanel("Timeliness", "Panel three contents"),
       
@@ -75,8 +89,9 @@ shinyUI(navbarPage(
                ),
                
                fluidRow(
-                 
-                 DT::dataTableOutput("audit_data")
+                 column(12,
+                        DT::dataTableOutput("audit_data")
+                  )
                )
       )
     )),
@@ -84,6 +99,7 @@ shinyUI(navbarPage(
     title = "Coding Discrepancies and Issues",
     navlistPanel(
       id = "tabset",
+      widths = sb_width,
       tabPanel("SMR02 Recording of Diabetes",
                navbarPage('Errors', #has to have a title otherwise will crash
                           navbarMenu("Error 1", # one bar in the menu for each error
