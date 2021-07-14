@@ -12,22 +12,10 @@ library(lubridate)
 
 
 
+library(purrr)
+
 # Load Function(s) --------------------------------------------------------
-
-#outputs data frame with completeness percentage per data item
-source(here::here("functions", "completeness.R"))
-
-#binds the df outputs from completeness() and appends the df names in a 
-#new column called source
-source(here::here("functions", "append_source.R"))
-
-#takes the output from append_source() and outputs symbols indicating trend
-#in completeness percentages compared to previous month
-source(here::here("functions", "create_change_symbol.R"))
-
-#takes the output from append_source() and outputs symbols indicating range of
-#completeness percentage values, data items where percentage too low are flagged.
-source(here::here("functions", "create_flag_symbol.R"))
+walk(list.files(here("functions"), full.names = TRUE), source)
 
 
 
@@ -171,4 +159,3 @@ smr_completeness_2 <- smr_completeness %>%
 
 #write out the output so that it can be imported in global.R
 write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
-
