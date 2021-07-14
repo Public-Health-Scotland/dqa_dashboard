@@ -16,7 +16,7 @@ NHS Ayrshire and Arran,2017,12,10.08
 NHS Ayrshire and Arran,2018,6,4.55
 NHS Ayrshire and Arran,2019,14,8.92
 NHS Ayrshire and Arran,2020,7,3.26
-NHS Ayrshire and Arran,2021,3,4.84
+NHS Ayrshire and Arran,2021,4,4.9399999999999995
 NHS Borders,2003,1,100
 NHS Borders,2004,5,100
 NHS Borders,2005,2,100
@@ -35,7 +35,7 @@ NHS Borders,2017,33,64.71
 NHS Borders,2018,15,53.57
 NHS Borders,2019,5,10.87
 NHS Borders,2020,6,19.35
-NHS Borders,2021,19,73.08
+NHS Borders,2021,20,74.07
 NHS Dumfries and Galloway,1998,1,50
 NHS Dumfries and Galloway,1999,3,50
 NHS Dumfries and Galloway,2000,5,55.56
@@ -76,9 +76,9 @@ NHS Fife,2015,3,6.12
 NHS Fife,2016,3,4.84
 NHS Fife,2017,2,4.26
 NHS Fife,2018,4,4.88
-NHS Fife,2019,12,7.06
+NHS Fife,2019,12,7.02
 NHS Fife,2020,13,8.39
-NHS Fife,2021,2,2.9
+NHS Fife,2021,2,2.7
 NHS Fife,NA,2,100
 NHS Forth Valley,1997,2,100
 NHS Forth Valley,1998,2,50
@@ -104,7 +104,7 @@ NHS Forth Valley,2017,76,95
 NHS Forth Valley,2018,112,91.06
 NHS Forth Valley,2019,138,89.61
 NHS Forth Valley,2020,166,86.01
-NHS Forth Valley,2021,91,100
+NHS Forth Valley,2021,110,100
 NHS Grampian,1998,0,0
 NHS Grampian,2003,1,100
 NHS Grampian,2008,15,35.71
@@ -120,7 +120,7 @@ NHS Grampian,2017,128,70.72
 NHS Grampian,2018,152,71.03
 NHS Grampian,2019,175,74.79
 NHS Grampian,2020,182,75.52
-NHS Grampian,2021,79,87.78
+NHS Grampian,2021,92,87.62
 NHS Greater Glasgow and Clyde,1996,1,100
 NHS Greater Glasgow and Clyde,1997,59,85.51
 NHS Greater Glasgow and Clyde,1998,8,44.44
@@ -146,7 +146,7 @@ NHS Greater Glasgow and Clyde,2017,299,79.73
 NHS Greater Glasgow and Clyde,2018,91,17.2
 NHS Greater Glasgow and Clyde,2019,21,3.38
 NHS Greater Glasgow and Clyde,2020,34,4.77
-NHS Greater Glasgow and Clyde,2021,10,2.6
+NHS Greater Glasgow and Clyde,2021,14,2.82
 NHS Highland,2003,1,20
 NHS Highland,2004,6,54.55
 NHS Highland,2005,14,51.85
@@ -165,7 +165,7 @@ NHS Highland,2017,6,5.83
 NHS Highland,2018,11,14.29
 NHS Highland,2019,9,10.23
 NHS Highland,2020,8,7.84
-NHS Highland,2021,3,9.68
+NHS Highland,2021,3,7.32
 NHS Lanarkshire,1997,5,71.43
 NHS Lanarkshire,1998,14,73.68
 NHS Lanarkshire,1999,32,96.97
@@ -190,7 +190,7 @@ NHS Lanarkshire,2017,66,40.24
 NHS Lanarkshire,2018,51,27.42
 NHS Lanarkshire,2019,13,5.88
 NHS Lanarkshire,2020,7,3.5
-NHS Lanarkshire,2021,11,15.49
+NHS Lanarkshire,2021,26,26
 NHS Lanarkshire,NA,1,100
 NHS Lothian,2003,0,0
 NHS Lothian,2004,2,6.06
@@ -210,7 +210,7 @@ NHS Lothian,2017,29,10.03
 NHS Lothian,2018,38,12.42
 NHS Lothian,2019,35,12.2
 NHS Lothian,2020,21,7.32
-NHS Lothian,2021,8,7.62
+NHS Lothian,2021,11,7.97
 NHS Orkney,2011,1,100
 NHS Orkney,2016,1,100
 NHS Orkney,2017,3,100
@@ -247,8 +247,8 @@ NHS Tayside,2016,13,6.99
 NHS Tayside,2017,11,5.67
 NHS Tayside,2018,21,11.41
 NHS Tayside,2019,25,13.37
-NHS Tayside,2020,14,8.92
-NHS Tayside,2021,7,9.72
+NHS Tayside,2020,15,9.32
+NHS Tayside,2021,10,11.24
 NHS Western Isles,1999,4,100
 NHS Western Isles,2000,2,100
 NHS Western Isles,2001,1,100
@@ -264,4 +264,4 @@ NHS Western Isles,2015,1,100
 NHS Western Isles,2016,2,100
 NHS Western Isles,2018,1,100
 NHS Western Isles,2020,3,100
-NHS Western Isles,2021,4,100
+NHS Western Isles,2021,5,100
