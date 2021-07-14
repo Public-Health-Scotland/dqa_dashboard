@@ -63,53 +63,53 @@ shinyUI(navbarPage(
                                      p(
                                        'Pre-existing diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘pre-existing diabetes.’'
-                                     ), selectInput('year', 'Choose year:', 
-                                                    choices = unique(error_1$year)),
+                                     ), selectInput('year1', 'Choose year:', 
+                                                    choices = unique(error_1_table$year)),
                                    tableOutput("error_1")),
                           tabPanel("Error 2", 
                                      p(
                                        'Gestational diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘gestational diabetes’.'
-                                     ), selectInput('year', 'Choose year:', 
-                                                    choices = unique(error_2$year)),
+                                     ), selectInput('year2', 'Choose year:', 
+                                                    choices = unique(error_2_table$year)),
                                    tableOutput("error_2")),
                           tabPanel("Error 3", 
                                      p(
                                        'Diabetes of unspecified onset is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘unspecified diabetes in pregnancy.’'
                                      ),
-                                   selectInput('year', 'Choose year:', 
-                                               choices = unique(error_3$year)),
+                                   selectInput('year3', 'Choose year:', 
+                                               choices = unique(error_3_table$year)),
                                    tableOutput("error_3")),
                           tabPanel("Error 4",
                                    p(
                                        'Patient recorded as NOT having diabetes in SMR02 diabetes value, 
                                        but ICD10 diabetes O24 code is recorded.'
                                      ),
-                                   selectInput('year', 'Choose year:', 
-                                               choices = unique(error_4$year)),
+                                   selectInput('year4', 'Choose year:', 
+                                               choices = unique(error_4_table$year)),
                                    tableOutput("error_4")),
                           tabPanel("Error 5",
                                    p(
                                        'Mandatory SMR02 diabetes value is not recorded.'
                                      ),                                    
-                                   selectInput('year', 'Choose year:', 
-                                               choices = unique(error_5$year)),
+                                   selectInput('year5', 'Choose year:', 
+                                               choices = unique(error_5_table$year)),
                                    tableOutput("error_5")),
                           tabPanel("Error 6",
                                      p(
                                        'ICD10 E10-E14 is recorded instead of ICD10 O24.'
-                                     ), selectInput('year', 'Choose year:', 
-                                                    choices = unique(error_6$year)),
+                                     ), selectInput('year6', 'Choose year:', 
+                                                    choices = unique(error_6_table$year)),
                                      tableOutput("error_6")),
                           tabPanel("Query 1", 
                                    p(
                                        'SMR02 diabetes value recorded as ‘not known’, 
                                        ICD10 diabetes code O24 is recorded.'
-                                     ), selectInput('year', 'Choose year:', 
-                                                    choices = unique(query$year)),
+                                     ), selectInput('yearQ', 'Choose year:', 
+                                                    choices = unique(query_1_table$year)),
                                    tableOutput("query")))),
-      tabPanel("SMR01 ICD-10 Symptom R Codes", selectInput('year', 'Choose year:', 
+      tabPanel("SMR01 ICD-10 Symptom R Codes", selectInput('yearR', 'Choose year:', 
                                                            choices = unique(RCodes$year)),
                                                              tableOutput("RCodes"))
     ))))
