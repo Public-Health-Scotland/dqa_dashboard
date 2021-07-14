@@ -1,8 +1,47 @@
-HBName,query_count,query_percentage
-NHS Ayrshire and Arran,3,100
-NHS Fife,5,100
-NHS Grampian,4,100
-NHS Greater Glasgow and Clyde,84,100
-NHS Lanarkshire,6,100
-NHS Lothian,64,100
-NHS Tayside,58,100
+HBName,year,query_count,query_percentage
+NHS Ayrshire and Arran,2019,1,100
+NHS Ayrshire and Arran,2020,2,100
+NHS Fife,2017,1,100
+NHS Fife,2018,1,100
+NHS Fife,2019,2,100
+NHS Fife,2020,1,100
+NHS Grampian,2011,2,100
+NHS Grampian,2014,1,100
+NHS Grampian,2020,1,100
+NHS Greater Glasgow and Clyde,1999,1,100
+NHS Greater Glasgow and Clyde,2003,13,100
+NHS Greater Glasgow and Clyde,2007,1,100
+NHS Greater Glasgow and Clyde,2010,1,100
+NHS Greater Glasgow and Clyde,2011,1,100
+NHS Greater Glasgow and Clyde,2012,6,100
+NHS Greater Glasgow and Clyde,2013,9,100
+NHS Greater Glasgow and Clyde,2014,19,100
+NHS Greater Glasgow and Clyde,2015,7,100
+NHS Greater Glasgow and Clyde,2018,23,100
+NHS Greater Glasgow and Clyde,2019,1,100
+NHS Greater Glasgow and Clyde,2020,2,100
+NHS Lanarkshire,2008,4,100
+NHS Lanarkshire,2009,2,100
+NHS Lothian,2003,1,100
+NHS Lothian,2004,1,100
+NHS Lothian,2008,1,100
+NHS Lothian,2009,6,100
+NHS Lothian,2010,2,100
+NHS Lothian,2011,9,100
+NHS Lothian,2012,6,100
+NHS Lothian,2013,2,100
+NHS Lothian,2014,4,100
+NHS Lothian,2015,9,100
+NHS Lothian,2016,4,100
+NHS Lothian,2017,6,100
+NHS Lothian,2018,6,100
+NHS Lothian,2019,7,100
+NHS Tayside,2004,8,100
+NHS Tayside,2005,13,100
+NHS Tayside,2006,15,100
+NHS Tayside,2007,17,100
+NHS Tayside,2013,1,100
+NHS Tayside,2017,1,100
+NHS Tayside,2018,1,100
+NHS Tayside,2019,1,100
+NHS Tayside,2020,1,100

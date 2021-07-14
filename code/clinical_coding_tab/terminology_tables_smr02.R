@@ -53,8 +53,6 @@ diagnosis2 <- diagnosis2 %>%
   mutate(
     year = (substr(DISCHARGE_DATE, 1, 4))
     )
-diagnosis2$HBName <- as.factor(diagnosis2$HBName)
-diagnosis2$year <- as.factor(diagnosis2$year)
 glimpse(diagnosis2)
 # Error Counts ------------------------------------------------------------
 non_error1 <- c("O240", "O241", "O242", "O243")
@@ -73,6 +71,7 @@ error_1_table <- diagnosis2 %>%
   summarise(error1 = sum(error_1 == "error 1"), denominator = sum(DIABETES == 1))%>%
   mutate(percentage_1 = round(error1/denominator*100, digits = 2)) %>% 
 error_1_table <- error_1_table[, c('HBName', 'year', "error1", "percentage_1"), drop = F]
+error_1_table
 
 error_split_1 <- diagnosis2 %>%
   group_by(HBName) %>%
@@ -172,7 +171,7 @@ error_split_3 <- error_split_3[, c('HBName', 'year', "err3_wrong_ICD10_percent",
 error_split_3
 
 error_4_table <- diagnosis2 %>%
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
   filter(DIABETES == 4) %>%
   mutate(
     error_4 = case_when(
@@ -182,7 +181,7 @@ error_4_table <- diagnosis2 %>%
   ) %>%
   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
-error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
+error_4_table <- error_4_table[, c('HBName','year', "error4", "percentage_4")]
 error_4_table
 
 # error_split_4 <- diagnosis2 %>%
@@ -208,7 +207,7 @@ error_4_table
 # error_split_4
 
 error_5_table <- diagnosis2 %>%
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
   mutate(
     error_5 = case_when(
       !is.na(DIABETES) ~ 'no error',
@@ -216,7 +215,7 @@ error_5_table <- diagnosis2 %>%
   ) %>%
   summarise(error5 = sum(error_5 == "error 5"), denominator = n())%>%
   mutate(percentage_5 = round(error5/denominator*100, digits = 2))
-error_5_table <- error_5_table[, c('HBName', "error5", "percentage_5")]
+error_5_table <- error_5_table[, c('HBName', 'year', "error5", "percentage_5")]
 error_5_table
 
 error_split_5 <- diagnosis2 %>%
@@ -240,7 +239,7 @@ error_split_5 <- error_split_5[, c('HBName', "err5_ICD10_present_percent", "err5
 error_split_5
 
 error_6_table <- diagnosis2 %>%
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
   mutate(
     error_6 = case_when(
       str_detect(MAIN_CONDITION, "^E10") | str_detect(OTHER_CONDITION_1, "^E10") | str_detect(OTHER_CONDITION_2, "^E10") | str_detect(OTHER_CONDITION_3, "^E10") | 
@@ -255,11 +254,11 @@ error_6_table <- diagnosis2 %>%
   ) %>%
   summarise(error6 = sum(error_6 == "error 6"), denominator = n())%>%
   mutate(percentage_6 = round(error6/denominator*100, digits = 2))
-error_6_table <- error_6_table[, c("HBName", "error6", "percentage_6")]
+error_6_table <- error_6_table[, c("HBName", 'year', "error6", "percentage_6")]
 error_6_table
 
 query_1_table <- diagnosis2 %>% 
-  group_by(HBName) %>% 
+  group_by(HBName, year) %>% 
   filter(DIABETES == 9) %>% 
   mutate(
     query = case_when(
@@ -269,7 +268,7 @@ query_1_table <- diagnosis2 %>%
     )) %>%
   summarise(query_count = sum(query == 'ICD present'), denominator = sum(DIABETES == 9)) %>% 
   mutate(query_percentage = round(query_count/denominator*100, digits = 2))
-query_1_table <- query_1_table[, c("HBName", "query_count", "query_percentage")]
+query_1_table <- query_1_table[, c("HBName", 'year', "query_count", "query_percentage")]
 query_1_table
 
 # Error maps ------------------------------------------------------

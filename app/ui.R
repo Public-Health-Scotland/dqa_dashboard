@@ -59,101 +59,56 @@ shinyUI(navbarPage(
       id = "tabset",
       tabPanel("SMR02 Recording of Diabetes",
                navbarPage('Errors', #has to have a title otherwise will crash
-                          navbarMenu("Error 1", # one bar in the menu for each error
-                                     tabPanel(
-                                       'Table', p(
+                          tabPanel("Error 1", # one bar in the menu for each error
+                                     p(
                                        'Pre-existing diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘pre-existing diabetes.’'
-                                     ), dataTableOutput("error_1")),  #dropdown for table
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ), 
-                                              leafletOutput("error1map", width = "80%", height = 700)),
-                                     tabPanel('Error Split', p(
-                                       'This table shows what percentage of each coding discrepancy is attributable 
-                                       to the actual condition (wrong ICD-10 "O24x" code) and what percentage is due to
-                                       the "O24x" code being omitted whatsoever.'
-                                     ),
-                                              dataTableOutput('split_1'))), # dropdown for map including dimensions
-                          navbarMenu("Error 2", 
-                                     tabPanel('Table', p(
+                                     ), selectInput('year', 'Choose year:', 
+                                                    choices = unique(error_1$year)),
+                                   tableOutput("error_1")),
+                          tabPanel("Error 2", 
+                                     p(
                                        'Gestational diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘gestational diabetes’.'
-                                     ), dataTableOutput("error_2")), 
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                              leafletOutput("error2map", width = "80%", height = 700)),
-                                     tabPanel('Error Split', p(
-                                       'This table shows what percentage of each coding discrepancy is attributable 
-                                       to the actual condition (wrong ICD-10 "O24x" code) and what percentage is due to
-                                       the "O24x" code being omitted whatsoever.'
-                                     ),
-                                              dataTableOutput('split_2'))),
-                          navbarMenu("Error 3", 
-                                     tabPanel('Table', p(
+                                     ), selectInput('year', 'Choose year:', 
+                                                    choices = unique(error_2$year)),
+                                   tableOutput("error_2")),
+                          tabPanel("Error 3", 
+                                     p(
                                        'Diabetes of unspecified onset is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘unspecified diabetes in pregnancy.’'
                                      ),
-                                              dataTableOutput("error_3")), 
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                              leafletOutput("error3map", width = "80%", height = 700)),
-                                     tabPanel('Error Split', p(
-                                       'This table shows what percentage of each coding discrepancy is attributable 
-                                       to the actual condition (wrong ICD-10 "O24x" code) and what percentage is due to
-                                       the "O24x" code being omitted whatsoever.'
-                                     ),
-                                              dataTableOutput('split_3'))),
-                          navbarMenu("Error 4", 
-                                     tabPanel('Table', p(
+                                   selectInput('year', 'Choose year:', 
+                                               choices = unique(error_3$year)),
+                                   tableOutput("error_3")),
+                          tabPanel("Error 4",
+                                   p(
                                        'Patient recorded as NOT having diabetes in SMR02 diabetes value, 
                                        but ICD10 diabetes O24 code is recorded.'
                                      ),
-                                              dataTableOutput("error_4")), 
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                              leafletOutput("error4map", width = "80%", height = 700))),
-                          navbarMenu("Error 5", 
-                                     tabPanel('Table', p(
+                                   selectInput('year', 'Choose year:', 
+                                               choices = unique(error_4$year)),
+                                   tableOutput("error_4")),
+                          tabPanel("Error 5",
+                                   p(
                                        'Mandatory SMR02 diabetes value is not recorded.'
-                                     ), dataTableOutput("error_5")), 
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                              leafletOutput("error5map", width = "80%", height = 700)),
-                                     tabPanel('Error Split', p(
-                                       'This table shows what percentage of records without a hard 
-                                       code have and have not the ICD-10 "O24x" code recorded.'
-                                     ),
-                                              dataTableOutput('split_5'))),
-                          navbarMenu("Error 6", 
-                                     tabPanel('Table', p(
+                                     ),                                    
+                                   selectInput('year', 'Choose year:', 
+                                               choices = unique(error_5$year)),
+                                   tableOutput("error_5")),
+                          tabPanel("Error 6",
+                                     p(
                                        'ICD10 E10-E14 is recorded instead of ICD10 O24.'
-                                     ), dataTableOutput("error_6")), 
-                                     tabPanel('Map', p(
-                                       'The table displays error percentages per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                              leafletOutput("error6map", width = "80%", height = 700))),
-                          navbarMenu("Query 1", 
-                                     tabPanel('Table', p(
+                                     ), selectInput('year', 'Choose year:', 
+                                                    choices = unique(error_6$year)),
+                                     tableOutput("error_6")),
+                          tabPanel("Query 1", 
+                                   p(
                                        'SMR02 diabetes value recorded as ‘not known’, 
                                        ICD10 diabetes code O24 is recorded.'
-                                     ), dataTableOutput("query")),
-                                     tabPanel('Map', p(
-                                       'The table displays counts qualifying for query 1 per healthboard. 
-                                       Click on a healthboard to see the exact values.'
-                                     ),
-                                     leafletOutput("querymap", width = "80%", height = 700)))
-               )),
+                                     ), selectInput('year', 'Choose year:', 
+                                                    choices = unique(query$year)),
+                                   tableOutput("query")))),
       tabPanel("SMR01 ICD-10 Symptom R Codes", selectInput('year', 'Choose year:', 
                                                            choices = unique(RCodes$year)),
                                                              tableOutput("RCodes"))

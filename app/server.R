@@ -121,108 +121,104 @@ shinyServer(function(input, output, session) {
   
 ###the following lines relate to SMR02 coding discrepancies
 
-  output$error_1 <- DT::renderDataTable({
-    DT::datatable(error_1_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  rownames = FALSE) 
+  output$error_1 <- renderTable({
+    error_1_table %>%
+      filter(year == input$year)
+  })
   
-  output$error_2 <- DT::renderDataTable({
-    DT::datatable(error_2_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  rownames = FALSE) 
-  
-  
-  output$error_3 <- DT::renderDataTable({
-    DT::datatable(error_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  rownames = FALSE)
+  output$error_2 <- renderTable({
+    error_2_table %>%
+      filter(year == input$year)
+  })
   
   
-  output$error_4 <- DT::renderDataTable({
-    DT::datatable(error_4_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)  
+  output$error_3 <- renderTable({
+    error_3_table %>%
+      filter(year == input$year)
+  })
   
   
-  output$error_5 <- DT::renderDataTable({
-    DT::datatable(error_5_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
+  output$error_4 <- renderTable({
+    error_4_table %>%
+      filter(year == input$year)
+  })  
   
-  output$error_6 <- DT::renderDataTable({
-    DT::datatable(error_6_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
   
-  output$query <- DT::renderDataTable({
-    DT::datatable(query_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
+  output$error_5 <- renderTable({
+    error_5_table %>%
+      filter(year == input$year)
+  })
+  
+  output$error_6 <- renderTable({
+    error_6_table %>%
+      filter(year == input$year)
+  })
+  
+  output$query <- renderTable({
+    query_1_table %>%
+      filter(year == input$year)
+  })
   
   output$RCodes <- renderTable({
     RCodes_table %>%
       filter(year == input$year)
   })
   
-  output$split_1 <- DT::renderDataTable({
-    DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  rownames = FALSE)
-  
-  output$split_2 <- DT::renderDataTable({
-    DT::datatable(split_2_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
-  
-  output$split_3 <- DT::renderDataTable({
-    DT::datatable(split_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  rownames = FALSE)
-  
-  output$split_4 <- DT::renderDataTable({
-    DT::datatable(split_4_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
-  
-  output$split_5 <- DT::renderDataTable({
-    DT::datatable(split_5_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  },
-  filter = 'top',
-  rownames = FALSE)
-  
-  output$error1map <- renderLeaflet({ #create maps
-    error1map
-  })
-  
-  output$error2map <- renderLeaflet({
-    error2map
-  })
-  
-  output$error3map <- renderLeaflet({
-    error3map
-  })
-  
-  output$error4map <- renderLeaflet({
-    error4map
-  })
-  
-  output$error5map <- renderLeaflet({
-    error5map
-  })
-  
-  output$error6map <- renderLeaflet({
-    error6map
-  })
-  
-  output$querymap <- renderLeaflet({
-    query_map
-  })
+  # output$split_1 <- DT::renderDataTable({
+  #   DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  # },
+  # rownames = FALSE)
+  # 
+  # output$split_2 <- DT::renderDataTable({
+  #   DT::datatable(split_2_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  # },
+  # filter = 'top',
+  # rownames = FALSE)
+  # 
+  # output$split_3 <- DT::renderDataTable({
+  #   DT::datatable(split_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  # },
+  # rownames = FALSE)
+  # 
+  # output$split_4 <- DT::renderDataTable({
+  #   DT::datatable(split_4_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  # },
+  # filter = 'top',
+  # rownames = FALSE)
+  # 
+  # output$split_5 <- DT::renderDataTable({
+  #   DT::datatable(split_5_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
+  # },
+  # filter = 'top',
+  # rownames = FALSE)
+  # 
+  # output$error1map <- renderLeaflet({ #create maps
+  #   error1map
+  # })
+  # 
+  # output$error2map <- renderLeaflet({
+  #   error2map
+  # })
+  # 
+  # output$error3map <- renderLeaflet({
+  #   error3map
+  # })
+  # 
+  # output$error4map <- renderLeaflet({
+  #   error4map
+  # })
+  # 
+  # output$error5map <- renderLeaflet({
+  #   error5map
+  # })
+  # 
+  # output$error6map <- renderLeaflet({
+  #   error6map
+  # })
+  # 
+  # output$querymap <- renderLeaflet({
+  #   query_map
+  # })
   
   
 })

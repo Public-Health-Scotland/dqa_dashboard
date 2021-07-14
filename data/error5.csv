@@ -1,15 +1,334 @@
-HBName,error5,percentage_5
-NHS Ayrshire and Arran,158,7.58
-NHS Borders,53,9.06
-NHS Dumfries and Galloway,13,1.3600000000000003
-NHS Fife,206,9.43
-NHS Forth Valley,129,7.54
-NHS Grampian,988,27.47
-NHS Greater Glasgow and Clyde,671,7.95
-NHS Highland,222,15.69
-NHS Lanarkshire,15,0.57
-NHS Lothian,807,13.75
-NHS Orkney,0,0
-NHS Shetland,0,0
-NHS Tayside,56,1.99
-NHS Western Isles,0,0
+HBName,year,error5,percentage_5
+NHS Ayrshire and Arran,1997,14,100
+NHS Ayrshire and Arran,1998,22,100
+NHS Ayrshire and Arran,1999,23,100
+NHS Ayrshire and Arran,2000,26,100
+NHS Ayrshire and Arran,2001,26,100
+NHS Ayrshire and Arran,2002,19,100
+NHS Ayrshire and Arran,2003,20,100
+NHS Ayrshire and Arran,2004,8,27.59
+NHS Ayrshire and Arran,2005,0,0
+NHS Ayrshire and Arran,2006,0,0
+NHS Ayrshire and Arran,2007,0,0
+NHS Ayrshire and Arran,2008,0,0
+NHS Ayrshire and Arran,2009,0,0
+NHS Ayrshire and Arran,2010,0,0
+NHS Ayrshire and Arran,2011,0,0
+NHS Ayrshire and Arran,2012,0,0
+NHS Ayrshire and Arran,2013,0,0
+NHS Ayrshire and Arran,2014,0,0
+NHS Ayrshire and Arran,2015,0,0
+NHS Ayrshire and Arran,2016,0,0
+NHS Ayrshire and Arran,2017,0,0
+NHS Ayrshire and Arran,2018,0,0
+NHS Ayrshire and Arran,2019,0,0
+NHS Ayrshire and Arran,2020,0,0
+NHS Ayrshire and Arran,2021,0,0
+NHS Borders,1996,8,100
+NHS Borders,1997,8,100
+NHS Borders,1998,11,100
+NHS Borders,1999,9,100
+NHS Borders,2000,5,100
+NHS Borders,2001,7,100
+NHS Borders,2002,1,100
+NHS Borders,2003,4,66.67
+NHS Borders,2004,0,0
+NHS Borders,2005,0,0
+NHS Borders,2006,0,0
+NHS Borders,2007,0,0
+NHS Borders,2008,0,0
+NHS Borders,2009,0,0
+NHS Borders,2010,0,0
+NHS Borders,2011,0,0
+NHS Borders,2012,0,0
+NHS Borders,2013,0,0
+NHS Borders,2014,0,0
+NHS Borders,2015,0,0
+NHS Borders,2016,0,0
+NHS Borders,2017,0,0
+NHS Borders,2018,0,0
+NHS Borders,2019,0,0
+NHS Borders,2020,0,0
+NHS Borders,2021,0,0
+NHS Dumfries and Galloway,1996,6,100
+NHS Dumfries and Galloway,1997,4,100
+NHS Dumfries and Galloway,1998,3,37.5
+NHS Dumfries and Galloway,1999,0,0
+NHS Dumfries and Galloway,2000,0,0
+NHS Dumfries and Galloway,2001,0,0
+NHS Dumfries and Galloway,2002,0,0
+NHS Dumfries and Galloway,2003,0,0
+NHS Dumfries and Galloway,2004,0,0
+NHS Dumfries and Galloway,2005,0,0
+NHS Dumfries and Galloway,2006,0,0
+NHS Dumfries and Galloway,2007,0,0
+NHS Dumfries and Galloway,2008,0,0
+NHS Dumfries and Galloway,2009,0,0
+NHS Dumfries and Galloway,2010,0,0
+NHS Dumfries and Galloway,2011,0,0
+NHS Dumfries and Galloway,2012,0,0
+NHS Dumfries and Galloway,2013,0,0
+NHS Dumfries and Galloway,2014,0,0
+NHS Dumfries and Galloway,2015,0,0
+NHS Dumfries and Galloway,2016,0,0
+NHS Dumfries and Galloway,2017,0,0
+NHS Dumfries and Galloway,2018,0,0
+NHS Dumfries and Galloway,2019,0,0
+NHS Dumfries and Galloway,2020,0,0
+NHS Dumfries and Galloway,2021,0,0
+NHS Fife,1996,14,100
+NHS Fife,1997,14,100
+NHS Fife,1998,21,100
+NHS Fife,1999,31,100
+NHS Fife,2000,41,100
+NHS Fife,2001,40,100
+NHS Fife,2002,42,100
+NHS Fife,2003,3,6.38
+NHS Fife,2004,0,0
+NHS Fife,2005,0,0
+NHS Fife,2006,0,0
+NHS Fife,2007,0,0
+NHS Fife,2008,0,0
+NHS Fife,2009,0,0
+NHS Fife,2010,0,0
+NHS Fife,2011,0,0
+NHS Fife,2012,0,0
+NHS Fife,2013,0,0
+NHS Fife,2014,0,0
+NHS Fife,2015,0,0
+NHS Fife,2016,0,0
+NHS Fife,2017,0,0
+NHS Fife,2018,0,0
+NHS Fife,2019,0,0
+NHS Fife,2020,0,0
+NHS Fife,2021,0,0
+NHS Fife,NA,0,0
+NHS Forth Valley,1996,14,100
+NHS Forth Valley,1997,14,70
+NHS Forth Valley,1998,16,48.48
+NHS Forth Valley,1999,12,60
+NHS Forth Valley,2000,20,64.52
+NHS Forth Valley,2001,15,57.69
+NHS Forth Valley,2002,17,54.84
+NHS Forth Valley,2003,14,66.67
+NHS Forth Valley,2004,7,20.59
+NHS Forth Valley,2005,0,0
+NHS Forth Valley,2006,0,0
+NHS Forth Valley,2007,0,0
+NHS Forth Valley,2008,0,0
+NHS Forth Valley,2009,0,0
+NHS Forth Valley,2010,0,0
+NHS Forth Valley,2011,0,0
+NHS Forth Valley,2012,0,0
+NHS Forth Valley,2013,0,0
+NHS Forth Valley,2014,0,0
+NHS Forth Valley,2015,0,0
+NHS Forth Valley,2016,0,0
+NHS Forth Valley,2017,0,0
+NHS Forth Valley,2018,0,0
+NHS Forth Valley,2019,0,0
+NHS Forth Valley,2020,0,0
+NHS Forth Valley,2021,0,0
+NHS Grampian,1996,95,100
+NHS Grampian,1997,141,99.3
+NHS Grampian,1998,125,99.21
+NHS Grampian,1999,85,100
+NHS Grampian,2000,65,100
+NHS Grampian,2001,50,100
+NHS Grampian,2002,76,100
+NHS Grampian,2003,66,98.51
+NHS Grampian,2004,56,100
+NHS Grampian,2005,61,100
+NHS Grampian,2006,83,100
+NHS Grampian,2007,84,100
+NHS Grampian,2008,0,0
+NHS Grampian,2009,0,0
+NHS Grampian,2010,0,0
+NHS Grampian,2011,0,0
+NHS Grampian,2012,0,0
+NHS Grampian,2013,0,0
+NHS Grampian,2014,0,0
+NHS Grampian,2015,0,0
+NHS Grampian,2016,0,0
+NHS Grampian,2017,0,0
+NHS Grampian,2018,0,0
+NHS Grampian,2019,0,0
+NHS Grampian,2020,0,0
+NHS Grampian,2021,0,0
+NHS Grampian,NA,1,100
+NHS Greater Glasgow and Clyde,1996,45,97.83
+NHS Greater Glasgow and Clyde,1997,73,21.35
+NHS Greater Glasgow and Clyde,1998,55,45.08
+NHS Greater Glasgow and Clyde,1999,46,52.87
+NHS Greater Glasgow and Clyde,2000,61,53.98
+NHS Greater Glasgow and Clyde,2001,65,50.39
+NHS Greater Glasgow and Clyde,2002,51,46.36
+NHS Greater Glasgow and Clyde,2003,56,54.9
+NHS Greater Glasgow and Clyde,2004,34,24.11
+NHS Greater Glasgow and Clyde,2005,39,27.27
+NHS Greater Glasgow and Clyde,2006,26,18.57
+NHS Greater Glasgow and Clyde,2007,44,25.58
+NHS Greater Glasgow and Clyde,2008,63,30.73
+NHS Greater Glasgow and Clyde,2009,13,6.47
+NHS Greater Glasgow and Clyde,2010,0,0
+NHS Greater Glasgow and Clyde,2011,0,0
+NHS Greater Glasgow and Clyde,2012,0,0
+NHS Greater Glasgow and Clyde,2013,0,0
+NHS Greater Glasgow and Clyde,2014,0,0
+NHS Greater Glasgow and Clyde,2015,0,0
+NHS Greater Glasgow and Clyde,2016,0,0
+NHS Greater Glasgow and Clyde,2017,0,0
+NHS Greater Glasgow and Clyde,2018,0,0
+NHS Greater Glasgow and Clyde,2019,0,0
+NHS Greater Glasgow and Clyde,2020,0,0
+NHS Greater Glasgow and Clyde,2021,0,0
+NHS Greater Glasgow and Clyde,NA,0,0
+NHS Highland,1996,16,100
+NHS Highland,1997,23,100
+NHS Highland,1998,29,100
+NHS Highland,1999,28,100
+NHS Highland,2000,36,100
+NHS Highland,2001,31,100
+NHS Highland,2002,42,100
+NHS Highland,2003,17,68
+NHS Highland,2004,0,0
+NHS Highland,2005,0,0
+NHS Highland,2006,0,0
+NHS Highland,2007,0,0
+NHS Highland,2008,0,0
+NHS Highland,2009,0,0
+NHS Highland,2010,0,0
+NHS Highland,2011,0,0
+NHS Highland,2012,0,0
+NHS Highland,2013,0,0
+NHS Highland,2014,0,0
+NHS Highland,2015,0,0
+NHS Highland,2016,0,0
+NHS Highland,2017,0,0
+NHS Highland,2018,0,0
+NHS Highland,2019,0,0
+NHS Highland,2020,0,0
+NHS Highland,2021,0,0
+NHS Lanarkshire,1996,9,100
+NHS Lanarkshire,1997,6,17.65
+NHS Lanarkshire,1998,0,0
+NHS Lanarkshire,1999,0,0
+NHS Lanarkshire,2000,0,0
+NHS Lanarkshire,2001,0,0
+NHS Lanarkshire,2002,0,0
+NHS Lanarkshire,2003,0,0
+NHS Lanarkshire,2004,0,0
+NHS Lanarkshire,2005,0,0
+NHS Lanarkshire,2006,0,0
+NHS Lanarkshire,2007,0,0
+NHS Lanarkshire,2008,0,0
+NHS Lanarkshire,2009,0,0
+NHS Lanarkshire,2010,0,0
+NHS Lanarkshire,2011,0,0
+NHS Lanarkshire,2012,0,0
+NHS Lanarkshire,2013,0,0
+NHS Lanarkshire,2014,0,0
+NHS Lanarkshire,2015,0,0
+NHS Lanarkshire,2016,0,0
+NHS Lanarkshire,2017,0,0
+NHS Lanarkshire,2018,0,0
+NHS Lanarkshire,2019,0,0
+NHS Lanarkshire,2020,0,0
+NHS Lanarkshire,2021,0,0
+NHS Lanarkshire,NA,0,0
+NHS Lothian,1996,52,100
+NHS Lothian,1997,79,100
+NHS Lothian,1998,111,100
+NHS Lothian,1999,81,100
+NHS Lothian,2000,110,99.1
+NHS Lothian,2001,87,100
+NHS Lothian,2002,89,100
+NHS Lothian,2003,81,79.41
+NHS Lothian,2004,19,16.38
+NHS Lothian,2005,22,19.13
+NHS Lothian,2006,33,30
+NHS Lothian,2007,38,24.52
+NHS Lothian,2008,5,2.98
+NHS Lothian,2009,0,0
+NHS Lothian,2010,0,0
+NHS Lothian,2011,0,0
+NHS Lothian,2012,0,0
+NHS Lothian,2013,0,0
+NHS Lothian,2014,0,0
+NHS Lothian,2015,0,0
+NHS Lothian,2016,0,0
+NHS Lothian,2017,0,0
+NHS Lothian,2018,0,0
+NHS Lothian,2019,0,0
+NHS Lothian,2020,0,0
+NHS Lothian,2021,0,0
+NHS Lothian,NA,0,0
+NHS Orkney,1997,0,0
+NHS Orkney,1998,0,0
+NHS Orkney,1999,0,0
+NHS Orkney,2008,0,0
+NHS Orkney,2011,0,0
+NHS Orkney,2016,0,0
+NHS Orkney,2017,0,0
+NHS Orkney,2019,0,0
+NHS Orkney,2020,0,0
+NHS Orkney,2021,0,0
+NHS Shetland,1997,0,0
+NHS Shetland,1999,0,0
+NHS Shetland,2000,0,0
+NHS Shetland,2002,0,0
+NHS Shetland,2003,0,0
+NHS Shetland,2004,0,0
+NHS Shetland,2005,0,0
+NHS Shetland,2006,0,0
+NHS Shetland,2009,0,0
+NHS Shetland,2013,0,0
+NHS Shetland,2015,0,0
+NHS Shetland,2020,0,0
+NHS Shetland,2021,0,0
+NHS Tayside,1996,43,100
+NHS Tayside,1997,13,35.14
+NHS Tayside,1998,0,0
+NHS Tayside,1999,0,0
+NHS Tayside,2000,0,0
+NHS Tayside,2001,0,0
+NHS Tayside,2002,0,0
+NHS Tayside,2003,0,0
+NHS Tayside,2004,0,0
+NHS Tayside,2005,0,0
+NHS Tayside,2006,0,0
+NHS Tayside,2007,0,0
+NHS Tayside,2008,0,0
+NHS Tayside,2009,0,0
+NHS Tayside,2010,0,0
+NHS Tayside,2011,0,0
+NHS Tayside,2012,0,0
+NHS Tayside,2013,0,0
+NHS Tayside,2014,0,0
+NHS Tayside,2015,0,0
+NHS Tayside,2016,0,0
+NHS Tayside,2017,0,0
+NHS Tayside,2018,0,0
+NHS Tayside,2019,0,0
+NHS Tayside,2020,0,0
+NHS Tayside,2021,0,0
+NHS Tayside,NA,0,0
+NHS Western Isles,1997,0,0
+NHS Western Isles,1999,0,0
+NHS Western Isles,2000,0,0
+NHS Western Isles,2001,0,0
+NHS Western Isles,2002,0,0
+NHS Western Isles,2003,0,0
+NHS Western Isles,2004,0,0
+NHS Western Isles,2005,0,0
+NHS Western Isles,2006,0,0
+NHS Western Isles,2007,0,0
+NHS Western Isles,2008,0,0
+NHS Western Isles,2012,0,0
+NHS Western Isles,2013,0,0
+NHS Western Isles,2014,0,0
+NHS Western Isles,2015,0,0
+NHS Western Isles,2016,0,0
+NHS Western Isles,2018,0,0
+NHS Western Isles,2020,0,0
+NHS Western Isles,2021,0,0
