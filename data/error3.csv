@@ -1,15 +1,24 @@
-HBName,error3,percentage_3
-NHS Ayrshire and Arran,32,96.97
-NHS Borders,54,98.18
-NHS Dumfries and Galloway,35,100
-NHS Fife,5,100
-NHS Forth Valley,36,100
-NHS Grampian,41,100
-NHS Greater Glasgow and Clyde,334,86.3
-NHS Highland,41,97.62
-NHS Lanarkshire,51,100
-NHS Lothian,38,100
-NHS Orkney,4,100
-NHS Shetland,18,100
-NHS Tayside,40,86.96
-NHS Western Isles,13,100
+HBName,year,error3,percentage_3
+NHS Ayrshire and Arran,2017,2,100
+NHS Borders,2018,1,100
+NHS Borders,2020,1,100
+NHS Dumfries and Galloway,2017,1,100
+NHS Dumfries and Galloway,2018,1,100
+NHS Dumfries and Galloway,2019,1,100
+NHS Forth Valley,2017,1,100
+NHS Forth Valley,2019,3,100
+NHS Forth Valley,2020,8,100
+NHS Greater Glasgow and Clyde,2017,1,100
+NHS Greater Glasgow and Clyde,2018,1,9.09
+NHS Greater Glasgow and Clyde,2019,2,66.67
+NHS Greater Glasgow and Clyde,2020,1,14.29
+NHS Greater Glasgow and Clyde,2021,0,0
+NHS Highland,2018,2,100
+NHS Highland,2019,2,100
+NHS Highland,2020,1,100
+NHS Lanarkshire,2017,1,100
+NHS Lanarkshire,2019,2,100
+NHS Tayside,2017,2,50
+NHS Tayside,2018,1,50
+NHS Tayside,2019,1,100
+NHS Tayside,2020,1,100
