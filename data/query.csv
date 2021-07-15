@@ -1,8 +1,18 @@
-HBName,query_count,query_percentage
-NHS Ayrshire and Arran,3,100
-NHS Fife,5,100
-NHS Grampian,4,100
-NHS Greater Glasgow and Clyde,84,100
-NHS Lanarkshire,6,100
-NHS Lothian,64,100
-NHS Tayside,58,100
+HBName,year,query_count,query_percentage
+NHS Ayrshire and Arran,2019,1,100
+NHS Ayrshire and Arran,2020,2,100
+NHS Fife,2017,1,100
+NHS Fife,2018,1,100
+NHS Fife,2019,2,100
+NHS Fife,2020,1,100
+NHS Grampian,2020,1,100
+NHS Greater Glasgow and Clyde,2018,23,100
+NHS Greater Glasgow and Clyde,2019,1,100
+NHS Greater Glasgow and Clyde,2020,2,100
+NHS Lothian,2017,6,100
+NHS Lothian,2018,6,100
+NHS Lothian,2019,7,100
+NHS Tayside,2017,1,100
+NHS Tayside,2018,1,100
+NHS Tayside,2019,1,100
+NHS Tayside,2020,1,100
