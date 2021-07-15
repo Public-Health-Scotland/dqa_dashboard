@@ -1,10 +1,16 @@
 # In the line below, import the shiny library so that it's available
 # in both ui.R and server.R
-library(openxlsx)
 library(shiny)
-library(tidyverse)
-library(DT)
+library(shinyWidgets)
+library(openxlsx)
+library(readr)
 
+library(dplyr)
+library(tidyr)
+library(tibble)
+
+library(DT)
+library(sparkline)
 library(odbc)       #R library for Open Database Connectivity, used to connect to databases
 library(RODBC)      #Manage DB connections
 
@@ -16,9 +22,10 @@ library(rgdal)
 
 #smr audit data
 smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
+  
 
 
-#smr completeness data
+#smr completeness data with sparkline plot html
 smr_completeness <- read_csv(here::here("data", "smr_completeness.csv")) %>%
   select(-hbres_currentdate)
 
@@ -36,6 +43,7 @@ split_3_table <- read.csv(here::here("data", "split3.csv"))
 split_4_table <- read.csv(here::here("data", "split4.csv"))
 split_5_table <- read.csv(here::here("data", "split5.csv"))
 query_1_table <- read.csv(here::here("data", "query.csv"))
+
 # Error maps ------------------------------------------------------
 
 #read in the shapefile downloaded from the web and add the healthboard borders (polygons)
@@ -68,48 +76,48 @@ colourpal7 <- colorNumeric("RdPu", domain = ShapeFile@data$query_count)
 
 error1map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal1(percentage_1), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal1(percentage_1), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_1)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal1, values = ~percentage_1,
+  leaflet::addLegend("bottomright", pal = colourpal1, values = ~percentage_1,
             title = "Coding discrepancy 1",
             labFormat = labelFormat(suffix = " %"), #add the percentage suffix
             opacity = 1)
 
 error2map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal2(percentage_2), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal2(percentage_2), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_2)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal2, values = ~percentage_2,
+  leaflet::addLegend("bottomright", pal = colourpal2, values = ~percentage_2,
             title = "Coding discrepancy 2",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
 error3map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal3(percentage_3), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal3(percentage_3), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_3)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal3, values = ~percentage_3,
+  leaflet::addLegend("bottomright", pal = colourpal3, values = ~percentage_3,
             title = "Coding discrepancy 3",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
 error4map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal4(percentage_4), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal4(percentage_4), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_4)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal4, values = ~percentage_4,
+  leaflet::addLegend("bottomright", pal = colourpal4, values = ~percentage_4,
             title = "Coding discrepancy 4",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
@@ -117,36 +125,36 @@ error4map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
 
 error5map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal5(percentage_5), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal5(percentage_5), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_5)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal5, values = ~percentage_5,
+  leaflet::addLegend("bottomright", pal = colourpal5, values = ~percentage_5,
             title = "Coding discrepancy 5",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
 error6map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal6(percentage_6), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal6(percentage_6), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$percentage_6)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal6, values = ~percentage_6,
+  leaflet::addLegend("bottomright", pal = colourpal6, values = ~percentage_6,
             title = "Coding discrepancy 6",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)
 
 query_map <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
                                                          dragging = FALSE)) %>%
-  addPolygons(fillColor = ~colourpal7(query_count), # our colour palette function
+  leaflet::addPolygons(fillColor = ~colourpal7(query_count), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("percentage error: ", ShapeFile@data$query_count)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal7, values = ~query_count,
+  leaflet::addLegend("bottomright", pal = colourpal7, values = ~query_count,
             title = "Coding discrepancy 6",
             labFormat = labelFormat(suffix = " %"),
             opacity = 1)

@@ -1,125 +1,147 @@
 shinyServer(function(input, output, session) {
 
-### SMR Completeness  
-  hb_completeness <- reactive({
-    if(input$hb_in %in% unique(smr_completeness$hb_name)){
+
+### SMR Completeness --------------------------------------------------------
+
+  ## Setting the main filters for SMR, HB and Percentage flag
+  main_filters_completeness <- reactive({ 
       smr_completeness %>%
-        filter(hb_name==input$hb_in)
-    }
-    else{
-      smr_completeness
-    }
+      filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
+                       ~smr == input$smr_in,
+                       TRUE ~ smr == smr),
+        case_when(input$hb_in %in% unique(smr_completeness$hb_name)
+                       ~ hb_name == input$hb_in,
+                       TRUE ~ hb_name==hb_name),
+       flag %in% input$percentage_in 
+        )
+      })
+  
+  ## Set a filter for data item (the data item filter is nested and depends on the user's SMR selection)
+   
+  #update Data Item selection list based on SMR selection
+  #if a user selects a data item and then changes their smr input,
+  #their data item selection is preserved if it is a valid combination
+  observeEvent(input$smr_in, {
+    updateSelectInput(session, inputId = "data_item_in",
+                      choices = c("(All)", unique(main_filters_completeness()$data_item)),
+                      selected = if_else(input$data_item_in %in% 
+                                           c("(All)", unique(main_filters_completeness()$data_item)),
+                                        input$data_item_in, "(All)"
+                                  )
+                      )
   })
   
-  month_completeness <- reactive({
-    if(input$month_in %in% unique(hb_completeness()$month_record_inserted)){
-      hb_completeness() %>%
-        filter(month_record_inserted==input$month_in)
-    }
-    else{
-      hb_completeness()
-    }
-  })
-  
+  #implement filter
   data_item_completeness <- reactive({
-    if(input$data_item_in %in% unique(month_completeness()$data_item)){
-      month_completeness()%>%
-        filter(data_item==input$data_item_in)
-    }
-    else{
-      month_completeness()
-    }
+    main_filters_completeness()%>%
+    filter(case_when(input$data_item_in %in% unique(main_filters_completeness()$data_item) ~
+                       data_item == input$data_item_in,
+                     TRUE ~ data_item == data_item))
   })
   
-  data_item_percent <- reactive({
-    data_item_completeness()%>%
-      filter(case_when(input$percentage_in == "0% - 20%" ~ percent_complete_month < 20,
-                       input$percentage_in == "20% <" ~ percent_complete_month > 20,
-                       input$percentage_in == "50% <" ~ percent_complete_month > 50,
-                       input$percentage_in == "80% <" ~ percent_complete_month > 80,
-                       input$percentage_in == "100%" ~ percent_complete_month == 100,
-                       TRUE~percent_complete_month == percent_complete_month))
+  ## Render the final table
+  output$completeness_table <- DT::renderDataTable({
+    
+    cb <- htmlwidgets::JS('function(){debugger;HTMLWidgets.staticRender();}')
+    
+    data <- data_item_completeness()%>%
+      select(smr, hb_name, data_item, percent_complete_month, 
+             mini_plot, change_symbol, flag_symbol)
+    
+    dtable_completeness <- datatable(data = data,
+                                     escape = FALSE,
+                                     rownames = FALSE,
+                                     class="compact stripe hover",
+                                     selection = 'none',
+                                     options = list(
+                                             rowsGroup = list(0),
+                                             drawCallback =  cb,
+                                             columnDefs = list(
+                                               list(className = 'dt-center', targets = "_all")
+                                                          )
+                                              )
+                                     )%>%
+                          spk_add_deps()
+    
+    dtable_completeness
+    
   })
-  
-  output$completeness_table <- renderTable(data_item_percent())
-  
-
-### SMR Audit
-  #If user selects an audit, filter the data for selected audit, if they select (All) return unfiltered table 
-  audit <- reactive({
-    if(input$SMRaudit %in% smr_audit$audit){
-      smr_audit %>%
-        filter(audit==input$SMRaudit)
-    }
-    else {
-      smr_audit
-    }
-  })
-  
-  #observe the audit selected by user and update the choices according to the audit selection
-  observeEvent(input$SMRaudit, {
-    updateSelectInput(session, inputId = "Year", choices = c(unique(audit()$year)))
-  })
-  
-  
-  #reactive year selection, returns data filtered by the year selected 
-  year <- reactive({audit()%>%
-      filter(year == input$Year)})
-  
-  # year <- reactive({
-  #   if(input$Year %in% audit()$Year){
-  #     audit() %>%
-  #       filter(Year == input$Year)
-  #   }
-  #   else {
-  #     audit()
-  #   }
-  # })
-  
-  
-  #observe the year selected and update the health board choices, the (All) option is added so that users can view all HBs by default
-  observeEvent(input$Year, {
-    updateSelectInput(session, inputId = "Healthboard", choices = c("(All)", unique(year()$healthboard)))
-  })
-  
-  #reactive health board selection, if a specific HB is selected filter the data further, else return the table reaturned by the reactive year()
-  healthboard <- reactive({
-    if(input$Healthboard %in% year()$healthboard){
-      year()%>%
-        filter(healthboard == input$Healthboard)
-    }
-    else {
-      year()
-    }
-  })
-  
-  
-  #update the data item choices according to the SMR selected
-  observeEvent(input$SMRaudit, {
-    updateSelectInput(session,"DataItemName", choices = c("(All)",unique(audit()$data_item_name)))
-  })  
-  
-  
-  #final output applies a data item filter if user picks a specific data item, else it returns table generated by the reactive healthboard()  
-  output$audit_data <- renderTable({
-    if(input$DataItemName %in% healthboard()$data_item_name){
-      healthboard()%>%
-        filter(data_item_name == input$DataItemName) %>%
-        select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
-        rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Mean Accuracy Scotland" = "accuracy_scotland",
-               "Accuracy Hospital" = "accuracy_hospital")
-    }
-    else {
-      healthboard() %>%
-        select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
-        rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Accuracy Scotland" = "accuracy_scotland",
-               "Accuracy Hospital" = "accuracy_hospital")
-    }
-  })
-  
 
   
-###the following lines relate to SMR02 coding discrepancies
+
+### SMR Audit ---------------------------------------------------------------
+
+
+  ##Filters for SMR and health board
+  filters1 <- reactive({
+    smr_audit %>%
+      filter(case_when(input$SMRaudit %in% unique(smr_audit$audit) ~ audit==input$SMRaudit,
+                       TRUE ~ audit == audit),
+             case_when(input$Healthboard %in% unique(smr_audit$healthboard) ~ healthboard == input$Healthboard,
+                       TRUE ~ healthboard == healthboard))
+  })
+  
+  ##Filters for the Year and Data Item Name, they both depend on the SMR and HB chosen by user
+  
+    #Since Data Item Name and SMR depend on multiple inputs, we store the inputs they rely on in a reactive list
+  to_listen_audit <- reactive({
+    list(input$SMRaudit, input$Healthboard)
+  })
+    #Update Year selection based on inputs
+  observeEvent(to_listen_audit(), {
+      updateSelectInput(session, inputId = "Year", 
+                        choices = c("(All)",unique(filters1()$year)),
+                        selected = if_else(input$Year %in% c("(All)",unique(filters1()$year)),
+                                                             input$Year, "(All)")
+                        )
+      
+  })
+  
+    #Update Data Item Name selection based on inputs
+  observeEvent(to_listen_audit(), {
+      updateSelectInput(session,"DataItemName", 
+                        choices = c("(All)",unique(filters1()$data_item_name)),
+                        selected = if_else(input$DataItemName %in% 
+                                           c("(All)",unique(filters1()$data_item_name)),
+                                           input$DataItemName, "(All)" 
+                                    )
+      )
+  })
+  
+    #Apply Year and Data Item Name filters to data
+  filters2 <- reactive({
+    filters1() %>%
+      filter(case_when(input$Year %in% unique(filters1()$year) ~ year == input$Year,
+                       TRUE ~ year == year),
+             case_when(input$DataItemName %in% unique(filters1()$data_item_name) ~ data_item_name == input$DataItemName,
+                       TRUE ~ data_item_name == data_item_name))
+  })
+  
+  ##Render final table
+  output$audit_data <- DT::renderDataTable({
+    data2 <- filters2() %>%
+      select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
+      rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Accuracy Scotland" = "accuracy_scotland",
+             "Accuracy Hospital" = "accuracy_hospital")
+    dtable_audit <- datatable(data = data2,
+                              escape = FALSE,
+                              rownames = FALSE,
+                              class="compact stripe hover",
+                              selection = 'none',
+                              options = list(
+                                rowsGroup = list(0),
+                                columnDefs = list(
+                                list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+                              )
+    
+  })
+  
+  
+
+# Clinical Coding Discrepancies SMR02 -------------------------------------
+
   output$error_1 <- DT::renderDataTable({
     DT::datatable(error_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15)) #default the displayed rows
   },
