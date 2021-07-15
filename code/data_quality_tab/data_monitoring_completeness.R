@@ -83,16 +83,16 @@ smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
                      "mode_of_clinical_interaction", "referral_type", "specialty")
 
 
-smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation", "admission_type",
                      "significant_facility","admission_transfer_from", 
                      "discharge_transfer_to", "management_of_patient", "specialty")
 
-smr02_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+smr02_cols <- c("dob", "sex", "postcode", "main_operation","ethnic_group", "admission_type",
                 "admission_transfer_from", "discharge_transfer_to", 
                 "management_of_patient", "specialty",
                 "condition_on_discharge")
 
-smr04_cols <- c("dob", "sex", "postcode", "ethnic_group", "admission_type",
+smr04_cols <- c("dob", "sex", "postcode","main_operation", "ethnic_group", "admission_type",
                 "admission_transfer_from", 
                 "discharge_transfer_to", "management_of_patient", "specialty")
 
