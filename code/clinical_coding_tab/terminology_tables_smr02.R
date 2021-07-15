@@ -176,9 +176,9 @@ error_4_table <- diagnosis2 %>%
   filter(DIABETES == 4, year %in% years) %>%
   mutate(
     error_4 = case_when(
+  terminology_data_smr01
       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
-        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
-      T ~ 'no error')
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4', T ~ 'no error')
   ) %>%
   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
@@ -375,4 +375,33 @@ write_csv(error_split_3, here::here("data", "split3.csv"))
 write_csv(error_split_4, here::here("data", "split4.csv"))
 write_csv(error_split_5, here::here("data", "split5.csv"))
 write_csv(query_1_table, here::here("data", "query.csv"))
+
+
+
+###test
+error_4_table_test <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 4) %>%
+  mutate(
+    error_4 = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") |
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
+      T ~ 'no error')
+  )
+# %>%
+#   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
+#   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
+# error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
+# 
+# diagnosis2%>%
+#   filter(DIABETES == 4 & MAIN_CONDITION =="O24")
+  
+
+exc_error4 <- c("O240", "O241", "O242", "O243", "O244", "O249")
+error_4_table_test <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 4) %>%
+  mutate(error_4 = case_when( MAIN_CONDITION %in% exc_error4 | OTHER_CONDITION_1 %in% exc_error4|OTHER_CONDITION_2 %in% exc_error4 | 
+                                OTHER_CONDITION_3 %in% exc_error4 | OTHER_CONDITION_4 %in% exc_error4 | OTHER_CONDITION_5 %in% exc_error4 ~ "error 4",
+                              TRUE ~ "no error"))
 
