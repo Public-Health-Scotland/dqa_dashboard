@@ -57,9 +57,10 @@ glimpse(diagnosis2)
 # Error Counts ------------------------------------------------------------
 non_error1 <- c("O240", "O241", "O242", "O243")
 exc_error1 <- c("O244", "O249") 
+years <- c('2017', '2018', '2019', '2020', '2021')
 error_1_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
-  filter(DIABETES == 1) %>% 
+  filter(DIABETES == 1, year %in% years) %>% 
   mutate(
     error_1 = case_when(
       MAIN_CONDITION %in% non_error1 | OTHER_CONDITION_1 %in% non_error1 | OTHER_CONDITION_2 %in% non_error1 | OTHER_CONDITION_3 %in% non_error1 | 
@@ -69,7 +70,7 @@ error_1_table <- diagnosis2 %>%
       TRUE ~ 'error 1')
   ) %>%
   summarise(error1 = sum(error_1 == "error 1"), denominator = sum(DIABETES == 1))%>%
-  mutate(percentage_1 = round(error1/denominator*100, digits = 2)) %>% 
+  mutate(percentage_1 = round(error1/denominator*100, digits = 2))
 error_1_table <- error_1_table[, c('HBName', 'year', "error1", "percentage_1"), drop = F]
 error_1_table
 
@@ -100,7 +101,7 @@ error_split_1
 
 error_2_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
-  filter(DIABETES == 2) %>%
+  filter(DIABETES == 2, year %in% years) %>%
   mutate(
     error_2 = case_when(
       MAIN_CONDITION == 'O244' | OTHER_CONDITION_1 == 'O244' | OTHER_CONDITION_2 == 'O244' |
@@ -136,7 +137,7 @@ error_split_2
   
 error_3_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
-  filter(DIABETES == 3) %>%
+  filter(DIABETES == 3, year %in% years) %>%
   mutate(
     error_3 = case_when(
       MAIN_CONDITION == 'O249' | OTHER_CONDITION_1 == 'O249' | OTHER_CONDITION_2 == 'O249' |
@@ -172,7 +173,7 @@ error_split_3
 
 error_4_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
-  filter(DIABETES == 4) %>%
+  filter(DIABETES == 4, year %in% years) %>%
   mutate(
     error_4 = case_when(
       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
@@ -208,6 +209,7 @@ error_4_table
 
 error_5_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
+  filter(year %in% years) %>% 
   mutate(
     error_5 = case_when(
       !is.na(DIABETES) ~ 'no error',
@@ -240,6 +242,7 @@ error_split_5
 
 error_6_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
+  filter(year %in% years) %>% 
   mutate(
     error_6 = case_when(
       str_detect(MAIN_CONDITION, "^E10") | str_detect(OTHER_CONDITION_1, "^E10") | str_detect(OTHER_CONDITION_2, "^E10") | str_detect(OTHER_CONDITION_3, "^E10") | 
@@ -259,7 +262,7 @@ error_6_table
 
 query_1_table <- diagnosis2 %>% 
   group_by(HBName, year) %>% 
-  filter(DIABETES == 9) %>% 
+  filter(DIABETES == 9, year %in% years) %>% 
   mutate(
     query = case_when(
       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
