@@ -19,13 +19,16 @@ shinyServer(function(input, output, session) {
   ## Set a filter for data item (the data item filter is nested and depends on the user's SMR selection)
    
   #update Data Item selection list based on SMR selection
+  #if a user selects a data item and then changes their smr input,
+  #their data item selection is preserved if it is a valid combination
   observeEvent(input$smr_in, {
-    if(!(input$data_item_in %in% unique(main_filters_completeness()$data_item))){
-      updateSelectInput(session, inputId = "data_item_in",
-                        choices = c("(All)", unique(main_filters_completeness()$data_item))
-                        )  
-    }
-
+    updateSelectInput(session, inputId = "data_item_in",
+                      choices = c("(All)", unique(main_filters_completeness()$data_item)),
+                      selected = if_else(input$data_item_in %in% 
+                                           c("(All)", unique(main_filters_completeness()$data_item)),
+                                        input$data_item_in, "(All)"
+                                  )
+                      )
   })
   
   #implement filter
@@ -48,12 +51,15 @@ shinyServer(function(input, output, session) {
     dtable_completeness <- datatable(data = data,
                                      escape = FALSE,
                                      rownames = FALSE,
+                                     class="compact stripe hover",
                                      selection = 'none',
                                      options = list(
-                                       rowsGroup = list(0),
-                                       drawCallback =  cb
-                                       # rowCallback = JS(tooltips)
-                                                    )
+                                             rowsGroup = list(0),
+                                             drawCallback =  cb,
+                                             columnDefs = list(
+                                               list(className = 'dt-center', targets = "_all")
+                                                          )
+                                              )
                                      )%>%
                           spk_add_deps()
     
@@ -83,17 +89,25 @@ shinyServer(function(input, output, session) {
   })
     #Update Year selection based on inputs
   observeEvent(to_listen_audit(), {
-    if(!(input$Year %in% unique(filters1()$year))){
-      updateSelectInput(session, inputId = "Year", choices = c("(All)",unique(filters1()$year)))
+      updateSelectInput(session, inputId = "Year", 
+                        choices = c("(All)",unique(filters1()$year)),
+                        selected = if_else(input$Year %in% c("(All)",unique(filters1()$year)),
+                                                             input$Year, "(All)")
+                        )
       
-    }
   })
+  
     #Update Data Item Name selection based on inputs
   observeEvent(to_listen_audit(), {
-    if(!(input$Year %in% unique(filters1()$data_item_name))){
-      updateSelectInput(session,"DataItemName", choices = c("(All)",unique(filters1()$data_item_name)))
-    }
-  })  
+      updateSelectInput(session,"DataItemName", 
+                        choices = c("(All)",unique(filters1()$data_item_name)),
+                        selected = if_else(input$DataItemName %in% 
+                                           c("(All)",unique(filters1()$data_item_name)),
+                                           input$DataItemName, "(All)" 
+                                    )
+      )
+  })
+  
     #Apply Year and Data Item Name filters to data
   filters2 <- reactive({
     filters1() %>%
@@ -105,10 +119,22 @@ shinyServer(function(input, output, session) {
   
   ##Render final table
   output$audit_data <- DT::renderDataTable({
-    filters2() %>%
+    data2 <- filters2() %>%
       select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
       rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Accuracy Scotland" = "accuracy_scotland",
              "Accuracy Hospital" = "accuracy_hospital")
+    dtable_audit <- datatable(data = data2,
+                              escape = FALSE,
+                              rownames = FALSE,
+                              class="compact stripe hover",
+                              selection = 'none',
+                              options = list(
+                                rowsGroup = list(0),
+                                columnDefs = list(
+                                list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+                              )
     
   })
   
