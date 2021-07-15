@@ -17,9 +17,10 @@ con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"
 
 diagnosis1 <- dbGetQuery(con, "SELECT hbres_currentdate, discharge_date, link_no, cis_marker, main_condition
                          FROM analysis.smr01_pi
-                         WHERE date_record_inserted BETWEEN {d TO_DATE('2020-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-05-31', 'YYYY-MM-DD')};") %>%
+                         WHERE discharge_date BETWEEN {d TO_DATE('2017-01-01', 'YYYY-MM-DD')} 
+                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};") %>%
   clean_names()
+
 
 ###Filter the last episode of every multi-episode CIS set 
 #(we're looking at sets where there's more than 1 episode and the patient has been transfered)
