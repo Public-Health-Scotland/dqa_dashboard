@@ -107,9 +107,9 @@ shinyUI(navbarPage(
                                        'SMR02 diabetes value recorded as ‘not known’, 
                                        ICD10 diabetes code O24 is recorded.'
                                      ), selectInput('yearQ', 'Choose year:', 
-                                                    choices = unique(query_1_table$year)),
+                                                    choices = sort(unique(query_1_table$year))),
                                    tableOutput("query")))),
       tabPanel("SMR01 ICD-10 Symptom R Codes", selectInput('yearR', 'Choose year:', 
-                                                           choices = unique(RCodes$year)),
+                                                           choices = sort(unique(RCodes_table$year))),
                                                              tableOutput("RCodes"))
     ))))
