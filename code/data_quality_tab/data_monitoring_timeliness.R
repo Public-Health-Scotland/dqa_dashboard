@@ -38,7 +38,17 @@ count_submissions <- function(data, date_col, deadlines){
     
   }
   
-  return(df_list)
+  return(do.call(rbind,df_list))
+}
+
+
+
+
+
+append_source <- function(df_names) {
+  do.call(rbind, lapply(df_names, function(x) {
+    cbind(get(x), source = x)
+  }))
 }
 
 # Import lookup ----------------------------------------------------------
@@ -150,14 +160,7 @@ smr04_filt <- smr04_raw%>%
          !is.na(date_record_inserted)
          )
 
-# Counts ------------------------------------------------------------------
-
-
-#count of smr events by month for each HB
-smr00_monthly_event <- count_events_month(smr00_filt, clinic_date)
-smr01_monthly_event <- count_events_month(smr01_filt, discharge_date)
-smr02_monthly_event <- count_events_month(smr02_filt, discharge_date)
-smr04_monthly_event <- count_events_month(smr04_filt, discharge_date)
+# Calculate submission deadline dates ------------------------------------------
 
 
 #seq of first day of every month in 2021
@@ -179,6 +182,25 @@ sub_deadline <- last_day_month + 42 #6 weeks is 42 days
 
 # Submission counts -------------------------------------------------------
 
-df_list <- count_submissions(smr00_filt, clinic_date, sub_deadline)
-submissions <- do.call(rbind, df_list)
+
+submissions_smr00 <- count_submissions(smr00_filt, clinic_date, 
+                                       sub_deadline)
+submissions_smr01 <- count_submissions(smr01_filt, discharge_date,
+                                       sub_deadline)
+submissions_smr02<- count_submissions(smr02_filt, discharge_date,
+                                      sub_deadline)
+submissions_smr04 <- count_submissions(smr04_filt, discharge_date,
+                                       sub_deadline)
+
+df_names <- c("submissions_smr00", "submissions_smr01",
+              "submissions_smr02", "submissions_smr04")
+
+submissions <- append_source(df_names)%>%
+  mutate(source = case_when( source == "submissions_smr00" ~ "SMR00",
+                             source == "submissions_smr01" ~ "SMR01",
+                             source == "submissions_smr02" ~ "SMR02",
+                             TRUE ~ "SMR04")
+         )%>%
+  rename("smr" = "source")%>%
+  left_join(hb_lookup, by = c("hbres_currentdate"="hb"))
 
