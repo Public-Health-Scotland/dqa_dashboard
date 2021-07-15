@@ -1,11 +1,18 @@
 # In the line below, import the shiny library so that it's available
 # in both ui.R and server.R
-library(openxlsx)
 library(shiny)
+library(shinyWidgets)
+library(openxlsx)
+library(readr)
+
 library(dplyr)
+library(tidyr)
+library(tibble)
+
 library(DT)
-library(odbc)       #R library for Open Database Connectivity, used to connect to databases
-library(RODBC)      #Manage DB connections
+library(sparkline)
+
+
 
 # library(leaflet)    #both libraries necessary for creating maps
 # library(rgdal)
@@ -14,11 +21,11 @@ library(RODBC)      #Manage DB connections
 #Read in Data -----------------------------------------------------------
 
 #smr audit data
-smr_audit <- read.csv(here::here("data", "dashboard_smr_audit_data.csv"))
 
-
-#smr completeness data
-smr_completeness <- read.csv(here::here("data", "smr_completeness.csv")) %>%
+smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
+  
+#smr completeness data with sparkline plot html
+smr_completeness <- read_csv(here::here("data", "smr_completeness.csv")) %>%
   select(-hbres_currentdate)
 
 
@@ -35,6 +42,7 @@ split_3_table <- read.csv(here::here("data", "split3.csv"))
 split_4_table <- read.csv(here::here("data", "split4.csv"))
 split_5_table <- read.csv(here::here("data", "split5.csv"))
 query_1_table <- read.csv(here::here("data", "query.csv"))
+
 error_1_table$year <- as.integer(error_1_table$year)
 error_2_table$year <- as.integer(error_2_table$year)
 error_3_table$year <- as.integer(error_3_table$year)
@@ -165,3 +173,4 @@ RCodes_table <- read.csv(here::here("data", "RCodes.csv"))
 #             title = "Coding discrepancy 6",
 #             labFormat = labelFormat(suffix = " %"),
 #             opacity = 1)
+

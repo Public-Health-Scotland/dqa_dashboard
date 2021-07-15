@@ -2,7 +2,7 @@ library(openxlsx)
 library(readxl)   #needed to use excel_sheets() function
 library(readr)
 library(janitor)
-
+library(formattable)
 library(tidyverse)
 
 
@@ -38,8 +38,9 @@ hb_accuracy <- hb_path %>%
          col_types = c("text", "text", "text", "numeric", "text"), .id = "Healthboard")%>%
   select(c(1:6))%>%
   clean_names()%>%
-  mutate(year = case_when(year == "2004/2006"~ "2004-2006", TRUE ~ year))%>%
-  rename("accuracy_hospital"="accuracy")
+  rename("accuracy_hospital"="accuracy") %>% 
+  mutate(year = case_when(year == "2004/2006"~ "2004-2006", TRUE ~ year),
+         accuracy_hospital=round(accuracy_hospital, 2))
 
 
 # Join hospital site data with national data for output -------------------
