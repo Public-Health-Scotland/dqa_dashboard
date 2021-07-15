@@ -52,18 +52,15 @@ shinyUI(navbarPage(
                                           selected = c(1,2,3),
                                           inline = TRUE
                        )
-                       
                 )
-                
-            ),
+              ),
                       
               
               fluidRow(
-                column(12, 
-                       tags$style(".glyphicon-ok {color:#2BE532}
+                tags$style(".glyphicon-ok {color:#2BE532}
                           .glyphicon-warning-sign {color:#FFC300}
                           .glyphicon-flag {color:#C70039}"),
-                       DT::dataTableOutput("completeness_table")
+                column(12, DT::dataTableOutput("completeness_table")
                 )
               )
                 #add icon colors
