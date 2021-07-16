@@ -46,7 +46,11 @@ shinyServer(function(input, output, session) {
     
     data <- data_item_completeness()%>%
       select(smr, hb_name, data_item, percent_complete_month, 
-             mini_plot, change_symbol, flag_symbol)
+             mini_plot, change_symbol, flag_symbol)%>%
+      rename("SMR"="smr", "Health Board" = "hb_name", "Data Item" = "data_item",
+             "Percentage Completeness" = "percent_complete_month",
+             "Percentage Trend" = "mini_plot", "Change" = "change_symbol",
+             "Percentage Threshhold" = "flag_symbol")
     
     dtable_completeness <- datatable(data = data,
                                      escape = FALSE,
@@ -120,8 +124,11 @@ shinyServer(function(input, output, session) {
   ##Render final table
   output$audit_data <- DT::renderDataTable({
     data2 <- filters2() %>%
-      select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, accuracy_hospital)%>%
-      rename("SMR" = "audit", "Health Board" = "healthboard", "Data Item" = "data_item_name", "Accuracy Scotland" = "accuracy_scotland",
+      select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, 
+             accuracy_hospital)%>%
+      rename("SMR" = "audit", "Year"="year", "Health Board" = "healthboard",
+             "Hospital" = "hospital","Data Item" = "data_item_name", 
+             "Accuracy Scotland" = "accuracy_scotland", 
              "Accuracy Hospital" = "accuracy_hospital")
     dtable_audit <- datatable(data = data2,
                               escape = FALSE,
@@ -145,47 +152,168 @@ shinyServer(function(input, output, session) {
   
 ###the following lines relate to SMR02 coding discrepancies
 
-  output$error_1 <- renderTable({
-    error_1_table %>%
-      filter(year == input$year1)
+  output$error_1 <- DT::renderDataTable({
+    error1_filter <- error_1_table %>%
+      filter(year == input$year1)%>%
+      rename("Healthboard"="HBName", "Error Count"="error1",
+             "Year"="year", "Percentage"="percentage_1")
+    
+    dtable_error1 <- datatable(data = error1_filter,
+                               escape = FALSE,
+                               rownames = FALSE,
+                               class="compact stripe hover",
+                               selection = 'none',
+                               options = list(
+                                 rowsGroup = list(0),
+                                 columnDefs = list(
+                                   list(className = 'dt-center', targets = "_all")
+                                              )
+                                          )
+                               )
   })
   
-  output$error_2 <- renderTable({
-    error_2_table %>%
-      filter(year == input$year2)
+  output$error_2 <- DT::renderDataTable({
+    error2_filter <- error_2_table %>%
+      filter(year == input$year2)%>%
+      rename("Healthboard"="HBName", "Error Count"="error2",
+             "Year"="year", "Percentage"="percentage_2")
+    
+    dtable_error2 <- datatable(data = error2_filter,
+                               escape = FALSE,
+                               rownames = FALSE,
+                               class="compact stripe hover",
+                               selection = 'none',
+                               options = list(
+                                 rowsGroup = list(0),
+                                 columnDefs = list(
+                                   list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+    )
+  })
+
+  
+  
+  output$error_3 <- DT::renderDataTable({
+   error3_filter <- error_3_table %>%
+      filter(year == input$year3)%>%
+      rename("Healthboard"="HBName", "Error Count"="error3",
+             "Year"="year", "Percentage"="percentage_3")
+   dtable_error3 <- datatable(data = error3_filter,
+                              escape = FALSE,
+                              rownames = FALSE,
+                              class="compact stripe hover",
+                              selection = 'none',
+                              options = list(
+                                rowsGroup = list(0),
+                                columnDefs = list(
+                                  list(className = 'dt-center', targets = "_all")
+                                            )
+                              )
+                    )
   })
   
   
-  output$error_3 <- renderTable({
-    error_3_table %>%
-      filter(year == input$year3)
-  })
-  
-  
-  output$error_4 <- renderTable({
-    error_4_table %>%
-      filter(year == input$year4)
+  output$error_4 <- DT::renderDataTable({
+    error4_filter <- error_4_table %>%
+      filter(year == input$year4)%>%
+      rename("Healthboard"="HBName", "Error Count"="error4",
+             "Year"="year", "Percentage"="percentage_4")
+    dtable_error4 <- datatable(data = error4_filter,
+                               escape = FALSE,
+                               rownames = FALSE,
+                               class="compact stripe hover",
+                               selection = 'none',
+                               options = list(
+                                 rowsGroup = list(0),
+                                 columnDefs = list(
+                                   list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+                      )
   })  
   
   
-  output$error_5 <- renderTable({
-    error_5_table %>%
-      filter(year == input$year5)
+  output$error_5 <- DT::renderDataTable({
+    error5_filter <- error_5_table %>%
+      filter(year == input$year5)%>%
+      rename("Healthboard"="HBName", "Error Count"="error5",
+             "Year"="year", "Percentage"="percentage_5")
+    dtable_error5 <- datatable(data = error5_filter,
+                               escape = FALSE,
+                               rownames = FALSE,
+                               class="compact stripe hover",
+                               selection = 'none',
+                               options = list(
+                                 rowsGroup = list(0),
+                                 columnDefs = list(
+                                   list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+                    )
   })
   
-  output$error_6 <- renderTable({
-    error_6_table %>%
-      filter(year == input$year6)
+  output$error_6 <- DT::renderDataTable({
+   error6_filter <- error_6_table %>%
+      filter(year == input$year6)%>%
+      rename("Healthboard"="HBName", "Error Count"="error6",
+             "Year"="year", "Percentage"="percentage_6")
+   dtable_error6 <- datatable(data = error6_filter,
+                              escape = FALSE,
+                              rownames = FALSE,
+                              class="compact stripe hover",
+                              selection = 'none',
+                              options = list(
+                                rowsGroup = list(0),
+                                columnDefs = list(
+                                  list(className = 'dt-center', targets = "_all")
+                                )
+                              )
+                    )
+    
   })
   
-  output$query <- renderTable({
-    query_1_table %>%
-      filter(year == input$yearQ)
+  output$query <- DT::renderDataTable({
+    query_filter <- query_1_table %>%
+      filter(year == input$yearQ)%>%
+      rename("Healthboard"="HBName", "Query Count"="query_count",
+             "Year"="year", "Percentage"="query_percentage")
+    dtable_query <- datatable(data = query_filter,
+                              escape = FALSE,
+                              rownames = FALSE,
+                              class="compact stripe hover",
+                              selection = 'none',
+                              options = list(
+                                rowsGroup = list(0),
+                                columnDefs = list(
+                                  list(className = 'dt-center', targets = "_all")
+                                )
+                              )
+                    )
   })
   
-  output$RCodes <- renderTable({
-    RCodes_table %>%
-      filter(year == input$yearR)
+  output$RCodes <- DT::renderDataTable({
+    rcodes_filter <- RCodes_table %>%
+      filter(year == input$yearR)%>%
+      rename("Healthboard"="HBName", "Year"="year", 
+             "Respiratory and Chest"="resp_chest", 
+             "Abdominal Pain and Vomiting" = "APV",
+             "Collapse and Convulsions" = "collapse_convuls",
+             "All R codes" = "all"
+             )
+    dtable_rcodes <- datatable(data = rcodes_filter,
+                               escape = FALSE,
+                               rownames = FALSE,
+                               class="compact stripe hover",
+                               selection = 'none',
+                               options = list(
+                                 rowsGroup = list(0),
+                                 columnDefs = list(
+                                   list(className = 'dt-center', targets = "_all")
+                                 )
+                               )
+    )
+
   })
   
   # output$split_1 <- DT::renderDataTable({
