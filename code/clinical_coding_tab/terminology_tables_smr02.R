@@ -24,7 +24,7 @@ con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"
 
 diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
                          
-                         OTHER_CONDITION_4, OTHER_CONDITION_5, DIABETES, 
+                         OTHER_CONDITION_4, OTHER_CONDITION_5, DIABETES, DISCHARGE_DATE,
                          
                          EPISODE_RECORD_KEY, HBTREAT_CURRENTDATE, LOCATION
                          
@@ -49,30 +49,29 @@ hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
 #append hb names to diagnosis2 dataframe
 diagnosis2 <- left_join(diagnosis2, hb_lookup[c(1:2)], by = c("HBTREAT_CURRENTDATE"="HB"))
 
-
-
+diagnosis2 <- diagnosis2 %>% 
+  mutate(
+    year = (substr(DISCHARGE_DATE, 1, 4))
+    )
+glimpse(diagnosis2)
 # Error Counts ------------------------------------------------------------
-
+non_error1 <- c("O240", "O241", "O242", "O243")
+exc_error1 <- c("O244", "O249") 
+years <- c('2017', '2018', '2019', '2020', '2021')
 error_1_table <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 1) %>% 
+  group_by(HBName, year) %>%
+  filter(DIABETES == 1, year %in% years) %>% 
   mutate(
     error_1 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' |
-        MAIN_CONDITION == 'O243' | OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' |
-        OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_2 == 'O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' |
-        OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' |
-        OTHER_CONDITION_3 == 'O243'| OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' |
-        OTHER_CONDITION_4 == 'O243'| OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' |
-        OTHER_CONDITION_5 == 'O243' & MAIN_CONDITION != 'O244' & MAIN_CONDITION != 'O249' & OTHER_CONDITION_1 != 'O244' &
-        OTHER_CONDITION_1 != 'O249' & OTHER_CONDITION_2 != 'O244' & OTHER_CONDITION_2 != 'O249' & OTHER_CONDITION_3 != 'O244' &
-        OTHER_CONDITION_3 != 'O249' & OTHER_CONDITION_4 != 'O244' & OTHER_CONDITION_4 != 'O249' & OTHER_CONDITION_5 != 'O244' &
-        OTHER_CONDITION_5 != 'O249' ~ 'no error',
+      MAIN_CONDITION %in% non_error1 | OTHER_CONDITION_1 %in% non_error1 | OTHER_CONDITION_2 %in% non_error1 | OTHER_CONDITION_3 %in% non_error1 | 
+        OTHER_CONDITION_4 %in% non_error1 | OTHER_CONDITION_5 %in% non_error1 & !(MAIN_CONDITION %in% exc_error1) & !(OTHER_CONDITION_1 %in% exc_error1) &
+        !(OTHER_CONDITION_2 %in% exc_error1) & !(OTHER_CONDITION_3 %in% exc_error1) & !(OTHER_CONDITION_4 %in% exc_error1) & 
+        !(OTHER_CONDITION_5 %in% exc_error1) ~ 'no error', 
       TRUE ~ 'error 1')
   ) %>%
   summarise(error1 = sum(error_1 == "error 1"), denominator = sum(DIABETES == 1))%>%
   mutate(percentage_1 = round(error1/denominator*100, digits = 2))
-error_1_table <- error_1_table[, c('HBName', "error1", "percentage_1")]
+error_1_table <- error_1_table[, c('HBName', 'year', "error1", "percentage_1"), drop = F]
 error_1_table
 
 error_split_1 <- diagnosis2 %>%
@@ -80,16 +79,10 @@ error_split_1 <- diagnosis2 %>%
   filter(DIABETES == 1) %>% 
   mutate(
     error_s1 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' |
-        MAIN_CONDITION == 'O243' | OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' |
-        OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_2 == 'O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' |
-        OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' |
-        OTHER_CONDITION_3 == 'O243'| OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' |
-        OTHER_CONDITION_4 == 'O243'| OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' |
-        OTHER_CONDITION_5 == 'O243' & MAIN_CONDITION != 'O244' & MAIN_CONDITION != 'O249' & OTHER_CONDITION_1 != 'O244' &
-        OTHER_CONDITION_1 != 'O249' & OTHER_CONDITION_2 != 'O244' & OTHER_CONDITION_2 != 'O249' & OTHER_CONDITION_3 != 'O244' &
-        OTHER_CONDITION_3 != 'O249' & OTHER_CONDITION_4 != 'O244' & OTHER_CONDITION_4 != 'O249' & OTHER_CONDITION_5 != 'O244' &
-        OTHER_CONDITION_5 != 'O249' ~ 'no error',
+      MAIN_CONDITION %in% non_error1 | OTHER_CONDITION_1 %in% non_error1 | OTHER_CONDITION_2 %in% non_error1 | OTHER_CONDITION_3 %in% non_error1 | 
+        OTHER_CONDITION_4 %in% non_error1 | OTHER_CONDITION_5 %in% non_error1 & !(MAIN_CONDITION %in% exc_error1) & !(OTHER_CONDITION_1 %in% exc_error1) &
+        !(OTHER_CONDITION_2 %in% exc_error1) & !(OTHER_CONDITION_3 %in% exc_error1) & !(OTHER_CONDITION_4 %in% exc_error1) & 
+        !(OTHER_CONDITION_5 %in% exc_error1) ~ 'no error', 
       TRUE ~ 'error 1')
   ) %>%
   filter(error_s1 == 'error 1') %>% 
@@ -105,9 +98,10 @@ error_split_1 <- diagnosis2 %>%
 error_split_1 <- error_split_1[, c('HBName', "err1_wrong_ICD10_percent", "err1_no_ICD10_percent")]
 error_split_1
 
+
 error_2_table <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 2) %>%
+  group_by(HBName, year) %>%
+  filter(DIABETES == 2, year %in% years) %>%
   mutate(
     error_2 = case_when(
       MAIN_CONDITION == 'O244' | OTHER_CONDITION_1 == 'O244' | OTHER_CONDITION_2 == 'O244' |
@@ -116,7 +110,7 @@ error_2_table <- diagnosis2 %>%
   ) %>%
   summarise(error2 = sum(error_2 == "error 2"), denominator = sum(DIABETES == 2))%>%
   mutate(percentage_2 = round(error2/denominator*100, digits = 2))
-error_2_table <- error_2_table[, c('HBName', "error2", "percentage_2")]
+error_2_table <- error_2_table[, c('HBName', 'year', "error2", "percentage_2")]
 error_2_table
 
 error_split_2 <- diagnosis2 %>%
@@ -142,8 +136,8 @@ error_split_2 <- error_split_2[, c('HBName', "err2_wrong_ICD10_percent", "err2_n
 error_split_2
   
 error_3_table <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 3) %>%
+  group_by(HBName, year) %>%
+  filter(DIABETES == 3, year %in% years) %>%
   mutate(
     error_3 = case_when(
       MAIN_CONDITION == 'O249' | OTHER_CONDITION_1 == 'O249' | OTHER_CONDITION_2 == 'O249' |
@@ -152,11 +146,11 @@ error_3_table <- diagnosis2 %>%
   ) %>%
   summarise(error3 = sum(error_3 == "error 3"), denominator = sum(DIABETES == 3))%>%
   mutate(percentage_3 = round(error3/denominator*100, digits = 2))
-error_3_table <- error_3_table[, c('HBName', "error3", "percentage_3")]
+error_3_table <- error_3_table[, c('HBName', 'year', "error3", "percentage_3")]
 error_3_table
 
 error_split_3 <- diagnosis2 %>% 
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
   filter(DIABETES == 3) %>%
   mutate(
     error_s3 = case_when(
@@ -174,67 +168,48 @@ error_split_3 <- diagnosis2 %>%
   summarise(err3_wrong_ICD10 = sum(error3_split == "ICD present"), denominator = sum(error3_split == 'ICD present' | error3_split == 'ICD absent'))%>%
   mutate(err3_wrong_ICD10_percent = round(err3_wrong_ICD10/denominator*100, digits = 2)) %>% 
   mutate(err3_no_ICD10_percent = round(100 - err3_wrong_ICD10_percent, digits = 2))
-error_split_3 <- error_split_3[, c('HBName', "err3_wrong_ICD10_percent", "err3_no_ICD10_percent")]
+error_split_3 <- error_split_3[, c('HBName', 'year', "err3_wrong_ICD10_percent", "err3_no_ICD10_percent")]
 error_split_3
 
 error_4_table <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 4) %>%
+  group_by(HBName, year) %>%
+  filter(DIABETES == 4, year %in% years) %>%
   mutate(
     error_4 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' | MAIN_CONDITION == 'O243' | MAIN_CONDITION == 'O244' |
-        MAIN_CONDITION == 'O245' | MAIN_CONDITION == 'O246' | MAIN_CONDITION == 'O247' | MAIN_CONDITION == 'O248' | MAIN_CONDITION == 'O249' |
-        OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' & OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_1 == 'O244' |
-        OTHER_CONDITION_1 == 'O245' | OTHER_CONDITION_1 == 'O246' | OTHER_CONDITION_1 == 'O247' & OTHER_CONDITION_1 == 'O248' | OTHER_CONDITION_1 == 'O249' |
-        OTHER_CONDITION_2 =='O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' & OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_2 == 'O244' |
-        OTHER_CONDITION_2 == 'O245' | OTHER_CONDITION_2 == 'O246' | OTHER_CONDITION_2 == 'O247' & OTHER_CONDITION_2 == 'O248' | OTHER_CONDITION_2 == 'O249' |
-        OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' & OTHER_CONDITION_3 == 'O243' | OTHER_CONDITION_3 == 'O244' |
-        OTHER_CONDITION_3 == 'O245' | OTHER_CONDITION_3 == 'O246' | OTHER_CONDITION_3 == 'O247' & OTHER_CONDITION_3 == 'O248' | OTHER_CONDITION_3 == 'O249' |
-        OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' & OTHER_CONDITION_4 == 'O243' | OTHER_CONDITION_4 == 'O244' |
-        OTHER_CONDITION_4 == 'O245' | OTHER_CONDITION_4 == 'O246' | OTHER_CONDITION_4 == 'O247' & OTHER_CONDITION_4 == 'O248' | OTHER_CONDITION_4 == 'O249' |
-        OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' & OTHER_CONDITION_5 == 'O243' | OTHER_CONDITION_5 == 'O244' |
-        OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
-      T ~ 'error 4')
+  terminology_data_smr01
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4', T ~ 'no error')
   ) %>%
   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
-error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
+error_4_table <- error_4_table[, c('HBName','year', "error4", "percentage_4")]
 error_4_table
 
-error_split_4 <- diagnosis2 %>%
-  group_by(HBName) %>%
-  filter(DIABETES == 4) %>%
-  mutate(
-    error_s4 = case_when(
-      MAIN_CONDITION == 'O240' | MAIN_CONDITION == 'O241' | MAIN_CONDITION == 'O242' | MAIN_CONDITION == 'O243' | MAIN_CONDITION == 'O244' |
-        MAIN_CONDITION == 'O245' | MAIN_CONDITION == 'O246' | MAIN_CONDITION == 'O247' | MAIN_CONDITION == 'O248' | MAIN_CONDITION == 'O249' |
-        OTHER_CONDITION_1 == 'O240' | OTHER_CONDITION_1 == 'O241' | OTHER_CONDITION_1 == 'O242' & OTHER_CONDITION_1 == 'O243' | OTHER_CONDITION_1 == 'O244' |
-        OTHER_CONDITION_1 == 'O245' | OTHER_CONDITION_1 == 'O246' | OTHER_CONDITION_1 == 'O247' & OTHER_CONDITION_1 == 'O248' | OTHER_CONDITION_1 == 'O249' |
-        OTHER_CONDITION_2 =='O240' | OTHER_CONDITION_2 == 'O241' | OTHER_CONDITION_2 == 'O242' & OTHER_CONDITION_2 == 'O243' | OTHER_CONDITION_2 == 'O244' |
-        OTHER_CONDITION_2 == 'O245' | OTHER_CONDITION_2 == 'O246' | OTHER_CONDITION_2 == 'O247' & OTHER_CONDITION_2 == 'O248' | OTHER_CONDITION_2 == 'O249' |
-        OTHER_CONDITION_3 == 'O240' | OTHER_CONDITION_3 == 'O241' | OTHER_CONDITION_3 == 'O242' & OTHER_CONDITION_3 == 'O243' | OTHER_CONDITION_3 == 'O244' |
-        OTHER_CONDITION_3 == 'O245' | OTHER_CONDITION_3 == 'O246' | OTHER_CONDITION_3 == 'O247' & OTHER_CONDITION_3 == 'O248' | OTHER_CONDITION_3 == 'O249' |
-        OTHER_CONDITION_4 == 'O240' | OTHER_CONDITION_4 == 'O241' | OTHER_CONDITION_4 == 'O242' & OTHER_CONDITION_4 == 'O243' | OTHER_CONDITION_4 == 'O244' |
-        OTHER_CONDITION_4 == 'O245' | OTHER_CONDITION_4 == 'O246' | OTHER_CONDITION_4 == 'O247' & OTHER_CONDITION_4 == 'O248' | OTHER_CONDITION_4 == 'O249' |
-        OTHER_CONDITION_5 == 'O240' | OTHER_CONDITION_5 == 'O241' | OTHER_CONDITION_5 == 'O242' & OTHER_CONDITION_5 == 'O243' | OTHER_CONDITION_5 == 'O244' |
-        OTHER_CONDITION_5 == 'O245' | OTHER_CONDITION_5 == 'O246' | OTHER_CONDITION_5 == 'O247' & OTHER_CONDITION_5 == 'O248' | OTHER_CONDITION_5 == 'O249' ~ 'no error',
-      T ~ 'error 4')
-  ) %>%
-  filter(error_s4 == 'error 4') %>% 
-  mutate(
-    error4_split = case_when(
-      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
-        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
-      TRUE ~ 'ICD absent'
-    )) %>%
-  summarise(err4_wrong_ICD10 = sum(error4_split == "ICD present"), denominator = sum(error4_split == 'ICD present' | error4_split == 'ICD absent'))%>%
-  mutate(err4_wrong_ICD10_percent = round(err4_wrong_ICD10/denominator*100, digits = 2)) %>% 
-  mutate(err4_no_ICD10_percent = round(100 - err4_wrong_ICD10_percent, digits = 2))
-error_split_4 <- error_split_4[, c('HBName', "err4_wrong_ICD10_percent", "err4_no_ICD10_percent")]
-error_split_4
+# error_split_4 <- diagnosis2 %>%
+#   group_by(HBName) %>%
+#   filter(DIABETES == 4) %>%
+#   mutate(
+#     error_s4 = case_when(
+#       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+#         str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
+#       T ~ 'error 4')
+#   ) %>%
+#   filter(error_s4 == 'error 4') %>% 
+#   mutate(
+#     error4_split = case_when(
+#       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
+#         str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'ICD present', 
+#       TRUE ~ 'ICD absent'
+#     )) %>%
+#   summarise(err4_wrong_ICD10 = sum(error4_split == "ICD present"), denominator = sum(error4_split == 'ICD present' | error4_split == 'ICD absent'))%>%
+#   mutate(err4_wrong_ICD10_percent = round(err4_wrong_ICD10/denominator*100, digits = 2)) %>% 
+#   mutate(err4_no_ICD10_percent = round(100 - err4_wrong_ICD10_percent, digits = 2))
+# error_split_4 <- error_split_4[, c('HBName', "err4_wrong_ICD10_percent", "err4_no_ICD10_percent")]
+# error_split_4
 
 error_5_table <- diagnosis2 %>%
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
+  filter(year %in% years) %>% 
   mutate(
     error_5 = case_when(
       !is.na(DIABETES) ~ 'no error',
@@ -242,7 +217,7 @@ error_5_table <- diagnosis2 %>%
   ) %>%
   summarise(error5 = sum(error_5 == "error 5"), denominator = n())%>%
   mutate(percentage_5 = round(error5/denominator*100, digits = 2))
-error_5_table <- error_5_table[, c('HBName', "error5", "percentage_5")]
+error_5_table <- error_5_table[, c('HBName', 'year', "error5", "percentage_5")]
 error_5_table
 
 error_split_5 <- diagnosis2 %>%
@@ -266,79 +241,28 @@ error_split_5 <- error_split_5[, c('HBName', "err5_ICD10_present_percent", "err5
 error_split_5
 
 error_6_table <- diagnosis2 %>%
-  group_by(HBName) %>%
+  group_by(HBName, year) %>%
+  filter(year %in% years) %>% 
   mutate(
     error_6 = case_when(
-      MAIN_CONDITION == 'E100' | MAIN_CONDITION == 'E101' | MAIN_CONDITION == 'E102' | MAIN_CONDITION == 'E103' | MAIN_CONDITION == 'E104' |
-        MAIN_CONDITION == 'E105' | MAIN_CONDITION == 'E106' | MAIN_CONDITION == 'E107' | MAIN_CONDITION == 'E108' | MAIN_CONDITION == 'E109' |
-        OTHER_CONDITION_1 == 'E100' | OTHER_CONDITION_1 == 'E101' | OTHER_CONDITION_1 == 'E102' & OTHER_CONDITION_1 == 'E103' | OTHER_CONDITION_1 == 'E104' |
-        OTHER_CONDITION_1 == 'E105' | OTHER_CONDITION_1 == 'E106' | OTHER_CONDITION_1 == 'E107' & OTHER_CONDITION_1 == 'E108' | OTHER_CONDITION_1 == 'E109' |
-        OTHER_CONDITION_2 =='E100' | OTHER_CONDITION_2 == 'E101' | OTHER_CONDITION_2 == 'E102' & OTHER_CONDITION_2 == 'E103' | OTHER_CONDITION_2 == 'E104' |
-        OTHER_CONDITION_2 == 'E105' | OTHER_CONDITION_2 == 'E106' | OTHER_CONDITION_2 == 'E107' & OTHER_CONDITION_2 == 'E108' | OTHER_CONDITION_2 == 'E109' |
-        OTHER_CONDITION_3 == 'E100' | OTHER_CONDITION_3 == 'E101' | OTHER_CONDITION_3 == 'E102' & OTHER_CONDITION_3 == 'E103' | OTHER_CONDITION_3 == 'E104' |
-        OTHER_CONDITION_3 == 'E105' | OTHER_CONDITION_3 == 'E106' | OTHER_CONDITION_3 == 'E107' & OTHER_CONDITION_3 == 'E108' | OTHER_CONDITION_3 == 'E109' |
-        OTHER_CONDITION_4 == 'E100' | OTHER_CONDITION_4 == 'E101' | OTHER_CONDITION_4 == 'E102' & OTHER_CONDITION_4 == 'E103' | OTHER_CONDITION_4 == 'E104' |
-        OTHER_CONDITION_4 == 'E105' | OTHER_CONDITION_4 == 'E106' | OTHER_CONDITION_4 == 'E107' & OTHER_CONDITION_4 == 'E108' | OTHER_CONDITION_4 == 'E109' |
-        OTHER_CONDITION_5 == 'E100' | OTHER_CONDITION_5 == 'E101' | OTHER_CONDITION_5 == 'E102' & OTHER_CONDITION_5 == 'E103' | OTHER_CONDITION_5 == 'E104' |
-        OTHER_CONDITION_5 == 'E105' | OTHER_CONDITION_5 == 'E106' | OTHER_CONDITION_5 == 'E107' & OTHER_CONDITION_5 == 'E108' | OTHER_CONDITION_5 == 'E109' |
-        MAIN_CONDITION == 'E110' | MAIN_CONDITION == 'E111' | MAIN_CONDITION == 'E112' | MAIN_CONDITION == 'E113' | MAIN_CONDITION == 'E114' |
-        MAIN_CONDITION == 'E115' | MAIN_CONDITION == 'E116' | MAIN_CONDITION == 'E117' | MAIN_CONDITION == 'E118' | MAIN_CONDITION == 'E119' |
-        OTHER_CONDITION_1 == 'E110' | OTHER_CONDITION_1 == 'E111' | OTHER_CONDITION_1 == 'E112' & OTHER_CONDITION_1 == 'E113' | OTHER_CONDITION_1 == 'E114' |
-        OTHER_CONDITION_1 == 'E115' | OTHER_CONDITION_1 == 'E116' | OTHER_CONDITION_1 == 'E117' & OTHER_CONDITION_1 == 'E118' | OTHER_CONDITION_1 == 'E119' |
-        OTHER_CONDITION_2 =='E110' | OTHER_CONDITION_2 == 'E111' | OTHER_CONDITION_2 == 'E112' & OTHER_CONDITION_2 == 'E113' | OTHER_CONDITION_2 == 'E114' |
-        OTHER_CONDITION_2 == 'E115' | OTHER_CONDITION_2 == 'E116' | OTHER_CONDITION_2 == 'E117' & OTHER_CONDITION_2 == 'E118' | OTHER_CONDITION_2 == 'E119' |
-        OTHER_CONDITION_3 == 'E110' | OTHER_CONDITION_3 == 'E111' | OTHER_CONDITION_3 == 'E112' & OTHER_CONDITION_3 == 'E113' | OTHER_CONDITION_3 == 'E114' |
-        OTHER_CONDITION_3 == 'E115' | OTHER_CONDITION_3 == 'E116' | OTHER_CONDITION_3 == 'E117' & OTHER_CONDITION_3 == 'E118' | OTHER_CONDITION_3 == 'E119' |
-        OTHER_CONDITION_4 == 'E110' | OTHER_CONDITION_4 == 'E111' | OTHER_CONDITION_4 == 'E112' & OTHER_CONDITION_4 == 'E113' | OTHER_CONDITION_4 == 'E114' |
-        OTHER_CONDITION_4 == 'E115' | OTHER_CONDITION_4 == 'E116' | OTHER_CONDITION_4 == 'E117' & OTHER_CONDITION_4 == 'E118' | OTHER_CONDITION_4 == 'E119' |
-        OTHER_CONDITION_5 == 'E110' | OTHER_CONDITION_5 == 'E111' | OTHER_CONDITION_5 == 'E112' & OTHER_CONDITION_5 == 'E113' | OTHER_CONDITION_5 == 'E114' |
-        OTHER_CONDITION_5 == 'E115' | OTHER_CONDITION_5 == 'E116' | OTHER_CONDITION_5 == 'E117' & OTHER_CONDITION_5 == 'E118' | OTHER_CONDITION_5 == 'E119' |
-        MAIN_CONDITION == 'E120' | MAIN_CONDITION == 'E121' | MAIN_CONDITION == 'E122' | MAIN_CONDITION == 'E123' | MAIN_CONDITION == 'E124' |
-        MAIN_CONDITION == 'E125' | MAIN_CONDITION == 'E126' | MAIN_CONDITION == 'E127' | MAIN_CONDITION == 'E128' | MAIN_CONDITION == 'E129' |
-        OTHER_CONDITION_1 == 'E120' | OTHER_CONDITION_1 == 'E121' | OTHER_CONDITION_1 == 'E122' & OTHER_CONDITION_1 == 'E123' | OTHER_CONDITION_1 == 'E124' |
-        OTHER_CONDITION_1 == 'E125' | OTHER_CONDITION_1 == 'E126' | OTHER_CONDITION_1 == 'E127' & OTHER_CONDITION_1 == 'E128' | OTHER_CONDITION_1 == 'E129' |
-        OTHER_CONDITION_2 =='E120' | OTHER_CONDITION_2 == 'E121' | OTHER_CONDITION_2 == 'E122' & OTHER_CONDITION_2 == 'E123' | OTHER_CONDITION_2 == 'E124' |
-        OTHER_CONDITION_2 == 'E125' | OTHER_CONDITION_2 == 'E126' | OTHER_CONDITION_2 == 'E127' & OTHER_CONDITION_2 == 'E128' | OTHER_CONDITION_2 == 'E129' |
-        OTHER_CONDITION_3 == 'E120' | OTHER_CONDITION_3 == 'E121' | OTHER_CONDITION_3 == 'E122' & OTHER_CONDITION_3 == 'E123' | OTHER_CONDITION_3 == 'E124' |
-        OTHER_CONDITION_3 == 'E125' | OTHER_CONDITION_3 == 'E126' | OTHER_CONDITION_3 == 'E127' & OTHER_CONDITION_3 == 'E128' | OTHER_CONDITION_3 == 'E129' |
-        OTHER_CONDITION_4 == 'E120' | OTHER_CONDITION_4 == 'E121' | OTHER_CONDITION_4 == 'E122' & OTHER_CONDITION_4 == 'E123' | OTHER_CONDITION_4 == 'E124' |
-        OTHER_CONDITION_4 == 'E125' | OTHER_CONDITION_4 == 'E126' | OTHER_CONDITION_4 == 'E127' & OTHER_CONDITION_4 == 'E128' | OTHER_CONDITION_4 == 'E129' |
-        OTHER_CONDITION_5 == 'E120' | OTHER_CONDITION_5 == 'E121' | OTHER_CONDITION_5 == 'E122' & OTHER_CONDITION_5 == 'E123' | OTHER_CONDITION_5 == 'E124' |
-        OTHER_CONDITION_5 == 'E125' | OTHER_CONDITION_5 == 'E126' | OTHER_CONDITION_5 == 'E127' & OTHER_CONDITION_5 == 'E128' | OTHER_CONDITION_5 == 'E129' |
-        MAIN_CONDITION == 'E130' | MAIN_CONDITION == 'E131' | MAIN_CONDITION == 'E132' | MAIN_CONDITION == 'E133' | MAIN_CONDITION == 'E134' |
-        MAIN_CONDITION == 'E135' | MAIN_CONDITION == 'E136' | MAIN_CONDITION == 'E137' | MAIN_CONDITION == 'E138' | MAIN_CONDITION == 'E139' |
-        OTHER_CONDITION_1 == 'E130' | OTHER_CONDITION_1 == 'E131' | OTHER_CONDITION_1 == 'E132' & OTHER_CONDITION_1 == 'E133' | OTHER_CONDITION_1 == 'E134' |
-        OTHER_CONDITION_1 == 'E135' | OTHER_CONDITION_1 == 'E136' | OTHER_CONDITION_1 == 'E137' & OTHER_CONDITION_1 == 'E138' | OTHER_CONDITION_1 == 'E139' |
-        OTHER_CONDITION_2 =='E130' | OTHER_CONDITION_2 == 'E131' | OTHER_CONDITION_2 == 'E132' & OTHER_CONDITION_2 == 'E133' | OTHER_CONDITION_2 == 'E134' |
-        OTHER_CONDITION_2 == 'E135' | OTHER_CONDITION_2 == 'E136' | OTHER_CONDITION_2 == 'E137' & OTHER_CONDITION_2 == 'E138' | OTHER_CONDITION_2 == 'E139' |
-        OTHER_CONDITION_3 == 'E130' | OTHER_CONDITION_3 == 'E131' | OTHER_CONDITION_3 == 'E132' & OTHER_CONDITION_3 == 'E133' | OTHER_CONDITION_3 == 'E134' |
-        OTHER_CONDITION_3 == 'E135' | OTHER_CONDITION_3 == 'E136' | OTHER_CONDITION_3 == 'E137' & OTHER_CONDITION_3 == 'E138' | OTHER_CONDITION_3 == 'E139' |
-        OTHER_CONDITION_4 == 'E130' | OTHER_CONDITION_4 == 'E131' | OTHER_CONDITION_4 == 'E132' & OTHER_CONDITION_4 == 'E133' | OTHER_CONDITION_4 == 'E134' |
-        OTHER_CONDITION_4 == 'E135' | OTHER_CONDITION_4 == 'E136' | OTHER_CONDITION_4 == 'E137' & OTHER_CONDITION_4 == 'E138' | OTHER_CONDITION_4 == 'E139' |
-        OTHER_CONDITION_5 == 'E130' | OTHER_CONDITION_5 == 'E131' | OTHER_CONDITION_5 == 'E132' & OTHER_CONDITION_5 == 'E133' | OTHER_CONDITION_5 == 'E134' |
-        OTHER_CONDITION_5 == 'E135' | OTHER_CONDITION_5 == 'E136' | OTHER_CONDITION_5 == 'E137' & OTHER_CONDITION_5 == 'E138' | OTHER_CONDITION_5 == 'E139' |
-        MAIN_CONDITION == 'E140' | MAIN_CONDITION == 'E141' | MAIN_CONDITION == 'E142' | MAIN_CONDITION == 'E143' | MAIN_CONDITION == 'E144' |
-        MAIN_CONDITION == 'E145' | MAIN_CONDITION == 'E146' | MAIN_CONDITION == 'E147' | MAIN_CONDITION == 'E148' | MAIN_CONDITION == 'E149' |
-        OTHER_CONDITION_1 == 'E140' | OTHER_CONDITION_1 == 'E141' | OTHER_CONDITION_1 == 'E142' & OTHER_CONDITION_1 == 'E143' | OTHER_CONDITION_1 == 'E144' |
-        OTHER_CONDITION_1 == 'E145' | OTHER_CONDITION_1 == 'E146' | OTHER_CONDITION_1 == 'E147' & OTHER_CONDITION_1 == 'E148' | OTHER_CONDITION_1 == 'E149' |
-        OTHER_CONDITION_2 =='E140' | OTHER_CONDITION_2 == 'E141' | OTHER_CONDITION_2 == 'E142' & OTHER_CONDITION_2 == 'E143' | OTHER_CONDITION_2 == 'E144' |
-        OTHER_CONDITION_2 == 'E145' | OTHER_CONDITION_2 == 'E146' | OTHER_CONDITION_2 == 'E147' & OTHER_CONDITION_2 == 'E148' | OTHER_CONDITION_2 == 'E149' |
-        OTHER_CONDITION_3 == 'E140' | OTHER_CONDITION_3 == 'E141' | OTHER_CONDITION_3 == 'E142' & OTHER_CONDITION_3 == 'E143' | OTHER_CONDITION_3 == 'E144' |
-        OTHER_CONDITION_3 == 'E145' | OTHER_CONDITION_3 == 'E146' | OTHER_CONDITION_3 == 'E147' & OTHER_CONDITION_3 == 'E148' | OTHER_CONDITION_3 == 'E149' |
-        OTHER_CONDITION_4 == 'E140' | OTHER_CONDITION_4 == 'E141' | OTHER_CONDITION_4 == 'E142' & OTHER_CONDITION_4 == 'E143' | OTHER_CONDITION_4 == 'E144' |
-        OTHER_CONDITION_4 == 'E145' | OTHER_CONDITION_4 == 'E146' | OTHER_CONDITION_4 == 'E147' & OTHER_CONDITION_4 == 'E148' | OTHER_CONDITION_4 == 'E149' |
-        OTHER_CONDITION_5 == 'E140' | OTHER_CONDITION_5 == 'E141' | OTHER_CONDITION_5 == 'E142' & OTHER_CONDITION_5 == 'E143' | OTHER_CONDITION_5 == 'E144' |
-        OTHER_CONDITION_5 == 'E145' | OTHER_CONDITION_5 == 'E146' | OTHER_CONDITION_5 == 'E147' & OTHER_CONDITION_5 == 'E148' | OTHER_CONDITION_5 == 'E149' ~ 'error 6',
+      str_detect(MAIN_CONDITION, "^E10") | str_detect(OTHER_CONDITION_1, "^E10") | str_detect(OTHER_CONDITION_2, "^E10") | str_detect(OTHER_CONDITION_3, "^E10") | 
+        str_detect(OTHER_CONDITION_4, "^E10") | str_detect(OTHER_CONDITION_5, "^E10") | str_detect(MAIN_CONDITION, "^E11") | str_detect(OTHER_CONDITION_1, "^E11") | 
+        str_detect(OTHER_CONDITION_2, "^E11") | str_detect(OTHER_CONDITION_3, "^E11") | str_detect(OTHER_CONDITION_4, "^E11") | str_detect(OTHER_CONDITION_5, "^E11") |
+        str_detect(MAIN_CONDITION, "^E12") | str_detect(OTHER_CONDITION_1, "^E12") | str_detect(OTHER_CONDITION_2, "^E12") | str_detect(OTHER_CONDITION_3, "^E12") | 
+        str_detect(OTHER_CONDITION_4, "^E12") | str_detect(OTHER_CONDITION_5, "^E12") | str_detect(MAIN_CONDITION, "^E13") | str_detect(OTHER_CONDITION_1, "^E13") | 
+        str_detect(OTHER_CONDITION_2, "^E13") | str_detect(OTHER_CONDITION_3, "^E13") | str_detect(OTHER_CONDITION_4, "^E13") | str_detect(OTHER_CONDITION_5, "^E13") |
+        str_detect(MAIN_CONDITION, "^E14") | str_detect(OTHER_CONDITION_1, "^E14") | str_detect(OTHER_CONDITION_2, "^E14") | str_detect(OTHER_CONDITION_3, "^E14") | 
+        str_detect(OTHER_CONDITION_4, "^E14") | str_detect(OTHER_CONDITION_5, "^E14") ~ 'error 6',
       T ~ 'no error')
   ) %>%
   summarise(error6 = sum(error_6 == "error 6"), denominator = n())%>%
   mutate(percentage_6 = round(error6/denominator*100, digits = 2))
-error_6_table <- error_6_table[, c("HBName", "error6", "percentage_6")]
+error_6_table <- error_6_table[, c("HBName", 'year', "error6", "percentage_6")]
 error_6_table
 
 query_1_table <- diagnosis2 %>% 
-  group_by(HBName) %>% 
-  filter(DIABETES == 9) %>% 
+  group_by(HBName, year) %>% 
+  filter(DIABETES == 9, year %in% years) %>% 
   mutate(
     query = case_when(
       str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") | 
@@ -347,7 +271,7 @@ query_1_table <- diagnosis2 %>%
     )) %>%
   summarise(query_count = sum(query == 'ICD present'), denominator = sum(DIABETES == 9)) %>% 
   mutate(query_percentage = round(query_count/denominator*100, digits = 2))
-query_1_table <- query_1_table[, c("HBName", "query_count", "query_percentage")]
+query_1_table <- query_1_table[, c("HBName", 'year', "query_count", "query_percentage")]
 query_1_table
 
 # Error maps ------------------------------------------------------
@@ -451,4 +375,33 @@ write_csv(error_split_3, here::here("data", "split3.csv"))
 write_csv(error_split_4, here::here("data", "split4.csv"))
 write_csv(error_split_5, here::here("data", "split5.csv"))
 write_csv(query_1_table, here::here("data", "query.csv"))
+
+
+
+###test
+error_4_table_test <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 4) %>%
+  mutate(
+    error_4 = case_when(
+      str_detect(MAIN_CONDITION, "^O24") | str_detect(OTHER_CONDITION_1, "^O24") | str_detect(OTHER_CONDITION_2, "^O24") | str_detect(OTHER_CONDITION_3, "^O24") |
+        str_detect(OTHER_CONDITION_4, "^O24") | str_detect(OTHER_CONDITION_5, "^O24") ~ 'error 4',
+      T ~ 'no error')
+  )
+# %>%
+#   summarise(error4 = sum(error_4 == "error 4"), denominator = sum(DIABETES == 4))%>%
+#   mutate(percentage_4 = round(error4/denominator*100, digits = 2))
+# error_4_table <- error_4_table[, c('HBName',"error4", "percentage_4")]
+# 
+# diagnosis2%>%
+#   filter(DIABETES == 4 & MAIN_CONDITION =="O24")
+  
+
+exc_error4 <- c("O240", "O241", "O242", "O243", "O244", "O249")
+error_4_table_test <- diagnosis2 %>%
+  group_by(HBName) %>%
+  filter(DIABETES == 4) %>%
+  mutate(error_4 = case_when( MAIN_CONDITION %in% exc_error4 | OTHER_CONDITION_1 %in% exc_error4|OTHER_CONDITION_2 %in% exc_error4 | 
+                                OTHER_CONDITION_3 %in% exc_error4 | OTHER_CONDITION_4 %in% exc_error4 | OTHER_CONDITION_5 %in% exc_error4 ~ "error 4",
+                              TRUE ~ "no error"))
 

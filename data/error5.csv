@@ -1,15 +1,65 @@
-HBName,error5,percentage_5
-NHS Ayrshire and Arran,158,7.58
-NHS Borders,53,9.06
-NHS Dumfries and Galloway,13,1.3599999999999999
-NHS Fife,206,9.43
-NHS Forth Valley,129,7.54
-NHS Grampian,988,27.47
-NHS Greater Glasgow and Clyde,671,7.95
-NHS Highland,222,15.69
-NHS Lanarkshire,15,0.57
-NHS Lothian,807,13.75
-NHS Orkney,0,0
-NHS Shetland,0,0
-NHS Tayside,56,1.99
-NHS Western Isles,0,0
+HBName,year,error5,percentage_5
+NHS Ayrshire and Arran,2017,0,0
+NHS Ayrshire and Arran,2018,0,0
+NHS Ayrshire and Arran,2019,0,0
+NHS Ayrshire and Arran,2020,0,0
+NHS Ayrshire and Arran,2021,0,0
+NHS Borders,2017,0,0
+NHS Borders,2018,0,0
+NHS Borders,2019,0,0
+NHS Borders,2020,0,0
+NHS Borders,2021,0,0
+NHS Dumfries and Galloway,2017,0,0
+NHS Dumfries and Galloway,2018,0,0
+NHS Dumfries and Galloway,2019,0,0
+NHS Dumfries and Galloway,2020,0,0
+NHS Dumfries and Galloway,2021,0,0
+NHS Fife,2017,0,0
+NHS Fife,2018,0,0
+NHS Fife,2019,0,0
+NHS Fife,2020,0,0
+NHS Fife,2021,0,0
+NHS Forth Valley,2017,0,0
+NHS Forth Valley,2018,0,0
+NHS Forth Valley,2019,0,0
+NHS Forth Valley,2020,0,0
+NHS Forth Valley,2021,0,0
+NHS Grampian,2017,0,0
+NHS Grampian,2018,0,0
+NHS Grampian,2019,0,0
+NHS Grampian,2020,0,0
+NHS Grampian,2021,0,0
+NHS Greater Glasgow and Clyde,2017,0,0
+NHS Greater Glasgow and Clyde,2018,0,0
+NHS Greater Glasgow and Clyde,2019,0,0
+NHS Greater Glasgow and Clyde,2020,0,0
+NHS Greater Glasgow and Clyde,2021,0,0
+NHS Highland,2017,0,0
+NHS Highland,2018,0,0
+NHS Highland,2019,0,0
+NHS Highland,2020,0,0
+NHS Highland,2021,0,0
+NHS Lanarkshire,2017,0,0
+NHS Lanarkshire,2018,0,0
+NHS Lanarkshire,2019,0,0
+NHS Lanarkshire,2020,0,0
+NHS Lanarkshire,2021,0,0
+NHS Lothian,2017,0,0
+NHS Lothian,2018,0,0
+NHS Lothian,2019,0,0
+NHS Lothian,2020,0,0
+NHS Lothian,2021,0,0
+NHS Orkney,2017,0,0
+NHS Orkney,2019,0,0
+NHS Orkney,2020,0,0
+NHS Orkney,2021,0,0
+NHS Shetland,2020,0,0
+NHS Shetland,2021,0,0
+NHS Tayside,2017,0,0
+NHS Tayside,2018,0,0
+NHS Tayside,2019,0,0
+NHS Tayside,2020,0,0
+NHS Tayside,2021,0,0
+NHS Western Isles,2018,0,0
+NHS Western Isles,2020,0,0
+NHS Western Isles,2021,0,0

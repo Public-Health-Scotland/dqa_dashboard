@@ -1,14 +1,51 @@
-HBName,error4,percentage_4
-NHS Ayrshire and Arran,1,0.75
-NHS Borders,0,0
-NHS Dumfries and Galloway,1,4.17
-NHS Fife,0,0
-NHS Forth Valley,0,0
-NHS Grampian,0,0
-NHS Greater Glasgow and Clyde,2,0.39
-NHS Highland,0,0
-NHS Lanarkshire,0,0
-NHS Lothian,5,0.38
-NHS Shetland,0,0
-NHS Tayside,0,0
-NHS Western Isles,0,0
+HBName,year,error4,percentage_4
+NHS Ayrshire and Arran,2017,10,100
+NHS Ayrshire and Arran,2018,3,100
+NHS Ayrshire and Arran,2019,5,100
+NHS Ayrshire and Arran,2020,11,100
+NHS Ayrshire and Arran,2021,6,100
+NHS Borders,2017,2,100
+NHS Borders,2018,5,100
+NHS Borders,2019,12,100
+NHS Borders,2020,7,100
+NHS Borders,2021,2,100
+NHS Dumfries and Galloway,2019,1,100
+NHS Dumfries and Galloway,2020,1,100
+NHS Dumfries and Galloway,2021,1,100
+NHS Fife,2017,51,100
+NHS Fife,2018,52,100
+NHS Fife,2019,39,100
+NHS Fife,2020,8,100
+NHS Fife,2021,1,100
+NHS Forth Valley,2018,2,100
+NHS Forth Valley,2019,1,100
+NHS Grampian,2017,6,100
+NHS Grampian,2018,10,100
+NHS Grampian,2019,5,100
+NHS Grampian,2020,3,100
+NHS Grampian,2021,3,100
+NHS Greater Glasgow and Clyde,2017,40,100
+NHS Greater Glasgow and Clyde,2018,18,100
+NHS Greater Glasgow and Clyde,2019,82,100
+NHS Greater Glasgow and Clyde,2020,59,100
+NHS Greater Glasgow and Clyde,2021,39,100
+NHS Highland,2017,2,100
+NHS Highland,2018,4,100
+NHS Highland,2019,12,100
+NHS Highland,2020,1,100
+NHS Lanarkshire,2017,6,100
+NHS Lanarkshire,2018,10,100
+NHS Lanarkshire,2019,12,100
+NHS Lanarkshire,2020,7,100
+NHS Lanarkshire,2021,6,100
+NHS Lothian,2017,162,100
+NHS Lothian,2018,154,100
+NHS Lothian,2019,145,100
+NHS Lothian,2020,152,100
+NHS Lothian,2021,56,100
+NHS Tayside,2017,5,100
+NHS Tayside,2018,6,100
+NHS Tayside,2019,1,100
+NHS Tayside,2020,6,100
+NHS Tayside,2021,2,100
+NHS Western Isles,2020,1,100
