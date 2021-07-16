@@ -12,44 +12,11 @@ library(lubridate)
 library(stringr)
 
 
-# Functions ---------------------------------------------------------------
+# Load Functions ----------------------------------------------------------
 
-count_submissions <- function(data, date_col, deadlines){
-  
-  df_list <- list()
-  months <- data %>%
-    distinct(month({{date_col}})) %>% 
-    pull()
-    
-  
-  for(i in months){
-    submissions <- data %>% 
-      mutate(event_year=year({{date_col}}), 
-             event_month=month({{date_col}}))%>%
-      group_by(hbres_currentdate, event_month) %>%
-      filter(event_month==i) %>% 
-      summarize(
-        total_submissions = n(),
-        on_time = sum(date_record_inserted <= deadlines[i]), 
-        late = sum(date_record_inserted > deadlines[i])
-      )
-    
-    df_list[[i]] <- submissions
-    
-  }
-  
-  return(do.call(rbind,df_list))
-}
+source(here::here("functions", "append_source.R"))
+source(here::here("functions", "count_submissions_timeliness.R"))
 
-
-
-
-
-append_source <- function(df_names) {
-  do.call(rbind, lapply(df_names, function(x) {
-    cbind(get(x), source = x)
-  }))
-}
 
 # Import lookup ----------------------------------------------------------
 
@@ -204,3 +171,17 @@ submissions <- append_source(df_names)%>%
   rename("smr" = "source")%>%
   left_join(hb_lookup, by = c("hbres_currentdate"="hb"))
 
+
+# Expected submissions & backlog ------------------------------------------
+
+expected_submissions_df <- read_csv(here::here("data", "expected_submissions.csv"))
+
+timeliness <- submissions %>% 
+  left_join(expected_submissions_df) %>%
+  mutate(diff_obs_exp = total_submissions - expected_submissions,
+         percent_on_time = on_time/expected_submissions*100,
+         percent_complete = total_submissions/expected_submissions*100
+         )%>%
+  ungroup()
+
+write_csv(timeliness, here::here("data", "timeliness.csv"))
