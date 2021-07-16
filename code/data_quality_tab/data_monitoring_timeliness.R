@@ -181,7 +181,6 @@ timeliness <- submissions %>%
   mutate(diff_obs_exp = total_submissions - expected_submissions,
          percent_on_time = on_time/expected_submissions*100,
          percent_complete = total_submissions/expected_submissions*100
-         )%>%
-  ungroup()
+         )
 
 write_csv(timeliness, here::here("data", "timeliness.csv"))
