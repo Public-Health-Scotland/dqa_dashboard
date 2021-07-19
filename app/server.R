@@ -163,13 +163,18 @@ shinyServer(function(input, output, session) {
                                rownames = FALSE,
                                class="compact stripe hover",
                                selection = 'none',
+                               extension = 'Buttons',
                                options = list(
                                  rowsGroup = list(0),
                                  columnDefs = list(
                                    list(className = 'dt-center', targets = "_all")
-                                              )
+                                              ),
+                                 pageLength = 15,
+                                 dom = 'Bfrtip',
+                                 buttons = c('copy', 'csv', 'excel', 'pdf')
                                           )
-                               )
+                                 
+                                 )
   })
   
   output$error_2 <- DT::renderDataTable({
@@ -183,11 +188,16 @@ shinyServer(function(input, output, session) {
                                rownames = FALSE,
                                class="compact stripe hover",
                                selection = 'none',
+                               extension = 'Buttons',
                                options = list(
                                  rowsGroup = list(0),
                                  columnDefs = list(
                                    list(className = 'dt-center', targets = "_all")
-                                 )
+                                 ),
+                                 pageLength = 15,
+                                 dom = 'Bfrtip',
+                                 buttons = c('copy', 'csv', 'excel', 'pdf')
+
                                )
     )
   })
@@ -204,11 +214,15 @@ shinyServer(function(input, output, session) {
                               rownames = FALSE,
                               class="compact stripe hover",
                               selection = 'none',
+                              extension = 'Buttons',
                               options = list(
                                 rowsGroup = list(0),
                                 columnDefs = list(
                                   list(className = 'dt-center', targets = "_all")
-                                            )
+                                            ),
+                                pageLength = 15,
+                                dom = 'Bfrtip',
+                                buttons = c('copy', 'csv', 'excel', 'pdf')
                               )
                     )
   })
@@ -224,11 +238,15 @@ shinyServer(function(input, output, session) {
                                rownames = FALSE,
                                class="compact stripe hover",
                                selection = 'none',
+                               extension = 'Buttons',
                                options = list(
                                  rowsGroup = list(0),
                                  columnDefs = list(
                                    list(className = 'dt-center', targets = "_all")
-                                 )
+                                 ),
+                                 pageLength = 15,
+                                 dom = 'Bfrtip',
+                                 buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
                       )
   })  
@@ -244,11 +262,15 @@ shinyServer(function(input, output, session) {
                                rownames = FALSE,
                                class="compact stripe hover",
                                selection = 'none',
+                               extension = 'Buttons',
                                options = list(
                                  rowsGroup = list(0),
                                  columnDefs = list(
                                    list(className = 'dt-center', targets = "_all")
-                                 )
+                                 ),
+                                 pageLength = 15,
+                                 dom = 'Bfrtip',
+                                 buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
                     )
   })
@@ -263,11 +285,15 @@ shinyServer(function(input, output, session) {
                               rownames = FALSE,
                               class="compact stripe hover",
                               selection = 'none',
+                              extension = 'Buttons',
                               options = list(
                                 rowsGroup = list(0),
                                 columnDefs = list(
                                   list(className = 'dt-center', targets = "_all")
-                                )
+                                ),
+                                pageLength = 15,
+                                dom = 'Bfrtip',
+                                buttons = c('copy', 'csv', 'excel', 'pdf')
                               )
                     )
     
@@ -283,11 +309,15 @@ shinyServer(function(input, output, session) {
                               rownames = FALSE,
                               class="compact stripe hover",
                               selection = 'none',
+                              extension = 'Buttons',
                               options = list(
                                 rowsGroup = list(0),
                                 columnDefs = list(
                                   list(className = 'dt-center', targets = "_all")
-                                )
+                                ),
+                                pageLength = 15,
+                                dom = 'Bfrtip',
+                                buttons = c('copy', 'csv', 'excel', 'pdf')
                               )
                     )
   })
@@ -306,11 +336,15 @@ shinyServer(function(input, output, session) {
                                rownames = FALSE,
                                class="compact stripe hover",
                                selection = 'none',
+                               extension = 'Buttons',
                                options = list(
                                  rowsGroup = list(0),
                                  columnDefs = list(
                                    list(className = 'dt-center', targets = "_all")
-                                 )
+                                 ),
+                                 pageLength = 15,
+                                 dom = 'Bfrtip',
+                                 buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
     )
 
