@@ -83,23 +83,22 @@ shinyServer(function(input, output, session) {
     
   timeliness_long_filters <- reactive({
     timeliness_long %>% 
-      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) 
+      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
+      pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
   })
 
   
-  output$timeliness_plot <- renderPlot({
+  output$timeliness_plot <- renderPlotly({
     
-    ggplot(data=timeliness_long_filters(), aes(x=hb_name, y=submission_split, fill=submission_status))+
+    plot <- ggplot(data=timeliness_long_filters(), aes(x=hb_name, y=submission_split, fill=submission_status, customdata=submission_status))+
       geom_col(data = timeliness_filters(), aes(x=hb_name, y=expected_submissions),fill = "#8FBFC2")+
       geom_col(position = "stack",width = 0.3)+
       scale_fill_manual(values = c("#D26146", "#3393DD"))+
       coord_flip()
-  })
     
-  output$timeliness_table <- DT::renderDataTable({
-    req(input$timeliness_plot_click)
-    nearPoints(timeliness, input$timeliness_plot_click)
   })
+   
+
   
 
 ### SMR Audit ---------------------------------------------------------------

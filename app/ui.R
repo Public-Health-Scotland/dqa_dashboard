@@ -81,8 +81,8 @@ shinyUI(navbarPage(
                ),
                
                fluidRow(
-                 plotOutput("timeliness_plot", click = "timeliness_plot_click"),
-                 DT::dataTableOutput("timeliness_table")
+                 plotlyOutput("timeliness_plot"),
+                 verbatimTextOutput("timeliness_rows")
                )
                
                ),
