@@ -68,7 +68,24 @@ shinyUI(navbarPage(
                 
       ),
       
-      tabPanel("Timeliness", "Panel three contents"),
+      tabPanel("Timeliness", 
+               "Panel three contents",
+               
+               fluidRow(
+                 column(6,
+                        selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
+                        ),
+                 column(6,
+                        selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                        )
+               ),
+               
+               fluidRow(
+                 plotOutput("timeliness_plot", click = "timeliness_plot_click"),
+                 DT::dataTableOutput("timeliness_table")
+               )
+               
+               ),
       
       tabPanel("Accuracy Scores from SMR Audits",
                

@@ -11,6 +11,7 @@ library(tibble)
 
 library(DT)
 library(sparkline)
+library(ggplot2)
 
 
 
@@ -20,14 +21,19 @@ library(sparkline)
 
 #Read in Data -----------------------------------------------------------
 
-#smr audit data
+#smr timeliness data
+timeliness <- read_csv(here::here("data", "timeliness.csv"))
 
-smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
+  #long format for stacked bar chart
+timeliness_long <- timeliness %>%
+  pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
   
 #smr completeness data with sparkline plot html
 smr_completeness <- read_csv(here::here("data", "smr_completeness.csv")) %>%
   select(-hbres_currentdate)
 
+#smr audit data
+smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
 
 #smr02 clinical coding data
 error_1_table <- read.csv(here::here("data", "error1.csv"))

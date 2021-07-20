@@ -184,3 +184,31 @@ timeliness <- submissions %>%
          )
 
 write_csv(timeliness, here::here("data", "timeliness.csv"))
+
+
+
+# bullet chart draft code
+library(ggplot2)
+
+timeliness <- read_csv(here::here("data", "timeliness.csv")) 
+
+
+head(timeliness)
+timeliness_long <- timeliness %>%
+  pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
+
+#submissions plot
+
+##the smr and month will depend on user input
+smr00 <- timeliness%>% 
+  filter(smr == "SMR00", event_year == max(event_year), 
+         event_month_name == "Jan") 
+smr00_long <-timeliness_long %>%
+  filter(smr == "SMR00", event_year == max(event_year), 
+         event_month_name == "Jan") 
+
+ggplot(data=smr00_long, aes(x=hb_name, y=submission_split, fill=submission_status))+
+  geom_col(data = smr00, aes(x=hb_name, y=expected_submissions),fill = "#8FBFC2")+
+  geom_col(position = "stack",width = 0.3)+
+  scale_fill_manual(values = c("#D26146", "#3393DD"))+
+  coord_flip()
