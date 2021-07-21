@@ -71,21 +71,42 @@ shinyUI(navbarPage(
       tabPanel("Timeliness", 
                "Panel three contents",
                
-               fluidRow(
-                 column(6,
-                        selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
-                        ),
-                 column(6,
-                        selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
-                        )
-               ),
-               
-               fluidRow(
-                 plotlyOutput("timeliness_plot"),
-                 verbatimTextOutput("timeliness_rows")
-               )
-               
-               ),
+               navbarPage(title = "timeliness plot and table",
+                          
+                          tabPanel("Bullet Chart",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   
+                                   fluidRow(
+                                     column(12,
+                                            plotlyOutput("timeliness_plot")
+                                     )
+                                   )
+                          ),
+                          
+                          tabPanel("Data",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in_2", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in_2", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   fluidRow(
+                                     column(12,
+                                            DT::dataTableOutput("timeliness_rows")
+                                     )
+                                   )
+                          )
+                )
+      ),
       
       tabPanel("Accuracy Scores from SMR Audits",
                

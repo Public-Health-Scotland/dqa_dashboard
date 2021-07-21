@@ -212,3 +212,17 @@ ggplot(data=smr00_long, aes(x=hb_name, y=submission_split, fill=submission_statu
   geom_col(position = "stack",width = 0.3)+
   scale_fill_manual(values = c("#D26146", "#3393DD"))+
   coord_flip()
+
+
+p <- ggplot(data=smr00_long,
+       aes(x=hb_name, y=submission_split, fill=submission_status))+
+  geom_col(data = smr00,
+           aes(x=hb_name, y=expected_submissions),
+           fill = "#8FBFC2", alpha = 0.5, show.legend = TRUE)+
+  geom_col(position = "stack",width = 0.3)+
+  scale_fill_manual(values = c("#D26146", "#3393DD"))+
+  geom_hline(yintercept = mean(smr00$late), color = "#D26146", linetype = "dashed")+
+  geom_hline(yintercept = mean(smr00$on_time), color = "#3393DD", linetype = "dashed")+
+  coord_flip()
+
+p

@@ -82,22 +82,43 @@ shinyServer(function(input, output, session) {
   })
     
   timeliness_long_filters <- reactive({
-    timeliness_long %>% 
+    timeliness %>% 
       filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
       pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
   })
+  # 
+  # mean_on_time <- mean(timeliness_filters()$on_time)
+  # mean_late <- mean(timeliness_filters()$late)
 
   
   output$timeliness_plot <- renderPlotly({
-    
-    plot <- ggplot(data=timeliness_long_filters(), aes(x=hb_name, y=submission_split, fill=submission_status, customdata=submission_status))+
-      geom_col(data = timeliness_filters(), aes(x=hb_name, y=expected_submissions),fill = "#8FBFC2")+
+
+    plot <- ggplot(data=timeliness_long_filters(),
+                   aes(x=hb_name, y=submission_split, fill=submission_status))+
+      geom_col(data = timeliness_filters(),
+               aes(x=hb_name, y=expected_submissions),
+               fill = "#8FBFC2", alpha = 0.5, name = "expected submissions", show.legend = TRUE)+
       geom_col(position = "stack",width = 0.3)+
-      scale_fill_manual(values = c("#D26146", "#3393DD"))+
+      scale_fill_manual(values = c("#D26146", "#3393DD"), name = "Submission Status")+
+      labs(x = "Health Board", y= "Submission Counts")+
+      geom_hline(yintercept = mean(timeliness_filters()$late), 
+                 color = "#D26146", linetype = "dashed")+
+      geom_hline(yintercept = mean(timeliness_filters()$on_time), 
+                 color = "#3393DD", linetype = "dashed")+
       coord_flip()
-    
+
+    plotly::ggplotly(plot) %>%
+      layout(legend = list(x = 0.8, y = 0.9))%>%
+      layout(legend=list(title=list(text='<b> Status </b>')))
+
   })
-   
+
+
+ output$timeliness_rows <- DT::renderDataTable({ 
+   timeliness %>%
+     filter(smr == input$timeliness_smr_in_2, event_month_name == input$timeliness_month_in_2) %>% 
+     select(smr, hb_name, event_year, event_month_name, on_time, late, expected_submissions)
+   })
 
   
 
