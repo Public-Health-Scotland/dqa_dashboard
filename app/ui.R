@@ -69,9 +69,8 @@ shinyUI(navbarPage(
       ),
       
       tabPanel("Timeliness", 
-               "Panel three contents",
                
-               navbarPage(title = "timeliness plot and table",
+               navbarPage(title = "Timeliness",
                           
                           tabPanel("Bullet Chart",
                                    fluidRow(
