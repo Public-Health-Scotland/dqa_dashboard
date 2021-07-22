@@ -322,32 +322,30 @@ shinyServer(function(input, output, session) {
                     )
   })
   
-  rcodes_filter <- reactive({RCodes_table %>%
+  rcodes_filter <- reactive({
     
-    if (input$yearR %in% unique((RCodes_table$year))){
-      filter(year == input$yearR) %>% 
-        rename("Healthboard"="HBName", "Year"="year", 
-               "Respiratory and Chest"="resp_chest", 
-               "Abdominal Pain and Vomiting" = "APV",
-               "Collapse and Convulsions" = "collapse_convuls",
-               "All R codes" = "all",
-               "All Multi-episode Stays" = "n.."
-        )
-    } else {
-      R_Codes_table[order(-year), ] %>% 
-        rename("Healthboard"="HBName", "Year"="year", 
-               "Respiratory and Chest"="resp_chest", 
-               "Abdominal Pain and Vomiting" = "APV",
-               "Collapse and Convulsions" = "collapse_convuls",
-               "All R codes" = "all",
-               "All Multi-episode Stays" = "n.."
-        )
+    if (input$yearR %in% sort(unique(RCodes_table$year))){
+      RCodes_table %>%
+      filter(year == input$yearR)
+    }
+
+    else {
+      RCodes_table[order(-RCodes_table$year), ]
     }
   })
   
+  
   output$RCodes <- DT::renderDataTable({
     
-    dtable_rcodes <- datatable(data = rcodes_filter(),
+    rcodes_data <- rcodes_filter()%>%
+      rename("Healthboard"="HBName", "Year"="year",
+             "Respiratory and Chest"="resp_chest",
+             "Abdominal Pain and Vomiting" = "APV",
+             "Collapse and Convulsions" = "collapse_convuls",
+             "All R codes" = "all",
+             "All Multi-episode Stays" = "n..")
+
+    dtable_rcodes <- datatable(data = rcodes_data,
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -363,7 +361,6 @@ shinyServer(function(input, output, session) {
                                  buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
     )
-    dtable_rcodes
   })
   
   # output$split_1 <- DT::renderDataTable({
