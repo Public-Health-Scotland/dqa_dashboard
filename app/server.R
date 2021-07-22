@@ -44,7 +44,7 @@ shinyServer(function(input, output, session) {
     
     cb <- htmlwidgets::JS('function(){debugger;HTMLWidgets.staticRender();}')
     
-    data <- data_item_completeness()%>%
+    completeness_data <- data_item_completeness()%>%
       select(smr, hb_name, data_item, percent_complete_month, 
              mini_plot, change_symbol, flag_symbol)%>%
       rename("SMR"="smr", "Health Board" = "hb_name", "Data Item" = "data_item",
@@ -52,7 +52,7 @@ shinyServer(function(input, output, session) {
              "Percentage Trend" = "mini_plot", "Change" = "change_symbol",
              "Percentage Threshhold" = "flag_symbol")
     
-    dtable_completeness <- datatable(data = data,
+    dtable_completeness <- datatable(data = completeness_data,
                                      escape = FALSE,
                                      rownames = FALSE,
                                      class="compact stripe hover",
@@ -66,8 +66,6 @@ shinyServer(function(input, output, session) {
                                               )
                                      )%>%
                           spk_add_deps()
-    
-    dtable_completeness
     
   })
 
@@ -86,11 +84,21 @@ shinyServer(function(input, output, session) {
       filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
       pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
   })
-  # 
-  # mean_on_time <- mean(timeliness_filters()$on_time)
-  # mean_late <- mean(timeliness_filters()$late)
-
   
+  
+  
+  output$timeliness_mean_on_time <- renderText({
+    mean_on_time <- round(mean(timeliness_filters()$on_time), 2)
+    paste("Average number of records submitted on time:",mean_on_time, sep = " ")
+  })
+  
+  output$timeliness_mean_late <- renderText(({
+    mean_late <- round(mean(timeliness_filters()$late),2)
+    paste("Average number of records submitted late:",mean_late, sep = " ")
+    
+  }))
+
+
   output$timeliness_plot <- renderPlotly({
 
     plot <- ggplot(data=timeliness_long_filters(),
@@ -101,10 +109,6 @@ shinyServer(function(input, output, session) {
       geom_col(position = "stack",width = 0.3)+
       scale_fill_manual(values = c("#D26146", "#3393DD"), name = "Submission Status")+
       labs(x = "Health Board", y= "Submission Counts")+
-      geom_hline(yintercept = mean(timeliness_filters()$late), 
-                 color = "#D26146", linetype = "dashed")+
-      geom_hline(yintercept = mean(timeliness_filters()$on_time), 
-                 color = "#3393DD", linetype = "dashed")+
       coord_flip()
 
     plotly::ggplotly(plot) %>%
@@ -115,9 +119,25 @@ shinyServer(function(input, output, session) {
 
 
  output$timeliness_rows <- DT::renderDataTable({ 
-   timeliness %>%
-     filter(smr == input$timeliness_smr_in_2, event_month_name == input$timeliness_month_in_2) %>% 
-     select(smr, hb_name, event_year, event_month_name, on_time, late, expected_submissions)
+   
+   timeliness_data <- timeliness %>%
+     filter(smr == input$timeliness_smr_in_2, 
+            event_month_name == input$timeliness_month_in_2) %>% 
+     select(smr, hb_name, event_year, event_month_name,
+            on_time, late, expected_submissions)
+   
+    dtable_timeliness <- datatable(data = timeliness_data,
+                                   escape = FALSE,
+                                   rownames = FALSE,
+                                   class="compact stripe hover",
+                                   selection = 'none',
+                                   options = list(
+                                     rowsGroup = list(0),
+                                     columnDefs = list(
+                                       list(className = 'dt-center', targets = "_all")
+                                        )
+                                      )
+                                   )
    })
 
   
@@ -171,15 +191,15 @@ shinyServer(function(input, output, session) {
   })
   
   ##Render final table
-  output$audit_data <- DT::renderDataTable({
-    data2 <- filters2() %>%
+  output$audit_table <- DT::renderDataTable({
+    audit_data <- filters2() %>%
       select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, 
              accuracy_hospital)%>%
       rename("SMR" = "audit", "Year"="year", "Health Board" = "healthboard",
              "Hospital" = "hospital","Data Item" = "data_item_name", 
              "Accuracy Scotland" = "accuracy_scotland", 
              "Accuracy Hospital" = "accuracy_hospital")
-    dtable_audit <- datatable(data = data2,
+    dtable_audit <- datatable(data = audit_data,
                               escape = FALSE,
                               rownames = FALSE,
                               class="compact stripe hover",

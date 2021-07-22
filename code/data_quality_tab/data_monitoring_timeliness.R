@@ -25,13 +25,13 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
   select(HB, HBName)%>%
   clean_names()
 
-hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
-                                c("S08200002", "No Fixed Abode"),
-                                c("S08200003", "Not Known"),
-                                c("S08200004", "Outside U.K."))) %>%
-  rename("hb"="V1", "hb_name"="V2")
+# hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
+#                                 c("S08200002", "No Fixed Abode"),
+#                                 c("S08200003", "Not Known"),
+#                                 c("S08200004", "Outside U.K."))) %>%
+#   rename("hb"="V1", "hb_name"="V2")
 
-hb_lookup <- rbind(hb2019, hb_other)
+# hb_lookup <- rbind(hb2019, hb_other)
 
 
 # Extract data from SMR analysis views ------------------------------------
@@ -169,7 +169,9 @@ submissions <- append_source(df_names)%>%
                              TRUE ~ "SMR04")
          )%>%
   rename("smr" = "source")%>%
-  left_join(hb_lookup, by = c("hbres_currentdate"="hb"))
+  filter(hbres_currentdate != "S08200001", hbres_currentdate != "S08200002", 
+         hbres_currentdate != "S08200003", hbres_currentdate != "S08200004") %>% 
+  left_join(hb2019, by = c("hbres_currentdate"="hb"))
 
 
 # Expected submissions & backlog ------------------------------------------
@@ -177,52 +179,43 @@ submissions <- append_source(df_names)%>%
 expected_submissions_df <- read_csv(here::here("data", "expected_submissions.csv"))
 
 timeliness <- submissions %>% 
-  left_join(expected_submissions_df) %>%
-  mutate(diff_obs_exp = total_submissions - expected_submissions,
-         percent_on_time = on_time/expected_submissions*100,
-         percent_complete = total_submissions/expected_submissions*100
-         )
+  left_join(expected_submissions_df)
 
 write_csv(timeliness, here::here("data", "timeliness.csv"))
 
 
 
-# bullet chart draft code
-library(ggplot2)
-
-timeliness <- read_csv(here::here("data", "timeliness.csv")) 
 
 
-head(timeliness)
-timeliness_long <- timeliness %>%
-  pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
+# plot draft --------------------------------------------------------------
 
-#submissions plot
+# library(ggplot2)
+# 
+# timeliness <- read_csv(here::here("data", "timeliness.csv")) 
+# 
+# timeliness_long <- timeliness %>%
+#   pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
+# 
+# #submissions plot
+# 
+# ##the smr and month will depend on user input
+# smr00 <- timeliness%>% 
+#   filter(smr == "SMR00", event_year == max(event_year), 
+#          event_month_name == "Jan") 
+# smr00_long <-timeliness_long %>%
+#   filter(smr == "SMR00", event_year == max(event_year), 
+#          event_month_name == "Jan") 
+# 
+# 
+# ggplot(data=smr00_long,
+#        aes(x=hb_name, y=submission_split, fill=submission_status))+
+#   geom_col(data = smr00,
+#            aes(x=hb_name, y=expected_submissions),
+#            fill = "#8FBFC2", alpha = 0.5, show.legend = TRUE)+
+#   geom_col(position = "stack",width = 0.3)+
+#   scale_fill_manual(values = c("#D26146", "#3393DD"))+
+#   geom_hline(yintercept = mean(smr00$late), color = "#D26146", linetype = "dashed")+
+#   geom_hline(yintercept = mean(smr00$on_time), color = "#3393DD", linetype = "dashed")+
+#   coord_flip()
 
-##the smr and month will depend on user input
-smr00 <- timeliness%>% 
-  filter(smr == "SMR00", event_year == max(event_year), 
-         event_month_name == "Jan") 
-smr00_long <-timeliness_long %>%
-  filter(smr == "SMR00", event_year == max(event_year), 
-         event_month_name == "Jan") 
 
-ggplot(data=smr00_long, aes(x=hb_name, y=submission_split, fill=submission_status))+
-  geom_col(data = smr00, aes(x=hb_name, y=expected_submissions),fill = "#8FBFC2")+
-  geom_col(position = "stack",width = 0.3)+
-  scale_fill_manual(values = c("#D26146", "#3393DD"))+
-  coord_flip()
-
-
-p <- ggplot(data=smr00_long,
-       aes(x=hb_name, y=submission_split, fill=submission_status))+
-  geom_col(data = smr00,
-           aes(x=hb_name, y=expected_submissions),
-           fill = "#8FBFC2", alpha = 0.5, show.legend = TRUE)+
-  geom_col(position = "stack",width = 0.3)+
-  scale_fill_manual(values = c("#D26146", "#3393DD"))+
-  geom_hline(yintercept = mean(smr00$late), color = "#D26146", linetype = "dashed")+
-  geom_hline(yintercept = mean(smr00$on_time), color = "#3393DD", linetype = "dashed")+
-  coord_flip()
-
-p
