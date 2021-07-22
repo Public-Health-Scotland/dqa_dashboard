@@ -1,4 +1,4 @@
-hbres_currentdate,event_year,event_month,event_month_name,total_submissions,on_time,late,smr,hb_name,expected_submissions
+hbres_currentdate,event_year,event_month,event_month_name,total_submissions,before_deadline,after_deadline,smr,hb_name,expected_submissions
 S08000015,2021,1,Jan,7625,7620,5,SMR00,NHS Ayrshire and Arran,6700
 S08000016,2021,1,Jan,2389,2350,39,SMR00,NHS Borders,2203
 S08000017,2021,1,Jan,1751,1732,19,SMR00,NHS Dumfries and Galloway,1698

@@ -82,19 +82,20 @@ shinyServer(function(input, output, session) {
   timeliness_long_filters <- reactive({
     timeliness %>% 
       filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
-      pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
+      pivot_longer(cols = c(before_deadline, after_deadline), names_to = "submission_status", 
+                   values_to = "submission_count_split")
   })
   
   
   
   output$timeliness_mean_on_time <- renderText({
-    mean_on_time <- round(mean(timeliness_filters()$on_time), 2)
+    mean_on_time <- round(mean(timeliness_filters()$before_deadline), 2)
     paste("Average number of records submitted on time:",mean_on_time, sep = " ")
   })
   
   output$timeliness_mean_late <- renderText(({
-    mean_late <- round(mean(timeliness_filters()$late),2)
-    paste("Average number of records submitted late:",mean_late, sep = " ")
+    mean_late <- round(mean(timeliness_filters()$after_deadline),2)
+    paste("Average number of records submitted after the deadline:",mean_late, sep = " ")
     
   }))
 
@@ -102,7 +103,7 @@ shinyServer(function(input, output, session) {
   output$timeliness_plot <- renderPlotly({
 
     plot <- ggplot(data=timeliness_long_filters(),
-                   aes(x=hb_name, y=submission_split, fill=submission_status))+
+                   aes(x=hb_name, y=submission_count_split, fill=submission_status))+
       geom_col(data = timeliness_filters(),
                aes(x=hb_name, y=expected_submissions),
                fill = "#8FBFC2", alpha = 0.5, name = "expected submissions", show.legend = TRUE)+
@@ -124,7 +125,7 @@ shinyServer(function(input, output, session) {
      filter(smr == input$timeliness_smr_in_2, 
             event_month_name == input$timeliness_month_in_2) %>% 
      select(smr, hb_name, event_year, event_month_name,
-            on_time, late, expected_submissions)
+            before_deadline, after_deadline, expected_submissions)
    
     dtable_timeliness <- datatable(data = timeliness_data,
                                    escape = FALSE,

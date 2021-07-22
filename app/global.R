@@ -25,9 +25,6 @@ library(plotly)
 #smr timeliness data
 timeliness <- read_csv(here::here("data", "timeliness.csv"))
 
-  #long format for stacked bar chart
-timeliness_long <- timeliness %>%
-  pivot_longer(cols = c(on_time, late), names_to = "submission_status", values_to = "submission_split")
   
 #smr completeness data with sparkline plot html
 smr_completeness <- read_csv(here::here("data", "smr_completeness.csv")) %>%
