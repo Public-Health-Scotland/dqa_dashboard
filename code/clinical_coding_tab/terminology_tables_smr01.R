@@ -49,7 +49,6 @@ all_multi_episodes <- last_episode2 %>%
   group_by(HBName, year) %>%
    summarise(n())
   
-all_multi_episodes
 
 RCodes <- last_episode2 %>% 
   group_by(HBName, year) %>% 
@@ -73,10 +72,9 @@ RCodes <- last_episode2 %>%
     all = sum(r_code == 1) 
   )
 
-RCodes
 
 RCodes_multi <- left_join(RCodes, all_multi_episodes)
-RCodes_multi
+
   
 write_csv(RCodes_multi, here::here("data", "RCodes.csv"))
 
