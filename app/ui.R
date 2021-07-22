@@ -83,6 +83,16 @@ shinyUI(navbarPage(
                                    ),
                                    
                                    fluidRow(
+                                     column(6,
+                                            textOutput("timeliness_mean_on_time")
+                                            ),
+                                     column(6,
+                                            textOutput("timeliness_mean_late")
+                                            )
+                                     
+                                   ),
+                                   
+                                   fluidRow(
                                      column(12,
                                             plotlyOutput("timeliness_plot")
                                      )
@@ -125,7 +135,7 @@ shinyUI(navbarPage(
                
                fluidRow(
                  column(12,
-                        DT::dataTableOutput("audit_data")
+                        DT::dataTableOutput("audit_table")
                   )
                )
       )
