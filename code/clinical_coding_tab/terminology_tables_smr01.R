@@ -30,7 +30,7 @@ last_episode <- diagnosis1 %>%
   filter(epinum == last_epi & last_epi > 1) %>% #filter through the last episode record for multi-episode stays (ie. last episode > 1)
   mutate(r_code = case_when(str_detect(main_condition, "^R") ~ 1, 
                             TRUE ~ 0))
-last_episode
+
 
 #Read in hb_lookup file:
 hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
