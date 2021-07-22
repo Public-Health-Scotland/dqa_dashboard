@@ -25,14 +25,6 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
   select(HB, HBName)%>%
   clean_names()
 
-# hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
-#                                 c("S08200002", "No Fixed Abode"),
-#                                 c("S08200003", "Not Known"),
-#                                 c("S08200004", "Outside U.K."))) %>%
-#   rename("hb"="V1", "hb_name"="V2")
-
-# hb_lookup <- rbind(hb2019, hb_other)
-
 
 # Extract data from SMR analysis views ------------------------------------
 
@@ -170,7 +162,7 @@ submissions <- append_source(df_names)%>%
          )%>%
   rename("smr" = "source")%>%
   filter(hbres_currentdate != "S08200001", hbres_currentdate != "S08200002", 
-         hbres_currentdate != "S08200003", hbres_currentdate != "S08200004") %>% 
+         hbres_currentdate != "S08200003", hbres_currentdate != "S08200004") %>% #exclude events outside Scotland
   left_join(hb2019, by = c("hbres_currentdate"="hb"))
 
 
