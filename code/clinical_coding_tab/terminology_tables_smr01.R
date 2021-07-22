@@ -45,6 +45,12 @@ last_episode2 <- last_episode1 %>%
     year = (substr(discharge_date, 1, 4))
   )
 
+all_multi_episodes <- last_episode2 %>% 
+  group_by(HBName, year) %>%
+   summarise(n())
+  
+all_multi_episodes
+
 RCodes <- last_episode2 %>% 
   group_by(HBName, year) %>% 
   filter(r_code == 1) %>%
@@ -63,11 +69,15 @@ RCodes <- last_episode2 %>%
       str_detect(main_condition, "^R55") | str_detect(main_condition, "^R56") ~ 'collapse/convuls',
       TRUE ~ 'other')) %>% 
   summarise(
-    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls'), all = sum(r_code == 1)
+    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls'), 
+    all = sum(r_code == 1) 
   )
 
 RCodes
 
-write_csv(RCodes, here::here("data", "RCodes.csv"))
+RCodes_multi <- left_join(RCodes, all_multi_episodes)
+RCodes_multi
+  
+write_csv(RCodes_multi, here::here("data", "RCodes.csv"))
 
  

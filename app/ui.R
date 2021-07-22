@@ -152,6 +152,6 @@ shinyUI(navbarPage(
                                    DT::dataTableOutput("query")))),
       tabPanel("SMR01 ICD-10 Symptom R Codes", 
                selectInput('yearR', 'Choose year:', 
-               choices = sort(unique(RCodes_table$year))),
+               choices = c('All', sort(unique(RCodes_table$year))),
                DT::dataTableOutput("RCodes"))
-    ))))
+    )))))

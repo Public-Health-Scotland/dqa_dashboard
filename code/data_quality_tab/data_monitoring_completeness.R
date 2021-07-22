@@ -145,7 +145,7 @@ flag_df <- create_flag_symbol(smr_completeness)
 
 #Join the plots to the main table and filter through last month's figures only
 smr_completeness_2 <- smr_completeness %>%
-  filter(event_month == month(Sys.Date())-1) %>% 
+  filter(event_month == month(Sys.Date())-1) %>%
   left_join(completeness_plots) %>%
   left_join(change_df)%>%
   left_join(flag_df)
