@@ -322,16 +322,32 @@ shinyServer(function(input, output, session) {
                     )
   })
   
+  rcodes_filter <- reactive({RCodes_table %>%
+    
+    if (input$yearR %in% unique((RCodes_table$year))){
+      filter(year == input$yearR) %>% 
+        rename("Healthboard"="HBName", "Year"="year", 
+               "Respiratory and Chest"="resp_chest", 
+               "Abdominal Pain and Vomiting" = "APV",
+               "Collapse and Convulsions" = "collapse_convuls",
+               "All R codes" = "all",
+               "All Multi-episode Stays" = "n.."
+        )
+    } else {
+      R_Codes_table[order(-year), ] %>% 
+        rename("Healthboard"="HBName", "Year"="year", 
+               "Respiratory and Chest"="resp_chest", 
+               "Abdominal Pain and Vomiting" = "APV",
+               "Collapse and Convulsions" = "collapse_convuls",
+               "All R codes" = "all",
+               "All Multi-episode Stays" = "n.."
+        )
+    }
+  })
+  
   output$RCodes <- DT::renderDataTable({
-    rcodes_filter <- RCodes_table %>%
-      filter(year == input$yearR)%>%
-      rename("Healthboard"="HBName", "Year"="year", 
-             "Respiratory and Chest"="resp_chest", 
-             "Abdominal Pain and Vomiting" = "APV",
-             "Collapse and Convulsions" = "collapse_convuls",
-             "All R codes" = "all"
-             )
-    dtable_rcodes <- datatable(data = rcodes_filter,
+    
+    dtable_rcodes <- datatable(data = rcodes_filter(),
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -347,7 +363,7 @@ shinyServer(function(input, output, session) {
                                  buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
     )
-
+    dtable_rcodes
   })
   
   # output$split_1 <- DT::renderDataTable({
