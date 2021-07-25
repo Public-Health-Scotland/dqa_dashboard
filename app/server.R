@@ -395,9 +395,9 @@ shinyServer(function(input, output, session) {
   #   error1map
   # })
   # 
-  # output$error2map <- renderLeaflet({
-  #   error2map
-  # })
+  output$countmap <- renderLeaflet({
+    countmap
+  })
   # 
   # output$error3map <- renderLeaflet({
   #   error3map
