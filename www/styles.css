@@ -1,6 +1,10 @@
 /* Style sidebars/well panels */
 .well {background-color:#ffffff; border: 0 solid #336699;
        padding: 5px; box-shadow: none; }
+       
+.nav-pills > li.active > a{ background-color: #433684;
+  
+}
 
 /* Navigation bar following PHS colour scheme */    
 .navbar-default {color: #ffffff; background-color: #433684; }

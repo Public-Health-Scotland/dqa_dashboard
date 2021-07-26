@@ -5,12 +5,12 @@ sb_width <- c(3,9)
 shinyUI(  
 navbarPage(
   
-  title = div(tags$a(img(src="phs_logo.png", width=120, alt = "Public Health Scotland logo"), 
+  title = div(tags$a(img(src=here::here("www", "phs_logo.png"), width=120, alt = "Public Health Scotland logo"), 
                      href= "https://www.publichealthscotland.scot/",
                      target = "_blank"),
               style = "position: relative; top: -10px;"), 
   
-  theme = "styles.css",
+  header = tags$head(includeCSS(here::here("www", "styles.css"))),
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
   
