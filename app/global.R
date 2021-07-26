@@ -11,6 +11,7 @@ library(tibble)
 
 library(DT)
 library(sparkline)
+library(base64enc)
 
 
 
