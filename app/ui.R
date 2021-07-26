@@ -2,9 +2,13 @@
  
 sb_width <- c(3,9)
 
-shinyUI(navbarPage(
+shinyUI(  
+navbarPage(
   
-  title = "Data Quality Dashboard",
+  title = div(tags$a(img(src="phs_logo.png", width=120, alt = "Public Health Scotland logo"), 
+                     href= "https://www.publichealthscotland.scot/",
+                     target = "_blank"),
+              style = "position: relative; top: -10px;"), 
   
   theme = "styles.css",
   
@@ -32,7 +36,8 @@ shinyUI(navbarPage(
                
               fluidRow(
                 column(4, 
-                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))),
+                       img(src ="phs_logo.png")
                 ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
