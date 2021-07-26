@@ -102,19 +102,23 @@ shinyServer(function(input, output, session) {
 
   output$timeliness_plot <- renderPlotly({
 
-    plot <- ggplot(data=timeliness_long_filters(),
-                   aes(x=hb_name, y=submission_count_split, fill=submission_status))+
+     plot <- ggplot(data=timeliness_long_filters()
+                   )+
       geom_col(data = timeliness_filters(),
-               aes(x=hb_name, y=expected_submissions),
-               fill = "#8FBFC2", alpha = 0.5, name = "expected submissions", show.legend = TRUE)+
-      geom_col(position = "stack",width = 0.3)+
-      scale_fill_manual(values = c("#D26146", "#3393DD"), name = "Submission Status")+
+               aes(x=hb_name, y=expected_submissions, fill = "expected_submissions"),
+               alpha = 0.6, name = "expected submissions", show.legend = TRUE)+
+      geom_col(position = "stack",width = 0.3, 
+               aes(x=hb_name, y=submission_count_split, fill=submission_status))+
+      scale_fill_manual(values = c("#C73918", "#0078D4","#80BCEA"),
+                        name = "Legend")+
       labs(x = "Health Board", y= "Submission Counts")+
       coord_flip()
 
     plotly::ggplotly(plot) %>%
       layout(legend = list(x = 0.8, y = 0.9))%>%
       layout(legend=list(title=list(text='<b> Status </b>')))
+    
+    
 
   })
 
