@@ -2,10 +2,12 @@
  
 sb_width <- c(3,9)
 
+b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), mime = 'image/png')
+
 shinyUI(  
 navbarPage(
   
-  title = div(tags$a(img(src=here::here("www", "phs_logo.png"), width=120, alt = "Public Health Scotland logo"), 
+  title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
                      href= "https://www.publichealthscotland.scot/",
                      target = "_blank"),
               style = "position: relative; top: -10px;"), 
