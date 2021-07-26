@@ -14,7 +14,7 @@ shinyUI(navbarPage(
     navlistPanel( 
        id = "tabset",
        widths = sb_width,
-       tabPanel("Summary Data Profile", leafletOutput('countmap')),
+       tabPanel("Summary Data Profile", leafletOutput('countmap', width = "50%", height = 800)),
        tabPanel("Info Panel", "Panel two contents")
            )
     ),
