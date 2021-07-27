@@ -16,7 +16,7 @@ library(sparkline)
 
 library(leaflet)    #both libraries necessary for creating maps
 library(rgdal)
-
+library(leaflegend)
 
 #Read in Data -----------------------------------------------------------
 
@@ -98,7 +98,7 @@ countmap <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
               weight = 2,
               popup = paste0("Percentage of patients: ", ShapeFile@data$percentage)) %>% # thickness of the shape outlines
   addLegend("bottomright", pal = colourpal1, values = ~percentage,
-            title = "Percentage of SMR01 Patients (06/20 - 06/21)",
+            title = "SMR01 (06/20-06/21)",
             labFormat = labelFormat(suffix = " %"), #add the percentage suffix
             opacity = 1)
 countmap
