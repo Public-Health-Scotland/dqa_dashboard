@@ -15,8 +15,8 @@ count_submissions <- function(data, date_col, deadlines){
       filter(event_month==i) %>% 
       summarize(
         total_submissions = n(),
-        on_time = sum(date_record_inserted <= deadlines[i]), 
-        late = sum(date_record_inserted > deadlines[i])
+        before_deadline = sum(date_record_inserted <= deadlines[i]), 
+        after_deadline = sum(date_record_inserted > deadlines[i])
       )%>%
       ungroup()
     

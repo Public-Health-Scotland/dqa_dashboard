@@ -57,19 +57,103 @@ shinyServer(function(input, output, session) {
                                      rownames = FALSE,
                                      class="compact stripe hover",
                                      selection = 'none',
+                                     extensions = 'Buttons',
                                      options = list(
-                                             rowsGroup = list(0),
-                                             drawCallback =  cb,
-                                             columnDefs = list(
-                                               list(className = 'dt-center', targets = "_all")
-                                                          )
-                                              )
-                                     )%>%
-                          spk_add_deps()
+                                       rowsGroup = list(0),
+                                       drawCallback =  cb,
+                                       columnDefs = list(
+                                         list(className = 'dt-center', targets = "_all")
+                                       ),
+                                       pageLength = 10,
+                                       dom = 'Bfrtip',
+                                       buttons = c('copy', 'csv', 'excel', 'pdf')
+                                     )
+    )%>%
+      spk_add_deps()
     
     dtable_completeness
     
   })
+
+
+  
+
+### SMR Timeliness ----------------------------------------------------------
+
+  timeliness_filters <- reactive({
+    timeliness %>%
+      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in)
+  })
+    
+  timeliness_long_filters <- reactive({
+    timeliness %>% 
+      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
+      pivot_longer(cols = c(before_deadline, after_deadline), names_to = "submission_status", 
+                   values_to = "submission_count_split")
+  })
+  
+  
+  
+  output$timeliness_mean_on_time <- renderText({
+    mean_on_time <- round(mean(timeliness_filters()$before_deadline), 2)
+    paste("Average number of records submitted on time:",mean_on_time, sep = " ")
+  })
+  
+  output$timeliness_mean_late <- renderText(({
+    mean_late <- round(mean(timeliness_filters()$after_deadline),2)
+    paste("Average number of records submitted after the deadline:",mean_late, sep = " ")
+    
+  }))
+
+
+  output$timeliness_plot <- renderPlotly({
+
+     plot <- ggplot(data=timeliness_long_filters()
+                   )+
+      geom_col(data = timeliness_filters(),
+               aes(x=hb_name, y=expected_submissions, fill = "expected_submissions"),
+               alpha = 0.6, name = "expected submissions", show.legend = TRUE)+
+      geom_col(position = "stack",width = 0.3, 
+               aes(x=hb_name, y=submission_count_split, fill=submission_status))+
+      scale_fill_manual(values = c("#C73918", "#0078D4","#80BCEA")
+                        )+
+      labs(x = "Health Board", y= "Submission Counts")+
+      coord_flip()
+
+    plotly::ggplotly(plot) %>%
+      layout(legend = list(x = 0.72, y = 0.95))%>%
+      layout(legend=list(title=list(text='<b> Legend </b>')))
+    
+    
+
+  })
+
+
+ output$timeliness_rows <- DT::renderDataTable({ 
+   
+   timeliness_data <- timeliness %>%
+     filter(smr == input$timeliness_smr_in_2, 
+            event_month_name == input$timeliness_month_in_2) %>% 
+     select(smr, hb_name, event_year, event_month_name,
+            before_deadline, after_deadline, expected_submissions)
+   
+    dtable_timeliness <- datatable(data = timeliness_data,
+                                   escape = FALSE,
+                                   rownames = FALSE,
+                                   class="compact stripe hover",
+                                   selection = 'none',
+                                   extensions = 'Buttons',
+                                   options = list(
+                                     rowsGroup = list(0),
+                                     columnDefs = list(
+                                       list(className = 'dt-center', targets = "_all")
+                                     ),
+                                     pageLength = 10,
+                                     dom = 'Bfrtip',
+                                     buttons = c('copy', 'csv', 'excel', 'pdf')
+                                   )
+                          )
+   })
 
   
 
@@ -122,15 +206,15 @@ shinyServer(function(input, output, session) {
   })
   
   ##Render final table
-  output$audit_data <- DT::renderDataTable({
-    data2 <- filters2() %>%
+  output$audit_table <- DT::renderDataTable({
+    audit_data <- filters2() %>%
       select(audit, year, healthboard, hospital, data_item_name, accuracy_scotland, 
              accuracy_hospital)%>%
       rename("SMR" = "audit", "Year"="year", "Health Board" = "healthboard",
              "Hospital" = "hospital","Data Item" = "data_item_name", 
              "Accuracy Scotland" = "accuracy_scotland", 
              "Accuracy Hospital" = "accuracy_hospital")
-    dtable_audit <- datatable(data = data2,
+    dtable_audit <- datatable(data = audit_data,
                               escape = FALSE,
                               rownames = FALSE,
                               class="compact stripe hover",
@@ -141,6 +225,7 @@ shinyServer(function(input, output, session) {
                                 columnDefs = list(
                                 list(className = 'dt-center', targets = "_all")
                                  ),
+                                pageLength = 15,
                                 dom = 'Bfrtip',
                                 buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
@@ -149,7 +234,6 @@ shinyServer(function(input, output, session) {
   })
   
   
-
 # Clinical Coding Discrepancies SMR02 -------------------------------------
 
   
