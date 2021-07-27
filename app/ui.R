@@ -20,7 +20,8 @@ navbarPage(
     navlistPanel( 
        id = "tabset",
        widths = sb_width,
-       tabPanel("Summary Data Profile", "Panel one contents"),
+       tabPanel("Summary Data Profile", verbatimTextOutput('SMRtext'), verbatimTextOutput("text1"),
+                leafletOutput('countmap', width = "68%", height = 600)),
        tabPanel("Info Panel", "Panel two contents")
            )
     ),
@@ -31,7 +32,6 @@ navbarPage(
     navlistPanel(
       id = "tabset",
       widths = sb_width,
-      tabPanel("Home", "Panel one contents"),
       
       tabPanel("Completeness", 
                "Completeness percentage per data item, calculated for events taking place in the latest complete month.",
