@@ -275,13 +275,24 @@ shinyServer(function(input, output, session) {
                                  )
   })
   
+  error2_filter <- reactive({
+    
+    if (input$year2 %in% unique(error_2_table$year)){
+      error_2_table %>%
+        filter(year == input$year2)
+    }
+    
+    else {
+      error_2_table[order(-error_2_table$year), ]
+    }
+  })
+  
   output$error_2 <- DT::renderDataTable({
-    error2_filter <- error_2_table %>%
-      filter(year == input$year2)%>%
+    error2_data <- error2_filter() %>%
       rename("Healthboard"="HBName", "Error Count"="error2",
              "Year"="year", "Percentage"="percentage_2")
     
-    dtable_error2 <- datatable(data = error2_filter,
+    dtable_error2 <- datatable(data = error2_data,
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -300,14 +311,23 @@ shinyServer(function(input, output, session) {
     )
   })
 
-  
+  error3_filter <- reactive({
+    
+    if (input$year3 %in% unique(error_3_table$year)){
+      error_3_table %>%
+        filter(year == input$year3)
+    }
+    
+    else {
+      error_3_table[order(-error_3_table$year), ]
+    }
+  })
   
   output$error_3 <- DT::renderDataTable({
-   error3_filter <- error_3_table %>%
-      filter(year == input$year3)%>%
+   error3_data <- error3_filter() %>%
       rename("Healthboard"="HBName", "Error Count"="error3",
              "Year"="year", "Percentage"="percentage_3")
-   dtable_error3 <- datatable(data = error3_filter,
+   dtable_error3 <- datatable(data = error3_data,
                               escape = FALSE,
                               rownames = FALSE,
                               class="compact stripe hover",
@@ -324,14 +344,23 @@ shinyServer(function(input, output, session) {
                               )
                     )
   })
-  
+  error4_filter <- reactive({
+    
+    if (input$year4 %in% unique(error_4_table$year)){
+      error_4_table %>%
+        filter(year == input$year4)
+    }
+    
+    else {
+      error_4_table[order(-error_4_table$year), ]
+    }
+  })
   
   output$error_4 <- DT::renderDataTable({
-    error4_filter <- error_4_table %>%
-      filter(year == input$year4)%>%
+    error4_data <- error4_filter() %>%
       rename("Healthboard"="HBName", "Error Count"="error4",
              "Year"="year", "Percentage"="percentage_4")
-    dtable_error4 <- datatable(data = error4_filter,
+    dtable_error4 <- datatable(data = error4_data,
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -347,15 +376,26 @@ shinyServer(function(input, output, session) {
                                  buttons = c('copy', 'csv', 'excel', 'pdf')
                                )
                       )
-  })  
+  })
+  
+  error5_filter <- reactive({
+    
+    if (input$year5 %in% unique(error_5_table$year)){
+      error_5_table %>%
+        filter(year == input$year5)
+    }
+    
+    else {
+      error_5_table[order(-error_5_table$year), ]
+    }
+  })
   
   
   output$error_5 <- DT::renderDataTable({
-    error5_filter <- error_5_table %>%
-      filter(year == input$year5)%>%
+    error5_data <- error5_filter() %>%
       rename("Healthboard"="HBName", "Error Count"="error5",
              "Year"="year", "Percentage"="percentage_5")
-    dtable_error5 <- datatable(data = error5_filter,
+    dtable_error5 <- datatable(data = error5_data,
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -372,13 +412,23 @@ shinyServer(function(input, output, session) {
                                )
                     )
   })
+  error6_filter <- reactive({
+    
+    if (input$year6 %in% unique(error_6_table$year)){
+      error_6_table %>%
+        filter(year == input$year6)
+    }
+    
+    else {
+      error_6_table[order(-error_6_table$year), ]
+    }
+  })
   
   output$error_6 <- DT::renderDataTable({
-   error6_filter <- error_6_table %>%
-      filter(year == input$year6)%>%
+   error6_data <- error6_filter() %>%
       rename("Healthboard"="HBName", "Error Count"="error6",
              "Year"="year", "Percentage"="percentage_6")
-   dtable_error6 <- datatable(data = error6_filter,
+   dtable_error6 <- datatable(data = error6_data,
                               escape = FALSE,
                               rownames = FALSE,
                               class="compact stripe hover",
@@ -397,12 +447,23 @@ shinyServer(function(input, output, session) {
     
   })
   
+  query1_filter <- reactive({
+    
+    if (input$yearQ %in% unique(query_1_table$year)){
+      query_1_table %>%
+        filter(year == input$yearQ)
+    }
+    
+    else {
+      query_1_table[order(-query_1_table$year), ]
+    }
+  })
+  
   output$query <- DT::renderDataTable({
-    query_filter <- query_1_table %>%
-      filter(year == input$yearQ)%>%
+    query1_data <- query1_filter() %>%
       rename("Healthboard"="HBName", "Query Count"="query_count",
              "Year"="year", "Percentage"="query_percentage")
-    dtable_query <- datatable(data = query_filter,
+    dtable_query <- datatable(data = query1_data,
                               escape = FALSE,
                               rownames = FALSE,
                               class="compact stripe hover",
