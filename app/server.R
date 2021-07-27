@@ -373,7 +373,39 @@ shinyServer(function(input, output, session) {
           "It is a flexible functionality that can accommodate many types of data to suit user needs.", sep="\n")
   })
   
-  
+  output$SMRtext <- renderText({
+    paste(
+        'Healthcare data for individual patients is collected as a series of Scottish Morbidity Records (SMR).',
+        'The record type denotes the general type of healthcare received during an episode and/or the nature or status of the patient.',
+        ' ',
+        'SMR01 -  is an episode-based patient record relating to all inpatients and day cases discharged from non-obstetric and non-psychiatric specialties.', 
+        'A record is generated when a patient completes an episode of inpatient or day case care.', 
+        'Examples include discharge home from hospital, transfer to another clinician (either at the same or a different hospital),',
+        'a change of specialty (either under the same or a different clinician), or death.', 
+        'There are now over 1,000,000 SMR01s generated each year. Data collected include patient identifiable and demographic details,',
+        'episode management details and general clinical information.', 
+        'Currently diagnoses are recorded using the ICD-10 classification and operations are recorded using the OPCS-4 classification.', 
+        'Information such as waiting time for inpatient/day case admission and length of stay may be derived from the episode management data.',
+        ' ',
+        'SMR00 - relates to all outpatients (new and follow-up) in specialties other than Accident & Emergency (A&E), and Genito-Urinary Medicine.',
+        'SMR00 includes follow-up as well as new attendances and DNAs where computer recording is in place.',
+        ' ',
+        
+        'SMR02 - is an episode based patient record relating to all inpatients and day cases discharged from Obstetric specialties in the NHS Scotland.',
+        'A record is generated for each episode, of which there are about 125,000 each year; about 50% are non-delivery episodes.',
+        'The basic data set for the mother includes Patient Identification and Demographic information, Episode Management information and',
+        'Maternity Clinical information. The basic data set for the baby includes birthweight, sex, apgar score and neonatal indicator', 
+        '(Refer to SMR Data Manual for codes and values). New data items including drug misuse during current pregnancy and alcohol consumption',
+        'will be added to the SMR02 dataset in October 2002.',
+        ' ',
+        'SMR04 - is an episode based patient record relating to all inpatients and day cases admitted to and discharged from Mental Health specialties.',
+        'SMR04 consists of two parts:',
+          '•	Admission information including status on admission and diagnosis information.',
+          '•	Discharge information (which includes a copy of the admission details) including diagnosis information.',
+        'About 32,000 admission, and 32,000 discharge records are generated each year. Analyses can be carried out on admissions,' ,
+        'discharges and residents from the available data.',
+        sep="\n")
+  })
   # output$split_1 <- DT::renderDataTable({
   #   DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   # },
