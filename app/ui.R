@@ -1,5 +1,8 @@
 #set sidebar width
-sb_width <- c(3,9)
+
+ 
+sb_width <- c(2,10)
+
 
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), mime = 'image/png')
 
@@ -22,10 +25,79 @@ navbarPage(
        id = "tabset",
        widths = sb_width,
        tabPanel("Summary Data Profile", verbatimTextOutput("text1"),
-                leafletOutput('countmap', width = "60%", height = 600)),
-       tabPanel("Info Panel", verbatimTextOutput('SMRtext'))
-           )
-    ),
+                leafletOutput('countmap', width = "68%", height = 600)),
+       tabPanel("Info", 
+                fluidRow(
+                  column(9,
+                         tags$b("About the data"),
+                         br(),
+                         verbatimTextOutput('SMRtext')
+                  ),
+                  column(3,
+                         tags$b("More information about SMR Datasets"),
+                         br(),
+                         tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR00-Outpatient-Attendance/",
+                                "SMR00", target = "_blank"
+                         ),
+                         br(),
+                         tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR01-General-Acute-Inpatient-and-Day-Case/",
+                                "SMR01", target = "_blank"
+                         ),
+                         br(),
+                         tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR02-Maternity-Inpatient-and-Day-Case/",
+                                "SMR02", target = "_blank"
+                         ),
+                         br(),
+                         tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR04-Mental-Health-Inpatient-and-Day-Case/",
+                                "SMR04", target = "_blank"
+                         ),
+                         br(),
+                         tags$a(href = "https://www.ndc.scot.nhs.uk/Dictionary-A-Z/",
+                                "Data Dictionary for definitions of SMR data items", target = "_blank"
+                         ),
+                         br(),
+                         br(),
+                         tags$b("Data support and monitoring of national datasets"),
+                         br(),
+                         tags$a(href = "https://www.isdscotland.org/Products-and-Services/Data-Support-and-Monitoring/",
+                                "Data Support and Monitoring Homepage", target = "_blank"
+                                ),
+                         br(),
+                         tags$a(href = "https://www.isdscotland.org/products-and-Services/Data-Support-and-Monitoring/SMR-Completeness/",
+                                "SMR Completeness", target = "_blank"
+                                ),
+                         br(),
+                         tags$a(href = "https://www.isdscotland.org/products-and-Services/Data-Support-and-Monitoring/SMR-Timeliness/",
+                                "SMR Timeliness", target = "_blank"
+                                ),
+                         br(),
+                         br(),
+                         tags$b("Information and support on Scottish clinical coding standards"),
+                         br(),
+                         tags$a(href = "https://www.isdscotland.org/Products-and-Services/Terminology-Services/Clinical-Coding-Guidelines/",
+                                "Scottish clinical coding standards", target = "_blank"
+                                  ),
+                         br(),
+                         tags$a(href = "https://www.isdscotland.org/Products-and-Services/Terminology-Services/Coding-Information-for-Analysts/",
+                                "Clinical coding information for data users", target = "_blank"
+                                ),
+                         br(),
+                         br(),
+                         tags$b("Information on data quality assessments"),
+                         br(),
+                         tags$a(href = "https://beta.isdscotland.org/products-and-services/data-quality-assurance/dqa-assessments/",
+                                "Data quality audit and assessment reports", target = "_blank"
+                                ),
+                         br(),
+                         tags$a(href = "https://beta.isdscotland.org/products-and-services/data-quality-assurance/dqa-assessing-accuracy/",
+                                "How data accuracy is assessed on audits", target = "_blank"
+                                )
+                  )
+                )
+        )
+    )
+  ),
+
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for data quality
     
@@ -35,7 +107,13 @@ navbarPage(
       widths = sb_width,
       
       tabPanel("Completeness", 
-               "Completeness percentage per data item, calculated for events taking place in the latest complete month.",
+               "This completeness metric portrays the degree to which required data is enterred in SMR datasets 
+               (ie. percentage of completed entries per data item out of the total number of records submitted).",
+               br(),
+               "All of the data items available in this table are recorded on a mandatory basis,
+               except for main_operation which is conditionally mandatory and should only be recorded if an operation has taken place.",
+               br(),
+               br(),
                
               fluidRow(
                 column(4, 
@@ -76,6 +154,12 @@ navbarPage(
       ),
       
       tabPanel("Timeliness", 
+               "The Scottish Government target for SMR submission to ISD is 6 weeks (42 days) following discharge/transfer/death or clinic attendance.",
+               br(),
+               "The following bullet chart and data give an overview of the number of records submitted by the target date, 
+               as well as the expected number of records from each healthboard.",
+               br(),
+               br(),
                
                navbarPage(title = "Timeliness",
                           

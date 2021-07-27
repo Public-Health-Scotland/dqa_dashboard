@@ -528,8 +528,9 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  #text
-  
+
+# Text outputs ------------------------------------------------------------
+
   output$text1 <- renderText({
     paste("This map shows the percentage of general/acute inpatient day cases (SMR01) in the last year (06/20-06/21) across Scotland.", 
           "It is a flexible functionality that can accommodate many types of data to suit user needs.", sep="\n")
@@ -568,6 +569,11 @@ shinyServer(function(input, output, session) {
         'discharges and residents from the available data.',
         sep="\n")
   })
+  
+  
+  
+  
+  
   # output$split_1 <- DT::renderDataTable({
   #   DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
   # },
