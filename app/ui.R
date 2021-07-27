@@ -1,5 +1,4 @@
 #set sidebar width
- 
 sb_width <- c(3,9)
 
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), mime = 'image/png')
