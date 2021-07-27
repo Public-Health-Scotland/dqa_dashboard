@@ -44,7 +44,7 @@ shinyServer(function(input, output, session) {
     
     cb <- htmlwidgets::JS('function(){debugger;HTMLWidgets.staticRender();}')
     
-    completeness_data <- data_item_completeness()%>%
+    data <- data_item_completeness()%>%
       select(smr, hb_name, data_item, percent_complete_month, 
              mini_plot, change_symbol, flag_symbol)%>%
       rename("SMR"="smr", "Health Board" = "hb_name", "Data Item" = "data_item",
@@ -52,7 +52,7 @@ shinyServer(function(input, output, session) {
              "Percentage Trend" = "mini_plot", "Change" = "change_symbol",
              "Percentage Threshhold" = "flag_symbol")
     
-    dtable_completeness <- datatable(data = completeness_data,
+    dtable_completeness <- datatable(data = data,
                                      escape = FALSE,
                                      rownames = FALSE,
                                      class="compact stripe hover",
@@ -60,6 +60,7 @@ shinyServer(function(input, output, session) {
                                      extensions = 'Buttons',
                                      options = list(
                                        rowsGroup = list(0),
+                                       drawCallback =  cb,
                                        columnDefs = list(
                                          list(className = 'dt-center', targets = "_all")
                                        ),
@@ -67,8 +68,10 @@ shinyServer(function(input, output, session) {
                                        dom = 'Bfrtip',
                                        buttons = c('copy', 'csv', 'excel', 'pdf')
                                      )
-                            )%>%
-                            spk_add_deps()
+    )%>%
+      spk_add_deps()
+    
+    dtable_completeness
     
   })
 
