@@ -2,11 +2,17 @@
  
 sb_width <- c(3,9)
 
-shinyUI(navbarPage(
+b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), mime = 'image/png')
+
+shinyUI(  
+navbarPage(
   
-  title = "Data Quality Dashboard",
+  title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
+                     href= "https://www.publichealthscotland.scot/",
+                     target = "_blank"),
+              style = "position: relative; top: -10px;"), 
   
-  theme = "styles.css",
+  header = tags$head(includeCSS(here::here("www", "styles.css"))),
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
   
@@ -32,7 +38,8 @@ shinyUI(navbarPage(
                
               fluidRow(
                 column(4, 
-                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))),
+                       img(src ="phs_logo.png")
                 ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
@@ -199,6 +206,8 @@ shinyUI(navbarPage(
                                    DT::dataTableOutput("query")))),
       tabPanel("SMR01 ICD-10 Symptom R Codes", 
                selectInput('yearR', 'Choose year:', 
-               choices = sort(unique(RCodes_table$year))),
-               DT::dataTableOutput("RCodes"))
+               choices = c('(All)', sort(unique(RCodes_table$year)))
+               ),
+               DT::dataTableOutput("RCodes")
+      )
     ))))
