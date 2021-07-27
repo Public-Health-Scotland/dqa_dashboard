@@ -238,14 +238,25 @@ shinyServer(function(input, output, session) {
 
   
 ###the following lines relate to SMR02 coding discrepancies
+  
+  error1_filter <- reactive({
+    
+    if (input$year1 %in% unique(error_1_table$year)){
+      error_1_table %>%
+        filter(year == input$year1)
+    }
+    
+    else {
+      error_1_table[order(-error_1_table$year), ]
+    }
+  })
 
   output$error_1 <- DT::renderDataTable({
-    error1_filter <- error_1_table %>%
-      filter(year == input$year1)%>%
+    error1_data <- error1_filter() %>% 
       rename("Healthboard"="HBName", "Error Count"="error1",
              "Year"="year", "Percentage"="percentage_1")
     
-    dtable_error1 <- datatable(data = error1_filter,
+    dtable_error1 <- datatable(data = error1_data,
                                escape = FALSE,
                                rownames = FALSE,
                                class="compact stripe hover",
@@ -408,6 +419,9 @@ shinyServer(function(input, output, session) {
                               )
                     )
   })
+ 
+  
+  # R Codes -----------------------------------------------------------------
   
   rcodes_filter <- reactive({
     
@@ -421,6 +435,9 @@ shinyServer(function(input, output, session) {
     }
   })
   
+
+
+
   
   output$RCodes <- DT::renderDataTable({
     
