@@ -12,6 +12,8 @@ navbarPage(
                      target = "_blank"),
               style = "position: relative; top: -10px;"), 
   
+  windowTitle = "Data Quality Dashboard",
+  
   header = tags$head(includeCSS(here::here("www", "styles.css"))),
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
@@ -38,8 +40,7 @@ navbarPage(
                
               fluidRow(
                 column(4, 
-                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))),
-                       img(src ="phs_logo.png")
+                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
                 ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
