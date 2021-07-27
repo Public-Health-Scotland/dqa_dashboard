@@ -99,13 +99,15 @@ colourpal1 <- colorNumeric("RdPu", domain = ShapeFile@data$percentage) #create a
 # 
 # 
 countmap <- leaflet(ShapeFile, options = leafletOptions(zoomControl = FALSE,
-                                                         dragging = FALSE)) %>%
+                                                         dragging = FALSE,
+                                                        minZoom = 6,
+                                                        maxZoom = 6)) %>%
   addPolygons(fillColor = ~colourpal1(percentage), # our colour palette function
               fillOpacity = 0.7, # the opacity of the fill colour
               color = "#2e2e30", # colour of shape outlines
               weight = 2,
               popup = paste0("Percentage of patients: ", ShapeFile@data$percentage)) %>% # thickness of the shape outlines
-  addLegend("bottomright", pal = colourpal1, values = ~percentage,
+  addLegend("topleft", pal = colourpal1, values = ~percentage,
             title = "SMR01 (06/20-06/21)",
             labFormat = labelFormat(suffix = " %"), #add the percentage suffix
             opacity = 1)

@@ -20,7 +20,7 @@ navbarPage(
        id = "tabset",
        widths = sb_width,
        tabPanel("Summary Data Profile", verbatimTextOutput("text1"),
-                leafletOutput('countmap', width = "68%", height = 600)),
+                leafletOutput('countmap', width = "60%", height = 600)),
        tabPanel("Info Panel", verbatimTextOutput('SMRtext'))
            )
     ),
@@ -157,7 +157,13 @@ navbarPage(
                                      p(
                                        'Pre-existing diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘pre-existing diabetes.’'
-                                     ), selectInput('year1', 'Choose year:', 
+                                     ), 
+                                      p(
+                                       'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                     ),
+                                   selectInput('year1', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(error_1_table$year))),
                                                     selected = max(unique(error_1_table$year))
                                                     ),
@@ -166,8 +172,14 @@ navbarPage(
                                      p(
                                        'Gestational diabetes is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘gestational diabetes’.'
-                                     ), selectInput('year2', 'Choose year:', 
-                                                    choices = sort(unique(error_2_table$year)),
+                                     ), 
+                                   p(
+                                     'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                   ),
+                                   selectInput('year2', 'Choose year:', 
+                                                    choices = c("(All)",sort(unique(error_2_table$year))),
                                                     selected = max(unique(error_2_table$year))
                                                     ),
                                    DT::dataTableOutput("error_2")),
@@ -176,8 +188,13 @@ navbarPage(
                                        'Diabetes of unspecified onset is recorded in SMR02 diabetes value, 
                                        but the recorded ICD10 diabetes code is not ‘unspecified diabetes in pregnancy.’'
                                      ),
+                                     p(
+                                       'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                     ),
                                    selectInput('year3', 'Choose year:', 
-                                               choices = sort(unique(error_3_table$year)),
+                                               choices = c("(All)",sort(unique(error_3_table$year))),
                                                selected = max(unique(error_3_table$year))
                                                ),
                                    DT::dataTableOutput("error_3")),
@@ -186,25 +203,36 @@ navbarPage(
                                        'Patient recorded as NOT having diabetes in SMR02 diabetes value, 
                                        but ICD10 diabetes O24 code is recorded.'
                                      ),
+                                   p(
+                                     'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                   ),
                                    selectInput('year4', 'Choose year:', 
-                                               choices = sort(unique(error_4_table$year)),
+                                               choices = c("(All)",sort(unique(error_4_table$year))),
                                                selected = max(unique(error_4_table$year))
                                                ),
                                    DT::dataTableOutput("error_4")),
                           tabPanel("Error 5",
                                    p(
                                        'Mandatory SMR02 diabetes value is not recorded.'
-                                     ),                                    
+                                     ),
                                    selectInput('year5', 'Choose year:', 
-                                               choices = sort(unique(error_5_table$year)),
+                                               choices = c("(All)",sort(unique(error_5_table$year))),
                                                selected = max(unique(error_5_table$year))
                                                ),
                                    DT::dataTableOutput("error_5")),
                           tabPanel("Error 6",
                                      p(
                                        'ICD10 E10-E14 is recorded instead of ICD10 O24.'
-                                     ), selectInput('year6', 'Choose year:', 
-                                                    choices = sort(unique(error_6_table$year)),
+                                     ), 
+                                   p(
+                                     'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                   ),
+                                   selectInput('year6', 'Choose year:', 
+                                                    choices = c("(All)",sort(unique(error_6_table$year))),
                                                     selected = max(unique(error_6_table$year))
                                                     ),
                                    DT::dataTableOutput("error_6")),
@@ -212,8 +240,14 @@ navbarPage(
                                    p(
                                        'SMR02 diabetes value recorded as ‘not known’, 
                                        ICD10 diabetes code O24 is recorded.'
-                                     ), selectInput('yearQ', 'Choose year:', 
-                                                    choices = sort(unique(query_1_table$year)),
+                                     ), 
+                                   p(
+                                     'The denominator in the percentage column is the total number of instances in which the error
+                                       could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
+                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                   ),
+                                   selectInput('yearQ', 'Choose year:', 
+                                                    choices = c("(All)",sort(unique(query_1_table$year))),
                                                     selected = max(unique(query_1_table$year))
                                                     ),
                                    DT::dataTableOutput("query")))),
