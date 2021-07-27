@@ -25,14 +25,6 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
   select(HB, HBName)%>%
   clean_names()
 
-hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
-                                c("S08200002", "No Fixed Abode"),
-                                c("S08200003", "Not Known"),
-                                c("S08200004", "Outside U.K."))) %>%
-  rename("hb"="V1", "hb_name"="V2")
-
-hb_lookup <- rbind(hb2019, hb_other)
-
 
 # Extract data from SMR analysis views ------------------------------------
 
@@ -169,7 +161,9 @@ submissions <- append_source(df_names)%>%
                              TRUE ~ "SMR04")
          )%>%
   rename("smr" = "source")%>%
-  left_join(hb_lookup, by = c("hbres_currentdate"="hb"))
+  filter(hbres_currentdate != "S08200001", hbres_currentdate != "S08200002", 
+         hbres_currentdate != "S08200003", hbres_currentdate != "S08200004") %>% #exclude events outside Scotland
+  left_join(hb2019, by = c("hbres_currentdate"="hb"))
 
 
 # Expected submissions & backlog ------------------------------------------
@@ -177,10 +171,7 @@ submissions <- append_source(df_names)%>%
 expected_submissions_df <- read_csv(here::here("data", "expected_submissions.csv"))
 
 timeliness <- submissions %>% 
-  left_join(expected_submissions_df) %>%
-  mutate(diff_obs_exp = total_submissions - expected_submissions,
-         percent_on_time = on_time/expected_submissions*100,
-         percent_complete = total_submissions/expected_submissions*100
-         )
+  left_join(expected_submissions_df)
 
 write_csv(timeliness, here::here("data", "timeliness.csv"))
+
