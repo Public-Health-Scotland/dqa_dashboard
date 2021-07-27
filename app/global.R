@@ -11,8 +11,12 @@ library(tibble)
 
 library(DT)
 library(sparkline)
+
 library(ggplot2)
 library(plotly)
+
+library(base64enc)
+
 
 
 

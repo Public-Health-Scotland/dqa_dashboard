@@ -30,7 +30,7 @@ last_episode <- diagnosis1 %>%
   filter(epinum == last_epi & last_epi > 1) %>% #filter through the last episode record for multi-episode stays (ie. last episode > 1)
   mutate(r_code = case_when(str_detect(main_condition, "^R") ~ 1, 
                             TRUE ~ 0))
-last_episode
+
 
 #Read in hb_lookup file:
 hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
@@ -44,6 +44,11 @@ last_episode2 <- last_episode1 %>%
   mutate(
     year = (substr(discharge_date, 1, 4))
   )
+
+all_multi_episodes <- last_episode2 %>% 
+  group_by(HBName, year) %>%
+   summarise(n())
+  
 
 RCodes <- last_episode2 %>% 
   group_by(HBName, year) %>% 
@@ -63,11 +68,14 @@ RCodes <- last_episode2 %>%
       str_detect(main_condition, "^R55") | str_detect(main_condition, "^R56") ~ 'collapse/convuls',
       TRUE ~ 'other')) %>% 
   summarise(
-    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls'), all = sum(r_code == 1)
+    resp_chest = sum(resp_chest == 'resp/chest'), APV = sum(APV == 'AP&V'), collapse_convuls = sum(collapse_convuls == 'collapse/convuls'), 
+    all = sum(r_code == 1) 
   )
 
-RCodes
 
-write_csv(RCodes, here::here("data", "RCodes.csv"))
+RCodes_multi <- left_join(RCodes, all_multi_episodes)
+
+  
+write_csv(RCodes_multi, here::here("data", "RCodes.csv"))
 
  
