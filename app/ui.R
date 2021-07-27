@@ -75,7 +75,54 @@ navbarPage(
                 
       ),
       
-      tabPanel("Timeliness", "Panel three contents"),
+      tabPanel("Timeliness", 
+               
+               navbarPage(title = "Timeliness",
+                          
+                          tabPanel("Bullet Chart",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   
+                                   fluidRow(
+                                     column(6,
+                                            textOutput("timeliness_mean_on_time")
+                                            ),
+                                     column(6,
+                                            textOutput("timeliness_mean_late")
+                                            )
+                                     
+                                   ),
+                                   
+                                   fluidRow(
+                                     column(12,
+                                            plotlyOutput("timeliness_plot")
+                                     )
+                                   )
+                          ),
+                          
+                          tabPanel("Data",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in_2", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in_2", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   fluidRow(
+                                     column(12,
+                                            DT::dataTableOutput("timeliness_rows")
+                                     )
+                                   )
+                          )
+                )
+      ),
       
       tabPanel("Accuracy Scores from SMR Audits",
                
@@ -95,7 +142,7 @@ navbarPage(
                
                fluidRow(
                  column(12,
-                        DT::dataTableOutput("audit_data")
+                        DT::dataTableOutput("audit_table")
                   )
                )
       )
