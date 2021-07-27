@@ -2,11 +2,17 @@
  
 sb_width <- c(3,9)
 
-shinyUI(navbarPage(
+b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), mime = 'image/png')
+
+shinyUI(  
+navbarPage(
   
-  title = "Data Quality Dashboard",
+  title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
+                     href= "https://www.publichealthscotland.scot/",
+                     target = "_blank"),
+              style = "position: relative; top: -10px;"), 
   
-  theme = "styles.css",
+  header = tags$head(includeCSS(here::here("www", "styles.css"))),
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
   
@@ -32,7 +38,8 @@ shinyUI(navbarPage(
                
               fluidRow(
                 column(4, 
-                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                       selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))),
+                       img(src ="phs_logo.png")
                 ),
                 column(4,
                        selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
@@ -68,7 +75,54 @@ shinyUI(navbarPage(
                 
       ),
       
-      tabPanel("Timeliness", "Panel three contents"),
+      tabPanel("Timeliness", 
+               
+               navbarPage(title = "Timeliness",
+                          
+                          tabPanel("Bullet Chart",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   
+                                   fluidRow(
+                                     column(6,
+                                            textOutput("timeliness_mean_on_time")
+                                            ),
+                                     column(6,
+                                            textOutput("timeliness_mean_late")
+                                            )
+                                     
+                                   ),
+                                   
+                                   fluidRow(
+                                     column(12,
+                                            plotlyOutput("timeliness_plot")
+                                     )
+                                   )
+                          ),
+                          
+                          tabPanel("Data",
+                                   fluidRow(
+                                     column(6,
+                                            selectInput("timeliness_smr_in_2", "SMR", choices = c(unique(timeliness$smr)))
+                                     ),
+                                     column(6,
+                                            selectInput("timeliness_month_in_2", "Month", choices = c(unique(timeliness$event_month_name)))
+                                     )
+                                   ),
+                                   fluidRow(
+                                     column(12,
+                                            DT::dataTableOutput("timeliness_rows")
+                                     )
+                                   )
+                          )
+                )
+      ),
       
       tabPanel("Accuracy Scores from SMR Audits",
                
@@ -88,7 +142,7 @@ shinyUI(navbarPage(
                
                fluidRow(
                  column(12,
-                        DT::dataTableOutput("audit_data")
+                        DT::dataTableOutput("audit_table")
                   )
                )
       )
