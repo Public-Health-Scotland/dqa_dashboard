@@ -56,51 +56,51 @@ SMR02,2017-2018,Ayrshire & Arran,Crosshouse,Birthweight (Babies 1 to 3),100,99
 SMR02,2017-2018,Ayrshire & Arran,Crosshouse,Neonatal Indicator (Babies 1 to 3),97.33,93.4
 SMR02,2017-2018,Ayrshire & Arran,Crosshouse,Feed on Discharge (Babies 1 to 3),97.33,92.2
 SMR02,2017-2018,Ayrshire & Arran,Crosshouse,First Feed Given (Babies 1 to 3),93.33,92
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Condition (3-digit),93,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Condition (4-digit),90,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Admission Type,97,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Admission Transfer From,89.74,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Discharge Type,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Discharge Transfer To,92,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Consultant/HCP Responsible for Care,97.14,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Date of Main Operation,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Ethnicity,90,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Specialty,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Condition (3-digit),97,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Condition (4-digit),97,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Operation (4-digit),95,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Admission Type,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Admission Transfer From,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Discharge Transfer To,50,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Consultant/HCP Responsible for Care,94.19,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Date of Main Operation,98,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Clinician Responsible for Main Operation,95.92,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Ethnicity,99,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Specialty,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Condition (3-digit),98,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Condition (4-digit),95,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Operation (4-digit),97,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Admission Type,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Admission Transfer From,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Discharge Type,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Discharge Transfer To,95,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Consultant/HCP Responsible for Care,98.88,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Date of Main Operation,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Clinician Responsible for Main Operation,93.94,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Ethnicity,96,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Specialty,100,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Condition (3-digit),93,92.5
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Condition (4-digit),90,88.8
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Admission Type,97,92.5
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Admission Transfer From,89.74,62.6
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Discharge Type,100,81
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Discharge Transfer To,92,63.3
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Consultant/HCP Responsible for Care,97.14,94.5
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Date of Main Operation,100,98.2
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Ethnicity,90,98.2
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Specialty,100,99.1
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Ayrshire & Arran,Arran War Memorial,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Condition (3-digit),97,92.5
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Condition (4-digit),97,88.8
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Main Operation (4-digit),95,94.3
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Admission Transfer From,100,62.6
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Discharge Type,100,81
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Discharge Transfer To,50,63.3
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Consultant/HCP Responsible for Care,94.19,94.5
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Date of Main Operation,98,98.2
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Clinician Responsible for Main Operation,95.92,95
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Ethnicity,99,98.2
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Specialty,100,99.1
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Ayrshire & Arran,Ayr Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Condition (3-digit),98,92.5
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Condition (4-digit),95,88.8
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Admission Type,100,92.5
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Admission Transfer From,100,62.6
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Discharge Type,100,81
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Discharge Transfer To,95,63.3
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Consultant/HCP Responsible for Care,98.88,94.5
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Date of Main Operation,100,98.2
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Clinician Responsible for Main Operation,93.94,95
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Ethnicity,96,98.2
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Specialty,100,99.1
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Ayrshire & Arran,Crosshouse,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Ayrshire & Arran,Ailsa Hospital,Main Condition (3-digits),97,75
 SMR04,2015-2016,Ayrshire & Arran,Ailsa Hospital,Main Condition (4-digits),97,66
 SMR04,2015-2016,Ayrshire & Arran,Ailsa Hospital,Other Conditions (3-digits),92,67
@@ -179,21 +179,21 @@ SMR02,2017-2018,Borders,Borders General Hospital,Birthweight (Babies 1 to 3),98,
 SMR02,2017-2018,Borders,Borders General Hospital,Neonatal Indicator (Babies 1 to 3),98,93.4
 SMR02,2017-2018,Borders,Borders General Hospital,Feed on Discharge (Babies 1 to 3),94,92.2
 SMR02,2017-2018,Borders,Borders General Hospital,First Feed Given (Babies 1 to 3),42,92
-SMR01,2018-2019,Borders,Borders General Hospital,Main Condition (3-digit),90,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Main Condition (4-digit),90,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Main Operation (4-digit),97,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Admission Type,100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Admission Transfer From,24,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Discharge Type,98,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Discharge Transfer To,68,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Consultant/HCP Responsible for Care,97,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Specialty,100,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Borders,Borders General Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Borders,Borders General Hospital,Main Condition (3-digit),90,92.5
+SMR01,2018-2019,Borders,Borders General Hospital,Main Condition (4-digit),90,88.8
+SMR01,2018-2019,Borders,Borders General Hospital,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Borders,Borders General Hospital,Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Borders,Borders General Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Borders,Borders General Hospital,Admission Transfer From,24,62.6
+SMR01,2018-2019,Borders,Borders General Hospital,Discharge Type,98,81
+SMR01,2018-2019,Borders,Borders General Hospital,Discharge Transfer To,68,63.3
+SMR01,2018-2019,Borders,Borders General Hospital,Consultant/HCP Responsible for Care,97,94.5
+SMR01,2018-2019,Borders,Borders General Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Borders,Borders General Hospital,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Borders,Borders General Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Borders,Borders General Hospital,Specialty,100,99.1
+SMR01,2018-2019,Borders,Borders General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Borders,Borders General Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Borders,Galavale House,Main Condition (3-digits),79,75
 SMR04,2015-2016,Borders,Galavale House,Main Condition (4-digits),43,66
 SMR04,2015-2016,Borders,Galavale House,Other Conditions (3-digits),81,67
@@ -245,36 +245,36 @@ SMR02,2017-2018,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Birthwei
 SMR02,2017-2018,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Neonatal Indicator (Babies 1 to 3),95.92,93.4
 SMR02,2017-2018,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Feed on Discharge (Babies 1 to 3),91.67,92.2
 SMR02,2017-2018,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,First Feed Given (Babies 1 to 3),89.8,92
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Condition (3-digit),94,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Condition (4-digit),91,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Admission Type,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Admission Transfer From,97.87,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Discharge Type,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Discharge Transfer To,98.94,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Consultant/HCP Responsible for Care,99,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Date of Main Operation,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Clinician Responsible for Main Operation,96,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Ethnicity,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Specialty,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Condition (3-digit),83,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Condition (4-digit),75,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Operation (4-digit),95,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Admission Type,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Admission Transfer From,97.5,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Discharge Transfer To,97.5,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Consultant/HCP Responsible for Care,92.5,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Specialty,95,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Condition (3-digit),94,92.5
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Condition (4-digit),91,88.8
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Admission Type,100,92.5
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Admission Transfer From,97.87,62.6
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Discharge Type,100,81
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Discharge Transfer To,98.94,63.3
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Consultant/HCP Responsible for Care,99,94.5
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Date of Main Operation,100,98.2
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Clinician Responsible for Main Operation,96,95
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Ethnicity,100,98.2
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Specialty,100,99.1
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Dumfries & Galloway,Dumfries & Galloway Royal Infirmary,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Condition (3-digit),83,92.5
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Condition (4-digit),75,88.8
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Main Operation (4-digit),95,94.3
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Admission Transfer From,97.5,62.6
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Discharge Type,100,81
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Discharge Transfer To,97.5,63.3
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Consultant/HCP Responsible for Care,92.5,94.5
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Specialty,95,99.1
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Dumfries & Galloway,Galloway Community Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Dumfries & Galloway,Midpark Hospital,Main Condition (3-digits),80,75
 SMR04,2015-2016,Dumfries & Galloway,Midpark Hospital,Main Condition (4-digits),63,66
 SMR04,2015-2016,Dumfries & Galloway,Midpark Hospital,Other Conditions (3-digits),90,67
@@ -329,36 +329,36 @@ SMR02,2017-2018,Fife,Forth Park Hospital,Birthweight (Babies 1 to 3),98.67,99
 SMR02,2017-2018,Fife,Forth Park Hospital,Neonatal Indicator (Babies 1 to 3),94.67,93.4
 SMR02,2017-2018,Fife,Forth Park Hospital,Feed on Discharge (Babies 1 to 3),94.67,92.2
 SMR02,2017-2018,Fife,Forth Park Hospital,First Feed Given (Babies 1 to 3),96,92
-SMR01,2018-2019,Fife,Victoria Hospital,Main Condition (3-digit),98,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Main Condition (4-digit),95,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Main Operation (4-digit),100,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Admission Type,98.97,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Admission Transfer From,62.89,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Discharge Type,98,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Discharge Transfer To,66,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Consultant/HCP Responsible for Care,89.36,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Clinician Responsible for Main Operation,97.98,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Ethnicity,97,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Specialty,100,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Fife,Victoria Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Condition (3-digit),97,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Condition (4-digit),97,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Admission Type,100,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Admission Transfer From,81.67,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Discharge Transfer To,81.67,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Consultant/HCP Responsible for Care,89.09,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Clinician Responsible for Main Operation,87.5,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Ethnicity,96.67,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Specialty,100,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Fife,Queen Margaret Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Fife,Victoria Hospital,Main Condition (3-digit),98,92.5
+SMR01,2018-2019,Fife,Victoria Hospital,Main Condition (4-digit),95,88.8
+SMR01,2018-2019,Fife,Victoria Hospital,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Fife,Victoria Hospital,Main Operation (4-digit),100,94.3
+SMR01,2018-2019,Fife,Victoria Hospital,Admission Type,98.97,92.5
+SMR01,2018-2019,Fife,Victoria Hospital,Admission Transfer From,62.89,62.6
+SMR01,2018-2019,Fife,Victoria Hospital,Discharge Type,98,81
+SMR01,2018-2019,Fife,Victoria Hospital,Discharge Transfer To,66,63.3
+SMR01,2018-2019,Fife,Victoria Hospital,Consultant/HCP Responsible for Care,89.36,94.5
+SMR01,2018-2019,Fife,Victoria Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Fife,Victoria Hospital,Clinician Responsible for Main Operation,97.98,95
+SMR01,2018-2019,Fife,Victoria Hospital,Ethnicity,97,98.2
+SMR01,2018-2019,Fife,Victoria Hospital,Specialty,100,99.1
+SMR01,2018-2019,Fife,Victoria Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Fife,Victoria Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Condition (3-digit),97,92.5
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Condition (4-digit),97,88.8
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Admission Transfer From,81.67,62.6
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Discharge Type,100,81
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Discharge Transfer To,81.67,63.3
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Consultant/HCP Responsible for Care,89.09,94.5
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Clinician Responsible for Main Operation,87.5,95
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Ethnicity,96.67,98.2
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Specialty,100,99.1
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Fife,Queen Margaret Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Fife,Whyteman's Brae Hospital,Main Condition (3-digits),85,75
 SMR04,2015-2016,Fife,Whyteman's Brae Hospital,Main Condition (4-digits),75,66
 SMR04,2015-2016,Fife,Whyteman's Brae Hospital,Other Conditions (3-digits),73,67
@@ -434,21 +434,21 @@ SMR02,2017-2018,Forth Valley,Forth Valley Royal Hospital,Birthweight (Babies 1 t
 SMR02,2017-2018,Forth Valley,Forth Valley Royal Hospital,Neonatal Indicator (Babies 1 to 3),93,93.4
 SMR02,2017-2018,Forth Valley,Forth Valley Royal Hospital,Feed on Discharge (Babies 1 to 3),85,92.2
 SMR02,2017-2018,Forth Valley,Forth Valley Royal Hospital,First Feed Given (Babies 1 to 3),100,92
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Condition (3-digit),91,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Condition (4-digit),84,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Operation (3-digit),93,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Operation (4-digit),92,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Admission Type,95.92,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Admission Transfer From,83.84,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Discharge Transfer To,72,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Consultant/HCP Responsible for Care,89.13,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Clinician Responsible for Main Operation,96,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Ethnicity,97,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Specialty,96,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Condition (3-digit),91,92.5
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Condition (4-digit),84,88.8
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Operation (3-digit),93,97.5
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Main Operation (4-digit),92,94.3
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Admission Type,95.92,92.5
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Admission Transfer From,83.84,62.6
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Discharge Type,100,81
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Discharge Transfer To,72,63.3
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Consultant/HCP Responsible for Care,89.13,94.5
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Clinician Responsible for Main Operation,96,95
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Ethnicity,97,98.2
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Specialty,96,99.1
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Forth Valley,Forth Valley Royal Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Forth Valley,Forth Valley Royal Hospital,Main Condition (3-digits),74,75
 SMR04,2015-2016,Forth Valley,Forth Valley Royal Hospital,Main Condition (4-digits),67,66
 SMR04,2015-2016,Forth Valley,Forth Valley Royal Hospital,Other Conditions (3-digits),69,67
@@ -602,126 +602,126 @@ SMR02,2017-2018,Greater Glasgow & Clyde,Queen Elizabeth University Hospital,Birt
 SMR02,2017-2018,Greater Glasgow & Clyde,Queen Elizabeth University Hospital,Neonatal Indicator (Babies 1 to 3),93.33,93.4
 SMR02,2017-2018,Greater Glasgow & Clyde,Queen Elizabeth University Hospital,Feed on Discharge (Babies 1 to 3),84,92.2
 SMR02,2017-2018,Greater Glasgow & Clyde,Queen Elizabeth University Hospital,First Feed Given (Babies 1 to 3),97.33,92
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Condition (3-digit),89,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Condition (4-digit),86,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Operation (3-digit),99,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Admission Type,90.48,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Admission Transfer From,35.25,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Discharge Type,53,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Discharge Transfer To,46.88,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Consultant/HCP Responsible for Care,98.17,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Date of Main Operation,99.28,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Clinician Responsible for Main Operation,93.43,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Ethnicity,99,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Specialty,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Condition (3-digit),91,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Condition (4-digit),87,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Operation (3-digit),97,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Operation (4-digit),93,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Admission Type,98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Admission Transfer From,46.24,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Discharge Type,57.78,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Discharge Transfer To,46.67,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Consultant/HCP Responsible for Care,92.94,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Date of Main Operation,98.95,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Clinician Responsible for Main Operation,95.51,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Ethnicity,99,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Specialty,97.89,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Condition (3-digit),92,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Condition (4-digit),88,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Operation (3-digit),99,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Operation (4-digit),97,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Admission Type,95.52,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Admission Transfer From,36.51,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Discharge Type,54.89,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Discharge Transfer To,41.38,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Consultant/HCP Responsible for Care,92.04,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Date of Main Operation,97.84,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Clinician Responsible for Main Operation,94.62,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Ethnicity,99.29,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Specialty,98.48,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Condition (3-digit),90,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Condition (4-digit),82,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Operation (3-digit),96,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Operation (4-digit),87,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Admission Type,95.18,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Admission Transfer From,46.84,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Discharge Type,56.18,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Discharge Transfer To,55.17,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Consultant/HCP Responsible for Care,95.51,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Date of Main Operation,98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Clinician Responsible for Main Operation,92.93,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Ethnicity,99,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Specialty,98.97,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Condition (3-digit),96,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Condition (4-digit),92,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Operation (3-digit),96,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Operation (4-digit),89,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Admission Type,94.29,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Admission Transfer From,28.77,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Discharge Type,18.84,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Discharge Transfer To,91.55,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Consultant/HCP Responsible for Care,96.83,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Date of Main Operation,95.95,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Clinician Responsible for Main Operation,90.91,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Ethnicity,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Specialty,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Condition (3-digit),92,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Condition (4-digit),88,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Operation (3-digit),100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Operation (4-digit),98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Admission Type,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Admission Transfer From,74,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Discharge Type,93.94,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Discharge Transfer To,39.39,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Consultant/HCP Responsible for Care,82.42,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Date of Main Operation,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Clinician Responsible for Main Operation,84.38,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Ethnicity,96.97,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Specialty,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Condition (3-digit),95,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Condition (4-digit),88,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Operation (4-digit),92,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Admission Type,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Admission Transfer From,55.36,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Discharge Type,77.78,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Discharge Transfer To,46.3,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Consultant/HCP Responsible for Care,91.07,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Clinician Responsible for Main Operation,90,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Specialty,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Condition (3-digit),91,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Condition (4-digit),86,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Operation (4-digit),91,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Admission Type,96.35,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Admission Transfer From,59.42,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Discharge Type,73.38,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Discharge Transfer To,48.2,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Consultant/HCP Responsible for Care,84.06,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Date of Main Operation,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Clinician Responsible for Main Operation,85.07,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Ethnicity,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Specialty,100,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Condition (3-digit),89,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Condition (4-digit),86,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Operation (3-digit),99,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Admission Type,90.48,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Admission Transfer From,35.25,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Discharge Type,53,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Discharge Transfer To,46.88,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Consultant/HCP Responsible for Care,98.17,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Date of Main Operation,99.28,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Clinician Responsible for Main Operation,93.43,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Ethnicity,99,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Specialty,100,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Glasgow Royal Infirmary,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Condition (3-digit),91,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Condition (4-digit),87,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Operation (3-digit),97,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Main Operation (4-digit),93,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Admission Type,98,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Admission Transfer From,46.24,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Discharge Type,57.78,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Discharge Transfer To,46.67,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Consultant/HCP Responsible for Care,92.94,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Date of Main Operation,98.95,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Clinician Responsible for Main Operation,95.51,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Ethnicity,99,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Specialty,97.89,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Inverclyde Royal Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Condition (4-digit),88,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Operation (3-digit),99,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Admission Type,95.52,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Admission Transfer From,36.51,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Discharge Type,54.89,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Discharge Transfer To,41.38,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Consultant/HCP Responsible for Care,92.04,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Date of Main Operation,97.84,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Clinician Responsible for Main Operation,94.62,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Ethnicity,99.29,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Specialty,98.48,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Southern General Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Condition (3-digit),90,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Condition (4-digit),82,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Operation (3-digit),96,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Main Operation (4-digit),87,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Admission Type,95.18,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Admission Transfer From,46.84,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Discharge Type,56.18,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Discharge Transfer To,55.17,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Consultant/HCP Responsible for Care,95.51,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Date of Main Operation,98,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Clinician Responsible for Main Operation,92.93,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Ethnicity,99,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Specialty,98.97,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Royal Alexandra Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Condition (3-digit),96,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Condition (4-digit),92,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Operation (3-digit),96,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Main Operation (4-digit),89,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Admission Type,94.29,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Admission Transfer From,28.77,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Discharge Type,18.84,81
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Discharge Transfer To,91.55,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Consultant/HCP Responsible for Care,96.83,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Date of Main Operation,95.95,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Clinician Responsible for Main Operation,90.91,95
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Ethnicity,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Specialty,100,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Royal Hospital for Sick Children, Yorkhill",Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Condition (4-digit),88,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Admission Type,100,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Admission Transfer From,74,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Discharge Type,93.94,81
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Discharge Transfer To,39.39,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Consultant/HCP Responsible for Care,82.42,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Date of Main Operation,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Clinician Responsible for Main Operation,84.38,95
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Ethnicity,96.97,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Specialty,100,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,"Victoria Infirmary, Glasgow",Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Condition (3-digit),95,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Condition (4-digit),88,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Main Operation (4-digit),92,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Admission Transfer From,55.36,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Discharge Type,77.78,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Discharge Transfer To,46.3,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Consultant/HCP Responsible for Care,91.07,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Clinician Responsible for Main Operation,90,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Specialty,100,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Vale of Leven District General Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Condition (3-digit),91,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Condition (4-digit),86,88.8
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Main Operation (4-digit),91,94.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Admission Type,96.35,92.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Admission Transfer From,59.42,62.6
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Discharge Type,73.38,81
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Discharge Transfer To,48.2,63.3
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Consultant/HCP Responsible for Care,84.06,94.5
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Date of Main Operation,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Clinician Responsible for Main Operation,85.07,95
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Ethnicity,100,98.2
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Specialty,100,99.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Greater Glasgow & Clyde,Western Infirmary/ Gartnavel,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Greater Glasgow & Clyde,Blythswood House,Main Condition (3-digits),33,75
 SMR04,2015-2016,Greater Glasgow & Clyde,Blythswood House,Main Condition (4-digits),33,66
 SMR04,2015-2016,Greater Glasgow & Clyde,Blythswood House,Other Conditions (3-digits),75,67
@@ -782,21 +782,21 @@ SMR04,2015-2016,Greater Glasgow & Clyde,Stobhill Hospital,Admission Referral Fro
 SMR04,2015-2016,Greater Glasgow & Clyde,Stobhill Hospital,Discharge Date,100,92
 SMR04,2015-2016,Greater Glasgow & Clyde,Stobhill Hospital,Discharge Type,100,91
 SMR04,2015-2016,Greater Glasgow & Clyde,Stobhill Hospital,Discharge Transfer To,65,84
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Condition (3-digit),97,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Condition (4-digit),94,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Operation (3-digit),99,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Operation (4-digit),96,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Admission Type,98,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Admission Transfer From,77,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Discharge Type,96,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Discharge Transfer To,84,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Consultant/HCP Responsible for Care,96.97,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Date of Main Operation,99,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Clinician Responsible for Main Operation,98,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Ethnicity,90.91,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Specialty,99,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Condition (3-digit),97,92.5
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Condition (4-digit),94,88.8
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Operation (3-digit),99,97.5
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Main Operation (4-digit),96,94.3
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Admission Type,98,92.5
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Admission Transfer From,77,62.6
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Discharge Type,96,81
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Discharge Transfer To,84,63.3
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Consultant/HCP Responsible for Care,96.97,94.5
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Date of Main Operation,99,98.2
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Clinician Responsible for Main Operation,98,95
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Ethnicity,90.91,98.2
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Specialty,99,99.1
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Golden Jubilee,Golden Jubilee National Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Indication for Operative Delivery (3-digits),91,92.2
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Main Condition (3-digits),80,71.8
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Other Conditions (3-digits),54,71
@@ -824,51 +824,51 @@ SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Birthweight (Babies 1 to 3)
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Neonatal Indicator (Babies 1 to 3),98.67,93.4
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,Feed on Discharge (Babies 1 to 3),90.67,92.2
 SMR02,2017-2018,Grampian,Aberdeen Maternity Hospital,First Feed Given (Babies 1 to 3),96,92
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Condition (3-digit),96,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Condition (4-digit),91,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Operation (4-digit),99,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Admission Type,98.56,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Admission Transfer From,84.67,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Discharge Type,89.86,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Discharge Transfer To,75.91,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Consultant/HCP Responsible for Care,97.14,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Date of Main Operation,99.29,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Clinician Responsible for Main Operation,98.57,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Ethnicity,99.29,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Specialty,99.29,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Condition (3-digit),92,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Condition (4-digit),92,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Operation (4-digit),95,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Admission Type,100,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Admission Transfer From,78.33,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Discharge Type,88.14,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Discharge Transfer To,71.19,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Consultant/HCP Responsible for Care,96.61,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Date of Main Operation,98.31,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Clinician Responsible for Main Operation,93.22,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Specialty,100,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Grampian,Dr Gray's Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Condition (3-digit),92,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Condition (4-digit),91,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Operation (3-digit),100,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Operation (4-digit),97,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Admission Type,98.67,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Admission Transfer From,96,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Discharge Type,97.33,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Discharge Transfer To,98.67,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Consultant/HCP Responsible for Care,98.65,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Clinician Responsible for Main Operation,87.67,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Ethnicity,98.67,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Specialty,100,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Condition (3-digit),96,92.5
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Condition (4-digit),91,88.8
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Main Operation (4-digit),99,94.3
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Admission Type,98.56,92.5
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Admission Transfer From,84.67,62.6
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Discharge Type,89.86,81
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Discharge Transfer To,75.91,63.3
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Consultant/HCP Responsible for Care,97.14,94.5
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Date of Main Operation,99.29,98.2
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Clinician Responsible for Main Operation,98.57,95
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Ethnicity,99.29,98.2
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Specialty,99.29,99.1
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Grampian,Aberdeen Royal Infirmary,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Condition (4-digit),92,88.8
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Main Operation (4-digit),95,94.3
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Admission Transfer From,78.33,62.6
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Discharge Type,88.14,81
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Discharge Transfer To,71.19,63.3
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Consultant/HCP Responsible for Care,96.61,94.5
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Date of Main Operation,98.31,98.2
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Clinician Responsible for Main Operation,93.22,95
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Specialty,100,99.1
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Grampian,Dr Gray's Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Condition (4-digit),91,88.8
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Admission Type,98.67,92.5
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Admission Transfer From,96,62.6
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Discharge Type,97.33,81
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Discharge Transfer To,98.67,63.3
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Consultant/HCP Responsible for Care,98.65,94.5
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Clinician Responsible for Main Operation,87.67,95
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Ethnicity,98.67,98.2
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Specialty,100,99.1
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Grampian,Royal Aberdeen Children's Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Grampian,Pluscarden Clinic,Main Condition (3-digits),67,75
 SMR04,2015-2016,Grampian,Pluscarden Clinic,Main Condition (4-digits),53,66
 SMR04,2015-2016,Grampian,Pluscarden Clinic,Other Conditions (3-digits),43,67
@@ -947,66 +947,66 @@ SMR02,2017-2018,Highland,Raigmore Hospital,Birthweight (Babies 1 to 3),100,99
 SMR02,2017-2018,Highland,Raigmore Hospital,Neonatal Indicator (Babies 1 to 3),98,93.4
 SMR02,2017-2018,Highland,Raigmore Hospital,Feed on Discharge (Babies 1 to 3),98,92.2
 SMR02,2017-2018,Highland,Raigmore Hospital,First Feed Given (Babies 1 to 3),98,92
-SMR01,2018-2019,Highland,Belford Hospital,Main Condition (3-digit),83,NA
-SMR01,2018-2019,Highland,Belford Hospital,Main Condition (4-digit),75,NA
-SMR01,2018-2019,Highland,Belford Hospital,Main Operation (3-digit),93,NA
-SMR01,2018-2019,Highland,Belford Hospital,Main Operation (4-digit),78,NA
-SMR01,2018-2019,Highland,Belford Hospital,Admission Type,91.89,NA
-SMR01,2018-2019,Highland,Belford Hospital,Admission Transfer From,62.16,NA
-SMR01,2018-2019,Highland,Belford Hospital,Discharge Type,90,NA
-SMR01,2018-2019,Highland,Belford Hospital,Discharge Transfer To,54.29,NA
-SMR01,2018-2019,Highland,Belford Hospital,Consultant/HCP Responsible for Care,94.87,NA
-SMR01,2018-2019,Highland,Belford Hospital,Date of Main Operation,97.5,NA
-SMR01,2018-2019,Highland,Belford Hospital,Clinician Responsible for Main Operation,95,NA
-SMR01,2018-2019,Highland,Belford Hospital,Ethnicity,97.5,NA
-SMR01,2018-2019,Highland,Belford Hospital,Specialty,97.5,NA
-SMR01,2018-2019,Highland,Belford Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Highland,Belford Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Main Condition (3-digit),98,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Main Condition (4-digit),95,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Admission Type,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Admission Transfer From,81.08,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Discharge Transfer To,84.21,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Consultant/HCP Responsible for Care,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Ethnicity,85,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Specialty,100,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Highland,Caithness General Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Main Condition (3-digit),90,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Main Condition (4-digit),87,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Main Operation (3-digit),99,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Main Operation (4-digit),97,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Admission Type,58.46,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Admission Transfer From,45.16,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Discharge Type,56.25,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Discharge Transfer To,81.25,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Consultant/HCP Responsible for Care,90.43,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Ethnicity,99,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Specialty,94.95,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Highland,Raigmore Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Condition (3-digit),80,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Condition (4-digit),78,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Operation (3-digit),88,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Operation (4-digit),85,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Admission Type,95,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Admission Transfer From,82.5,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Discharge Type,100,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Discharge Transfer To,87.18,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Consultant/HCP Responsible for Care,97.5,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Clinician Responsible for Main Operation,100,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Specialty,100,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Highland,Belford Hospital,Main Condition (3-digit),83,92.5
+SMR01,2018-2019,Highland,Belford Hospital,Main Condition (4-digit),75,88.8
+SMR01,2018-2019,Highland,Belford Hospital,Main Operation (3-digit),93,97.5
+SMR01,2018-2019,Highland,Belford Hospital,Main Operation (4-digit),78,94.3
+SMR01,2018-2019,Highland,Belford Hospital,Admission Type,91.89,92.5
+SMR01,2018-2019,Highland,Belford Hospital,Admission Transfer From,62.16,62.6
+SMR01,2018-2019,Highland,Belford Hospital,Discharge Type,90,81
+SMR01,2018-2019,Highland,Belford Hospital,Discharge Transfer To,54.29,63.3
+SMR01,2018-2019,Highland,Belford Hospital,Consultant/HCP Responsible for Care,94.87,94.5
+SMR01,2018-2019,Highland,Belford Hospital,Date of Main Operation,97.5,98.2
+SMR01,2018-2019,Highland,Belford Hospital,Clinician Responsible for Main Operation,95,95
+SMR01,2018-2019,Highland,Belford Hospital,Ethnicity,97.5,98.2
+SMR01,2018-2019,Highland,Belford Hospital,Specialty,97.5,99.1
+SMR01,2018-2019,Highland,Belford Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Highland,Belford Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Highland,Caithness General Hospital,Main Condition (3-digit),98,92.5
+SMR01,2018-2019,Highland,Caithness General Hospital,Main Condition (4-digit),95,88.8
+SMR01,2018-2019,Highland,Caithness General Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Highland,Caithness General Hospital,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Highland,Caithness General Hospital,Admission Type,100,92.5
+SMR01,2018-2019,Highland,Caithness General Hospital,Admission Transfer From,81.08,62.6
+SMR01,2018-2019,Highland,Caithness General Hospital,Discharge Type,100,81
+SMR01,2018-2019,Highland,Caithness General Hospital,Discharge Transfer To,84.21,63.3
+SMR01,2018-2019,Highland,Caithness General Hospital,Consultant/HCP Responsible for Care,100,94.5
+SMR01,2018-2019,Highland,Caithness General Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Highland,Caithness General Hospital,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Highland,Caithness General Hospital,Ethnicity,85,98.2
+SMR01,2018-2019,Highland,Caithness General Hospital,Specialty,100,99.1
+SMR01,2018-2019,Highland,Caithness General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Highland,Caithness General Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Highland,Raigmore Hospital,Main Condition (3-digit),90,92.5
+SMR01,2018-2019,Highland,Raigmore Hospital,Main Condition (4-digit),87,88.8
+SMR01,2018-2019,Highland,Raigmore Hospital,Main Operation (3-digit),99,97.5
+SMR01,2018-2019,Highland,Raigmore Hospital,Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Highland,Raigmore Hospital,Admission Type,58.46,92.5
+SMR01,2018-2019,Highland,Raigmore Hospital,Admission Transfer From,45.16,62.6
+SMR01,2018-2019,Highland,Raigmore Hospital,Discharge Type,56.25,81
+SMR01,2018-2019,Highland,Raigmore Hospital,Discharge Transfer To,81.25,63.3
+SMR01,2018-2019,Highland,Raigmore Hospital,Consultant/HCP Responsible for Care,90.43,94.5
+SMR01,2018-2019,Highland,Raigmore Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Highland,Raigmore Hospital,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Highland,Raigmore Hospital,Ethnicity,99,98.2
+SMR01,2018-2019,Highland,Raigmore Hospital,Specialty,94.95,99.1
+SMR01,2018-2019,Highland,Raigmore Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Highland,Raigmore Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Condition (3-digit),80,92.5
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Condition (4-digit),78,88.8
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Operation (3-digit),88,97.5
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Main Operation (4-digit),85,94.3
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Admission Type,95,92.5
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Admission Transfer From,82.5,62.6
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Discharge Type,100,81
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Discharge Transfer To,87.18,63.3
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Consultant/HCP Responsible for Care,97.5,94.5
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Clinician Responsible for Main Operation,100,95
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Specialty,100,99.1
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Highland,Lorn & Islands General District Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Highland,New Craigs Hospital,Main Condition (3-digits),70,75
 SMR04,2015-2016,Highland,New Craigs Hospital,Main Condition (4-digits),59,66
 SMR04,2015-2016,Highland,New Craigs Hospital,Other Conditions (3-digits),49,67
@@ -1046,51 +1046,51 @@ SMR02,2017-2018,Lanarkshire,Wishaw General Hospital,Birthweight (Babies 1 to 3),
 SMR02,2017-2018,Lanarkshire,Wishaw General Hospital,Neonatal Indicator (Babies 1 to 3),92,93.4
 SMR02,2017-2018,Lanarkshire,Wishaw General Hospital,Feed on Discharge (Babies 1 to 3),91,92.2
 SMR02,2017-2018,Lanarkshire,Wishaw General Hospital,First Feed Given (Babies 1 to 3),100,92
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Condition (3-digit),90,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Condition (4-digit),90,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Operation (3-digit),94,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Operation (4-digit),93,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Admission Type,66.33,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Admission Transfer From,60.2,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Discharge Type,34.04,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Discharge Transfer To,70.53,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Consultant/HCP Responsible for Care,100,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Date of Main Operation,98,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Clinician Responsible for Main Operation,96.97,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Specialty,100,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Condition (3-digit),94,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Condition (4-digit),88,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Operation (3-digit),95,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Operation (4-digit),92,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Admission Type,87.1,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Admission Transfer From,63.44,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Discharge Type,44.68,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Discharge Transfer To,68.09,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Consultant/HCP Responsible for Care,97.89,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Date of Main Operation,96,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Clinician Responsible for Main Operation,91.92,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Specialty,100,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lanarkshire,Monklands Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Condition (3-digit),96,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Condition (4-digit),93,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Operation (3-digit),96,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Operation (4-digit),91,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Admission Type,55.67,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Admission Transfer From,57.29,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Discharge Type,56.7,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Discharge Transfer To,82.29,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Consultant/HCP Responsible for Care,95.83,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Date of Main Operation,99,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Clinician Responsible for Main Operation,97.96,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Specialty,99,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Condition (3-digit),90,92.5
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Condition (4-digit),90,88.8
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Operation (3-digit),94,97.5
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Main Operation (4-digit),93,94.3
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Admission Type,66.33,92.5
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Admission Transfer From,60.2,62.6
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Discharge Type,34.04,81
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Discharge Transfer To,70.53,63.3
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Consultant/HCP Responsible for Care,100,94.5
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Date of Main Operation,98,98.2
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Clinician Responsible for Main Operation,96.97,95
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Specialty,100,99.1
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lanarkshire,Hairmyres Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Condition (3-digit),94,92.5
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Condition (4-digit),88,88.8
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Operation (3-digit),95,97.5
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Main Operation (4-digit),92,94.3
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Admission Type,87.1,92.5
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Admission Transfer From,63.44,62.6
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Discharge Type,44.68,81
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Discharge Transfer To,68.09,63.3
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Consultant/HCP Responsible for Care,97.89,94.5
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Date of Main Operation,96,98.2
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Clinician Responsible for Main Operation,91.92,95
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Specialty,100,99.1
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lanarkshire,Monklands Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Condition (3-digit),96,92.5
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Condition (4-digit),93,88.8
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Operation (3-digit),96,97.5
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Main Operation (4-digit),91,94.3
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Admission Type,55.67,92.5
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Admission Transfer From,57.29,62.6
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Discharge Type,56.7,81
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Discharge Transfer To,82.29,63.3
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Consultant/HCP Responsible for Care,95.83,94.5
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Date of Main Operation,99,98.2
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Clinician Responsible for Main Operation,97.96,95
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Specialty,99,99.1
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lanarkshire,Wishaw General Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Lanarkshire,Hairmyres Hospital,Main Condition (3-digits),65,75
 SMR04,2015-2016,Lanarkshire,Hairmyres Hospital,Main Condition (4-digits),24,66
 SMR04,2015-2016,Lanarkshire,Hairmyres Hospital,Other Conditions (3-digits),35,67
@@ -1193,66 +1193,66 @@ SMR02,2017-2018,Lothian,Royal Infirmary of Edinburgh,Birthweight (Babies 1 to 3)
 SMR02,2017-2018,Lothian,Royal Infirmary of Edinburgh,Neonatal Indicator (Babies 1 to 3),93,93.4
 SMR02,2017-2018,Lothian,Royal Infirmary of Edinburgh,Feed on Discharge (Babies 1 to 3),95,92.2
 SMR02,2017-2018,Lothian,Royal Infirmary of Edinburgh,First Feed Given (Babies 1 to 3),95,92
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Condition (3-digit),94,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Condition (4-digit),91,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Operation (3-digit),97,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Operation (4-digit),96,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Admission Type,89.21,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Admission Transfer From,43.17,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Discharge Type,100,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Discharge Transfer To,50.36,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Consultant/HCP Responsible for Care,98.55,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Date of Main Operation,99.29,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Clinician Responsible for Main Operation,98.57,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Ethnicity,99.29,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Specialty,100,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Condition (3-digit),97,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Condition (4-digit),96,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Operation (3-digit),100,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Operation (4-digit),97,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Admission Type,86.67,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Admission Transfer From,2.67,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Discharge Type,98.67,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Discharge Transfer To,2.67,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Consultant/HCP Responsible for Care,98.67,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Date of Main Operation,100,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Clinician Responsible for Main Operation,97.33,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Ethnicity,97.33,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Specialty,97.33,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Main Condition (3-digit),89,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Main Condition (4-digit),82,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Main Operation (4-digit),96,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Admission Type,92.97,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Admission Transfer From,59.69,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Discharge Type,98.51,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Discharge Transfer To,63.64,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Consultant/HCP Responsible for Care,98.44,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Date of Main Operation,98.55,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Clinician Responsible for Main Operation,97.76,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Ethnicity,98.53,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Specialty,98.52,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lothian,Western General Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Condition (3-digit),92,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Condition (4-digit),89,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Operation (3-digit),99,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Admission Type,98.99,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Admission Transfer From,56.57,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Discharge Type,98.99,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Discharge Transfer To,61.62,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Consultant/HCP Responsible for Care,98.98,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Date of Main Operation,98.97,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Clinician Responsible for Main Operation,92.55,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Ethnicity,98.99,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Specialty,100,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Lothian,St John's Hospital at Howden,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Condition (3-digit),94,92.5
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Condition (4-digit),91,88.8
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Operation (3-digit),97,97.5
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Main Operation (4-digit),96,94.3
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Admission Type,89.21,92.5
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Admission Transfer From,43.17,62.6
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Discharge Type,100,81
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Discharge Transfer To,50.36,63.3
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Consultant/HCP Responsible for Care,98.55,94.5
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Date of Main Operation,99.29,98.2
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Clinician Responsible for Main Operation,98.57,95
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Ethnicity,99.29,98.2
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Specialty,100,99.1
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lothian,Royal Infirmary of Edinburgh,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Condition (3-digit),97,92.5
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Condition (4-digit),96,88.8
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Operation (3-digit),100,97.5
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Main Operation (4-digit),97,94.3
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Admission Type,86.67,92.5
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Admission Transfer From,2.67,62.6
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Discharge Type,98.67,81
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Discharge Transfer To,2.67,63.3
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Consultant/HCP Responsible for Care,98.67,94.5
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Date of Main Operation,100,98.2
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Clinician Responsible for Main Operation,97.33,95
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Ethnicity,97.33,98.2
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Specialty,97.33,99.1
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lothian,"Royal Hospital for Sick Children, Edinburgh",Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Lothian,Western General Hospital,Main Condition (3-digit),89,92.5
+SMR01,2018-2019,Lothian,Western General Hospital,Main Condition (4-digit),82,88.8
+SMR01,2018-2019,Lothian,Western General Hospital,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Lothian,Western General Hospital,Main Operation (4-digit),96,94.3
+SMR01,2018-2019,Lothian,Western General Hospital,Admission Type,92.97,92.5
+SMR01,2018-2019,Lothian,Western General Hospital,Admission Transfer From,59.69,62.6
+SMR01,2018-2019,Lothian,Western General Hospital,Discharge Type,98.51,81
+SMR01,2018-2019,Lothian,Western General Hospital,Discharge Transfer To,63.64,63.3
+SMR01,2018-2019,Lothian,Western General Hospital,Consultant/HCP Responsible for Care,98.44,94.5
+SMR01,2018-2019,Lothian,Western General Hospital,Date of Main Operation,98.55,98.2
+SMR01,2018-2019,Lothian,Western General Hospital,Clinician Responsible for Main Operation,97.76,95
+SMR01,2018-2019,Lothian,Western General Hospital,Ethnicity,98.53,98.2
+SMR01,2018-2019,Lothian,Western General Hospital,Specialty,98.52,99.1
+SMR01,2018-2019,Lothian,Western General Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lothian,Western General Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Condition (4-digit),89,88.8
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Operation (3-digit),99,97.5
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Admission Type,98.99,92.5
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Admission Transfer From,56.57,62.6
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Discharge Type,98.99,81
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Discharge Transfer To,61.62,63.3
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Consultant/HCP Responsible for Care,98.98,94.5
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Date of Main Operation,98.97,98.2
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Clinician Responsible for Main Operation,92.55,95
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Ethnicity,98.99,98.2
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Specialty,100,99.1
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Lothian,St John's Hospital at Howden,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Lothian,Royal Edinburgh Hospital,Main Condition (3-digits),87,75
 SMR04,2015-2016,Lothian,Royal Edinburgh Hospital,Main Condition (4-digits),79,66
 SMR04,2015-2016,Lothian,Royal Edinburgh Hospital,Other Conditions (3-digits),88,67
@@ -1331,21 +1331,21 @@ SMR02,2017-2018,Shetland,Gilbert Bain Hospital (Shetland),Birthweight (Babies 1 
 SMR02,2017-2018,Shetland,Gilbert Bain Hospital (Shetland),Neonatal Indicator (Babies 1 to 3),8,93.4
 SMR02,2017-2018,Shetland,Gilbert Bain Hospital (Shetland),Feed on Discharge (Babies 1 to 3),56,92.2
 SMR02,2017-2018,Shetland,Gilbert Bain Hospital (Shetland),First Feed Given (Babies 1 to 3),88,92
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Condition (3-digit),92,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Condition (4-digit),90,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Operation (3-digit),98,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Operation (4-digit),78,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Admission Type,80,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Admission Transfer From,74.74,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Discharge Type,89,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Discharge Transfer To,45.92,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Consultant/HCP Responsible for Care,95.79,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Date of Main Operation,99,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Clinician Responsible for Main Operation,95.88,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Ethnicity,99,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Specialty,100,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Condition (3-digit),92,92.5
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Condition (4-digit),90,88.8
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Main Operation (4-digit),78,94.3
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Admission Type,80,92.5
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Admission Transfer From,74.74,62.6
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Discharge Type,89,81
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Discharge Transfer To,45.92,63.3
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Consultant/HCP Responsible for Care,95.79,94.5
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Date of Main Operation,99,98.2
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Clinician Responsible for Main Operation,95.88,95
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Ethnicity,99,98.2
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Specialty,100,99.1
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Shetland,Gilbert Bain Hospital (Shetland),Common Conditions (Paediatrics) *,NA,96.1
 SMR02,2017-2018,Tayside,Perth Royal Infirmary,Indication for Operative Delivery (3-digits),100,92.2
 SMR02,2017-2018,Tayside,Perth Royal Infirmary,Main Condition (3-digits),76,71.8
 SMR02,2017-2018,Tayside,Perth Royal Infirmary,Other Conditions (3-digits),81,71
@@ -1400,51 +1400,51 @@ SMR02,2017-2018,Tayside,Ninewells Hospital,Birthweight (Babies 1 to 3),97.33,99
 SMR02,2017-2018,Tayside,Ninewells Hospital,Neonatal Indicator (Babies 1 to 3),98.67,93.4
 SMR02,2017-2018,Tayside,Ninewells Hospital,Feed on Discharge (Babies 1 to 3),100,92.2
 SMR02,2017-2018,Tayside,Ninewells Hospital,First Feed Given (Babies 1 to 3),100,92
-SMR01,2018-2019,Tayside,Ninewells Hospital,Main Condition (3-digit),94,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Main Condition (4-digit),89,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Main Operation (3-digit),97,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Main Operation (4-digit),94,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Admission Type,95,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Admission Transfer From,74.82,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Discharge Type,82.61,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Discharge Transfer To,55.8,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Consultant/HCP Responsible for Care,85.71,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Date of Main Operation,98.57,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Clinician Responsible for Main Operation,92.86,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Ethnicity,97.86,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Specialty,97.14,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Tayside,Ninewells Hospital,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Condition (3-digit),87,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Condition (4-digit),83,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Operation (3-digit),98,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Operation (4-digit),98,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Admission Type,93.94,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Admission Transfer From,68.75,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Discharge Type,83.67,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Discharge Transfer To,58.33,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Consultant/HCP Responsible for Care,91.67,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Date of Main Operation,99,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Clinician Responsible for Main Operation,96,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Ethnicity,97,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Specialty,98.99,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Tayside,Perth Royal Infirmary,Common Conditions (Paediatrics) *,NA,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Main Condition (3-digit),97,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Main Condition (4-digit),93,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Main Operation (3-digit),93,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Main Operation (4-digit),88,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Admission Type,96.67,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Admission Transfer From,90,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Discharge Type,86.67,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Discharge Transfer To,75,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Consultant/HCP Responsible for Care,98.33,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Date of Main Operation,100,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Clinician Responsible for Main Operation,96.67,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Ethnicity,100,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Specialty,100,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Tayside,Stracathro Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Tayside,Ninewells Hospital,Main Condition (3-digit),94,92.5
+SMR01,2018-2019,Tayside,Ninewells Hospital,Main Condition (4-digit),89,88.8
+SMR01,2018-2019,Tayside,Ninewells Hospital,Main Operation (3-digit),97,97.5
+SMR01,2018-2019,Tayside,Ninewells Hospital,Main Operation (4-digit),94,94.3
+SMR01,2018-2019,Tayside,Ninewells Hospital,Admission Type,95,92.5
+SMR01,2018-2019,Tayside,Ninewells Hospital,Admission Transfer From,74.82,62.6
+SMR01,2018-2019,Tayside,Ninewells Hospital,Discharge Type,82.61,81
+SMR01,2018-2019,Tayside,Ninewells Hospital,Discharge Transfer To,55.8,63.3
+SMR01,2018-2019,Tayside,Ninewells Hospital,Consultant/HCP Responsible for Care,85.71,94.5
+SMR01,2018-2019,Tayside,Ninewells Hospital,Date of Main Operation,98.57,98.2
+SMR01,2018-2019,Tayside,Ninewells Hospital,Clinician Responsible for Main Operation,92.86,95
+SMR01,2018-2019,Tayside,Ninewells Hospital,Ethnicity,97.86,98.2
+SMR01,2018-2019,Tayside,Ninewells Hospital,Specialty,97.14,99.1
+SMR01,2018-2019,Tayside,Ninewells Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Tayside,Ninewells Hospital,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Condition (3-digit),87,92.5
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Condition (4-digit),83,88.8
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Operation (3-digit),98,97.5
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Main Operation (4-digit),98,94.3
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Admission Type,93.94,92.5
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Admission Transfer From,68.75,62.6
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Discharge Type,83.67,81
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Discharge Transfer To,58.33,63.3
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Consultant/HCP Responsible for Care,91.67,94.5
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Date of Main Operation,99,98.2
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Clinician Responsible for Main Operation,96,95
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Ethnicity,97,98.2
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Specialty,98.99,99.1
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Tayside,Perth Royal Infirmary,Common Conditions (Paediatrics) *,NA,96.1
+SMR01,2018-2019,Tayside,Stracathro Hospital,Main Condition (3-digit),97,92.5
+SMR01,2018-2019,Tayside,Stracathro Hospital,Main Condition (4-digit),93,88.8
+SMR01,2018-2019,Tayside,Stracathro Hospital,Main Operation (3-digit),93,97.5
+SMR01,2018-2019,Tayside,Stracathro Hospital,Main Operation (4-digit),88,94.3
+SMR01,2018-2019,Tayside,Stracathro Hospital,Admission Type,96.67,92.5
+SMR01,2018-2019,Tayside,Stracathro Hospital,Admission Transfer From,90,62.6
+SMR01,2018-2019,Tayside,Stracathro Hospital,Discharge Type,86.67,81
+SMR01,2018-2019,Tayside,Stracathro Hospital,Discharge Transfer To,75,63.3
+SMR01,2018-2019,Tayside,Stracathro Hospital,Consultant/HCP Responsible for Care,98.33,94.5
+SMR01,2018-2019,Tayside,Stracathro Hospital,Date of Main Operation,100,98.2
+SMR01,2018-2019,Tayside,Stracathro Hospital,Clinician Responsible for Main Operation,96.67,95
+SMR01,2018-2019,Tayside,Stracathro Hospital,Ethnicity,100,98.2
+SMR01,2018-2019,Tayside,Stracathro Hospital,Specialty,100,99.1
+SMR01,2018-2019,Tayside,Stracathro Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Tayside,Stracathro Hospital,Common Conditions (Paediatrics) *,NA,96.1
 SMR04,2015-2016,Tayside,Carseview Centre,Main Condition (3-digits),83,75
 SMR04,2015-2016,Tayside,Carseview Centre,Main Condition (4-digits),66,66
 SMR04,2015-2016,Tayside,Carseview Centre,Other Conditions (3-digits),84,67
@@ -1520,18 +1520,18 @@ SMR02,2017-2018,Western Isles,Western Isles Hospital,Birthweight (Babies 1 to 3)
 SMR02,2017-2018,Western Isles,Western Isles Hospital,Neonatal Indicator (Babies 1 to 3),100,93.4
 SMR02,2017-2018,Western Isles,Western Isles Hospital,Feed on Discharge (Babies 1 to 3),96,92.2
 SMR02,2017-2018,Western Isles,Western Isles Hospital,First Feed Given (Babies 1 to 3),80,92
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Condition (3-digit),87,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Condition (4-digit),82,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Operation (3-digit),94,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Operation (4-digit),93,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Admission Type,96.97,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Admission Transfer From,68.69,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Discharge Type,97.94,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Discharge Transfer To,35.05,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Consultant/HCP Responsible for Care,96.81,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Date of Main Operation,98,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Clinician Responsible for Main Operation,98.99,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Ethnicity,95,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Specialty,100,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Common Conditions (Adults) *,NA,NA
-SMR01,2018-2019,Western Isles,Western Isles Hospital,Common Conditions (Paediatrics) *,NA,NA
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Condition (3-digit),87,92.5
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Condition (4-digit),82,88.8
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Operation (3-digit),94,97.5
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Main Operation (4-digit),93,94.3
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Admission Type,96.97,92.5
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Admission Transfer From,68.69,62.6
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Discharge Type,97.94,81
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Discharge Transfer To,35.05,63.3
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Consultant/HCP Responsible for Care,96.81,94.5
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Date of Main Operation,98,98.2
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Clinician Responsible for Main Operation,98.99,95
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Ethnicity,95,98.2
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Specialty,100,99.1
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Common Conditions (Adults) *,NA,98.1
+SMR01,2018-2019,Western Isles,Western Isles Hospital,Common Conditions (Paediatrics) *,NA,96.1
