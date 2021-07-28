@@ -327,9 +327,9 @@ navbarPage(
                                        ICD10 diabetes code O24 is recorded.'
                                      ), 
                                    p(
-                                     'The denominator in the percentage column is the total number of instances in which the error
+                                     'The denominator in the percentage column is the total number of instances in which the query
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
-                                       The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
+                                       The numerator is the actual number of times the described query occured, also displayed in the "Query Count" column.'
                                    ),
                                    selectInput('yearQ', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(query_1_table$year))),
