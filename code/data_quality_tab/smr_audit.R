@@ -39,7 +39,9 @@ hb_accuracy <- hb_path %>%
   select(c(1:6))%>%
   clean_names()%>%
   rename("accuracy_hospital"="accuracy") %>% 
-  mutate(year = case_when(year == "2004/2006"~ "2004-2006", TRUE ~ year),
+  mutate(year = case_when(year == "2004/2006"~ "2004-2006", 
+                          year == "2004 -2006"~"2004-2006",
+                          TRUE ~ year),
          accuracy_hospital=round(accuracy_hospital, 2)) %>% 
   filter(!is.na(hospital))
 
