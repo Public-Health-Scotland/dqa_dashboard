@@ -17,7 +17,7 @@ scot_accuracy <- read_csv(here::here("data", "Scotland_SMR_accuracy.csv"))%>%
   mutate(year = case_when( year == "2004/06" ~"2004-2006", 
                            year == "2010/11" ~ "2010-2011", 
                            year == "2014/15" ~ "2014-2015", 
-                           year == "2019/20" ~ "2019-2020",
+                           year == "2018/19" ~ "2018-2019",
                            year == "2017/18" ~ "2017-2018",
                            year == "2008/09" ~ "2008-2009", 
                            year == "2015/16" ~ "2015-2016"))
@@ -40,7 +40,8 @@ hb_accuracy <- hb_path %>%
   clean_names()%>%
   rename("accuracy_hospital"="accuracy") %>% 
   mutate(year = case_when(year == "2004/2006"~ "2004-2006", TRUE ~ year),
-         accuracy_hospital=round(accuracy_hospital, 2))
+         accuracy_hospital=round(accuracy_hospital, 2)) %>% 
+  filter(!is.na(hospital))
 
 
 # Join hospital site data with national data for output -------------------
