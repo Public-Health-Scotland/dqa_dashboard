@@ -20,6 +20,8 @@ navbarPage(
   
   tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
   
+    tags$head(tags$style(HTML(".selectize-input {border: 1px solid #3F3685;}"))), #controls SelectInput boxes border color
+
     title = "Home",
     navlistPanel( 
        id = "tabset",
@@ -143,8 +145,8 @@ navbarPage(
                       
               
               fluidRow(
-                tags$style(".glyphicon-ok {color:#2BE532}
-                          .glyphicon-warning-sign {color:#FFC300}
+                tags$style(".glyphicon-ok {color:#128716}
+                          .glyphicon-warning-sign {color:#C200A1}
                           .glyphicon-flag {color:#C70039}"),
                 column(12, DT::dataTableOutput("completeness_table")
                 )

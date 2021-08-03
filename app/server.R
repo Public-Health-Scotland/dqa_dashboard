@@ -115,7 +115,7 @@ shinyServer(function(input, output, session) {
                alpha = 0.6, name = "expected submissions", show.legend = TRUE)+
       geom_col(position = "stack",width = 0.3, 
                aes(x=hb_name, y=submission_count_split, fill=submission_status))+
-      scale_fill_manual(values = c("#C73918", "#0078D4","#80BCEA")
+      scale_fill_manual(values = c("#AF69A9","#3F3685", "#80BCEA")
                         )+
       labs(x = "Health Board", y= "Submission Counts")+
       coord_flip()
