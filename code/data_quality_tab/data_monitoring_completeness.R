@@ -14,6 +14,16 @@ library(lubridate)
 # Load Function(s) --------------------------------------------------------
 walk(list.files(here::here("functions"), full.names = TRUE), source)
 
+spk_tool <- function(labels) {
+  htmlwidgets::JS(
+    sprintf(
+      "function(sparkline, options, field){
+  return %s[field[0].offset];
+}",
+      jsonlite::toJSON(labels)
+    )
+  )
+}
 
 # Import lookup ----------------------------------------------------------
 
@@ -131,12 +141,14 @@ completeness_plots <- smr_completeness %>%
                                 height = "40px",
                                 width = 100,
                                 chartRangeMin = 0,
-                                chartRangeMax = max(percent_complete_month),
+                                chartRangeMax = 100,
                                 type="bar",
                                 numberDigitGroupSep = "",
                                 barWidth = 10,
                                 barSpacing = 2,
-                                tooltipFormat = paste0('{{value}}', '%')
+                                tooltipFormat = 
+                                  paste0(
+                                  '{{value}}', '%')
                                 )
             )
 
@@ -145,7 +157,7 @@ flag_df <- create_flag_symbol(smr_completeness)
 
 #Join the plots to the main table and filter through last month's figures only
 smr_completeness_2 <- smr_completeness %>%
-  filter(event_month == month(Sys.Date())-1) %>%
+  filter(event_month == max(event_month)) %>%
   left_join(completeness_plots) %>%
   left_join(change_df)%>%
   left_join(flag_df)
