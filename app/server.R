@@ -93,7 +93,6 @@ shinyServer(function(input, output, session) {
   })
   
   
-  
   output$timeliness_mean_on_time <- renderText({
     mean_on_time <- round(mean(timeliness_filters()$before_deadline), 2)
     paste("Average number of records submitted on time:",mean_on_time, sep = " ")
