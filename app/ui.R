@@ -132,14 +132,23 @@ navbarPage(
               
               fluidRow(
                 column(12,
-                       checkboxGroupInput("percentage_in", 
+                       prettyCheckboxGroup("percentage_in", 
                                           "Completeness percentage range",
                                           choices = list("Above 60% complete" = 1,
                                                          "Between 40% and 60% complete" = 2,
                                                          "Below 40% complete" = 3),
+                                          status = "primary",
+                                          shape = "curve",
+                                          bigger = TRUE,
                                           selected = c(1,2,3),
                                           inline = TRUE
-                       )
+                       ),
+                       tags$head(tags$style(HTML("#percentage_in :after,
+                                                  #percentage_in :before
+                                                  {border: 1.5px solid #3F3685}"
+                                                 ) #adds border color to checkboxes
+                                            )
+                                 )
                 )
               ),
                       

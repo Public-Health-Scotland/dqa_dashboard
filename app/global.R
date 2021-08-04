@@ -15,10 +15,7 @@ library(sparkline)
 library(ggplot2)
 library(plotly)
 
-library(base64enc)
-
-
-
+library(base64enc)  #needed to display png image of phs logo
 
 library(leaflet)    #both libraries necessary for creating maps
 library(rgdal)
