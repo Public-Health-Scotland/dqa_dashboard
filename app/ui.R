@@ -39,19 +39,19 @@ navbarPage(
                          tags$b("More information about SMR Datasets"),
                          br(),
                          tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR00-Outpatient-Attendance/",
-                                "SMR00", target = "_blank"
+                                "SMR00 Homepage", target = "_blank"
                          ),
                          br(),
                          tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR01-General-Acute-Inpatient-and-Day-Case/",
-                                "SMR01", target = "_blank"
+                                "SMR01 Homepage", target = "_blank"
                          ),
                          br(),
                          tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR02-Maternity-Inpatient-and-Day-Case/",
-                                "SMR02", target = "_blank"
+                                "SMR02 Homepage", target = "_blank"
                          ),
                          br(),
                          tags$a(href = "https://www.ndc.scot.nhs.uk/Data-Dictionary/SMR-Datasets//SMR04-Mental-Health-Inpatient-and-Day-Case/",
-                                "SMR04", target = "_blank"
+                                "SMR04 Homepage", target = "_blank"
                          ),
                          br(),
                          tags$a(href = "https://www.ndc.scot.nhs.uk/Dictionary-A-Z/",
