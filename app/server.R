@@ -99,7 +99,7 @@ shinyServer(function(input, output, session) {
   #Downloadable CSV of selected completeness dataset
   output$download_completeness <- downloadHandler(
     filename =function() {
-      paste0("Completeness",unique(data_item_completeness()$month_name),".csv")
+      paste0("completeness_",str_to_lower(unique(data_item_completeness()$month_name)),".csv")
     },
     content = function(file){
       write.csv(completeness_download_data(), row.names = FALSE, file)
@@ -157,17 +157,32 @@ shinyServer(function(input, output, session) {
   })
 
   #filter and select rows to display
-  timeliness_data <- reactive({
-    timeliness %>%
-      filter(smr == input$timeliness_smr_in_2, 
-             event_month_name == input$timeliness_month_in_2) %>% 
-      select(smr, hb_name, event_year, event_month_name,
-             before_deadline, after_deadline, expected_submissions)
-    
+  timeliness_table_filter_smr <- reactive({
+    if(input$timeliness_smr_in_2 %in% unique(timeliness$smr)){
+      timeliness %>%
+        filter(smr == input$timeliness_smr_in_2)
+    }
+    else{
+      timeliness
+    }
   })
+  
+  timeliness_table_filter_month <- reactive({
+    if(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name)){
+      timeliness_table_filter_smr() %>% 
+        filter(event_month_name == input$timeliness_month_in_2) %>% 
+        select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
+    }
+    else{
+      timeliness_table_filter_smr()%>% 
+      select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
+    }
+  })
+
+  
 #render final table to display
  output$timeliness_rows <- DT::renderDataTable({ 
-   datatable(data = timeliness_data(),
+   datatable(data = timeliness_table_filter_month(),
              escape = FALSE,
              rownames = FALSE,
              class="compact stripe hover",
@@ -185,10 +200,13 @@ shinyServer(function(input, output, session) {
 #downloadable csv of selected timeliness dataset
   output$download_timeliness <- downloadHandler(
     filename = function(){
-      paste0("Timeliness", unique(timeliness_data()$event_month_name),".csv")
+      paste0("timeliness_", 
+             ifelse(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name), 
+                    str_to_lower(unique(timeliness_table_filter_month()$event_month_name)), "all_months"),
+             ".csv")
     },
     content = function(file){
-      write.csv(timeliness_data(), row.names = FALSE, file)
+      write.csv(timeliness_table_filter_month(), row.names = FALSE, file)
     }
   )
 

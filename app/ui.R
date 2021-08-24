@@ -206,10 +206,10 @@ navbarPage(
                           tabPanel("Data",
                                    fluidRow(
                                      column(6,
-                                            selectInput("timeliness_smr_in_2", "SMR", choices = c(unique(timeliness$smr)))
+                                            selectInput("timeliness_smr_in_2", "SMR", choices = c("(All)",unique(timeliness$smr)))
                                      ),
                                      column(6,
-                                            selectInput("timeliness_month_in_2", "Month", choices = c(unique(timeliness$event_month_name)))
+                                            selectInput("timeliness_month_in_2", "Month", choices = c("(All)",unique(timeliness$event_month_name)))
                                      )
                                    ),
                                    fluidRow(
