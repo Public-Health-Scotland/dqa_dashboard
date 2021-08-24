@@ -151,7 +151,9 @@ navbarPage(
                                  )
                 )
               ),
-                      
+              fluidRow(
+                column(12, align="left", downloadButton("download_completeness", "Download CSV"))
+              ),
               
               fluidRow(
                 tags$style(".glyphicon-ok {color:#128716}
@@ -211,6 +213,9 @@ navbarPage(
                                      )
                                    ),
                                    fluidRow(
+                                     column(12, align="left", downloadButton("download_timeliness", "Download CSV"))
+                                   ),
+                                   fluidRow(
                                      column(12,
                                             DT::dataTableOutput("timeliness_rows")
                                      )
@@ -234,7 +239,9 @@ navbarPage(
                  column(3, selectInput("DataItemName", "Data Item", choices = NULL)
                  )
                ),
-               
+               fluidRow(
+                 column(12, align="left", downloadButton("download_audit", "Download CSV"))
+               ),
                fluidRow(
                  column(12,
                         DT::dataTableOutput("audit_table")
@@ -259,6 +266,7 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
                                      ),
+                                   downloadButton("download_smr02_error1", "Download CSV"),
                                    selectInput('year1', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(error_1_table$year))),
                                                     selected = max(unique(error_1_table$year))
@@ -274,6 +282,7 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
                                    ),
+                                   downloadButton("download_smr02_error2", "Download CSV"),
                                    selectInput('year2', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(error_2_table$year))),
                                                     selected = max(unique(error_2_table$year))
@@ -289,6 +298,7 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
                                      ),
+                                   downloadButton("download_smr02_error3", "Download CSV"),
                                    selectInput('year3', 'Choose year:', 
                                                choices = c("(All)",sort(unique(error_3_table$year))),
                                                selected = max(unique(error_3_table$year))
@@ -304,6 +314,7 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
                                    ),
+                                   downloadButton("download_smr02_error4", "Download CSV"),
                                    selectInput('year4', 'Choose year:', 
                                                choices = c("(All)",sort(unique(error_4_table$year))),
                                                selected = max(unique(error_4_table$year))
@@ -313,6 +324,7 @@ navbarPage(
                                    p(
                                        'Mandatory SMR02 diabetes value is not recorded.'
                                      ),
+                                   downloadButton("download_smr02_error5", "Download CSV"),
                                    selectInput('year5', 'Choose year:', 
                                                choices = c("(All)",sort(unique(error_5_table$year))),
                                                selected = max(unique(error_5_table$year))
@@ -327,6 +339,7 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described error occured, also displayed in the "Error Count" column.'
                                    ),
+                                   downloadButton("download_smr02_error6", "Download CSV"),
                                    selectInput('year6', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(error_6_table$year))),
                                                     selected = max(unique(error_6_table$year))
@@ -342,12 +355,14 @@ navbarPage(
                                        could have occured, i.e. all instances in which the diabetes value of interest was recorded in SMR02.
                                        The numerator is the actual number of times the described query occured, also displayed in the "Query Count" column.'
                                    ),
+                                   downloadButton("download_smr02_query1", "Download CSV"),
                                    selectInput('yearQ', 'Choose year:', 
                                                     choices = c("(All)",sort(unique(query_1_table$year))),
                                                     selected = max(unique(query_1_table$year))
                                                     ),
                                    DT::dataTableOutput("query")))),
-      tabPanel("SMR01 ICD-10 Symptom R Codes", 
+      tabPanel("SMR01 ICD-10 Symptom R Codes",
+               downloadButton("download_smr01_rcodes", "Download CSV"),
                selectInput('yearR', 'Choose year:', 
                choices = c('(All)', sort(unique(RCodes_table$year)))
                ),
