@@ -122,12 +122,19 @@ shinyServer(function(input, output, session) {
     plotly::ggplotly(plot) %>%
       layout(legend = list(x = 0.72, y = 0.95))%>%
       layout(legend=list(title=list(text='<b> Legend </b>')))
-    
-    
-
   })
 
-
+  #Update the default selection on the data tab to be the same as the bullet chart user selection
+  observeEvent(input$timeliness_smr_in,
+               updateSelectInput(session, "timeliness_smr_in_2", choices = c(unique(timeliness$smr)),
+                                 selected = input$timeliness_smr_in)
+               )
+  
+  observeEvent(input$timeliness_month_in, 
+               updateSelectInput(session, "timeliness_month_in_2", choices = c(unique(timeliness$event_month_name)),
+                                 selected = input$timeliness_month_in)
+               )
+  
  output$timeliness_rows <- DT::renderDataTable({ 
    
    timeliness_data <- timeliness %>%
