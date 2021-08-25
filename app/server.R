@@ -117,7 +117,9 @@ shinyServer(function(input, output, session) {
       scale_fill_manual(values = c("#AF69A9","#3F3685", "#80BCEA")
                         )+
       labs(x = "Health Board", y= "Submission Counts")+
-      coord_flip()
+      coord_flip()+
+      theme(panel.grid.major.x = element_line(colour = "light grey"),
+            panel.background = element_blank())
 
     plotly::ggplotly(plot) %>%
       layout(legend = list(x = 0.72, y = 0.95))%>%
