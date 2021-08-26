@@ -117,6 +117,8 @@ navbarPage(
                br(),
                br(),
                
+              fluidRow(uiOutput("completeness_key")),
+               
               fluidRow(
                 column(4, 
                        selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
