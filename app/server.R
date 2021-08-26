@@ -75,7 +75,20 @@ shinyServer(function(input, output, session) {
     
   })
 
-
+  #Completeness key
+  output$completeness_key <- renderText({
+    paste0("<h4>How to read this table</h4>",
+    "<p> The table displays the percentage completenes in SMR data for the month of ",
+    unique(smr_completeness$month_name), " ", unique(smr_completeness$event_year),
+    ". </p>",
+    as.character(icon("arrow-up", lib = "glyphicon")),
+    " Increase from last month", br(),
+    as.character(icon("arrow-down", lib = "glyphicon")),
+    " Decrease from last month", br(),
+    as.character(icon("minus", lib = "glyphicon")),
+    " No change from last month"
+    )
+  })
   
 
 ### SMR Timeliness ----------------------------------------------------------
