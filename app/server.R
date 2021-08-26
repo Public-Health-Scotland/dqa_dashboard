@@ -78,15 +78,22 @@ shinyServer(function(input, output, session) {
   #Completeness key
   output$completeness_key <- renderText({
     paste0("<h4>How to read this table</h4>",
-    "<p> The table displays the percentage completenes in SMR data for the month of ",
+    "<p> The 'Percentage Completeness' column contains figures for the month of ",
     unique(smr_completeness$month_name), " ", unique(smr_completeness$event_year),
     ". </p>",
+    "<p> The barcharts show percentage completenes trends from ",
+    comp_barchart_dates$month_name_1, " ", comp_barchart_dates$year_1,
+    " to ", comp_barchart_dates$month_name_2, " ", comp_barchart_dates$year_2,
+    ". </p>",
     as.character(icon("arrow-up", lib = "glyphicon")),
-    " Increase from last month", br(),
+    " Increase from last month ",
     as.character(icon("arrow-down", lib = "glyphicon")),
-    " Decrease from last month", br(),
+    " Decrease from last month ",
     as.character(icon("minus", lib = "glyphicon")),
-    " No change from last month"
+    " No change from last month", br(),
+    as.character(icon("ok", lib = "glyphicon")), " Above 60% complete ",
+    as.character(icon("warning-sign", lib = "glyphicon")), " Between 40% and 60% complete ",
+    as.character(icon("flag", lib = "glyphicon")), " Below 40% complete "
     )
   })
   
@@ -509,11 +516,7 @@ shinyServer(function(input, output, session) {
       RCodes_table[order(-RCodes_table$year), ]
     }
   })
-  
 
-
-
-  
   output$RCodes <- DT::renderDataTable({
     
     rcodes_data <- rcodes_filter()%>%

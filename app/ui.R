@@ -116,9 +116,8 @@ navbarPage(
                except for main_operation which is conditionally mandatory and should only be recorded if an operation has taken place.",
                br(),
                br(),
-               
-              fluidRow(uiOutput("completeness_key")),
-               
+              fluidRow(column(12,uiOutput("completeness_key"))),
+              br(),
               fluidRow(
                 column(4, 
                        selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
@@ -131,7 +130,6 @@ navbarPage(
                                                                             unique(smr_completeness$data_item)))
                 )
               ),
-              
               fluidRow(
                 column(12,
                        prettyCheckboxGroup("percentage_in", 
@@ -153,8 +151,6 @@ navbarPage(
                                  )
                 )
               ),
-                      
-              
               fluidRow(
                 tags$style(".glyphicon-ok {color:#128716}
                           .glyphicon-warning-sign {color:#C200A1}
