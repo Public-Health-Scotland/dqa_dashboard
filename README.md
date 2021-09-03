@@ -2,7 +2,7 @@
 
 *Under development* 
 
-The Data Quality Audits dashboard combines data quality metrics produced across data management teams in Public Health Scotland. This dashboard currently focusses on the SMR (Scottish Morbidity Records) dataset with detail on completeness, timeliness, accuracy audits, and investigative work in coding discrepencies/issues. This dashboard will be useful across internal PHS work but also across the NHS and beyond. 
+The Data Quality dashboard combines data quality metrics produced across data management teams in Public Health Scotland. This dashboard currently focusses on the SMR (Scottish Morbidity Records) dataset with detail on completeness, timeliness, accuracy audits, and investigative work in coding discrepencies/issues. This dashboard will be useful across internal PHS work but also across the NHS and beyond. 
 
 ## Project Structure
 
@@ -24,4 +24,4 @@ The project follows a simple structure for maintainability which is outlined bel
 
 ## Contribution & Maintenance
 
-This project has been developed by the Data Quality Audits team in Public Health Scotland. [Mainana Sanjuan](https://github.com/maiana-sanjuan) is the primary developer and contact. A [developer's guide](https://github.com/Public-Health-Scotland/dqa_dashboard/blob/main/docs/development_guide.Rmd) has also been written with specific details on all of the code. For any other contributions, please open an [issue here](https://github.com/Public-Health-Scotland/dqa_dashboard/issues/new). 
+This project has been developed by the teams: Data Quality Assurance, Data Monitoring, and Terminology Services in Public Health Scotland. [Mainana Sanjuan](https://github.com/maiana-sanjuan) is the primary developer and contact. A [developer's guide](https://github.com/Public-Health-Scotland/dqa_dashboard/blob/main/docs/development_guide.Rmd) has also been written with specific details on all of the code. For any other contributions, please open an [issue here](https://github.com/Public-Health-Scotland/dqa_dashboard/issues/new). 
