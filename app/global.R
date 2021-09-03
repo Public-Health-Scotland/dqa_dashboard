@@ -8,6 +8,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(tibble)
+library(stringr)
 
 library(DT)
 library(sparkline)
