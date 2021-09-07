@@ -151,12 +151,9 @@ shinyServer(function(input, output, session) {
     plotly::ggplotly(plot) %>%
       layout(legend = list(x = 0.72, y = 0.95))%>%
       layout(legend=list(title=list(text='<b> Legend </b>')))
-    
-    
-
   })
 
-  #filter and select rows to display
+  #filter and select rows to display in the timeliness Data tab
   timeliness_table_filter_smr <- reactive({
     if(input$timeliness_smr_in_2 %in% unique(timeliness$smr)){
       timeliness %>%
@@ -178,8 +175,20 @@ shinyServer(function(input, output, session) {
       select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
     }
   })
-
   
+  #Update the default selection on the data tab to be the same as the bullet chart user selection
+  observeEvent(input$timeliness_smr_in,
+               updateSelectInput(session, "timeliness_smr_in_2", choices = c(unique(timeliness$smr)),
+                                 selected = input$timeliness_smr_in)
+  )
+  
+  observeEvent(input$timeliness_month_in, 
+               updateSelectInput(session, "timeliness_month_in_2", choices = c(unique(timeliness$event_month_name)),
+                                 selected = input$timeliness_month_in)
+  )
+  
+
+
 #render final table to display
  output$timeliness_rows <- DT::renderDataTable({ 
    datatable(data = timeliness_table_filter_month(),

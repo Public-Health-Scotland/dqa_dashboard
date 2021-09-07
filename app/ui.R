@@ -206,6 +206,7 @@ navbarPage(
                           tabPanel("Data",
                                    fluidRow(
                                      column(6,
+
                                             selectInput("timeliness_smr_in_2", "SMR", choices = c("(All)",unique(timeliness$smr)))
                                      ),
                                      column(6,
