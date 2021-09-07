@@ -152,6 +152,9 @@ navbarPage(
                 )
               ),
               fluidRow(
+                column(12, align="left", downloadButton("download_completeness", "Download CSV"))
+              ),
+              fluidRow(
                 tags$style(".glyphicon-ok {color:#128716}
                           .glyphicon-warning-sign {color:#C200A1}
                           .glyphicon-flag {color:#C70039}"),
@@ -202,11 +205,15 @@ navbarPage(
                           tabPanel("Data",
                                    fluidRow(
                                      column(6,
-                                            selectInput("timeliness_smr_in_2", "SMR", choices = c(unique(timeliness$smr)))
+
+                                            selectInput("timeliness_smr_in_2", "SMR", choices = c("(All)",unique(timeliness$smr)))
                                      ),
                                      column(6,
-                                            selectInput("timeliness_month_in_2", "Month", choices = c(unique(timeliness$event_month_name)))
+                                            selectInput("timeliness_month_in_2", "Month", choices = c("(All)",unique(timeliness$event_month_name)))
                                      )
+                                   ),
+                                   fluidRow(
+                                     column(12, align="left", downloadButton("download_timeliness", "Download CSV"))
                                    ),
                                    fluidRow(
                                      column(12,
@@ -232,7 +239,9 @@ navbarPage(
                  column(3, selectInput("DataItemName", "Data Item", choices = NULL)
                  )
                ),
-               
+               fluidRow(
+                 column(12, align="left", downloadButton("download_audit", "Download CSV"))
+               ),
                fluidRow(
                  column(12,
                         DT::dataTableOutput("audit_table")
@@ -261,6 +270,7 @@ navbarPage(
                                                     choices = c("(All)",sort(unique(error_1_table$year))),
                                                     selected = max(unique(error_1_table$year))
                                                     ),
+                                   downloadButton("download_smr02_error1", "Download CSV"),
                                    DT::dataTableOutput("error_1")),
                           tabPanel("Error 2", 
                                      p(
@@ -276,6 +286,7 @@ navbarPage(
                                                     choices = c("(All)",sort(unique(error_2_table$year))),
                                                     selected = max(unique(error_2_table$year))
                                                     ),
+                                   downloadButton("download_smr02_error2", "Download CSV"),
                                    DT::dataTableOutput("error_2")),
                           tabPanel("Error 3", 
                                      p(
@@ -291,6 +302,7 @@ navbarPage(
                                                choices = c("(All)",sort(unique(error_3_table$year))),
                                                selected = max(unique(error_3_table$year))
                                                ),
+                                   downloadButton("download_smr02_error3", "Download CSV"),
                                    DT::dataTableOutput("error_3")),
                           tabPanel("Error 4",
                                    p(
@@ -306,6 +318,7 @@ navbarPage(
                                                choices = c("(All)",sort(unique(error_4_table$year))),
                                                selected = max(unique(error_4_table$year))
                                                ),
+                                   downloadButton("download_smr02_error4", "Download CSV"),
                                    DT::dataTableOutput("error_4")),
                           tabPanel("Error 5",
                                    p(
@@ -315,6 +328,7 @@ navbarPage(
                                                choices = c("(All)",sort(unique(error_5_table$year))),
                                                selected = max(unique(error_5_table$year))
                                                ),
+                                   downloadButton("download_smr02_error5", "Download CSV"),
                                    DT::dataTableOutput("error_5")),
                           tabPanel("Error 6",
                                      p(
@@ -329,6 +343,7 @@ navbarPage(
                                                     choices = c("(All)",sort(unique(error_6_table$year))),
                                                     selected = max(unique(error_6_table$year))
                                                     ),
+                                   downloadButton("download_smr02_error6", "Download CSV"),
                                    DT::dataTableOutput("error_6")),
                           tabPanel("Query 1", 
                                    p(
@@ -344,11 +359,13 @@ navbarPage(
                                                     choices = c("(All)",sort(unique(query_1_table$year))),
                                                     selected = max(unique(query_1_table$year))
                                                     ),
+                                   downloadButton("download_smr02_query1", "Download CSV"),
                                    DT::dataTableOutput("query")))),
-      tabPanel("SMR01 ICD-10 Symptom R Codes", 
+      tabPanel("SMR01 ICD-10 Symptom R Codes",
                selectInput('yearR', 'Choose year:', 
                choices = c('(All)', sort(unique(RCodes_table$year)))
                ),
+               downloadButton("download_smr01_rcodes", "Download CSV"),
                DT::dataTableOutput("RCodes")
       )
     ))))
