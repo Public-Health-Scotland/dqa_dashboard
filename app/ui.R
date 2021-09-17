@@ -168,6 +168,7 @@ navbarPage(
       tabPanel("Timeliness", 
                "The Scottish Government target for SMR submission to ISD is 6 weeks (42 days) following discharge/transfer/death or clinic attendance.",
                br(),
+               br(),
                "The following bullet chart and data give an overview of the number of records submitted by the target date, 
                as well as the expected number of records from each healthboard.",
                br(),
@@ -225,7 +226,14 @@ navbarPage(
       ),
       
       tabPanel("Accuracy Scores from SMR Audits",
-               
+               "Scottish Morbidity Records (SMR) are routinely assessed on audits conducted by Public Health Scotland (PHS). The auditors are asked to assess a sample of records and mark down any errors. An accuracy score is then derived for each data item assessed. The table down below contains accuracy scores from SMR Audit reports published to date.",
+               br(),
+               br(),
+               "More information about SMR audits and the derivation of the accuracy scores can be found on the", 
+               tags$a(href = "https://beta.isdscotland.org/products-and-services/data-quality-assurance/",
+                     "PHS Data Quality Assurance homepage.", target= "_blank"),
+               br(),
+               br(),
                fluidRow(
                  column(3,
                         selectInput("SMRaudit", "SMR", choices = c("(All)", unique(smr_audit$audit)))
