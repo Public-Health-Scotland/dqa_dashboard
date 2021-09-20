@@ -73,6 +73,29 @@ shinyServer(function(input, output, session) {
     
   })
 
+  #Completeness key
+  output$completeness_key <- renderText({
+    paste0("<h4>How to read this table</h4>",
+    "<p> The 'Percentage Completeness' column contains figures for the month of ",
+    unique(smr_completeness$month_name), " ", unique(smr_completeness$event_year),
+    ". The barcharts show percentage completenes trends from ",
+    comp_barchart_dates$month_name_1, " ", comp_barchart_dates$year_1,
+    " to ", comp_barchart_dates$month_name_2, " ", comp_barchart_dates$year_2,
+    ". </p>",
+    as.character(icon("arrow-up", lib = "glyphicon")),
+    " Increase from last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    as.character(icon("arrow-down", lib = "glyphicon")),
+    " Decrease from last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    as.character(icon("minus", lib = "glyphicon")),
+    " No change from last month </p>", br(),
+    as.character(icon("ok", lib = "glyphicon")), 
+    " Above 60% complete &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    as.character(icon("warning-sign", lib = "glyphicon")),
+    " Between 40% and 60% complete &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    as.character(icon("flag", lib = "glyphicon")), " Below 40% complete "
+    )
+  })
+
   #format data for download
   completeness_download_data <- reactive({
     data_item_completeness() %>% 
@@ -105,7 +128,6 @@ shinyServer(function(input, output, session) {
       write.csv(completeness_download_data(), row.names = FALSE, file)
     }
   )
-  
 
 ### SMR Timeliness ----------------------------------------------------------
 
@@ -146,7 +168,9 @@ shinyServer(function(input, output, session) {
       scale_fill_manual(values = c("#AF69A9","#3F3685", "#80BCEA")
                         )+
       labs(x = "Health Board", y= "Submission Counts")+
-      coord_flip()
+      coord_flip()+
+      theme(panel.grid.major.x = element_line(colour = "light grey"),
+            panel.background = element_blank())
 
     plotly::ggplotly(plot) %>%
       layout(legend = list(x = 0.72, y = 0.95))%>%
@@ -645,8 +669,7 @@ shinyServer(function(input, output, session) {
       RCodes_table[order(-RCodes_table$year), ]
     }
   })
-  
-  
+
   rcodes_data <- reactive({
     rcodes_filter()%>%
       rename("Healthboard"="HBName", "Year"="year",

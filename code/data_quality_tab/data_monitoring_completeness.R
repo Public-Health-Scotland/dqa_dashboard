@@ -128,7 +128,8 @@ smr_completeness <- append_source(df_names)%>%
                             source=="smr01_completeness" ~ "SMR01", 
                             source == "smr02_completeness" ~ "SMR02", 
                             source == "smr04_completeness" ~ "SMR04"))%>%
-  rename("smr"="source")
+  rename("smr"="source") %>% 
+  ungroup()
 
 
 # Generate sparkline plots for % completeness over previous months
@@ -162,8 +163,24 @@ smr_completeness_2 <- smr_completeness %>%
   left_join(change_df)%>%
   left_join(flag_df)
 
+#finally, we store a record of the earliest month and latest month the bar charts were produced from
+#this will be displayed in the text above the table when the app is run
+date1 <- smr_completeness %>% 
+  filter(event_year == min(event_year) & event_month == min(event_month))%>%
+  distinct(event_year, event_month, month_name) %>% 
+  rename(year_1=event_year, month_1=event_month, month_name_1=month_name)
 
-# Write the Output --------------------------------------------------------
+date2 <- smr_completeness %>% 
+  filter(event_year == max(event_year) & event_month == max(event_month))%>%
+  distinct(event_year, event_month, month_name) %>% 
+  rename(year_2=event_year, month_2=event_month, month_name_2=month_name)
 
-#write out the output so that it can be imported in global.R
+comp_barchart_dates <- cbind(date1, date2)
+
+# Write the Outputs --------------------------------------------------------
+
+#write out the table output so that it can be imported in global.R
 write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
+
+#write the barchart dates so taht they can be referenced in the ui
+write_csv(comp_barchart_dates, here::here("data", "comp_barchart_dates.csv"))
