@@ -10,7 +10,6 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(tibble)
-#GLOBAL SETUP
 
 library(stringr)
 
