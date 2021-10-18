@@ -1,6 +1,19 @@
+#SERVER
+
+credentials <- readRDS(here::here("admin", "credentials.rds"))
+
 shinyServer(function(input, output, session) {
 
-
+  # Shinymanager Auth
+  
+  res_auth <- secure_server(
+    check_credentials = check_credentials(credentials)
+  )
+  
+  output$auth_output <- renderPrint({
+    reactiveValuesToList(res_auth)
+  })
+  
 ### SMR Completeness --------------------------------------------------------
 
   ## Setting the main filters for SMR, HB and Percentage flag
