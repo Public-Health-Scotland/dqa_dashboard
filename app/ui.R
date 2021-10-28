@@ -5,7 +5,6 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                           mime = 'image/png') #encoding for phs logo
 
 secure_app(
-  shinyUI(  
     navbarPage(
       
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
@@ -381,7 +380,6 @@ secure_app(
         )
       )
     )
-  )
 ) #secure app
 
 

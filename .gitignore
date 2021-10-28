@@ -1,6 +1,7 @@
 #app admin files
 deploying_app.R
 create_credentials.R
+credentials.rds
 
 # History files
 .Rhistory

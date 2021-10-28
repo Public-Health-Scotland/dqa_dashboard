@@ -1,6 +1,6 @@
 #SERVER
 
-credentials <- readRDS(here::here("admin", "credentials.rds"))
+credentials <- readRDS(here::here("app/admin", "credentials.rds"))
 
 shinyServer(function(input, output, session) {
 
@@ -17,7 +17,11 @@ shinyServer(function(input, output, session) {
 ### SMR Completeness --------------------------------------------------------
 
   ## Setting the main filters for SMR, HB and Percentage flag
-  main_filters_completeness <- reactive({ 
+  main_filters_completeness <- reactive({
+    req(input$smr_in)
+    req(input$hb_in)
+    req(input$percentage_in)
+    
       smr_completeness %>%
       filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
                        ~smr == input$smr_in,
@@ -46,6 +50,7 @@ shinyServer(function(input, output, session) {
   
   #implement filter
   data_item_completeness <- reactive({
+    req(input$data_item_in)
     main_filters_completeness()%>%
     filter(case_when(input$data_item_in %in% unique(main_filters_completeness()$data_item) ~
                        data_item == input$data_item_in,
@@ -145,6 +150,8 @@ shinyServer(function(input, output, session) {
 ### SMR Timeliness ----------------------------------------------------------
 
   timeliness_filters <- reactive({
+    req(input$timeliness_smr_in)
+    req(input$timeliness_month_in)
     timeliness %>%
       filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in)
   })
@@ -192,6 +199,7 @@ shinyServer(function(input, output, session) {
 
   #filter and select rows to display in the timeliness Data tab
   timeliness_table_filter_smr <- reactive({
+    req(input$timeliness_smr_in_2)
     if(input$timeliness_smr_in_2 %in% unique(timeliness$smr)){
       timeliness %>%
         filter(smr == input$timeliness_smr_in_2)
@@ -202,6 +210,7 @@ shinyServer(function(input, output, session) {
   })
   
   timeliness_table_filter_month <- reactive({
+    req(input$timeliness_month_in_2)
     if(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name)){
       timeliness_table_filter_smr() %>% 
         filter(event_month_name == input$timeliness_month_in_2) %>% 
@@ -261,6 +270,8 @@ shinyServer(function(input, output, session) {
 
   ##Filters for SMR and health board
   filters1 <- reactive({
+    req(input$SMRaudit)
+    req(input$Healthboard)
     smr_audit %>%
       filter(case_when(input$SMRaudit %in% unique(smr_audit$audit) ~ audit==input$SMRaudit,
                        TRUE ~ audit == audit),
@@ -297,6 +308,8 @@ shinyServer(function(input, output, session) {
   
   #Apply Year and Data Item Name filters to data
   filters2 <- reactive({
+    req(input$Year)
+    req(input$DataItemName)
     filters1() %>%
       filter(case_when(input$Year %in% unique(filters1()$year) ~ year == input$Year,
                        TRUE ~ year == year),
@@ -350,7 +363,7 @@ shinyServer(function(input, output, session) {
  
   #Error 1 table filters, display and download functions 
   error1_filter <- reactive({
-    
+    req(input$year1)
     if (input$year1 %in% unique(error_1_table$year)){
       error_1_table %>%
         filter(year == input$year1)
@@ -394,7 +407,7 @@ shinyServer(function(input, output, session) {
   
   #Error 2 table filters, display and download functions 
   error2_filter <- reactive({
-    
+    req(input$year2)
     if (input$year2 %in% unique(error_2_table$year)){
       error_2_table %>%
         filter(year == input$year2)
@@ -440,7 +453,7 @@ shinyServer(function(input, output, session) {
   
   #Error 3 table filters, display and download functions 
   error3_filter <- reactive({
-    
+    req(input$year3)
     if (input$year3 %in% unique(error_3_table$year)){
       error_3_table %>%
         filter(year == input$year3)
@@ -486,6 +499,7 @@ shinyServer(function(input, output, session) {
   
   #Error 4 table filters, display and download functions 
   error4_filter <- reactive({
+    req(input$year4)
     if (input$year4 %in% unique(error_4_table$year)){
       error_4_table %>%
         filter(year == input$year4)
@@ -531,7 +545,7 @@ shinyServer(function(input, output, session) {
   
   #Error 5 table filters, display and download functions 
   error5_filter <- reactive({
-    
+    req(input$year5)
     if (input$year5 %in% unique(error_5_table$year)){
       error_5_table %>%
         filter(year == input$year5)
@@ -577,7 +591,7 @@ shinyServer(function(input, output, session) {
   
   #Error 6 table filters, display and download functions 
   error6_filter <- reactive({
-    
+    req(input$year6)
     if (input$year6 %in% unique(error_6_table$year)){
       error_6_table %>%
         filter(year == input$year6)
@@ -624,7 +638,7 @@ shinyServer(function(input, output, session) {
   
   #Query 1 table filters, display and download functions 
   query1_filter <- reactive({
-    
+    req(input$yearQ)
     if (input$yearQ %in% unique(query_1_table$year)){
       query_1_table %>%
         filter(year == input$yearQ)
@@ -672,7 +686,7 @@ shinyServer(function(input, output, session) {
   # R Codes -----------------------------------------------------------------
   
   rcodes_filter <- reactive({
-    
+    req(input$yearR)
     if (input$yearR %in% sort(unique(RCodes_table$year))){
       RCodes_table %>%
       filter(year == input$yearR)
@@ -800,9 +814,9 @@ shinyServer(function(input, output, session) {
   #   error1map
   # })
   # 
-  output$countmap <- renderLeaflet({
-    countmap
-  })
+  # output$countmap <- renderLeaflet({
+  #   countmap
+  # })
   # 
   # output$error3map <- renderLeaflet({
   #   error3map
