@@ -8,30 +8,34 @@
 #or stayed the same compared to the previous month
 
 create_change_symbol <- function(data){
-  
-  data %>%
-      select(smr,hb_name,event_year,data_item, event_month, percent_complete_month)%>%
-      filter(event_month == month(Sys.Date())-1 | event_month == month(Sys.Date())-2)%>%
-      arrange(event_month) %>% 
-      pivot_wider(names_from = event_month,
-                  values_from = percent_complete_month)%>%
-      rename(lag1 = 7, lag2 = 6)%>%
-      mutate(change = case_when(lag1 > lag2 ~ 2,
-                                lag1 < lag2 ~ 1,
-                                TRUE ~0)
-      ) %>% 
-    filter(!is.na(change))%>%
-    mutate(change_symbol = case_when(
-      change == 1 ~ str_c(icon("arrow-down", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "Decrease from previous month"),
-                          sep = " "),
-      change == 2 ~ str_c(icon("arrow-up", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "Increase from previous month"),
-                          sep = " "),
-      change == 0 ~ str_c(icon("minus", lib = "glyphicon"),
-                          tags$span(class = "sr-only", "No change from previous month"),
-                          sep = " ")
-                          )
-          )
-  
+#filter current month and previous month data and convert to wide format
+data_wide <- data %>%
+    select(smr,hbtreat_currentdate,data_item, event_month, percent_complete_month)%>%
+    mutate(month_label = case_when(event_month==max(event_month)~"current_month",
+                                   event_month==max(event_month)-months(1)~"previous_month",
+                                   TRUE~"other")) %>% 
+    filter(month_label %in% c("current_month", "previous_month")) %>% 
+    pivot_wider(id_cols = c(smr, hbtreat_currentdate, data_item), 
+                names_from = month_label, values_from = percent_complete_month,
+                names_prefix="completeness_")
+
+#add a change indicator and change symbol variable
+change_df <- data_wide %>% 
+  mutate(change_flag = 
+           case_when(completeness_current_month > completeness_previous_month
+                     ~ 2,
+                     completeness_current_month < completeness_previous_month
+                     ~ 1,
+                     TRUE ~ 0)) %>% 
+  mutate(change_symbol = case_when(
+    change_flag == 1 ~ paste0(icon("arrow-down", lib = "glyphicon"),
+                              tags$span(class = "sr-only", "Decrease from previous month"),
+                              sep = " "),
+    change_flag == 2 ~ paste0(icon("arrow-up", lib = "glyphicon"),
+                              tags$span(class = "sr-only", "Increase from previous month"),
+                              sep = " "),
+    change_flag == 0 ~ paste0(icon("minus", lib = "glyphicon"),
+                              tags$span(class = "sr-only", "No change from previous month"),
+                              sep = " ")))
+return(change_df)
 }

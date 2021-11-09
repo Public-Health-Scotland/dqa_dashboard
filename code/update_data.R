@@ -1,10 +1,15 @@
 
 #libraries
 library(zip)
+library(shiny)#needed to load icon function for completeness table
 
 #database connection
+con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
+                 pwd = .rs.askForPassword("SMRA Password:"))
 
 #source scripts from code folder
+source(here::here("code/data_quality_tab","data_monitoring_completeness.R"))
+#close database connection
 
 #write outputs to data folder
 
