@@ -1,19 +1,16 @@
-# library(RODBC)
-
-library(DBI)
 library(odbc)
 
 library(readr)
 library(dplyr)
 library(tidyr)
 library(janitor)
-library(purrr)
 library(lubridate)
-library(sparkline) #needed to create small barcharts for tables
-
+library(stringr)   #loads str_c function used for icon creation
+library(sparkline) #create small barcharts for tables
+library(shiny)     #loads icon function for completeness table
 
 # Load Function(s) --------------------------------------------------------
-walk(list.files(here::here("functions"), full.names = TRUE), source)
+#walk(list.files(here::here("functions"), full.names = TRUE), source)
 
 spk_tool <- function(labels) {
   htmlwidgets::JS(
@@ -27,8 +24,6 @@ spk_tool <- function(labels) {
 }
 
 # Import lookup ----------------------------------------------------------
-
-
 hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b534-d6e17229cc7b/resource/652ff726-e676-4a20-abda-435b98dd7bdc/download/hb14_hb19.csv")%>%
   select(HB, HBName)%>%
   clean_names()
@@ -41,22 +36,12 @@ hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland")
 
 hb_lookup <- rbind(hb2019, hb_other)
 
-
-
-# Pull and Wrangle data ---------------------------------------------------
-
-#          
-# con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
-#                  pwd = .rs.askForPassword("SMRA Password:"))
-
-#select records  over a specific time period from smr00, smr01, smr02 and smr04
-
+#Extract data ---------------------------------------------------
 #smr00 contains outpatient data so the records are filtered by clinic date
 raw_smr00 <- dbGetQuery(con, statement = "SELECT clinic_date, hbtreat_currentdate, dob, sex, postcode, 
 ethnic_group, main_operation, mode_of_clinical_interaction, referral_type, specialty
                  FROM ANALYSIS.SMR00_PI
-                 WHERE clinic_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
+                 WHERE clinic_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names()%>%
   rename("event_date"="clinic_date")
 
@@ -65,8 +50,7 @@ raw_smr01 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty
                  FROM ANALYSIS.SMR01_PI
-                 WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
+                 WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names() %>%
   rename("event_date"="discharge_date")
 
@@ -74,8 +58,7 @@ raw_smr02 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty, condition_on_discharge
                  FROM ANALYSIS.SMR02_PI
-           WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-           AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
+           WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
@@ -84,14 +67,14 @@ raw_smr04 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 ethnic_group,main_operation, admission_type, significant_facility,
 admission_transfer_from, discharge_transfer_to, management_of_patient, specialty
                  FROM ANALYSIS.SMR04_PI
-                 WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};" )%>%
+                 WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
 
-#vectors of names of the SMR data items we want to monitor completeness for
+# Wrangle data ------------------------------------------------------------
 
+#vectors of names of the SMR data items we want to monitor completeness for
 #list of data items per smr
 
 smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
@@ -126,11 +109,7 @@ df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness",
 
 smr_completeness <- append_source(df_names)%>%
   left_join(hb_lookup, by = c("hbtreat_currentdate" = "hb")) %>%
-  mutate(month_name =
-           recode_factor(as.factor(event_month),
-                         `1`="January", `2`="February", `3`="March", `4`="April",
-                         `5`="May", `6`="June", `7`="July", `8`="August",
-                         `9`="September", `10`="October", `11`="November", `12`="December"),
+  mutate(month_name = month(event_month, label = TRUE, abbr=FALSE),
          source = case_when(source=="smr00_completeness" ~ "SMR00", 
                             source=="smr01_completeness" ~ "SMR01", 
                             source == "smr02_completeness" ~ "SMR02", 
@@ -143,9 +122,9 @@ smr_completeness <- append_source(df_names)%>%
 # plots are stored in html and will be executed by the shiny app
 
 completeness_plots <- smr_completeness %>%
-  group_by(smr, hb_name, data_item, event_year)%>%
+  group_by(smr, hb_name, data_item)%>%
   arrange(event_month)%>%
-  summarise(mini_plot = spk_chr(percent_complete_month,
+  summarise(mini_plot = spk_chr(values = percent_complete_month,
                                 height = "40px",
                                 width = 100,
                                 chartRangeMin = 0,
@@ -183,8 +162,10 @@ comp_barchart_dates <- data.frame(min_year = year(min_date),
 
 # Write the Outputs --------------------------------------------------------
 
-# #write out the table output so that it can be imported in global.R
-# write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
-# 
-# #write the barchart dates so that they can be referenced in the ui an server
-# write_csv(comp_barchart_dates, here::here("data", "comp_barchart_dates.csv"))
+#write out the table output so that it can be imported in global.R
+write_csv(smr_completeness_2, 
+          "/conf/Data_Quality_Dashboard/data/smr_completeness.csv")
+
+#write the barchart dates so that they can be referenced in the ui an server
+write_csv(comp_barchart_dates,
+          "/conf/Data_Quality_Dashboard/data/comp_barchart_dates.csv")
