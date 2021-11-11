@@ -16,7 +16,7 @@ library(stringr)
 diagnosis1 <- dbGetQuery(con, "SELECT hbtreat_currentdate, discharge_date, link_no, 
                          cis_marker, main_condition
                          FROM analysis.smr01_pi
-                         WHERE discharge_date BETWEEN {d TO_DATE('2017-01-01', 'YYYY-MM-DD')} 
+                         WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
                  AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};") %>%
   clean_names()
 
@@ -28,6 +28,20 @@ last_episode <- diagnosis1 %>%
   filter(epinum == last_epi & last_epi > 1) %>% #filter through the last episode record for multi-episode stays (ie. last episode > 1)
   mutate(r_code = case_when(str_detect(main_condition, "^R") ~ 1, 
                             TRUE ~ 0))
+
+last_episode2 <- dbGetQuery(con, "select hbtreat_currentdate, discharge_date, link_no, 
+                            cis_marker, main_condition
+                            from analysis.smr01_pi
+                            where discharge_date between 
+                            {d to_date('2021-01-01', 'YYYY-MM-DD')} and
+                            {d to_date('2021-06-30', 'YYYY-MM-DD')}
+                            group by hbtreat_currentdate, link_no, cis_marker")
+
+rank_test <- diagnosis1 %>%
+  group_by(hbtreat_currentdate, link_no, cis_marker)%>%
+  mutate(epinum = dplyr::row_number(), last_epi = max(epinum))
+
+rank_test_sorted <- rank_test %>% arrange(discharge_date)
 
 #Read in hb_lookup file:
 hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
