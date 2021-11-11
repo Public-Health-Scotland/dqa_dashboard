@@ -17,31 +17,47 @@ diagnosis1 <- dbGetQuery(con, "SELECT hbtreat_currentdate, discharge_date, link_
                          cis_marker, main_condition
                          FROM analysis.smr01_pi
                          WHERE discharge_date BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')} 
-                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};") %>%
+                 AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')}
+                         ORDER BY link_no, cis_marker, admission_date, record_type, discharge_date, admission, discharge, uri") %>%
   clean_names()
 
 ###Filter the last episode of every multi-episode CIS set 
 #(we're looking at sets where there's more than 1 episode and the patient has been transfered)
 last_episode <- diagnosis1 %>%
-  group_by(hbtreat_currentdate, link_no, cis_marker)%>%
+  group_by(link_no, cis_marker)%>%
   mutate(epinum = dplyr::row_number(), last_epi = max(epinum))%>% #generate episode number and last_episode
   filter(epinum == last_epi & last_epi > 1) %>% #filter through the last episode record for multi-episode stays (ie. last episode > 1)
   mutate(r_code = case_when(str_detect(main_condition, "^R") ~ 1, 
                             TRUE ~ 0))
 
-last_episode2 <- dbGetQuery(con, "select hbtreat_currentdate, discharge_date, link_no, 
-                            cis_marker, main_condition
-                            from analysis.smr01_pi
-                            where discharge_date between 
-                            {d to_date('2021-01-01', 'YYYY-MM-DD')} and
-                            {d to_date('2021-06-30', 'YYYY-MM-DD')}
-                            group by hbtreat_currentdate, link_no, cis_marker")
+#developing a sql script that can filter out all the last CIS episodes
+#for mult-episode stays to limit ammount of data getting pulled into r
+# last_episode2 <- dbGetQuery(con,
+# "WITH
+# cis_data AS(
+#   SELECT
+#     hbtreat_currentdate, discharge_date, link_no, cis_marker, main_condition,
+#     ROW_NUMBER() OVER (PARTITION BY link_no, cis_marker ORDER BY link_no, cis_marker,
+#     admission_date, record_type, discharge_date, admission, discharge, uri) AS epinum
+#   FROM 
+#     analysis.smr01_pi
+#   WHERE 
+#     discharge_date BETWEEN {d to_date('2021-01-01', 'YYYY-MM-DD')} AND {d to_date('2021-06-30', 'YYYY-MM-DD')})
+# SELECT 
+#   link_no, cis_marker,
+#   MAX(epinum) AS last_epi
+# FROM cis_data
+# WHERE epinum > 1
+# GROUP BY link_no, cis_marker") %>% 
+#   clean_names()
 
 rank_test <- diagnosis1 %>%
   group_by(hbtreat_currentdate, link_no, cis_marker)%>%
-  mutate(epinum = dplyr::row_number(), last_epi = max(epinum))
+  mutate(epinum = dplyr::row_number(discharge_date), last_epi = max(epinum)) %>% 
+  arrange(hbtreat_currentdate, link_no, cis_marker,discharge_date) %>% 
+  ungroup()
 
-rank_test_sorted <- rank_test %>% arrange(discharge_date)
+  
 
 #Read in hb_lookup file:
 hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
