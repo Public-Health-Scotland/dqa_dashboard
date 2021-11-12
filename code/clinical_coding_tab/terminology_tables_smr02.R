@@ -1,6 +1,7 @@
 library(readr)
 library(tidyr)
 library(dplyr)
+library(stringr)
 
 # library(readxl)
 # library(shiny)
@@ -18,7 +19,7 @@ library(dplyr)
 #                  pwd = .rs.askForPassword("SMRA Password:"))
 
 
-diagnosis2 <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
+smr02_diabetes <- dbGetQuery(con, "SELECT MAIN_CONDITION, OTHER_CONDITION_1, OTHER_CONDITION_2, OTHER_CONDITION_3, 
                          
                          OTHER_CONDITION_4, OTHER_CONDITION_5, DIABETES, DISCHARGE_DATE,
                          
@@ -43,7 +44,7 @@ RODBC::odbcCloseAll() #close all open rodbc connections
 hb_lookup <- read_csv(here::here("lookups", "hb_lookup.csv"))
 
 #append hb names to diagnosis2 dataframe
-diagnosis2 <- left_join(diagnosis2, hb_lookup[c(1:2)], by = c("HBTREAT_CURRENTDATE"="HB"))
+diagnosis2 <- left_join(smr02_diabetes, hb_lookup[c(1:2)], by = c("HBTREAT_CURRENTDATE"="HB"))
 
 diagnosis2 <- diagnosis2 %>% 
   mutate(
@@ -267,9 +268,28 @@ query_1_table <- query_1_table[, c("HBName", 'year', "query_count", "query_perce
 
 
 # Write out all the error tables ------------------------------------------
-ls_error_tables <- list(error_1_table, error_2_table, error_3_table, error_4_table,
-                        error_5_table, error_6_table, error_split_1, error_split_2,
-                        error_split_3, error_split_5, query_1_table)
+
+#function takes a character vector of dataframe names and puts the dataframes in a named list
+list.function <-  function(df_vector) { 
+  
+  sapply(df_vector, get, environment(), simplify = FALSE) 
+} 
+
+#list of dataframes to output
+error_tables_vector <- c("error_1_table", "error_2_table", "error_3_table", "error_4_table",
+                         "error_5_table", "error_6_table", "error_split_1", "error_split_2",
+                         "error_split_3", "error_split_5", "query_1_table")
+
+df_list <-list.function(error_tables_vector)
+df_names <- names(df_list)
+
+#write outputs to csv, the named list is used to match the csv name to each table
+for(i in 1:length(df_list)){
+  write_csv(df_list[[i]], paste0("/conf/Data_Quality_Dashboard/data/", 
+                                         df_names[i],".csv"))
+}
+
+
 write_csv(error_1_table, here::here("data", "error1.csv"))
 write_csv(error_2_table, here::here("data", "error2.csv"))
 write_csv(error_3_table, here::here("data", "error3.csv"))
