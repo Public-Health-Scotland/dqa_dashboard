@@ -32,7 +32,6 @@ library(shinymanager)
 #smr timeliness data
 timeliness <- read_csv(here::here("data", "timeliness.csv"))
 
-  
 #smr completeness table with sparkline plot html
 smr_completeness <- read_csv("/conf/Data_Quality_Dashboard/data/smr_completeness.csv") %>%
   select(-hbtreat_currentdate)
@@ -42,6 +41,9 @@ comp_barchart_dates <- read_csv("/conf/Data_Quality_Dashboard/data/comp_barchart
 
 #smr audit data
 smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
+
+#smr01 clinical coding data
+RCodes_table <- read.csv(here::here("/conf/Data_Quality_Dashboard/data/r_codes.csv"))
 
 #smr02 clinical coding data
 error_1_table <- read.csv(here::here("data", "error1.csv"))
@@ -71,10 +73,7 @@ error_4_table$error4 <- as.integer(error_4_table$error4)
 error_5_table$error5 <- as.integer(error_5_table$error5)
 error_6_table$error6 <- as.integer(error_6_table$error6)
 
-#smr01 clinical coding data
-RCodes_table <- read.csv(here::here("data", "RCodes.csv"))
-
-# Error maps ------------------------------------------------------
+# Error maps -----------------------------------------------------
 # maps_table <- read.csv(here::here("data", "map_table.csv"))
 # maps_table
 # #read in the shapefile downloaded from the web and add the healthboard borders (polygons)
