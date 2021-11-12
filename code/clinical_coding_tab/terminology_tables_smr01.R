@@ -32,24 +32,27 @@ last_episode <- diagnosis1 %>%
 
 #developing a sql script that can filter out all the last CIS episodes
 #for mult-episode stays to limit ammount of data getting pulled into r
-# last_episode2 <- dbGetQuery(con,
-# "WITH
-# cis_data AS(
-#   SELECT
-#     hbtreat_currentdate, discharge_date, link_no, cis_marker, main_condition,
-#     ROW_NUMBER() OVER (PARTITION BY link_no, cis_marker ORDER BY link_no, cis_marker,
-#     admission_date, record_type, discharge_date, admission, discharge, uri) AS epinum
-#   FROM 
-#     analysis.smr01_pi
-#   WHERE 
-#     discharge_date BETWEEN {d to_date('2021-01-01', 'YYYY-MM-DD')} AND {d to_date('2021-06-30', 'YYYY-MM-DD')})
-# SELECT 
-#   link_no, cis_marker,
-#   MAX(epinum) AS last_epi
-# FROM cis_data
-# WHERE epinum > 1
-# GROUP BY link_no, cis_marker") %>% 
-#   clean_names()
+last_episode2 <- dbGetQuery(con,
+"WITH
+cis_data AS(
+  SELECT
+    hbtreat_currentdate, discharge_date, link_no, cis_marker, main_condition,
+    ROW_NUMBER() OVER (PARTITION BY link_no, cis_marker ORDER BY link_no, cis_marker,
+    admission_date, record_type, discharge_date, admission, discharge, uri) AS epinum
+  FROM
+    analysis.smr01_pi
+  WHERE
+    discharge_date BETWEEN {d to_date('2021-01-01', 'YYYY-MM-DD')} AND {d to_date('2021-06-30', 'YYYY-MM-DD')})
+SELECT *
+FROM 
+  (SELECT hbtreat_currentdate, discharge_date, link_no, cis_marker, main_condition, epinum,
+    MAX(epinum) OVER (PARTITION BY link_no, cis_marker) AS last_epi
+  FROM cis_data
+  WHERE epinum >1
+  )
+WHERE epinum = last_epi") %>%
+  clean_names()
+
 
 rank_test <- diagnosis1 %>%
   group_by(hbtreat_currentdate, link_no, cis_marker)%>%
