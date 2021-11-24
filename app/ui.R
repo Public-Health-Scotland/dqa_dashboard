@@ -274,8 +274,8 @@ secure_app(
                                 of records with the hard-code for pre-existing diabetes'
                               ),
                               selectInput('year1', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_1_table$year))),
-                                          selected = max(unique(error_1_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error1", "Download CSV"),
                               DT::dataTableOutput("error_1")),
@@ -289,8 +289,8 @@ secure_app(
                                 of records with the hard-code for gestational diabetes'
                               ),
                               selectInput('year2', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_2_table$year))),
-                                          selected = max(unique(error_2_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error2", "Download CSV"),
                               DT::dataTableOutput("error_2")),
@@ -304,8 +304,8 @@ secure_app(
                                 the hard-code for diabetes of unspecified onset'
                               ),
                               selectInput('year3', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_3_table$year))),
-                                          selected = max(unique(error_3_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error3", "Download CSV"),
                               DT::dataTableOutput("error_3")),
@@ -319,8 +319,8 @@ secure_app(
                                 the hard-code for 'No diabetes during pregnancy'."
                               ),
                               selectInput('year4', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_4_table$year))),
-                                          selected = max(unique(error_4_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error4", "Download CSV"),
                               DT::dataTableOutput("error_4")),
@@ -329,8 +329,8 @@ secure_app(
                                 tags$b('Error 5 is defined as: '),'The mandatory diabetes hard-code is not recorded.'
                               ),
                               selectInput('year5', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_5_table$year))),
-                                          selected = max(unique(error_5_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error5", "Download CSV"),
                               DT::dataTableOutput("error_5")),
@@ -344,8 +344,8 @@ secure_app(
                                        for the given healthboard and selected year.'
                               ),
                               selectInput('year6', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(error_6_table$year))),
-                                          selected = max(unique(error_6_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_error6", "Download CSV"),
                               DT::dataTableOutput("error_6")),
@@ -359,8 +359,8 @@ secure_app(
                                        where diabetes is hard-coded as 'Not Known'."
                               ),
                               selectInput('yearQ', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(query_1_table$year))),
-                                          selected = max(unique(query_1_table$year))
+                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
+                                          selected = max(unique(smr02_diabetes$year))
                               ),
                               downloadButton("download_smr02_query1", "Download CSV"),
                               DT::dataTableOutput("query")))
