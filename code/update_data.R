@@ -19,8 +19,9 @@ source(here::here("code/data_quality_tab","data_monitoring_completeness.R"))
 
 #timeliness
 
-#SMR audits accuracy results
 
+#SMR audits accuracy results
+source(here::here("code/data_quality_tab", "smr_audit.R"))
 
 ##Clinical Coding Discrepancies and Issues Tab ---
 #smr01 R codes 
