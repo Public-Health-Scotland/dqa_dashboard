@@ -11,7 +11,6 @@ library(janitor)
 library(lubridate)
 library(stringr)
 
-
 # Load Functions ----------------------------------------------------------
 
 # source(here::here("functions", "append_source.R"))
@@ -29,8 +28,8 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
 # Extract data from SMR analysis views ------------------------------------
 
 #open connection to database
-con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
-                 pwd = .rs.askForPassword("SMRA Password:"))
+# con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
+#                  pwd = .rs.askForPassword("SMRA Password:"))
 
 smr00_raw <- dbGetQuery(con, "SELECT referral_type, clinic_attendance, current_trust_dmu,
                         location, date_record_inserted, clinic_date, hbtreat_currentdate
@@ -150,7 +149,8 @@ submissions <- count_submissions(ldf) %>%
 
 # Expected submissions & backlog ------------------------------------------
 
-expected_submissions_df <- read_csv(here::here("data", "expected_submissions.csv"))
+expected_submissions_df <- read_csv(
+  "/conf/Data_Quality_Dashboard/data/expected_submissions_june_sep_2021.csv")
 
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)

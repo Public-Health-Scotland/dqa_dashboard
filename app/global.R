@@ -30,7 +30,7 @@ library(shinymanager)
 #Read in Data -----------------------------------------------------------
 
 #smr timeliness data
-timeliness <- read_csv(here::here("data", "timeliness.csv"))
+timeliness <- read_csv("/conf/Data_Quality_Dashboard/data/timeliness.csv")
 
 #smr completeness table with sparkline plot html
 smr_completeness <- read_csv("/conf/Data_Quality_Dashboard/data/smr_completeness.csv") %>%
