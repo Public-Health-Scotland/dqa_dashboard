@@ -165,22 +165,3 @@ smr02_diabetes_data <- append_source(c("error_1_table", "error_2_table", "error_
 # Write out all the error tables ------------------------------------------
 
 write_csv(smr02_diabetes_data, "/conf/Data_Quality_Dashboard/data/smr02_diabetes_data.csv")
-
-# #function takes a character vector of dataframe names and puts the dataframes in a named list
-# list.function <-  function(df_vector) { 
-#   
-#   sapply(df_vector, get, environment(), simplify = FALSE) 
-# } 
-# 
-# #list of dataframes to output
-# error_tables_vector <- c("error_1_table", "error_2_table", "error_3_table", "error_4_table",
-#                          "error_5_table", "error_6_table", "query_1_table")
-# 
-# df_list <-list.function(error_tables_vector)
-# df_names <- names(df_list)
-# 
-# #write outputs to csv, the named list is used to match the csv name to each table
-# for(i in 1:length(df_list)){
-#   write_csv(df_list[[i]], paste0("/conf/Data_Quality_Dashboard/data/smr02_diabetes_data/", 
-#                                          df_names[i],".csv"))
-# }
