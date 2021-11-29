@@ -150,7 +150,7 @@ submissions <- count_submissions(ldf) %>%
 # Expected submissions & backlog ------------------------------------------
 
 expected_submissions_df <- read_csv(
-  "/conf/Data_Quality_Dashboard/data/expected_submissions_june_sep_2021.csv")
+  "/conf/Data_Quality_Dashboard/data/expected_submissions_may_sep_2021.csv")
 
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
