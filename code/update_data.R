@@ -1,5 +1,6 @@
 #libraries
 library(odbc)
+library(DBI)
 library(purrr)
 library(zip)
 
@@ -10,29 +11,21 @@ walk(list.files(here::here("functions"), full.names = TRUE), source)
 con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
                  pwd = .rs.askForPassword("SMRA Password:"))
 
+#update data quality tab
+walk(list.files(here::here("code/data_quality_tab"), full.names = TRUE), source)
 
-# Source individual scripts from code folder -----------------------------------------
+#update clinical coding tab
+walk(list.files(here::here("code/clinical_coding_tab"), full.names = TRUE), source)
 
-##Data Quality Tab ---
-#completeness
-source(here::here("code/data_quality_tab","data_monitoring_completeness.R"))
+#close database connection 
+dbDisconnect(con)
+rm(con)
 
-#timeliness
-source(here::here("code/data_quality_tab","data_monitoring_timeliness.R"))
+#save a zipped copy of the data
+data_list <- paste0("/conf/Data_Quality_Dashboard/data/")
+zip::zip(paste0("/conf/Data_Quality_Dashboard/data_archive/dq_dashboard_data_",
+           Sys.Date(), ".zip"), data_list, mode="cherry-pick")
 
-#SMR audits accuracy results
-source(here::here("code/data_quality_tab", "smr_audit.R"))
+#clear environment
+rm(list=ls())
 
-##Clinical Coding Discrepancies and Issues Tab ---
-#smr01 R codes 
-source(here::here("code/clinical_coding_tab", "terminology_tables_smr01.R"))
-
-#smr02 clinical coding of diabetes
-source(here::here("code/clinical_coding_tab", "terminology_tables_smr02.R"))
-
-# Close database connection -----------------------------------------------
-
-#save a zipped copy in archive
-# data_list <- paste0("/home/maians01/dqa_dashboard/data/",list.files(here::here("data")))
-# zip::zip(paste0("/conf/Data_Quality_Dashboard/data_archive/dq_dashboard_data_", 
-#            Sys.Date(), ".zip"), data_list, mode="cherry-pick")
