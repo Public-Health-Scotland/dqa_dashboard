@@ -28,7 +28,7 @@ completeness <- function(smr_data, select_cols){
   total_records_month <- df%>%
     group_by(hbtreat_currentdate, event_month)%>%
     tally()%>%
-    rename("month_total"="n") %>% 
+    rename("month_total" = "n") %>% 
     ungroup()
   
   #calculate completeness percentage per data item
