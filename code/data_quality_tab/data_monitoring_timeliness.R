@@ -144,7 +144,7 @@ for(i in 1:length(ldf)){
 # count_submissions() calculates the number of records submitted before and after the deadline
 # outputs a dataframe with counts for each SMR, HB and month
 submissions <- count_submissions(ldf) %>% 
-  left_join(hb2019, by = c("hbtreat_currentdate"="hb"))
+  left_join(hb2019, by = c("hbtreat_currentdate" = "hb"))
 
 
 # Expected submissions & backlog ------------------------------------------
