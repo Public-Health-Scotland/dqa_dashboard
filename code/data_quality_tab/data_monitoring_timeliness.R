@@ -115,7 +115,7 @@ ldf[[3]] <- smr02_raw%>%
   mutate(smr = "SMR02")
 
 #smr04 selection criteria
-ldf[[4]] <- smr04_raw%>%
+ldf[[4]] <- smr04_raw %>%
   filter(current_trust_dmu %in% c('SAA20','SBA20','SDA01',
                                   'SDA02','SFA20', 'SGA20',
                                   'SHA20','SLA20','SNA20',
