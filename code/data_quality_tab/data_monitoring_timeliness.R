@@ -126,8 +126,8 @@ ldf[[4]] <- smr04_raw%>%
          !str_detect(location, "(V|J|K)$"),
          !is.na(date_record_inserted),
          !(hbtreat_currentdate %in% geo_excl)
-         )%>% 
-  rename("event_date" = "discharge_date")%>% 
+         ) %>% 
+  rename("event_date" = "discharge_date") %>% 
   mutate(smr = "SMR04")
 
 # Count Submissions ------------------------------------------
