@@ -622,8 +622,8 @@ shinyServer(function(input, output, session) {
   
   error6_data <- reactive({
     error6_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error",
-             "Year"="year", "Percentage"="percentage")%>% 
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
       select(-source)
   })
   
