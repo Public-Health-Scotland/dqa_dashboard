@@ -561,7 +561,7 @@ shinyServer(function(input, output, session) {
     req(input$year5)
     if (input$year5 %in% unique(smr02_diabetes$year)){
       smr02_diabetes %>%
-        filter(source=="error_5_table",year == input$year5)
+        filter(source == "error_5_table", year == input$year5)
     }
     
     else {
