@@ -672,8 +672,8 @@ shinyServer(function(input, output, session) {
   
   query1_data <- reactive({
     query1_filter() %>%
-      rename("Healthboard"="HBName", "Query Count"="error",
-             "Year"="year", "Percentage"="percentage") %>% 
+      rename("Healthboard" = "HBName", "Query Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
       select(-source)
   }) 
   
