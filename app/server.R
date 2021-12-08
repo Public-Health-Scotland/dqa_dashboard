@@ -566,7 +566,7 @@ shinyServer(function(input, output, session) {
     
     else {
       smr02_diabetes %>%
-        filter(source=="error_5_table") %>% 
+        filter(source == "error_5_table") %>% 
         arrange(desc(year))
     }
   })
