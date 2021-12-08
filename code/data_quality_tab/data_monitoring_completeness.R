@@ -109,7 +109,7 @@ df_names <- c("smr00_completeness", "smr01_completeness", "smr02_completeness",
 
 smr_completeness <- append_source(df_names)%>%
   left_join(hb_lookup, by = c("hbtreat_currentdate" = "hb")) %>%
-  mutate(month_name = month(event_month, label = TRUE, abbr=FALSE),
+  mutate(month_name = month(event_month, label = TRUE, abbr = FALSE),
          source = case_when(source=="smr00_completeness" ~ "SMR00", 
                             source=="smr01_completeness" ~ "SMR01", 
                             source == "smr02_completeness" ~ "SMR02", 
