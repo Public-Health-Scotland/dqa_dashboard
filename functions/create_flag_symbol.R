@@ -11,7 +11,7 @@
 
 create_flag_symbol <- function(data){
   data %>%
-    filter(event_month == max(event_month))%>%
+    filter(event_month == max(event_month)) %>%
     mutate(flag = case_when(percent_complete_month >= 60 ~ 1,
                             percent_complete_month >= 40 ~ 2,
                             percent_complete_month < 40 ~ 3)) %>%
