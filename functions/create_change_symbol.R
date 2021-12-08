@@ -11,13 +11,13 @@ create_change_symbol <- function(data){
 #filter current month and previous month data and convert to wide format
 data_wide <- data %>%
     select(smr,hbtreat_currentdate,data_item, event_month, percent_complete_month)%>%
-    mutate(month_label = case_when(event_month==max(event_month)~"current_month",
-                                   event_month==max(event_month)-months(1)~"previous_month",
-                                   TRUE~"other")) %>% 
+    mutate(month_label = case_when(event_month == max(event_month) ~ "current_month",
+                                   event_month == max(event_month) - months(1) ~ "previous_month",
+                                   TRUE ~ "other")) %>% 
     filter(month_label %in% c("current_month", "previous_month")) %>% 
     pivot_wider(id_cols = c(smr, hbtreat_currentdate, data_item), 
                 names_from = month_label, values_from = percent_complete_month,
-                names_prefix="completeness_")
+                names_prefix = "completeness_")
 
 #add a change indicator and change symbol variable
 change_df <- data_wide %>% 
