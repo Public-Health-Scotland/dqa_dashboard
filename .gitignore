@@ -3,6 +3,9 @@ deploying_app.R
 create_credentials.R
 credentials.rds
 
+#app data folder
+data/**
+
 # History files
 .Rhistory
 .Rapp.history
