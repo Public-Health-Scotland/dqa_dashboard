@@ -10,7 +10,7 @@ app/admin/**
 data/**
 
 # csv files
-*.[cC][sS][vV]
+*.[cC][sS][vV]*
 
 # excel files
 *.[xX][lL][sS]*
