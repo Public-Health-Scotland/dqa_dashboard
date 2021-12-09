@@ -4,7 +4,7 @@ create_credentials.R
 credentials.rds
 
 # app admin folder
-admin/**
+app/admin/**
 
 # app data folder
 data/**
