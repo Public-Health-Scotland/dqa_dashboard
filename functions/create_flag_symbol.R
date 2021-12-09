@@ -11,16 +11,11 @@
 
 create_flag_symbol <- function(data){
   data %>%
-    
-    filter(event_month == month(Sys.Date())-1)%>%
-    
+    filter(event_month == max(event_month)) %>%
     mutate(flag = case_when(percent_complete_month >= 60 ~ 1,
                             percent_complete_month >= 40 ~ 2,
-                            percent_complete_month < 40 ~ 3)
-    )%>%
-    
-    filter(!is.na(flag))%>%
-    
+                            percent_complete_month < 40 ~ 3)) %>%
+    filter(!is.na(flag)) %>%
     mutate(flag_symbol = case_when(
       flag == 1 ~ str_c(icon("ok", lib = "glyphicon"),
                         tags$span(class = "sr-only", "Above 60% complete"),

@@ -1,8 +1,8 @@
 
 # Import R libraries ------------------------------------------------------
 
-library(DBI)
-library(odbc)
+# library(DBI)
+# library(odbc)
 
 library(readr)
 library(dplyr)
@@ -11,64 +11,63 @@ library(janitor)
 library(lubridate)
 library(stringr)
 
-
 # Load Functions ----------------------------------------------------------
 
-source(here::here("functions", "append_source.R"))
-source(here::here("functions", "count_submissions_timeliness.R"))
+# source(here::here("functions", "append_source.R"))
+# source(here::here("functions", "count_submissions_timeliness.R"))
 
 
 # Import lookup ----------------------------------------------------------
 
-
 hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b534-d6e17229cc7b/resource/652ff726-e676-4a20-abda-435b98dd7bdc/download/hb14_hb19.csv")%>%
   select(HB, HBName)%>%
-  clean_names()
+  clean_names() %>% 
+  rbind(c("S08100008", "State Hospital")) #adding the state hosp code to the lookup
 
 
 # Extract data from SMR analysis views ------------------------------------
 
 #open connection to database
-con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
-                 pwd = .rs.askForPassword("SMRA Password:"))
+# con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
+#                  pwd = .rs.askForPassword("SMRA Password:"))
 
-smr00_raw <- dbGetQuery(con, "SELECT *
+smr00_raw <- dbGetQuery(con, "SELECT referral_type, clinic_attendance, current_trust_dmu,
+                        location, date_record_inserted, clinic_date, hbtreat_currentdate
                         FROM analysis.smr00_pi
-                        WHERE clinic_date 
-                        BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')}
-                        AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};")%>%
+                        WHERE clinic_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
               clean_names()
 
-smr01_raw <- dbGetQuery(con, "SELECT *
+smr01_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
+                        location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr01_pi
-                        WHERE discharge_date 
-                        BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')}
-                        AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
             clean_names()
 
-smr02_raw <- dbGetQuery(con, "SELECT *
+smr02_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
+                        location, date_record_inserted, condition_on_discharge,
+                        discharge_date, hbtreat_currentdate
                         FROM analysis.smr02_pi
-                        WHERE discharge_date 
-                        BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')}
-                        AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
               clean_names()
 
-smr04_raw <- dbGetQuery(con, "SELECT *
+smr04_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
+                        location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr04_pi
-                        WHERE discharge_date 
-                        BETWEEN {d TO_DATE('2021-01-01', 'YYYY-MM-DD')}
-                        AND {d TO_DATE('2021-06-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
               clean_names()
-
-
-
 
 # Selection criteria -----------------------------------------------------------------
-# implementing the different selection criteria for each smr
+# implements the different selection criteria for each smr
 
+#Geo codes we want to exclude (eg. treated outwith scotland, Non-NHS providers, etc)
+geo_excl <- c("S08200001", "S08200002", "S08200003", "S08200004", "S27000001", 
+              "S27000002", "S08100001") 
+
+#empty list with 4 slots to store each filtered dataframe
+ldf <- vector(mode = "list", length = 4)
 
 #smr00 selection criteria
-smr00_filt <- smr00_raw%>%
+ldf[[1]] <- smr00_raw%>%
   filter(referral_type != 3,
          clinic_attendance ==1,
          current_trust_dmu %in% c('SAA20', 'SBA20', 'SDA01',
@@ -77,12 +76,15 @@ smr00_filt <- smr00_raw%>%
                                   'SRA01', 'SSA20', 'STA20',
                                   'SVA20', 'SWA01', 'SYA20',
                                   'SZA01'),
-         !str_detect(location, "(V|J|K)$"), # if location doesnt end with V, J, or K include it.
-         !is.na(date_record_inserted) #date when record recieved
-         )   
+         !str_detect(location, "(V|J|K)$"),
+         !is.na(date_record_inserted),
+         !(hbtreat_currentdate %in% geo_excl)
+         ) %>% 
+  rename("event_date" = "clinic_date") %>% 
+  mutate(smr = "SMR00")
 
 #smr01 selection criteria
-smr01_filt <- smr01_raw%>%
+ldf[[2]] <- smr01_raw%>%
   filter(current_trust_dmu %in% c('SAA20','SBA20','SDA02',
                                   'SFA20', 'SGA20', 'SHA20',
                                   'SLA20','SNA20','SRA01',
@@ -90,11 +92,14 @@ smr01_filt <- smr01_raw%>%
                                   'SYA20','SVA20', 'SZA01'),
          location != 'D201N',
          !str_detect(location, "(V|J|K)$"),
-         !is.na(date_record_inserted)
-         )
+         !is.na(date_record_inserted),
+         !(hbtreat_currentdate %in% geo_excl)
+         ) %>% 
+  rename("event_date" = "discharge_date")%>% 
+  mutate(smr = "SMR01")
 
 #smr02 selection criteria
-smr02_filt <- smr02_raw%>%
+ldf[[3]] <- smr02_raw%>%
   filter(current_trust_dmu %in% c('SAA20','SBA20','SDA02',
                                   'SFA20', 'SGA20', 'SHA20',
                                   'SLA20','SNA20','SRA01',
@@ -103,11 +108,14 @@ smr02_filt <- smr02_raw%>%
          condition_on_discharge == 3,
          location != 'D201N',
          !str_detect(location, "(V|J|K)$"),
-         !is.na(date_record_inserted)
-         )
+         !is.na(date_record_inserted),
+         !(hbtreat_currentdate %in% geo_excl)
+         )%>% 
+  rename("event_date" = "discharge_date")%>% 
+  mutate(smr = "SMR02")
 
 #smr04 selection criteria
-smr04_filt <- smr04_raw%>%
+ldf[[4]] <- smr04_raw %>%
   filter(current_trust_dmu %in% c('SAA20','SBA20','SDA01',
                                   'SDA02','SFA20', 'SGA20',
                                   'SHA20','SLA20','SNA20',
@@ -116,62 +124,36 @@ smr04_filt <- smr04_raw%>%
                                   'SZA01'),
          location != 'D201N',
          !str_detect(location, "(V|J|K)$"),
-         !is.na(date_record_inserted)
-         )
+         !is.na(date_record_inserted),
+         !(hbtreat_currentdate %in% geo_excl)
+         ) %>% 
+  rename("event_date" = "discharge_date") %>% 
+  mutate(smr = "SMR04")
 
-# Calculate submission deadline dates ------------------------------------------
+# Count Submissions ------------------------------------------
 
+# The submission dedline is 6 weeks following the end of month of discharge/transfer/death or clinic attendance 
 
-#seq of first day of every month in 2021
-first_day_month <- seq.Date(from = as.Date("2021-01-01 00:00:00.00"),
-                length.out = 12,
-                by = "month")
+#iterate through each dataframe and add a submission deadline column to the data
+for(i in 1:length(ldf)){
+  ldf[[i]] <- ldf[[i]] %>% 
+    mutate(last_day_month = lubridate::ceiling_date(event_date, "month")-1) %>% 
+    mutate(sub_deadline = last_day_month+ lubridate::days(42))
+}
 
-#seq of last day of every month in 2021
-last_day_month <- lubridate::ceiling_date(first_day_month, "month")-1
-
-#seq of 2021 monthly submission deadlines. 
-#fyi: submission deadline for records to be uploaded is 6 weeks from the end
-#of the month of the clinic_date (smr00) or discharge_date(smr01, smr02, smr04)
-
-sub_deadline <- last_day_month + 42 #6 weeks is 42 days
-
-
-
-
-# Submission counts -------------------------------------------------------
-
-
-submissions_smr00 <- count_submissions(smr00_filt, clinic_date, 
-                                       sub_deadline)
-submissions_smr01 <- count_submissions(smr01_filt, discharge_date,
-                                       sub_deadline)
-submissions_smr02<- count_submissions(smr02_filt, discharge_date,
-                                      sub_deadline)
-submissions_smr04 <- count_submissions(smr04_filt, discharge_date,
-                                       sub_deadline)
-
-df_names <- c("submissions_smr00", "submissions_smr01",
-              "submissions_smr02", "submissions_smr04")
-
-submissions <- append_source(df_names)%>%
-  mutate(source = case_when( source == "submissions_smr00" ~ "SMR00",
-                             source == "submissions_smr01" ~ "SMR01",
-                             source == "submissions_smr02" ~ "SMR02",
-                             TRUE ~ "SMR04")
-         )%>%
-  rename("smr" = "source")%>%
-  filter(hbres_currentdate != "S08200001", hbres_currentdate != "S08200002", 
-         hbres_currentdate != "S08200003", hbres_currentdate != "S08200004") %>% #exclude events outside Scotland
-  left_join(hb2019, by = c("hbres_currentdate"="hb"))
+# count_submissions() calculates the number of records submitted before and after the deadline
+# outputs a dataframe with counts for each SMR, HB and month
+submissions <- count_submissions(ldf) %>% 
+  left_join(hb2019, by = c("hbtreat_currentdate" = "hb"))
 
 
 # Expected submissions & backlog ------------------------------------------
 
-expected_submissions_df <- read_csv(here::here("data", "expected_submissions.csv"))
+expected_submissions_df <- read_csv(
+  "/conf/Data_Quality_Dashboard/data/expected_submissions_may_sep_2021.csv")
 
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
 
-write_csv(timeliness, here::here("data", "timeliness.csv"))
+write_csv(timeliness, "/conf/Data_Quality_Dashboard/data/timeliness.csv")
 

@@ -95,10 +95,10 @@ shinyServer(function(input, output, session) {
   output$completeness_key <- renderText({
     paste0("<h4>How to read this table</h4>",
     "<p> The 'Percentage Completeness' column contains figures for the month of ",
-    unique(smr_completeness$month_name), " ", unique(smr_completeness$event_year),
+    comp_barchart_dates$max_month, " ", comp_barchart_dates$max_year,
     ". The barcharts show percentage completenes trends from ",
-    comp_barchart_dates$month_name_1, " ", comp_barchart_dates$year_1,
-    " to ", comp_barchart_dates$month_name_2, " ", comp_barchart_dates$year_2,
+    comp_barchart_dates$min_month, " ", comp_barchart_dates$min_year,
+    " to ", comp_barchart_dates$max_month, " ", comp_barchart_dates$max_year,
     ". </p>",
     as.character(icon("arrow-up", lib = "glyphicon")),
     " Increase from last month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
@@ -364,18 +364,21 @@ shinyServer(function(input, output, session) {
   #Error 1 table filters, display and download functions 
   error1_filter <- reactive({
     req(input$year1)
-    if (input$year1 %in% unique(error_1_table$year)){
-      error_1_table %>%
-        filter(year == input$year1)
+    if (input$year1 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_1_table", year == input$year1)
     }
     else {
-      error_1_table[order(-error_1_table$year), ]
+      smr02_diabetes %>% 
+        filter(source=="error_1_table") %>% 
+        arrange(desc(year))
     }
   })
   error1_data <- reactive({
     error1_filter() %>% 
-      rename("Healthboard"="HBName", "Error Count"="error1",
-             "Year"="year", "Percentage"="percentage_1")
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_1 <- DT::renderDataTable({
@@ -397,7 +400,8 @@ shinyServer(function(input, output, session) {
   
   output$download_smr02_error1 <- downloadHandler(
     filename = function(){
-      paste0("smr02_error1_", ifelse(input$year1 %in% unique(error_1_table$year), unique(error1_data()$Year), "all_years"),
+      paste0("smr02_error1_", ifelse(input$year1 %in% unique(smr02_diabetes$year), 
+                                     unique(error1_data()$Year), "all_years"),
              ".csv")
     },
     content = function(file){
@@ -408,20 +412,23 @@ shinyServer(function(input, output, session) {
   #Error 2 table filters, display and download functions 
   error2_filter <- reactive({
     req(input$year2)
-    if (input$year2 %in% unique(error_2_table$year)){
-      error_2_table %>%
-        filter(year == input$year2)
+    if (input$year2 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_2_table", year == input$year2)
     }
     
     else {
-      error_2_table[order(-error_2_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "error_2_table") %>% 
+        arrange(desc(year))
     }
   })
   
   error2_data <- reactive({
     error2_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error2",
-             "Year"="year", "Percentage"="percentage_2")
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_2 <- DT::renderDataTable({
@@ -443,8 +450,8 @@ shinyServer(function(input, output, session) {
 
   output$download_smr02_error2 <- downloadHandler(
     filename = function(){
-      paste0("smr02_error2_", ifelse(input$year2 %in% unique(error_2_table$year), unique(error2_data()$Year), "all_years"),
-             ".csv")
+      paste0("smr02_error2_", ifelse(input$year2 %in% unique(smr02_diabetes$year), 
+                                     unique(error2_data()$Year), "all_years"),".csv")
     },
     content = function(file){
       write.csv(error2_data(), row.names = FALSE, file)
@@ -454,20 +461,23 @@ shinyServer(function(input, output, session) {
   #Error 3 table filters, display and download functions 
   error3_filter <- reactive({
     req(input$year3)
-    if (input$year3 %in% unique(error_3_table$year)){
-      error_3_table %>%
-        filter(year == input$year3)
+    if (input$year3 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_3_table", year == input$year3)
     }
     
     else {
-      error_3_table[order(-error_3_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "error_3_table") %>% 
+        arrange(desc(year))
     }
   })
   
   error3_data <-  reactive({
     error3_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error3",
-             "Year"="year", "Percentage"="percentage_3")
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_3 <- DT::renderDataTable({
@@ -489,8 +499,8 @@ shinyServer(function(input, output, session) {
   
   output$download_smr02_error3 <- downloadHandler(
     filename = function(){
-      paste0("smr02_error3_", ifelse(input$year3 %in% unique(error_3_table$year), unique(error3_data()$Year), "all_years"),
-             ".csv")
+      paste0("smr02_error3_", ifelse(input$year3 %in% unique(smr02_diabetes$year), 
+                                     unique(error3_data()$Year), "all_years"), ".csv")
     },
     content = function(file){
       write.csv(error3_data(), row.names = FALSE, file)
@@ -500,20 +510,23 @@ shinyServer(function(input, output, session) {
   #Error 4 table filters, display and download functions 
   error4_filter <- reactive({
     req(input$year4)
-    if (input$year4 %in% unique(error_4_table$year)){
-      error_4_table %>%
-        filter(year == input$year4)
+    if (input$year4 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_4_table",year == input$year4)
     }
     
     else {
-      error_4_table[order(-error_4_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "error_4_table") %>% 
+        arrange(desc(year))
     }
   })
   
   error4_data <- reactive({
     error4_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error4",
-             "Year"="year", "Percentage"="percentage_4") 
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_4 <- DT::renderDataTable({
@@ -535,8 +548,8 @@ shinyServer(function(input, output, session) {
   
   output$download_smr02_error4 <- downloadHandler(
     filename = function(){
-      paste0("smr02_error4_", ifelse(input$year4 %in% unique(error_4_table$year), unique(error4_data()$Year), "all_years"),
-             ".csv")
+      paste0("smr02_error4_", ifelse(input$year4 %in% unique(smr02_diabetes$year), 
+                                     unique(error4_data()$Year), "all_years"),".csv")
     },
     content = function(file){
       write.csv(error4_data(), row.names = FALSE, file)
@@ -546,20 +559,23 @@ shinyServer(function(input, output, session) {
   #Error 5 table filters, display and download functions 
   error5_filter <- reactive({
     req(input$year5)
-    if (input$year5 %in% unique(error_5_table$year)){
-      error_5_table %>%
-        filter(year == input$year5)
+    if (input$year5 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_5_table", year == input$year5)
     }
     
     else {
-      error_5_table[order(-error_5_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "error_5_table") %>% 
+        arrange(desc(year))
     }
   })
   
   error5_data <- reactive({
     error5_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error5",
-             "Year"="year", "Percentage"="percentage_5")
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_5 <- DT::renderDataTable({
@@ -581,8 +597,8 @@ shinyServer(function(input, output, session) {
   
   output$download_smr02_error5 <- downloadHandler(
     filename = function(){
-      paste0("smr02_error5_", ifelse(input$year5 %in% unique(error_5_table$year), unique(error5_data()$Year), "all_years"),
-             ".csv")
+      paste0("smr02_error5_", ifelse(input$year5 %in% unique(smr02_diabetes$year), 
+                                     unique(error5_data()$Year), "all_years"),".csv")
     },
     content = function(file){
       write.csv(error5_data(), row.names = FALSE, file)
@@ -592,20 +608,23 @@ shinyServer(function(input, output, session) {
   #Error 6 table filters, display and download functions 
   error6_filter <- reactive({
     req(input$year6)
-    if (input$year6 %in% unique(error_6_table$year)){
-      error_6_table %>%
-        filter(year == input$year6)
+    if (input$year6 %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "error_6_table", year == input$year6)
     }
     
     else {
-      error_6_table[order(-error_6_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "error_6_table") %>% 
+        arrange(desc(year))
     }
   })
   
   error6_data <- reactive({
     error6_filter() %>%
-      rename("Healthboard"="HBName", "Error Count"="error6",
-             "Year"="year", "Percentage"="percentage_6")
+      rename("Healthboard" = "HBName", "Error Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
   })
   
   output$error_6 <- DT::renderDataTable({
@@ -628,7 +647,7 @@ shinyServer(function(input, output, session) {
   output$download_smr02_error6 <- downloadHandler(
     filename = function(){
       paste0("smr02_error6_", 
-             ifelse(input$year6 %in% unique(error_6_table$year), unique(error6_data()$Year), "all_years"),
+             ifelse(input$year6 %in% unique(smr02_diabetes$year), unique(error6_data()$Year), "all_years"),
              ".csv")
     },
     content = function(file){
@@ -639,21 +658,24 @@ shinyServer(function(input, output, session) {
   #Query 1 table filters, display and download functions 
   query1_filter <- reactive({
     req(input$yearQ)
-    if (input$yearQ %in% unique(query_1_table$year)){
-      query_1_table %>%
-        filter(year == input$yearQ)
+    if (input$yearQ %in% unique(smr02_diabetes$year)){
+      smr02_diabetes %>%
+        filter(source == "query_1_table", year == input$yearQ)
     }
     
     else {
-      query_1_table[order(-query_1_table$year), ]
+      smr02_diabetes %>%
+        filter(source == "query_1_table") %>% 
+        arrange(desc(year))
     }
   })
   
   query1_data <- reactive({
     query1_filter() %>%
-      rename("Healthboard"="HBName", "Query Count"="query_count",
-             "Year"="year", "Percentage"="query_percentage")
-  })
+      rename("Healthboard" = "HBName", "Query Count" = "error",
+             "Year" = "year", "Percentage" = "percentage") %>% 
+      select(-source)
+  }) 
   
   output$query <- DT::renderDataTable({
     datatable(data = query1_data(),
@@ -675,7 +697,7 @@ shinyServer(function(input, output, session) {
   output$download_smr02_query1 <- downloadHandler(
     filename = function(){
       paste0("smr02_query1_", 
-             ifelse(input$yearQ %in% unique(query_1_table$year), unique(query1_data()$Year), "all_years"),
+             ifelse(input$yearQ %in% unique(smr02_diabetes$year), unique(smr0()$Year), "all_years"),
              ".csv")
     },
     content = function(file){
@@ -777,66 +799,4 @@ shinyServer(function(input, output, session) {
         'discharges and residents from the available data.',
         sep="\n")
   })
-  
-  
-  
-  
-  
-  # output$split_1 <- DT::renderDataTable({
-  #   DT::datatable(split_1_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  # },
-  # rownames = FALSE)
-  # 
-  # output$split_2 <- DT::renderDataTable({
-  #   DT::datatable(split_2_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  # },
-  # filter = 'top',
-  # rownames = FALSE)
-  # 
-  # output$split_3 <- DT::renderDataTable({
-  #   DT::datatable(split_3_table, filter = 'top', options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  # },
-  # rownames = FALSE)
-  # 
-  # output$split_4 <- DT::renderDataTable({
-  #   DT::datatable(split_4_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  # },
-  # filter = 'top',
-  # rownames = FALSE)
-  # 
-  # output$split_5 <- DT::renderDataTable({
-  #   DT::datatable(split_5_table, options = list(lengthMenu = c(15, 30, 50), pageLength = 15))
-  # },
-  # filter = 'top',
-  # rownames = FALSE)
-  # 
-  # output$error1map <- renderLeaflet({ #create maps
-  #   error1map
-  # })
-  # 
-  # output$countmap <- renderLeaflet({
-  #   countmap
-  # })
-  # 
-  # output$error3map <- renderLeaflet({
-  #   error3map
-  # })
-  # 
-  # output$error4map <- renderLeaflet({
-  #   error4map
-  # })
-  # 
-  # output$error5map <- renderLeaflet({
-  #   error5map
-  # })
-  # 
-  # output$error6map <- renderLeaflet({
-  #   error6map
-  # })
-  # 
-  # output$querymap <- renderLeaflet({
-  #   query_map
-  # })
-  
-  
 })

@@ -6,12 +6,9 @@ library(formattable)
 library(tidyverse)
 
 
-
-
 # National(Scotland) SMR Audit data --------------------------------------
 
-scot_accuracy <- read_csv(here::here("data", "Scotland_SMR_accuracy.csv"))%>%
-
+scot_accuracy <- read_csv("/conf/Data_Quality_Dashboard/data/Scotland_SMR_accuracy.csv")%>%
   clean_names()%>%
   rename("accuracy_scotland"="accuracy")%>%
   mutate(year = case_when( year == "2004/06" ~"2004-2006", 
@@ -23,12 +20,10 @@ scot_accuracy <- read_csv(here::here("data", "Scotland_SMR_accuracy.csv"))%>%
                            year == "2015/16" ~ "2015-2016"))
 
 
-
 # Hospital Site SMR Audit data --------------------------------------------
 
-
 #path to SMR accuracy audit results
-hb_path <- here::here("data", "Hospital_SMR_accuracy_2004-Present.xlsx")
+hb_path <- "/conf/Data_Quality_Dashboard/data/Hospital_SMR_accuracy_2004-Present.xlsx"
 
 #collate and store smr accuracy in a df
 hb_accuracy <- hb_path %>%
@@ -50,12 +45,12 @@ hb_accuracy <- hb_path %>%
 
 col_order <- c("audit","year","healthboard","hospital","data_item_name","accuracy_hospital","accuracy_scotland")
 
-dashboard_data <- left_join(hb_accuracy, scot_accuracy, by=c("data_item_name", "year", "audit"))%>%
+accuracy_data <- left_join(hb_accuracy, scot_accuracy, by=c("data_item_name", "year", "audit"))%>%
   select(all_of(col_order))
 
 
 # Write data to the data folder ----------------
 #the data will then be read into the global.R script that can be found the app folder.
 
-write_csv(dashboard_data, here::here("data", "dashboard_smr_audit_data.csv"))
+write_csv(accuracy_data, "/conf/Data_Quality_Dashboard/data/dashboard_smr_audit_data.csv")
 
