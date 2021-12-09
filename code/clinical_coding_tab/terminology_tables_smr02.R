@@ -164,4 +164,4 @@ smr02_diabetes_data <- append_source(c("error_1_table", "error_2_table", "error_
 
 # Write out all the error tables ------------------------------------------
 
-write_csv(smr02_diabetes_data, "/conf/Data_Quality_Dashboard/data/smr02_diabetes_data.csv")
+write_csv(smr02_diabetes_data, here::here("data", "smr02_diabetes_data.csv"))
