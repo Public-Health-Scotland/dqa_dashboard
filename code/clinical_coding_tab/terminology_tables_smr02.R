@@ -1,12 +1,9 @@
-library(readr)
-library(tidyr)
-library(dplyr)
-library(stringr)
+# libraries are loaded by setup_environment file
 
-# library(readxl)
-# library(shiny)
-# library(tidyverse)
-# library(DT)
+# library(readr)
+# library(tidyr)
+# library(dplyr)
+# library(stringr)
 
 
 # Extract SMR02 data -----------------------------------------------------
