@@ -1,10 +1,13 @@
-library(readr)
-library(tidyr)
-library(dplyr)
-library(janitor)
-library(stringr)
+# libraries are loaded by setup_environment file
+
+# library(readr)
+# library(tidyr)
+# library(dplyr)
+# library(janitor)
+# library(stringr)
 
 ###Extract patient treatment data for the last episode of multi-episode Continuous Inpatient Stays(CIS)
+
 #hbtreat_currentdate is the patient's health board of treatment
 #link_no and cis_marker are used to order Continuous Inpatient Stay (CIS) episodes
 #main_condition contains the main ICD10 clinical code for an episode

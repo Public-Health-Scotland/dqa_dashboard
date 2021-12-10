@@ -1,16 +1,19 @@
-library(odbc)
+# libraries are loaded by setup_environment file
 
-library(readr)
-library(dplyr)
-library(tidyr)
-library(janitor)
-library(lubridate)
-library(stringr)   #loads str_c function used for icon creation
-library(sparkline) #create small barcharts for tables
-library(shiny)     #loads icon function for completeness table
+# library(odbc)
+# 
+# library(readr)
+# library(dplyr)
+# library(tidyr)
+# library(janitor)
+# library(lubridate)
+# library(stringr)   #loads str_c function used for icon creation
+# library(sparkline) #create small barcharts for tables
+# library(shiny)     #loads icon function for completeness table
 
-# Load Function(s) --------------------------------------------------------
-#walk(list.files(here::here("functions"), full.names = TRUE), source)
+# Function(s) --------------------------------------------------------
+
+# walk(list.files(here::here("functions"), full.names = TRUE), source)
 
 spk_tool <- function(labels) {
   htmlwidgets::JS(
@@ -163,9 +166,7 @@ comp_barchart_dates <- data.frame(min_year = year(min_date),
 # Write the Outputs --------------------------------------------------------
 
 #write out the table output so that it can be imported in global.R
-write_csv(smr_completeness_2, 
-          "/conf/Data_Quality_Dashboard/data/smr_completeness.csv")
+write_csv(here::here("data", "smr_completeness.csv"))
 
 #write the barchart dates so that they can be referenced in the ui an server
-write_csv(comp_barchart_dates,
-          "/conf/Data_Quality_Dashboard/data/comp_barchart_dates.csv")
+write_csv(here::here("data", "comp_barchart_dates.csv"))

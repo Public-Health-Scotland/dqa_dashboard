@@ -1,11 +1,12 @@
-#libraries
-library(odbc)
-library(DBI)
-library(purrr)
-library(zip)
+# libraries are loaded by setup_environment file
 
-#load functions
-walk(list.files(here::here("functions"), full.names = TRUE), source)
+# library(odbc)
+# library(DBI)
+# library(purrr)
+# library(zip)
+
+
+# walk(list.files(here::here("functions"), full.names = TRUE), source)
 
 #database connection
 con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
