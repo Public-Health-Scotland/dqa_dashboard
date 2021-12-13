@@ -58,15 +58,11 @@ secure_app(
                             br(),
                             tags$b("Data support and monitoring of national datasets"),
                             br(),
-                            tags$a(href = "https://www.isdscotland.org/Products-and-Services/Data-Support-and-Monitoring/",
-                                   "Data Support and Monitoring Homepage", target = "_blank"
-                            ),
-                            br(),
-                            tags$a(href = "https://www.isdscotland.org/products-and-Services/Data-Support-and-Monitoring/SMR-Completeness/",
+                            tags$a(href = "https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-completeness/",
                                    "SMR Completeness", target = "_blank"
                             ),
                             br(),
-                            tags$a(href = "https://www.isdscotland.org/products-and-Services/Data-Support-and-Monitoring/SMR-Timeliness/",
+                            tags$a(href = "https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/",
                                    "SMR Timeliness", target = "_blank"
                             ),
                             br(),
