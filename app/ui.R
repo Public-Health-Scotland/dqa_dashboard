@@ -24,14 +24,13 @@ secure_app(
         navlistPanel( 
           id = "tabset",
           widths = sb_width,
-          tabPanel("Summary Data Profile", verbatimTextOutput("text1"),
-                   leafletOutput('countmap', width = "68%", height = 600)),
           tabPanel("Info", 
                    fluidRow(
                      column(9,
                             tags$b("About the data"),
-                            br(),
-                            verbatimTextOutput('SMRtext')
+                            includeHTML(here::here("data", "about_section.html"))
+                            # br(),
+                            # verbatimTextOutput('SMRtext')
                      ),
                      column(3,
                             tags$b("More information about SMR Datasets"),

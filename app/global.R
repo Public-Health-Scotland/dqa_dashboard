@@ -48,3 +48,8 @@ RCodes_table <- read.csv(here::here("data", "r_codes.csv"))
 #smr02 clinical coding data
 smr02_diabetes <- read_csv(here::here("data", "smr02_diabetes_data.csv"))
 
+
+
+
+
+
