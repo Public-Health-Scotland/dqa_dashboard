@@ -1,7 +1,19 @@
-#app admin files
+# app admin files
 deploying_app.R
 create_credentials.R
 credentials.rds
+
+# app admin folder
+app/admin/**
+
+# app data folder
+data/**
+
+# csv files
+*.[cC][sS][vV]*
+
+# excel files
+*.[xX][lL][sS]*
 
 # History files
 .Rhistory
