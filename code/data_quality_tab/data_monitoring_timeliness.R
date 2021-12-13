@@ -1,15 +1,14 @@
-
-# Import R libraries ------------------------------------------------------
+# libraries are loaded by setup_environment file
 
 # library(DBI)
 # library(odbc)
 
-library(readr)
-library(dplyr)
-library(tidyr)
-library(janitor)
-library(lubridate)
-library(stringr)
+# library(readr)
+# library(dplyr)
+# library(tidyr)
+# library(janitor)
+# library(lubridate)
+# library(stringr)
 
 # Load Functions ----------------------------------------------------------
 
@@ -155,5 +154,5 @@ expected_submissions_df <- read_csv(
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
 
-write_csv(timeliness, "/conf/Data_Quality_Dashboard/data/timeliness.csv")
+write_csv(here::here("data", "timeliness.csv"))
 

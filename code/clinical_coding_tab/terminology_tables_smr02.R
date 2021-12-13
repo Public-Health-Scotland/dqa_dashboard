@@ -1,12 +1,9 @@
-library(readr)
-library(tidyr)
-library(dplyr)
-library(stringr)
+# libraries are loaded by setup_environment file
 
-# library(readxl)
-# library(shiny)
-# library(tidyverse)
-# library(DT)
+# library(readr)
+# library(tidyr)
+# library(dplyr)
+# library(stringr)
 
 
 # Extract SMR02 data -----------------------------------------------------
@@ -164,4 +161,4 @@ smr02_diabetes_data <- append_source(c("error_1_table", "error_2_table", "error_
 
 # Write out all the error tables ------------------------------------------
 
-write_csv(smr02_diabetes_data, "/conf/Data_Quality_Dashboard/data/smr02_diabetes_data.csv")
+write_csv(smr02_diabetes_data, here::here("data", "smr02_diabetes_data.csv"))
