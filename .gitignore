@@ -10,9 +10,9 @@ credentials.rds
 .Ruserdata
 
 # folders
-rsconnect/**
-admin/**
-data/**
+app/rsconnect/**
+app/admin/**
+app/data/**
 
 # csv files
 *.[cC][sS][vV]*
