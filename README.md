@@ -1,4 +1,4 @@
-# DQA Dashboard
+# Data Quality Dashboard
 
 *Under development* 
 
