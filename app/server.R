@@ -1,6 +1,6 @@
 #SERVER
 
-credentials <- readRDS(here::here("app/admin", "credentials.rds"))
+credentials <- readRDS(here::here("admin", "credentials.rds"))
 
 shinyServer(function(input, output, session) {
 
