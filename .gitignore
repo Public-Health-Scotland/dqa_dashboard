@@ -4,13 +4,14 @@ create_credentials.R
 credentials.rds
 
 # not needed
+rsconnect
 *.Rproj
 .Rproj.user
 .Rhistory
 .Ruserdata
 
 # folders
-app/rsconnect/**
+
 app/admin/**
 app/data/**
 
