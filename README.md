@@ -2,7 +2,7 @@
 
 *Under development* 
 
-The Data Quality dashboard combines data quality metrics produced across data management teams in Public Health Scotland. This dashboard currently focusses on the SMR (Scottish Morbidity Records) dataset with detail on completeness, timeliness, accuracy audits, and investigative work in coding discrepencies/issues. This dashboard will be useful across internal PHS work but also across the NHS and beyond. 
+The Data Quality dashboard combines data quality metrics produced across multi-disciplinary teams in Public Health Scotland. This dashboard currently focusses on the SMR (Scottish Morbidity Records) dataset with detail on completeness, timeliness, accuracy audits, and investigative work in coding discrepencies/issues. This dashboard will be useful across internal PHS work but also across the NHS and beyond. 
 
 ## Project Structure
 
