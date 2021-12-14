@@ -3,10 +3,12 @@ deploying_app.R
 create_credentials.R
 credentials.rds
 
-# app admin folder
-app/admin/**
+# not needed
+*.Rproj
+rsconnect
 
-# app data folder
+# folders
+app/admin/**
 app/data/**
 
 # csv files
