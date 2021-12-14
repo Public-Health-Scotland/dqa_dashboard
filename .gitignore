@@ -5,12 +5,14 @@ credentials.rds
 
 # not needed
 *.Rproj
-
+.Rproj.user
+.Rhistory
+.Ruserdata
 
 # folders
-rsconnect/
-app/admin/**
-app/data/**
+rsconnect/**
+admin/**
+data/**
 
 # csv files
 *.[cC][sS][vV]*
