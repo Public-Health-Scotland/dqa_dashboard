@@ -28,7 +28,7 @@ secure_app(
                    fluidRow(
                      column(9,
                             tags$b("About the data"),
-                            includeHTML(here::here("data", "about_section.html"))
+                            includeHTML(here::here("app/data", "about_section.html"))
                             # br(),
                             # verbatimTextOutput('SMRtext')
                      ),

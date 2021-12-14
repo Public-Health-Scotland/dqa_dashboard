@@ -154,5 +154,5 @@ expected_submissions_df <- read_csv(
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
 
-write_csv(here::here("data", "timeliness.csv"))
+write_csv(here::here("app/data", "timeliness.csv"))
 
