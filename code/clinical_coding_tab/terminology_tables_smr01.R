@@ -62,4 +62,4 @@ RCodes <- last_episode1 %>%
 
 RCodes_multi <- left_join(RCodes, all_multi_episodes)
 
-write_csv(RCodes_multi, here::here("data", "r_codes.csv"))
+write_csv(RCodes_multi, here::here("app/data", "r_codes.csv"))

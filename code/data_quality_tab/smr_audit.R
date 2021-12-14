@@ -51,5 +51,5 @@ accuracy_data <- left_join(hb_accuracy, scot_accuracy, by=c("data_item_name", "y
 #the data will then be read into the global.R script that can be found the app folder.
 
 write_csv(accuracy_data, 
-          here::here("data", "dashboard_smr_audit_data.csv"))
+          here::here("app/data", "dashboard_smr_audit_data.csv"))
 
