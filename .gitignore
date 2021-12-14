@@ -7,7 +7,7 @@ credentials.rds
 app/admin/**
 
 # app data folder
-data/**
+app/data/**
 
 # csv files
 *.[cC][sS][vV]*
