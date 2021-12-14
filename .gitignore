@@ -5,9 +5,10 @@ credentials.rds
 
 # not needed
 *.Rproj
-rsconnect
+
 
 # folders
+rsconnect/
 app/admin/**
 app/data/**
 
