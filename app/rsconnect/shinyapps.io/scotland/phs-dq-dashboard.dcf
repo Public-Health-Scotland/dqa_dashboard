@@ -1,0 +1,11 @@
+name: phs-dq-dashboard
+title:
+username:
+account: scotland
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5323935
+bundleId: 5370660
+url: https://scotland.shinyapps.io/phs-dq-dashboard/
+when: 1639477419.33984
+lastSyncTime: 1639477419.33986
