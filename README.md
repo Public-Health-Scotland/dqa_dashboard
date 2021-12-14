@@ -14,7 +14,7 @@ The project follows a simple structure for maintainability which is outlined bel
 ├── code                    // data pipelining and other supporting code 
 ├── data                    // data quality data files and outputs
 ├── docs                    // documents relating to development and maintenance
-├── dqa_dashboard.Rproj     // the R project file
+├── phs-dq-dashboard.Rproj     // the R project file
 ├── functions               // functions used across the code
 ├── .gitignore              // gitignore file
 ├── lookups                 // lookup files
