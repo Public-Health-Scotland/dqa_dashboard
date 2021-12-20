@@ -15,7 +15,6 @@ The project follows a simple structure for maintainability which is outlined bel
 | ├── www                   // app accessible static content
 ├── docs                    // documents relating to development and maintenance
 ├── .gitignore              // gitignore file
-├── lookups                 // lookup files
 └── README.md               // this
 ```
 
