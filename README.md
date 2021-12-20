@@ -10,16 +10,13 @@ The project follows a simple structure for maintainability which is outlined bel
 
 ```
 ├── app                     // code for building R shiny app
-│   ├── admin               // code for managing access to the shiny app
-├── code                    // data pipelining and other supporting code 
-├── data                    // data quality data files and outputs
+| ├── code                  // data pipelining and other supporting code 
+| ├── functions             // functions used across the code
+| ├── www                   // app accessible static content
 ├── docs                    // documents relating to development and maintenance
-├── phs-dq-dashboard.Rproj     // the R project file
-├── functions               // functions used across the code
 ├── .gitignore              // gitignore file
 ├── lookups                 // lookup files
-├── README.md               // this
-└── www                     // app accessible static content
+└── README.md               // this
 ```
 
 ## Contribution & Maintenance
