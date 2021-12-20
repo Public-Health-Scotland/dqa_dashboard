@@ -22,15 +22,15 @@ It is crucial to understand the structure of the files behind the dashboard befo
 The dashboard is split into a number of folders, with two of them being the most important - 'app' and 'code'.
 
 ```
-├── dqa_dashboard.Rproj
-├── README.md
-├── app
-├── code
-│   ├── clinical_coding_tab
-│   ├── data_quality_tab
-│   ├── home_tab
-├── data
-└── functions
+├── app                     // code for building R shiny app
+| ├── admin*
+| ├── data*
+| ├── code                  // data pipelining and other supporting code 
+| ├── functions             // functions used across the code
+| ├── www                   // app accessible static content
+├── docs                    // documents relating to development and maintenance
+├── .gitignore              // gitignore file
+└── README.md               // this
 ```
 
 ### The 'app' folder
