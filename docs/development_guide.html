@@ -188,11 +188,11 @@ It provides the basic guidelines on how to add more tabs, edit tables, add text 
 </div>
 <div id="the-file-structure-of-the-dashboard" class="section level2">
 <h2>The file structure of the dashboard</h2>
-<p>The phs-dq-dashboard repository is broken down into several folders, the app folder contains the Shiny scripts that build the app, as well as the code that fetches and wrangles the data for the dashboard.</p>
-<p>The app/admin and app/data folders contain sensitive information, so they are ignored by git and cannot be pushed to GitHub. Folders and files added to the .gitignore are marked by an asterisk in the file tree down below.</p>
+<p>The dashboard is built with RShiny. The app folder contains three RShiny scripts (global.R, ui.R, server.R) that build the app itself. It also contains the code folder, which retrieves and wrangles the data for the app. This data is then stored in the data folder so that it can be passed to the RShiny scripts.</p>
+<p>NB. The data and admin folders are confidential, hence they have been added to the .gitignore file. This means that they are not tracked by git, they are saved internally on a Public Health Scotland(PHS) server.</p>
 <pre><code>├── app                     // code for building R shiny app
-| ├── admin*                // app admin and access management
-| ├── data*                 // data files for the shiny app
+| ├── admin*                // admin files 
+| ├── data*                 // data used by the app
 | ├── code                  // data pipelining and other supporting code 
 | ├── functions             // functions used across the code
 | ├── www                   // app accessible static content
@@ -201,10 +201,9 @@ It provides the basic guidelines on how to add more tabs, edit tables, add text 
 └── README.md               // this</code></pre>
 <div id="the-app-folder" class="section level3">
 <h3>The ‘app’ folder</h3>
-<p>The ‘app’ folder contains three Shiny scripts that build the app - server.R, ui.R, and global.R.</p>
-<p>global.R is a setup script for ui.R and server.R scripts. It loads libraries and imports the data from the app/data/ folder that ui.R and server.R need to build the app.</p>
-<p>server.R creates all the reactive outputs for the dashboard, such as filtered tables, interactive plots, ect.</p>
-<p>ui.R creates the dashboard layout and user interface. It defines any user inputs (eg. buttons), and places the reactive outputs created by server.R into the right tabs.</p>
+<p>The ‘app’ folder contains three files - server.R, ui.R and global.R.</p>
+<p>The function of the global.R file is to read in all the files and libraries, as well as to conduct some of the processes that cannot easily be conducted externally, such as rendering maps. Think of global.R as a corridor with a storage room at the end of it. It connects the functional rooms such as kitchen and living room and stores appliances needed by both, such as bedding or kitchen equipment.</p>
+<p>The server.R file creates all the outputs that will later appear in the dashboard. The code written here defines each of the elements appearing later in the dashboard, that is rendering tables, maps and graphs. Think of server.R as a kitchen, where you prepare all the dishes but you actually serve them to your guests in the living room.</p>
 <p>The ui.R file decides the structure of the dashboard. It takes all the elements rendered in the server.R and orders them in the correct tabs (which are also defined in the ui.R file) and wraps text around them. It is analogous to ordering images of tables in a word document. You created them in Excel, but now need to produce a cohesive report, with the tables in the right sections wrapped in explanations. ui.R is therefore the living room, where you present all your dishes to the guests on fancy plates.</p>
 </div>
 <div id="the-code-folder" class="section level3">
