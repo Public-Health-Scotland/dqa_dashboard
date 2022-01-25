@@ -34,7 +34,10 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
 hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
                   c("S08200002", "No Fixed Abode"),
                   c("S08200003", "Not Known"),
-                  c("S08200004", "Outside U.K."))) %>%
+                  c("S08200004", "Outside U.K."),
+                  c("S08100001", "Golden Jubilee"),
+                  c("S08100008", "State Hospital"),
+                  c("S27000001", "Non-NHS Provider Location"))) %>%
     rename("hb"="V1", "hb_name"="V2")
 
 hb_lookup <- rbind(hb2019, hb_other)
@@ -166,7 +169,7 @@ comp_barchart_dates <- data.frame(min_year = year(min_date),
 # Write the Outputs --------------------------------------------------------
 
 #write out the table output so that it can be imported in global.R
-write_csv(here::here("data", "smr_completeness.csv"))
+write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
 
 #write the barchart dates so that they can be referenced in the ui an server
-write_csv(here::here("data", "comp_barchart_dates.csv"))
+write_csv(comp_barchart_dates, here::here("data", "comp_barchart_dates.csv"))
