@@ -153,7 +153,7 @@ submissions <- count_submissions(ldf) %>%
 # Expected submissions & backlog ------------------------------------------
 
 expected_submissions_df <- read_csv(
-  "/conf/Data_Quality_Dashboard/data/expected_submissions_dec_2019_nov_2021.csv")
+  here::here("data", "expected_submissions_dec_2019_nov_2021.csv"))
 
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
