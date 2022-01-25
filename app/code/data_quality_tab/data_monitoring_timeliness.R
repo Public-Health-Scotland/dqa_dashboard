@@ -26,33 +26,37 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
 
 # Extract data from SMR analysis views ------------------------------------
 
-#open connection to database
-# con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"), 
+#open connection to database, uncomment code below if needed
+# con <- dbConnect(odbc(), dsn = "SMRA", uid = .rs.askForPassword("SMRA Username:"),
 #                  pwd = .rs.askForPassword("SMRA Password:"))
 
 smr00_raw <- dbGetQuery(con, "SELECT referral_type, clinic_attendance, current_trust_dmu,
                         location, date_record_inserted, clinic_date, hbtreat_currentdate
                         FROM analysis.smr00_pi
-                        WHERE clinic_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
+                        WHERE clinic_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
+                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 smr01_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr01_pi
-                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
+                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
+                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
             clean_names()
 
 smr02_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, condition_on_discharge,
                         discharge_date, hbtreat_currentdate
                         FROM analysis.smr02_pi
-                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
+                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
+                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 smr04_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr04_pi
-                        WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH');")%>%
+                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
+                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 # Selection criteria -----------------------------------------------------------------
@@ -149,7 +153,7 @@ submissions <- count_submissions(ldf) %>%
 # Expected submissions & backlog ------------------------------------------
 
 expected_submissions_df <- read_csv(
-  "/conf/Data_Quality_Dashboard/data/expected_submissions_may_sep_2021.csv")
+  "/conf/Data_Quality_Dashboard/data/expected_submissions_dec_2019_nov_2021.csv")
 
 timeliness <- submissions %>% 
   left_join(expected_submissions_df)
