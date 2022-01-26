@@ -34,7 +34,10 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
 hb_other <- as.data.frame(rbind(c("S08200001", "England/Wales/Northern Ireland"),
                   c("S08200002", "No Fixed Abode"),
                   c("S08200003", "Not Known"),
-                  c("S08200004", "Outside U.K."))) %>%
+                  c("S08200004", "Outside U.K."),
+                  c("S08100001", "Golden Jubilee"),
+                  c("S08100008", "State Hospital"),
+                  c("S27000001", "Non-NHS Provider Location"))) %>%
     rename("hb"="V1", "hb_name"="V2")
 
 hb_lookup <- rbind(hb2019, hb_other)
@@ -42,7 +45,7 @@ hb_lookup <- rbind(hb2019, hb_other)
 #Extract data ---------------------------------------------------
 #smr00 contains outpatient data so the records are filtered by clinic date
 raw_smr00 <- dbGetQuery(con, statement = "SELECT clinic_date, hbtreat_currentdate, dob, sex, postcode, 
-ethnic_group, main_operation, mode_of_clinical_interaction, referral_type, specialty
+ethnic_group, main_condition, main_operation, mode_of_clinical_interaction, referral_type, specialty
                  FROM ANALYSIS.SMR00_PI
                  WHERE clinic_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names()%>%
@@ -50,7 +53,7 @@ ethnic_group, main_operation, mode_of_clinical_interaction, referral_type, speci
 
 #for the remaining datasets smr01, 02 and 04, the data is filtered by discharge date
 raw_smr01 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_currentdate,dob, sex, postcode, ethnic_group,
-main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
+main_condition, main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty
                  FROM ANALYSIS.SMR01_PI
                  WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
@@ -58,7 +61,7 @@ management_of_patient, specialty
   rename("event_date"="discharge_date")
 
 raw_smr02 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_currentdate, dob, sex, postcode, ethnic_group,
-main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
+main_condition, main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty, condition_on_discharge
                  FROM ANALYSIS.SMR02_PI
            WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
@@ -67,7 +70,7 @@ management_of_patient, specialty, condition_on_discharge
 
 
 raw_smr04 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_currentdate, dob, sex, postcode, 
-ethnic_group,main_operation, admission_type, significant_facility,
+ethnic_group, main_condition, main_operation, admission_type, significant_facility,
 admission_transfer_from, discharge_transfer_to, management_of_patient, specialty
                  FROM ANALYSIS.SMR04_PI
                  WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
@@ -80,20 +83,20 @@ admission_transfer_from, discharge_transfer_to, management_of_patient, specialty
 #vectors of names of the SMR data items we want to monitor completeness for
 #list of data items per smr
 
-smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
+smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_condition", "main_operation",
                      "mode_of_clinical_interaction", "referral_type", "specialty")
 
 
-smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation", "admission_type",
+smr01_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_condition", "main_operation", "admission_type",
                      "significant_facility","admission_transfer_from", 
                      "discharge_transfer_to", "management_of_patient", "specialty")
 
-smr02_cols <- c("dob", "sex", "postcode", "main_operation","ethnic_group", "admission_type",
+smr02_cols <- c("dob", "sex", "postcode", "main_condition", "main_operation","ethnic_group", "admission_type",
                 "admission_transfer_from", "discharge_transfer_to", 
                 "management_of_patient", "specialty",
                 "condition_on_discharge")
 
-smr04_cols <- c("dob", "sex", "postcode","main_operation", "ethnic_group", "admission_type",
+smr04_cols <- c("dob", "sex", "postcode", "main_condition", "main_operation", "ethnic_group", "admission_type",
                 "admission_transfer_from", 
                 "discharge_transfer_to", "management_of_patient", "specialty")
 
@@ -166,7 +169,7 @@ comp_barchart_dates <- data.frame(min_year = year(min_date),
 # Write the Outputs --------------------------------------------------------
 
 #write out the table output so that it can be imported in global.R
-write_csv(here::here("data", "smr_completeness.csv"))
+write_csv(smr_completeness_2, here::here("data", "smr_completeness.csv"))
 
 #write the barchart dates so that they can be referenced in the ui an server
-write_csv(here::here("data", "comp_barchart_dates.csv"))
+write_csv(comp_barchart_dates, here::here("data", "comp_barchart_dates.csv"))

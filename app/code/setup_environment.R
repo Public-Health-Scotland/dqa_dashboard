@@ -24,7 +24,5 @@ library(sparkline) #create small barcharts for tables
 library(shiny)     #loads icon function for completeness table
 
 
-
-
 #load functions
 walk(list.files(here::here("functions"), full.names = TRUE), source)
