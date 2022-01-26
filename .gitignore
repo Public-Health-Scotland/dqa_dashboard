@@ -14,12 +14,16 @@ rsconnect
 
 app/admin/**
 app/data/**
-
+app/data_archive
 # csv files
 *.[cC][sS][vV]*
 
 # excel files
 *.[xX][lL][sS]*
+
+#zip files
+
+*.[zZ][iI][pP]*
 
 # History files
 .Rhistory
