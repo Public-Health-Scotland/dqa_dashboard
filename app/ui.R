@@ -4,7 +4,7 @@ sb_width <- c(2,10) #sidebar width
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), 
                           mime = 'image/png') #encoding for phs logo
 
-secure_app(
+# secure_app(
     navbarPage(
       
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
@@ -169,10 +169,13 @@ secure_app(
                    tabsetPanel(
                      tabPanel("Bullet Chart",
                               fluidRow(
-                                column(6,
+                                column(4,
                                        selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
                                 ),
-                                column(6,
+                                column(4,
+                                       selectInput("timeliness_year_in", "Year", choices = c(unique(timeliness$event_year)))
+                                ),
+                                column(4,
                                        selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
                                 )
                               ),
@@ -195,10 +198,13 @@ secure_app(
                      ),
                      tabPanel("Data",
                               fluidRow(
-                                column(6,
+                                column(4,
                                        selectInput("timeliness_smr_in_2", "SMR", choices = c("(All)",unique(timeliness$smr)))
                                 ),
-                                column(6,
+                                column(4,
+                                       selectInput("timeliness_year_in_2", "Year", choices = c("(All)", unique(timeliness$event_year)))
+                                ),
+                                column(4,
                                        selectInput("timeliness_month_in_2", "Month", choices = c("(All)",unique(timeliness$event_month_name)))
                                 )
                               ),
@@ -375,7 +381,7 @@ secure_app(
         )
       )
     )
-) #secure app
+#) #secure app
 
 
 
