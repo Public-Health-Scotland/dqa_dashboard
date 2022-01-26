@@ -6,13 +6,13 @@ shinyServer(function(input, output, session) {
 
   # Shinymanager Auth
   
-  # res_auth <- secure_server(
-  #   check_credentials = check_credentials(credentials)
-  # )
-  # 
-  # output$auth_output <- renderPrint({
-  #   reactiveValuesToList(res_auth)
-  # })
+  res_auth <- secure_server(
+    check_credentials = check_credentials(credentials)
+  )
+
+  output$auth_output <- renderPrint({
+    reactiveValuesToList(res_auth)
+  })
   
 ### SMR Completeness --------------------------------------------------------
 
@@ -26,13 +26,11 @@ shinyServer(function(input, output, session) {
       filter(case_when(input$smr_in %in% unique(smr_completeness$smr)
                        ~smr == input$smr_in,
                        TRUE ~ smr == smr),
-        # case_when(input$hb_in %in% unique(smr_completeness$hb_name)
-        #                ~ hb_name == input$hb_in,
-        #                TRUE ~ hb_name==hb_name),
        flag %in% input$percentage_in 
         )
       })
-  
+
+  #update HB dropdown list based on SMR selection
   observeEvent(input$smr_in,
                updateSelectInput(session, "hb_in", 
                                  choices = c("(All)", unique(completeness_main_filters()$hb_name)),
@@ -42,11 +40,7 @@ shinyServer(function(input, output, session) {
                                  )
   )
   
-  ## Set a filter for data item (the data item filter is nested and depends on the user's SMR selection)
-   
-  #update Data Item selection list based on SMR selection
-  #if a user selects a data item and then changes their smr input,
-  #their data item selection is preserved if it is a valid combination
+  #update data item dropdown list based on SMR selection
   observeEvent(input$smr_in, {
     updateSelectInput(session, inputId = "data_item_in",
                       choices = c("(All)", unique(completeness_main_filters()$data_item)),
@@ -56,7 +50,7 @@ shinyServer(function(input, output, session) {
                       )
   })
   
-  #implement hb and data item filters
+  #implement hb filters
   completeness_hb_filter <- reactive({
     req(input$hb_in)
     
@@ -68,18 +62,9 @@ shinyServer(function(input, output, session) {
     else{
       completeness_main_filters()
     }
-    
-    # main_filters_completeness()%>%
-    #   filter(hb_name == if_else(input$hb_in %in% unique(main_filters_completeness()$hb_name),
-    #                             input$hb_in, hb_name),
-    #          data_item == if_else(input$data_item_in %in% 
-    #                                 unique(main_filters_completeness()$data_item),
-    #                               input$data_item_in, data_item))
-    # filter(case_when(input$data_item_in %in% unique(main_filters_completeness()$data_item) ~
-    #                    data_item == input$data_item_in,
-    #                  TRUE ~ data_item == data_item))
   })
   
+  #implement data item filters
   completeness_data_item_filter <- reactive({
     req(input$data_item_in)
     
