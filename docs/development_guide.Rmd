@@ -1,9 +1,9 @@
 ---
 title: "Data Quality Dashboard Development Guide"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,35 +16,52 @@ library(knitr)
 This document serves as a comprehensive guide aiming to allow anyone to expand on the Data Quality Dashboard, linked here: [link](https://scotland.shinyapps.io/phs-dqa/).       
 It provides the basic guidelines on how to add more tabs, edit tables, add text and more.
 
-## The file structure of the dashboard
+### The file structure of the dashboard
 
-It is crucial to understand the structure of the files behind the dashboard before editing it.  
-The dashboard is split into a number of folders, with two of them being the most important - 'app' and 'code'.
+The dashboard is built with RShiny. The app folder contains three RShiny scripts (global.R,
+ui.R, server.R) that build the app itself. It also contains the code folder, which retrieves and wrangles the data for the app. This data is then stored in the data folder so that it can be
+passed to the RShiny scripts.
+
+NB. The data and admin folders are confidential, hence they have been added to the .gitignore file. This means that they are not tracked by git, they are saved internally on a Public
+Health Scotland(PHS) server.
 
 ```
-├── dqa_dashboard.Rproj
-├── README.md
-├── app
-├── code
-│   ├── clinical_coding_tab
-│   ├── data_quality_tab
-│   ├── home_tab
-├── data
-└── functions
+├── app                     // code for building R shiny app
+| ├── admin*                // admin files 
+| ├── data*                 // data used by the app
+| ├── code                  // data pipelining and other supporting code 
+| ├── functions             // functions used across the code
+| ├── www                   // app accessible static content
+├── docs                    // documents relating to development and maintenance
+├── .gitignore              // gitignore file
+└── README.md               // this
 ```
 
-### The 'app' folder
+## Dashboard app
 
-The 'app' folder contains three files - server.R, ui.R and global.R.  
+The files server.R, ui.R and global.R are responsible for building the app. 
 
-The function of the global.R file is to read in all the files and libraries, as well as to conduct some of the processes that cannot 
-easily be conducted externally, such as rendering maps. Think of global.R as a corridor with a storage room at the end of it. It connects the functional rooms such as kitchen and living room and stores appliances needed by both, such as bedding or kitchen equipment.  
+The function of the global.R file is to load the libraries and data for the app. Think of global.R as a corridor with a storage room at the end of it. It connects the functional rooms such as kitchen and living room and stores appliances needed by both, such as bedding or kitchen equipment.  
 
-The server.R file creates all the outputs that will later appear in the dashboard. The code written here defines each of the elements appearing later in the dashboard, that is rendering tables, maps and graphs. Think of server.R as a kitchen, where you prepare all the dishes but you actually serve them to your guests in the living room.  
+The server.R file creates all the outputs that will later appear in the dashboard. The code written here defines each of reactive outputs appearing later in the dashboard, such as interactive tables and graphs. Think of server.R as a kitchen, where you prepare all the dishes but you actually serve them to your guests in the living room.  
 
-The ui.R file decides the structure of the dashboard. It takes all the elements rendered in the server.R and orders them in the correct tabs (which are also defined in the ui.R file) and wraps text around them. It is analogous to ordering images of tables in a word document. You created them in Excel, but now need to produce a cohesive report, with the tables in the right sections wrapped in explanations. ui.R is therefore the living room, where you present all your dishes to the guests on fancy plates.  
+The ui.R file defines the layout and user interface of the dashboard. It takes all the elements rendered in the server.R and orders them in the correct tabs, and wraps text around them. It is analogous to ordering images of tables in a word document. You created them in Excel, but now need to produce a cohesive report, with the tables in the right sections wrapped in explanations. ui.R is therefore the living room, where you present all your dishes to the guests on fancy plates.  
 
-### The 'code' folder
+## The 'code' folder
+
+The 'code' folder pulls and wrangles the data for the dashboard. It follows a simple structure
+where each sub-folder contains the code that preps the data for each tab of the dashboard. It also contains a setup_environment.R script which loads all the libraries and functions needed by the other scripts in this folder. 
+
+```
+├── code                        // data pipelining and other supporting code
+    ├── clinical_coding_tab     // data wrangling code for the Clinical Coding tab
+    ├── data_quality_tab        // data wrangling code for the Data Quality tab
+    ├── ...                     ...
+    ├── setup_environment.R     // loads all the libraries necessary for running code scripts
+    ├── update_data.R           // script that refreshes dashboard data
+```
+
+
 
 The 'code' folder was created to allow for an easy way to distinguish different data sections. Each of the main tabs has its own sub-folder and if you were to add your own tab, it is advised to create a new sub-folder in the 'code' folder and name it accordingly. In the tab sub-folder, you will find files for each of the sections of the tab. For instance, the 'data_quality_tab' contains three files - data_monitoring_timeliness.R, data_monitoring_completeness.R and smr_audit.R, each of them using a different dataset.
 Those files are used to handle data - to get it from the SQL server, clean and organise it. After all the data wrangling, you simply write it into an excel file so that it can be passed on to the dashboard. Thanks to the fact that data is processed externally from the dashboard and then it's exported, the dashboard itself can run much faster as it does not waste resources on processing the data each time it loads. We will delve deeper into how to write and read your data in the next section. 

@@ -23,8 +23,8 @@ dbDisconnect(con)
 rm(con)
 
 #save a zipped copy of the data
-data_list <- paste0("/conf/Data_Quality_Dashboard/data/")
-zip::zip(paste0("/conf/Data_Quality_Dashboard/data_archive/dq_dashboard_data_",
+data_list <- paste0(here::here("data"))
+zip::zip(paste0(here::here("data_archive", "dq_dashboard_data_"),
            Sys.Date(), ".zip"), data_list, mode="cherry-pick")
 
 #clear environment
