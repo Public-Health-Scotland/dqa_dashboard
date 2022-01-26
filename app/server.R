@@ -170,28 +170,46 @@ shinyServer(function(input, output, session) {
 
 ### SMR Timeliness ----------------------------------------------------------
 
-  timeliness_filters <- reactive({
+#the bullet chart is composed of two superimposed plots, one for expected submissions and one for the actual submissions
+  
+  #implement smr and year filters
+  timeliness_smr_year <- reactive({
     req(input$timeliness_smr_in)
-    req(input$timeliness_month_in)
+    req(input$timeliness_year_in)
+  
     timeliness %>%
-      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in)
+      filter(smr == input$timeliness_smr_in, event_year == input$timeliness_year_in)
   })
+  
+  #update list of choices in the month dropdown based on user year input
+  observeEvent(input$timeliness_year_in,
+               updateSelectInput(session, "timeliness_month_in", 
+                                 choices = c(unique(timeliness_smr_year()$event_month_name)))
+  )
+  
+  #implement hb filter, reactive data for plotting expected submissions
+  timeliness_expected <- reactive({
+    req(input$timeliness_month_in)
     
-  timeliness_long_filters <- reactive({
-    timeliness %>% 
-      filter(smr == input$timeliness_smr_in, event_month_name == input$timeliness_month_in) %>% 
+    timeliness_smr_year() %>%
+      filter(event_month_name == input$timeliness_month_in)
+  })
+  
+  #reactive data for plotting the actual number of submissions
+  timeliness_submitted <- reactive({
+    timeliness_expected() %>% 
       pivot_longer(cols = c(before_deadline, after_deadline), names_to = "submission_status", 
                    values_to = "submission_count_split")
   })
   
   
   output$timeliness_mean_on_time <- renderText({
-    mean_on_time <- round(mean(timeliness_filters()$before_deadline), 2)
+    mean_on_time <- round(mean(timeliness_expected()$before_deadline), 2)
     paste("Average number of records submitted on time:",mean_on_time, sep = " ")
   })
   
   output$timeliness_mean_late <- renderText(({
-    mean_late <- round(mean(timeliness_filters()$after_deadline),2)
+    mean_late <- round(mean(timeliness_expected()$after_deadline),2)
     paste("Average number of records submitted after the deadline:",mean_late, sep = " ")
     
   }))
@@ -199,9 +217,9 @@ shinyServer(function(input, output, session) {
 
   output$timeliness_plot <- renderPlotly({
 
-     plot <- ggplot(data=timeliness_long_filters()
+     plot <- ggplot(data=timeliness_submitted()
                    )+
-      geom_col(data = timeliness_filters(),
+      geom_col(data = timeliness_expected(),
                aes(x=hb_name, y=expected_submissions, fill = "expected_submissions"),
                alpha = 0.6, name = "expected submissions", show.legend = TRUE)+
       geom_col(position = "stack",width = 0.3, 
@@ -214,12 +232,23 @@ shinyServer(function(input, output, session) {
             panel.background = element_blank())
 
     plotly::ggplotly(plot) %>%
-      layout(legend = list(x = 0.72, y = 0.95))%>%
+      layout(legend = list(x = 1, y = 1))%>%
       layout(legend=list(title=list(text='<b> Legend </b>')))
   })
 
+  #Update the default selection on the data tab to be the same as the bullet chart user selection
+  observeEvent(input$timeliness_smr_in,
+               updateSelectInput(session, "timeliness_smr_in_2", choices = c("(All)", unique(timeliness$smr)),
+                                 selected = input$timeliness_smr_in)
+  )
+  
+  observeEvent(input$timeliness_year_in, 
+               updateSelectInput(session, "timeliness_year_in_2", choices = c("(All)", unique(timeliness$event_year)),
+                                 selected = input$timeliness_year_in)
+  )
+  
   #filter and select rows to display in the timeliness Data tab
-  timeliness_table_filter_smr <- reactive({
+  timeliness_data_smr <- reactive({
     req(input$timeliness_smr_in_2)
     if(input$timeliness_smr_in_2 %in% unique(timeliness$smr)){
       timeliness %>%
@@ -230,35 +259,43 @@ shinyServer(function(input, output, session) {
     }
   })
   
-  timeliness_table_filter_month <- reactive({
+  timeliness_data_year <- reactive({
+    req(input$timeliness_year_in_2)
+    if(input$timeliness_year_in_2 %in% unique(timeliness_data_smr()$event_year)){
+      timeliness_data_smr() %>% 
+        filter(event_year == input$timeliness_year_in_2)
+    }
+    else{
+      timeliness_data_smr()
+    }
+  })
+  
+  #update list of month choices based on year input
+  observeEvent(input$timeliness_year_in_2,
+               updateSelectInput(session, "timeliness_month_in_2", 
+                                 choices = c("(All)",unique(timeliness_data_year()$event_month_name)),
+                                 selected = if_else(input$timeliness_month_in_2 %in% unique(timeliness_data_year()$event_month_name),
+                                                    input$timeliness_month_in_2, "(All)"))
+  )
+  
+  
+  timeliness_data_month <- reactive({
     req(input$timeliness_month_in_2)
-    if(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name)){
-      timeliness_table_filter_smr() %>% 
+    if(input$timeliness_month_in_2 %in% unique(timeliness_data_year()$event_month_name)){
+      timeliness_data_year() %>% 
         filter(event_month_name == input$timeliness_month_in_2) %>% 
         select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
     }
     else{
-      timeliness_table_filter_smr()%>% 
+      timeliness_data_year()%>% 
       select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
     }
   })
   
-  #Update the default selection on the data tab to be the same as the bullet chart user selection
-  observeEvent(input$timeliness_smr_in,
-               updateSelectInput(session, "timeliness_smr_in_2", choices = c(unique(timeliness$smr)),
-                                 selected = input$timeliness_smr_in)
-  )
-  
-  observeEvent(input$timeliness_month_in, 
-               updateSelectInput(session, "timeliness_month_in_2", choices = c(unique(timeliness$event_month_name)),
-                                 selected = input$timeliness_month_in)
-  )
-  
-
 
 #render final table to display
  output$timeliness_rows <- DT::renderDataTable({ 
-   datatable(data = timeliness_table_filter_month(),
+   datatable(data = timeliness_data_month(),
              escape = FALSE,
              rownames = FALSE,
              class="compact stripe hover",
@@ -276,13 +313,15 @@ shinyServer(function(input, output, session) {
 #downloadable csv of selected timeliness dataset
   output$download_timeliness <- downloadHandler(
     filename = function(){
-      paste0("timeliness_", 
+      paste0("timeliness_",
              ifelse(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name), 
-                    str_to_lower(unique(timeliness_table_filter_month()$event_month_name)), "all_months"),
+                    str_to_lower(unique(timeliness_data_month()$event_month_name)), "all_months"),
+             ifelse(input$timeliness_year_in_2 %in% unique(timeliness$event_year), 
+                    unique(timeliness_data_month()$event_year), "all_years"),
              ".csv")
     },
     content = function(file){
-      write.csv(timeliness_table_filter_month(), row.names = FALSE, file)
+      write.csv(timeliness_data_month(), row.names = FALSE, file)
     }
   )
 

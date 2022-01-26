@@ -34,14 +34,14 @@ smr00_raw <- dbGetQuery(con, "SELECT referral_type, clinic_attendance, current_t
                         location, date_record_inserted, clinic_date, hbtreat_currentdate
                         FROM analysis.smr00_pi
                         WHERE clinic_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
+                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 smr01_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr01_pi
                         WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
+                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
             clean_names()
 
 smr02_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
@@ -49,14 +49,14 @@ smr02_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         discharge_date, hbtreat_currentdate
                         FROM analysis.smr02_pi
                         WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
+                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 smr04_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr04_pi
                         WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2022-01-11', 'YYYY-MM-DD')};")%>%
+                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
               clean_names()
 
 # Selection criteria -----------------------------------------------------------------
@@ -156,7 +156,7 @@ expected_submissions_df <- read_csv(
   here::here("data", "expected_submissions_dec_2019_nov_2021.csv"))
 
 timeliness <- submissions %>% 
-  left_join(expected_submissions_df)
+  left_join(expected_submissions_df, by = c("smr", "hb_name", "event_year", "event_month"))
 
-write_csv(here::here("app/data", "timeliness.csv"))
+write_csv(timeliness, here::here("data", "timeliness.csv"))
 
