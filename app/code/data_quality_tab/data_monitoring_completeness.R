@@ -45,7 +45,7 @@ hb_lookup <- rbind(hb2019, hb_other)
 #Extract data ---------------------------------------------------
 #smr00 contains outpatient data so the records are filtered by clinic date
 raw_smr00 <- dbGetQuery(con, statement = "SELECT clinic_date, hbtreat_currentdate, dob, sex, postcode, 
-ethnic_group, main_condition, main_operation, mode_of_clinical_interaction, referral_type, specialty
+ethnic_group, main_operation, mode_of_clinical_interaction, referral_type, specialty
                  FROM ANALYSIS.SMR00_PI
                  WHERE clinic_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names()%>%
@@ -59,6 +59,8 @@ management_of_patient, specialty
                  WHERE discharge_date >= trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')" )%>%
   clean_names() %>%
   rename("event_date"="discharge_date")
+
+# unique(raw_smr01[month(raw_smr01$event_date)==12 & year(raw_smr01$event_date)==2021,]$hbtreat_currentdate)
 
 raw_smr02 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_currentdate, dob, sex, postcode, ethnic_group,
 main_condition, main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
@@ -83,7 +85,7 @@ admission_transfer_from, discharge_transfer_to, management_of_patient, specialty
 #vectors of names of the SMR data items we want to monitor completeness for
 #list of data items per smr
 
-smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_condition", "main_operation",
+smr00_cols <- c("dob", "sex", "postcode", "ethnic_group", "main_operation",
                      "mode_of_clinical_interaction", "referral_type", "specialty")
 
 
