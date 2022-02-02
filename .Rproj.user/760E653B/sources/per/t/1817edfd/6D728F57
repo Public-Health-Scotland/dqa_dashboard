@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1637770215209.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "418382533",
+    "id" : "6D728F57",
+    "lastKnownWriteTime" : 1637775305,
+    "last_content_update" : 1637775305769,
+    "path" : "~/dqa_dashboard/functions/count_submissions_timeliness.R",
+    "project_path" : "functions/count_submissions_timeliness.R",
+    "properties" : {
+        "cursorPosition" : "21,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

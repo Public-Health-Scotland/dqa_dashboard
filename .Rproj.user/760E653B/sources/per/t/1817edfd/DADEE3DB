@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1637776708972.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DADEE3DB",
+    "lastKnownWriteTime" : 3273676477844120947,
+    "last_content_update" : 1637776708972,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "66D9B236",
+        "caption" : "hb2019",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=hb2019&cache_key=66D9B236",
+        "displayedObservations" : 18,
+        "environment" : "",
+        "object" : "hb2019",
+        "preview" : 0,
+        "totalObservations" : 18,
+        "variables" : 2
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

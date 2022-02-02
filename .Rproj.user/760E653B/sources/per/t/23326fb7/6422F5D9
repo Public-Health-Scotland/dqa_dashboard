@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1627311318292.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2444773812",
+    "id" : "6422F5D9",
+    "lastKnownWriteTime" : 1627321808,
+    "last_content_update" : 1627321808202,
+    "path" : "~/dqa_dashboard/www/styles.css",
+    "project_path" : "www/styles.css",
+    "properties" : {
+        "cursorPosition" : "11,65",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "css"
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1639489919656.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "795564040",
+    "id" : "1BDEFCF7",
+    "lastKnownWriteTime" : 1639475855,
+    "last_content_update" : 1639475855,
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app/admin/Deploying shiny app.R",
+    "project_path" : "admin/Deploying shiny app.R",
+    "properties" : {
+        "cursorPosition" : "25,0",
+        "scrollLine" : "8"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

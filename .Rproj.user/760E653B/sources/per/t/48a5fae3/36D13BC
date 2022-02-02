@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1635409955853.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3843231364",
+    "id" : "36D13BC",
+    "lastKnownWriteTime" : 1635414801,
+    "last_content_update" : 1635414801248,
+    "path" : "/conf/Data_Quality_Dashboard/admin/create_credentials.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "9,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

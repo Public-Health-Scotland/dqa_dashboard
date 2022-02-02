@@ -1,0 +1,9 @@
+# Code to create the credential files
+dir.create("app/admin/") # creates folder if it doesn't exist
+
+credentials_df <- data.frame(
+  user = c("username"), # mandatory
+  password = c("password"), # mandatory
+  stringsAsFactors = FALSE)
+
+saveRDS(credentials_df, "app/admin/credentials.rds")
