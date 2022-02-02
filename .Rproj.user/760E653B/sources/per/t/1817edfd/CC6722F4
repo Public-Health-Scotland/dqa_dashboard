@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1637763735936.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4256537108",
+    "id" : "CC6722F4",
+    "lastKnownWriteTime" : 1636553132,
+    "last_content_update" : 1636553132,
+    "path" : "~/dqa_dashboard/code/data_quality_tab/data_monitoring_completeness.R",
+    "project_path" : "code/data_quality_tab/data_monitoring_completeness.R",
+    "properties" : {
+        "cursorPosition" : "170,45",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

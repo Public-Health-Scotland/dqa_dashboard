@@ -1,0 +1,27 @@
+########################################
+#Deploying app
+
+###############################################.
+## Proxy options - only needed if using R Desktop, skip in R server.
+#It will prompt a screen where you have to include your NSS logins details
+# This probably doesn't work anymore
+#separated by an : (e.g. Username:password1234)
+#options(RCurlOptions = list(proxy = "PROXY.NSS.SCOT.NHS.UK:3128",
+#                            proxyuserpwd=.rs.askForPassword("Enter username:password"), 
+#                            verbose = TRUE))
+
+###############################################.
+## Connecting to the shyny.io account.
+#Enter the token and secret provided by one of the account managers
+rsconnect::setAccountInfo(name='scotland',
+                          token='CD4264D777807FEA5393E7A7856C18F3',
+                          secret='+Rxmcg1XEv4tPa35PM5RTCueMayg+4GkhzpfDsUP')
+
+
+rsconnect::deployApp('/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app', 
+                     appName= "phs-dq-dashboard", account = 'scotland')
+# 
+###########################################################
+##END
+
+

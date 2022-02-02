@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1636384680372.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2114625709",
+    "id" : "1488AB67",
+    "lastKnownWriteTime" : 1636979882,
+    "last_content_update" : 1636979882463,
+    "path" : "~/dqa_dashboard/code/update_data.R",
+    "project_path" : "code/update_data.R",
+    "properties" : {
+        "cursorPosition" : "30,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

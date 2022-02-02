@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1637762680615.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1215455306",
+    "id" : "4635A34F",
+    "lastKnownWriteTime" : 1637778723,
+    "last_content_update" : 1637778723038,
+    "path" : "~/dqa_dashboard/code/data_quality_tab/data_monitoring_timeliness.R",
+    "project_path" : "code/data_quality_tab/data_monitoring_timeliness.R",
+    "properties" : {
+        "cursorPosition" : "135,0",
+        "scrollLine" : "132",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

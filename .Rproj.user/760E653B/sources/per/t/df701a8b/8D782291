@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1639478858689.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1180426472",
+    "id" : "8D782291",
+    "lastKnownWriteTime" : 1639478876,
+    "last_content_update" : 1639478875649,
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/code/clinical_coding_tab/terminology_tables_smr02.R",
+    "project_path" : "code/clinical_coding_tab/terminology_tables_smr02.R",
+    "properties" : {
+        "cursorPosition" : "163,47",
+        "scrollLine" : "146"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

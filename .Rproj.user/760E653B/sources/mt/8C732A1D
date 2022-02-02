@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1639478926056.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3747996438",
+    "id" : "8C732A1D",
+    "lastKnownWriteTime" : 1639478933,
+    "last_content_update" : 1639478932865,
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/code/data_quality_tab/smr_audit.R",
+    "project_path" : "code/data_quality_tab/smr_audit.R",
+    "properties" : {
+        "cursorPosition" : "53,65",
+        "scrollLine" : "37"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

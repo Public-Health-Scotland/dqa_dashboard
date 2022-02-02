@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1643198192986.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C61EFC8B",
+    "lastKnownWriteTime" : 1643209718,
+    "last_content_update" : 1643209718,
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "293,2",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

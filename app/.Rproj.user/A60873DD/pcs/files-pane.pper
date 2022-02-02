@@ -1,0 +1,9 @@
+{
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

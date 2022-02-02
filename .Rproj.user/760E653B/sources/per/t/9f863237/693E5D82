@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1636979686113.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "914189717",
+    "id" : "693E5D82",
+    "lastKnownWriteTime" : 1636979633,
+    "last_content_update" : 1636979633,
+    "path" : "/conf/Data_Quality_Dashboard/data/smr02_diabetes_data.csv",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}
