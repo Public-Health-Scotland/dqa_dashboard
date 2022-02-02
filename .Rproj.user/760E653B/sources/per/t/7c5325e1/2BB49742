@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1622110413886.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2BB49742",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1622110413886,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "CE506654",
+        "caption" : "SMR_mean",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=SMR_mean&cache_key=CE506654",
+        "displayedObservations" : 7,
+        "environment" : "",
+        "object" : "SMR_mean",
+        "preview" : 0,
+        "totalObservations" : 7,
+        "variables" : 3
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

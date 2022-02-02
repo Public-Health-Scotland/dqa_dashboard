@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1639057973204.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4220517079",
+    "id" : "EF4DE413",
+    "lastKnownWriteTime" : 1639483589,
+    "last_content_update" : 1639483588570,
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/.gitignore",
+    "project_path" : ".gitignore",
+    "properties" : {
+        "cursorPosition" : "11,12",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "gitignore"
+}

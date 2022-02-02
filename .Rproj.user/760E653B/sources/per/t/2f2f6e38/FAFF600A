@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1627636251444.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2499859335",
+    "id" : "FAFF600A",
+    "lastKnownWriteTime" : 1627656184,
+    "last_content_update" : 1627656184628,
+    "path" : "~/dqa_dashboard/code/data_quality_tab/data_monitoring_completeness.R",
+    "project_path" : "code/data_quality_tab/data_monitoring_completeness.R",
+    "properties" : {
+        "cursorPosition" : "165,75",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

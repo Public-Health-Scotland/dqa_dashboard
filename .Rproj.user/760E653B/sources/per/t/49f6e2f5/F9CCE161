@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1636721826715.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3824579569",
+    "id" : "F9CCE161",
+    "lastKnownWriteTime" : 1636969923,
+    "last_content_update" : 1636969923164,
+    "path" : "~/dqa_dashboard/code/clinical_coding_tab/terminology_tables_smr02.R",
+    "project_path" : "code/clinical_coding_tab/terminology_tables_smr02.R",
+    "properties" : {
+        "cursorPosition" : "163,31",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

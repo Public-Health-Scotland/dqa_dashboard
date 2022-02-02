@@ -3,21 +3,23 @@ deploying_app.R
 create_credentials.R
 credentials.rds
 
+# not needed
+rsconnect
+*.Rproj
+.Rproj.user
+.Rhistory
+.Ruserdata
+
 # folders
 
 app/admin/**
 app/data/**
-app/data_archive
 
 # csv files
 *.[cC][sS][vV]*
 
 # excel files
 *.[xX][lL][sS]*
-
-#zip files
-
-*.[zZ][iI][pP]*
 
 # History files
 .Rhistory
@@ -39,7 +41,7 @@ app/data_archive
 /*.Rcheck/
 
 # RStudio files
-
+.Rproj.user/
 
 # produced vignettes
 vignettes/*.html
@@ -58,3 +60,4 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+.Rproj.user

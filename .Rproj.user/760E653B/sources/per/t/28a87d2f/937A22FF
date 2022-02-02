@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1627295681738.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "13245",
+    "id" : "937A22FF",
+    "lastKnownWriteTime" : 1631029892,
+    "last_content_update" : 1631029892632,
+    "path" : "~/dqa_dashboard/app/server.R",
+    "project_path" : "app/server.R",
+    "properties" : {
+        "cursorPosition" : "73,4",
+        "scrollLine" : "91"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
