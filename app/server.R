@@ -33,7 +33,7 @@ shinyServer(function(input, output, session) {
   #update HB dropdown list based on SMR selection
   observeEvent(input$smr_in,
                updateSelectInput(session, "hb_in", 
-                                 choices = c("(All)", unique(completeness_main_filters()$hb_name)),
+                                 choices = c("(All)", unique(completeness_main_filters()$hb_name))[order(c("(All)", unique(completeness_main_filters()$hb_name)))],
                                  selected = if_else(input$hb_in %in% 
                                                       unique(completeness_main_filters()$hb_name),
                                                     input$hb_in, "(All)")
@@ -43,7 +43,7 @@ shinyServer(function(input, output, session) {
   #update data item dropdown list based on SMR selection
   observeEvent(input$smr_in, {
     updateSelectInput(session, inputId = "data_item_in",
-                      choices = c("(All)", unique(completeness_main_filters()$data_item)),
+                      choices = c("(All)", unique(completeness_main_filters()$data_item))[order(c("(All)", unique(completeness_main_filters()$data_item)))],
                       selected = if_else(input$data_item_in %in% 
                                            unique(completeness_main_filters()$data_item),
                                         input$data_item_in, "(All)")
@@ -184,7 +184,7 @@ shinyServer(function(input, output, session) {
   #update list of choices in the month dropdown based on user year input
   observeEvent(input$timeliness_year_in,
                updateSelectInput(session, "timeliness_month_in", 
-                                 choices = c(unique(timeliness_smr_year()$event_month_name)))
+                                 choices = c(unique(timeliness_smr_year()$event_month_name))[order(c(unique(timeliness_smr_year()$event_month)))])
   )
   
   #implement hb filter, reactive data for plotting expected submissions
@@ -238,12 +238,14 @@ shinyServer(function(input, output, session) {
 
   #Update the default selection on the data tab to be the same as the bullet chart user selection
   observeEvent(input$timeliness_smr_in,
-               updateSelectInput(session, "timeliness_smr_in_2", choices = c("(All)", unique(timeliness$smr)),
+               updateSelectInput(session, "timeliness_smr_in_2", 
+                                 choices = c("(All)", unique(timeliness$smr)[order(unique(timeliness$smr))]),
                                  selected = input$timeliness_smr_in)
   )
   
   observeEvent(input$timeliness_year_in, 
-               updateSelectInput(session, "timeliness_year_in_2", choices = c("(All)", unique(timeliness$event_year)),
+               updateSelectInput(session, "timeliness_year_in_2", 
+                                 choices = c("(All)", unique(timeliness$event_year)[order(unique(timeliness$event_year))]),
                                  selected = input$timeliness_year_in)
   )
   
@@ -271,11 +273,10 @@ shinyServer(function(input, output, session) {
   })
   
   #update list of month choices based on year input
-  observeEvent(input$timeliness_year_in_2,
+  observeEvent(input$timeliness_month_in,
                updateSelectInput(session, "timeliness_month_in_2", 
-                                 choices = c("(All)",unique(timeliness_data_year()$event_month_name)),
-                                 selected = if_else(input$timeliness_month_in_2 %in% unique(timeliness_data_year()$event_month_name),
-                                                    input$timeliness_month_in_2, "(All)"))
+                                 choices = c("(All)",unique(timeliness_data_year()$event_month_name)[order(unique(timeliness_data_year()$event_month))]),
+                                 selected = input$timeliness_month_in)
   )
   
   
@@ -348,16 +349,16 @@ shinyServer(function(input, output, session) {
     #Update Year selection based on inputs
   observeEvent(to_listen_audit(), {
       updateSelectInput(session, inputId = "Year", 
-                        choices = c("(All)",unique(filters1()$year)),
+                        choices = c("(All)",unique(filters1()$year)[order(unique(filters1()$year))]),
                         selected = if_else(input$Year %in% c("(All)",unique(filters1()$year)),
                                                              input$Year, "(All)")
                         )
     })
   
-    #Update Data Item Name selection based on inputs
+  #Update Data Item Name selection based on inputs
   observeEvent(to_listen_audit(), {
       updateSelectInput(session,"DataItemName", 
-                        choices = c("(All)",unique(filters1()$data_item_name)),
+                        choices = c("(All)",unique(filters1()$data_item_name)[order(unique(filters1()$data_item_name))]),
                         selected = if_else(input$DataItemName %in% 
                                            c("(All)",unique(filters1()$data_item_name)),
                                            input$DataItemName, "(All)" 
