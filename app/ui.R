@@ -4,7 +4,7 @@ sb_width <- c(2,10) #sidebar width
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), 
                           mime = 'image/png') #encoding for phs logo
 
-secure_app(
+#secure_app(
     navbarPage(
       
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
@@ -113,14 +113,13 @@ secure_app(
                    br(),
                    fluidRow(
                      column(4, 
-                            selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                            selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))[order(c("(All)", unique(smr_completeness$smr)))])
                      ),
                      column(4,
-                            selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
+                            selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name))[order(c("(All)", unique(smr_completeness$hb_name)))])
                      ),
                      column(4,
-                            selectInput("data_item_in", "Data Item", choices = c("(All)",
-                                                                                 unique(smr_completeness$data_item)))
+                            selectInput("data_item_in", "Data Item", choices = c("(All)",unique(smr_completeness$data_item))[order(c("(All)",unique(smr_completeness$data_item)))])
                      )
                    ),
                    fluidRow(
@@ -176,7 +175,7 @@ secure_app(
                                        selectInput("timeliness_year_in", "Year", choices = c(unique(timeliness$event_year)))
                                 ),
                                 column(4,
-                                       selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                                       selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name))[order(unique(timeliness$event_month))])
                                 )
                               ),
                               
@@ -381,7 +380,7 @@ secure_app(
         )
       )
     )
-) #secure app
+#) #secure app
 
 
 
