@@ -250,121 +250,145 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                      )
                    )
           )
-        )),
+        )
+      ),
       tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
         title = "Coding Discrepancies and Issues",
         navlistPanel(
           id = "tabset",
           widths = sb_width,
           tabPanel("SMR02 Recording of Diabetes",
-                   p("Diabetes in pregnancy is recorded by two different variables in the SMR02 dataset. 
-                     It's coded with an International Classification of Diseases (ICD10) code, and a", 
-                     tags$a(href="https://www.ndc.scot.nhs.uk/Dictionary-A-Z/Definitions/index.asp?Search=D&ID=214&Title=Diabetes",
-                            "diabetes hard-code", target = "_blank"), 
-                     "(ie. the recorder selects a value from a drop-down menu). The following tables provides counts of 
-                     SMR02 records where the hard-code value and the ICD10 code present conflicting information."),
-                   tabsetPanel(
-                     tabPanel("Error 1", # one bar in the menu for each error
-                              p(
-                                tags$b('Error 1 is defined as: '),'Pre-existing diabetes is hard-coded, 
-                                but the recorded ICD10 code is not ‘pre-existing diabetes.’'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number
-                                of records with the hard-code for pre-existing diabetes'
-                              ),
-                              selectInput('year1', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error1", "Download CSV"),
-                              DT::dataTableOutput("error_1")),
-                     tabPanel("Error 2", 
-                              p(
-                                tags$b('Error 2 is defined as: '),'Gestational diabetes is hard-coded, 
-                                but the recorded ICD10 code is not ‘gestational diabetes’.'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number
-                                of records with the hard-code for gestational diabetes'
-                              ),
-                              selectInput('year2', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error2", "Download CSV"),
-                              DT::dataTableOutput("error_2")),
-                     tabPanel("Error 3", 
-                              p(
-                                tags$b('Error 3 is defined as: '),'Diabetes of unspecified onset is hard-coded, 
-                                but the recorded ICD10 code is not ‘unspecified diabetes in pregnancy.’'
-                              ),
-                              p(
-                                'The denominator in the percentage column is the total number of records with 
-                                the hard-code for diabetes of unspecified onset'
-                              ),
-                              selectInput('year3', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error3", "Download CSV"),
-                              DT::dataTableOutput("error_3")),
-                     tabPanel("Error 4",
-                              p(
-                                tags$b('Error 4 is defined as: '),"The hard-code for 'No diabetes during pregnancy' is present, 
-                                but an ICD10 code for diabetes in pregnancy (O24*) is recorded."
-                              ),
-                              p(
-                                "The denominator in the percentage column is the total number of records with 
-                                the hard-code for 'No diabetes during pregnancy'."
-                              ),
-                              selectInput('year4', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error4", "Download CSV"),
-                              DT::dataTableOutput("error_4")),
-                     tabPanel("Error 5",
-                              p(
-                                tags$b('Error 5 is defined as: '),'The mandatory diabetes hard-code is not recorded.'
-                              ),
-                              selectInput('year5', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error5", "Download CSV"),
-                              DT::dataTableOutput("error_5")),
-                     tabPanel("Error 6",
-                              p(
-                                tags$b('Error 6 is defined as: '),'An ICD10 diabetes code (E10-E14) is recorded instead
-                              of an ICD10 diabetes in pregnancy code (O24*).'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number of records 
-                                       for the given healthboard and selected year.'
-                              ),
-                              selectInput('year6', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error6", "Download CSV"),
-                              DT::dataTableOutput("error_6")),
-                     tabPanel("Query 1", 
-                              p(
-                                tags$b('Query 1 is defined as: '),'Diabetes is hard-coded as ‘Not Known’, 
-                                        but an ICD10 diabetes in pregnancy code (O24*) is recorded.'
-                              ), 
-                              p(
-                                "The denominator in the percentage column is the total number of records
-                                       where diabetes is hard-coded as 'Not Known'."
-                              ),
-                              selectInput('yearQ', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_query1", "Download CSV"),
-                              DT::dataTableOutput("query")))
-                     ),
+                            p("Diabetes in pregnancy is recorded by two different variables in the SMR02 dataset.
+                              It's coded with an International Classification of Diseases (ICD10) code, and a",
+                              tags$a(href="https://www.ndc.scot.nhs.uk/Dictionary-A-Z/Definitions/index.asp?Search=D&ID=214&Title=Diabetes",
+                                     "diabetes hard-code", target = "_blank"),
+                              "(ie. the recorder selects a value from a drop-down menu). The following tables provides counts of
+                              SMR02 records where the hard-code value and the ICD10 code present conflicting information."),
+                   # fluidRow(
+                   #   column(4,
+                   #          selectInput("diabetes_error", "Error", choices = c("(All)", sort(unique(smr02_diabetes$source))),
+                   #                      selected = "(All)")
+                   #          ),
+                   #   column(4, selectInput("diabetes_year", "Year", choices=c("(All)", sort(unique(smr02_diabetes$year))),
+                   #                      selected = max(unique(smr02_diabetes$year)))
+                   #          ),
+                   #   column(4, selectInput("diabetes_hb", "Health Board", choices = c("(All)", sort(unique(smr02_diabetes$HBName))),
+                   #                         selected = "(All)")
+                   #          )
+                   # ),
+                   downloadButton("download_smr02_error1", "Download CSV"),
+                   DT::dataTableOutput("diabetes02")
+
+            ),
+          # tabPanel("SMR02 Recording of Diabetes",
+          #          p("Diabetes in pregnancy is recorded by two different variables in the SMR02 dataset. 
+          #            It's coded with an International Classification of Diseases (ICD10) code, and a", 
+          #            tags$a(href="https://www.ndc.scot.nhs.uk/Dictionary-A-Z/Definitions/index.asp?Search=D&ID=214&Title=Diabetes",
+          #                   "diabetes hard-code", target = "_blank"), 
+          #            "(ie. the recorder selects a value from a drop-down menu). The following tables provides counts of 
+          #            SMR02 records where the hard-code value and the ICD10 code present conflicting information."),
+          #          tabsetPanel(
+          #            tabPanel("Error 1", # one bar in the menu for each error
+          #                     p(
+          #                       tags$b('Error 1 is defined as: '),'Pre-existing diabetes is hard-coded, 
+          #                       but the recorded ICD10 code is not ‘pre-existing diabetes.’'
+          #                     ), 
+          #                     p(
+          #                       'The denominator in the percentage column is the total number
+          #                       of records with the hard-code for pre-existing diabetes'
+          #                     ),
+          #                     selectInput('year1', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error1", "Download CSV"),
+          #                     DT::dataTableOutput("error_1")),
+          #            tabPanel("Error 2", 
+          #                     p(
+          #                       tags$b('Error 2 is defined as: '),'Gestational diabetes is hard-coded, 
+          #                       but the recorded ICD10 code is not ‘gestational diabetes’.'
+          #                     ), 
+          #                     p(
+          #                       'The denominator in the percentage column is the total number
+          #                       of records with the hard-code for gestational diabetes'
+          #                     ),
+          #                     selectInput('year2', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error2", "Download CSV"),
+          #                     DT::dataTableOutput("error_2")),
+          #            tabPanel("Error 3", 
+          #                     p(
+          #                       tags$b('Error 3 is defined as: '),'Diabetes of unspecified onset is hard-coded, 
+          #                       but the recorded ICD10 code is not ‘unspecified diabetes in pregnancy.’'
+          #                     ),
+          #                     p(
+          #                       'The denominator in the percentage column is the total number of records with 
+          #                       the hard-code for diabetes of unspecified onset'
+          #                     ),
+          #                     selectInput('year3', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error3", "Download CSV"),
+          #                     DT::dataTableOutput("error_3")),
+          #            tabPanel("Error 4",
+          #                     p(
+          #                       tags$b('Error 4 is defined as: '),"The hard-code for 'No diabetes during pregnancy' is present, 
+          #                       but an ICD10 code for diabetes in pregnancy (O24*) is recorded."
+          #                     ),
+          #                     p(
+          #                       "The denominator in the percentage column is the total number of records with 
+          #                       the hard-code for 'No diabetes during pregnancy'."
+          #                     ),
+          #                     selectInput('year4', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error4", "Download CSV"),
+          #                     DT::dataTableOutput("error_4")),
+          #            tabPanel("Error 5",
+          #                     p(
+          #                       tags$b('Error 5 is defined as: '),'The mandatory diabetes hard-code is not recorded.'
+          #                     ),
+          #                     selectInput('year5', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error5", "Download CSV"),
+          #                     DT::dataTableOutput("error_5")),
+          #            tabPanel("Error 6",
+          #                     p(
+          #                       tags$b('Error 6 is defined as: '),'An ICD10 diabetes code (E10-E14) is recorded instead
+          #                     of an ICD10 diabetes in pregnancy code (O24*).'
+          #                     ), 
+          #                     p(
+          #                       'The denominator in the percentage column is the total number of records 
+          #                              for the given healthboard and selected year.'
+          #                     ),
+          #                     selectInput('year6', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_error6", "Download CSV"),
+          #                     DT::dataTableOutput("error_6")),
+          #            tabPanel("Query 1", 
+          #                     p(
+          #                       tags$b('Query 1 is defined as: '),'Diabetes is hard-coded as ‘Not Known’, 
+          #                               but an ICD10 diabetes in pregnancy code (O24*) is recorded.'
+          #                     ), 
+          #                     p(
+          #                       "The denominator in the percentage column is the total number of records
+          #                              where diabetes is hard-coded as 'Not Known'."
+          #                     ),
+          #                     selectInput('yearQ', 'Choose year:', 
+          #                                 choices = c("(All)",sort(unique(smr02_diabetes$year))),
+          #                                 selected = max(unique(smr02_diabetes$year))
+          #                     ),
+          #                     downloadButton("download_smr02_query1", "Download CSV"),
+          #                     DT::dataTableOutput("query")))
+          #            ),
           tabPanel("SMR01 ICD-10 Symptom R Codes",
                    p('This table reports the number of R codes entered as a Main Condition in the last episode of multi-episode stays in SMR01 data. A multi-episode stay is a continuous inpatient stay (CIS) with more than one episode.'),
                    p('R codes are symptomatic codes defined in the International Classification of Diseases (ICD10), this table also reports the counts for the following groupings of R codes'),
