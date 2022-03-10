@@ -1,6 +1,10 @@
 {
-    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app",
+    "path" : "/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/app/code/clinical_coding_tab",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
