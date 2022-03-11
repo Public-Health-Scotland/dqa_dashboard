@@ -303,8 +303,7 @@ shinyServer(function(input, output, session) {
              selection = 'none',
              options = list(
                rowsGroup = list(0),
-               columnDefs = list(
-                 list(className = 'dt-center', targets = "_all")
+               columnDefs = list(list(targets = '_all', searchable = FALSE)
                ),
                pageLength = 10,
                dom = 'Bfrtip'
@@ -438,7 +437,9 @@ shinyServer(function(input, output, session) {
                 options = list(
                   rowsGroup = list(0),
                   columnDefs = list(
-                    list(className = 'dt-center', targets = "_all")
+                    list(className = 'dt-center', targets = "_all"),
+                    list(searchable = FALSE, targets = 4), #turn off percentage filter
+                    list(width = '200px', targets = "_all") #fix column width
                   ),
                   pageLength = 15,
                   dom = 'Bfrtip'

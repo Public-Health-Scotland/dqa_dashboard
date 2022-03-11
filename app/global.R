@@ -48,9 +48,4 @@ RCodes_table <- read_csv(here::here("data", "r_codes.csv"))
 #smr02 clinical coding data
 smr02_diabetes <- read_rds(here::here("data", "smr02_diabetes_data.rds")) %>% 
   select("Error", "Health Board", "Year", "Count", "Percentage")
-# smr02_diabetes$source <- factor(smr02_diabetes$source, levels = sort(unique(smr02_diabetes$source)),
-#                                 ordered=TRUE)
-# smr02_diabetes$year <- factor(smr02_diabetes$year, levels = sort(unique(smr02_diabetes$year)), 
-#                                  ordered = TRUE)
-# smr02_diabetes$HBName<- factor(smr02_diabetes$HBName, levels = sort(unique(smr02_diabetes$HBName)),
-#                                   ordered=TRUE)
+smr02_diabetes$Count <- as.integer(smr02_diabetes$Count)
