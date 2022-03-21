@@ -260,11 +260,11 @@ shinyServer(function(input, output, session) {
       timeliness
     }
   })
-  
+
   timeliness_data_year <- reactive({
     req(input$timeliness_year_in_2)
     if(input$timeliness_year_in_2 %in% unique(timeliness_data_smr()$event_year)){
-      timeliness_data_smr() %>% 
+      timeliness_data_smr() %>%
         filter(event_year == input$timeliness_year_in_2)
     }
     else{
@@ -273,29 +273,30 @@ shinyServer(function(input, output, session) {
   })
   
   #update list of month choices based on year input
-  observeEvent(input$timeliness_month_in,
+  observeEvent(list(input$timeliness_month_in, input$timeliness_year_in_2),
                updateSelectInput(session, "timeliness_month_in_2", 
                                  choices = c("(All)",unique(timeliness_data_year()$event_month_name)[order(unique(timeliness_data_year()$event_month))]),
-                                 selected = input$timeliness_month_in)
+                                 selected = ifelse(input$timeliness_month_in %in% unique(timeliness_data_year()$event_month_name),
+                                                   input$timeliness_month_in, "(All)"))
   )
   
   
   timeliness_data_month <- reactive({
     req(input$timeliness_month_in_2)
     if(input$timeliness_month_in_2 %in% unique(timeliness_data_year()$event_month_name)){
-      timeliness_data_year() %>% 
-        filter(event_month_name == input$timeliness_month_in_2) %>% 
+      timeliness_data_year() %>%
+        filter(event_month_name == input$timeliness_month_in_2) %>%
         select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
     }
     else{
-      timeliness_data_year()%>% 
+      timeliness_data_year()%>%
       select(smr, hb_name, event_year, event_month_name, before_deadline, after_deadline, expected_submissions)
     }
   })
-  
+
 
 #render final table to display
- output$timeliness_rows <- DT::renderDataTable({ 
+ output$timeliness_rows <- DT::renderDataTable({
    datatable(data = timeliness_data_month(),
              escape = FALSE,
              rownames = FALSE,
@@ -311,19 +312,19 @@ shinyServer(function(input, output, session) {
     )
   })
 #downloadable csv of selected timeliness dataset
-  output$download_timeliness <- downloadHandler(
-    filename = function(){
-      paste0("timeliness_",
-             ifelse(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name), 
-                    str_to_lower(unique(timeliness_data_month()$event_month_name)), "all_months"),
-             ifelse(input$timeliness_year_in_2 %in% unique(timeliness$event_year), 
-                    unique(timeliness_data_month()$event_year), "all_years"),
-             ".csv")
-    },
-    content = function(file){
-      write.csv(timeliness_data_month(), row.names = FALSE, file)
-    }
-  )
+output$download_timeliness <- downloadHandler(
+  filename = function(){
+    paste0("timeliness_",
+           ifelse(input$timeliness_month_in_2 %in% unique(timeliness$event_month_name),
+                  str_to_lower(unique(timeliness_data_month()$event_month_name)), "all_months"),
+           ifelse(input$timeliness_year_in_2 %in% unique(timeliness$event_year),
+                  unique(timeliness_data_month()$event_year), "all_years"),
+           ".csv")
+  },
+  content = function(file){
+    write.csv(timeliness_data_month(), row.names = FALSE, file)
+  }
+)
 
 ### SMR Audit ---------------------------------------------------------------
 
