@@ -165,6 +165,8 @@ smr02_diabetes_data$year <- factor(smr02_diabetes_data$year, levels = sort(uniqu
                               ordered = TRUE)
 smr02_diabetes_data$HBName<- factor(smr02_diabetes_data$HBName, levels = sort(unique(smr02_diabetes_data$HBName)),
                                ordered=TRUE)
+smr02_diabetes$Count <- as.integer(smr02_diabetes$error)
+
 colnames(smr02_diabetes_data) <- c("Health Board", "Year", "Count", "Percentage", "Error")
 
 # Write out all the error tables ------------------------------------------

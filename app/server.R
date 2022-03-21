@@ -416,16 +416,6 @@ shinyServer(function(input, output, session) {
   )
   
 # Clinical Coding Discrepancies SMR02 -------------------------------------
-
-#Generate reactive smr02 diabetes table
-  # diabetes02_filt <- reactive({
-  #   req(input$diabetes_error)
-  #   req(input$diabetes_year)
-  #   req(input$diabetes_hb)
-  #   
-  #   smr02_diabetes %>% 
-  #     filter(source==input$diabetes_error, year == input$diabetes_year, HBName == input$diabetes_hb)
-  # })
   
   output$diabetes02 <- DT::renderDataTable({
       datatable(data = smr02_diabetes,
@@ -438,7 +428,7 @@ shinyServer(function(input, output, session) {
                   rowsGroup = list(0),
                   columnDefs = list(
                     list(className = 'dt-center', targets = "_all"),
-                    list(searchable = FALSE, targets = 4), #turn off percentage filter
+                    list(searchable = FALSE, targets = c(3,4)), #turn off percentage filter
                     list(width = '200px', targets = "_all") #fix column width
                   ),
                   pageLength = 15,
@@ -447,349 +437,16 @@ shinyServer(function(input, output, session) {
       )
     })
  
-  #Error 1 table filters, display and download functions 
-  # error1_filter <- reactive({
-  #   req(input$year1)
-  #   if (input$year1 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_1_table", year == input$year1)
-  #   }
-  #   else {
-  #     smr02_diabetes %>% 
-  #       filter(source=="error_1_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # error1_data <- reactive({
-  #   error1_filter() %>% 
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_1 <- DT::renderDataTable({
-  #   datatable(data = error1_data(),
-  #   escape = FALSE,
-  #   rownames = FALSE,
-  #   class="compact stripe hover",
-  #   selection = 'none',
-  #   options = list(
-  #     rowsGroup = list(0),
-  #     columnDefs = list(
-  #       list(className = 'dt-center', targets = "_all")
-  #                  ),
-  #     pageLength = 15,
-  #     dom = 'Bfrtip'
-  #              )
-  #     )
-  # })
-  # 
-  # output$download_smr02_error1 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error1_", ifelse(input$year1 %in% unique(smr02_diabetes$year), 
-  #                                    unique(error1_data()$Year), "all_years"),
-  #            ".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error1_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Error 2 table filters, display and download functions 
-  # error2_filter <- reactive({
-  #   req(input$year2)
-  #   if (input$year2 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_2_table", year == input$year2)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "error_2_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # error2_data <- reactive({
-  #   error2_filter() %>%
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_2 <- DT::renderDataTable({
-  #   datatable(data = error2_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #               ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #   )
-  # })
-  # 
-  # output$download_smr02_error2 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error2_", ifelse(input$year2 %in% unique(smr02_diabetes$year), 
-  #                                    unique(error2_data()$Year), "all_years"),".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error2_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Error 3 table filters, display and download functions 
-  # error3_filter <- reactive({
-  #   req(input$year3)
-  #   if (input$year3 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_3_table", year == input$year3)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "error_3_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # error3_data <-  reactive({
-  #   error3_filter() %>%
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_3 <- DT::renderDataTable({
-  #   datatable(data = error3_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #                           ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #   )
-  # })
-  # 
-  # output$download_smr02_error3 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error3_", ifelse(input$year3 %in% unique(smr02_diabetes$year), 
-  #                                    unique(error3_data()$Year), "all_years"), ".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error3_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Error 4 table filters, display and download functions 
-  # error4_filter <- reactive({
-  #   req(input$year4)
-  #   if (input$year4 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_4_table",year == input$year4)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "error_4_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # error4_data <- reactive({
-  #   error4_filter() %>%
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_4 <- DT::renderDataTable({
-  #   datatable(data = error4_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #               ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #     )
-  # })
-  # 
-  # output$download_smr02_error4 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error4_", ifelse(input$year4 %in% unique(smr02_diabetes$year), 
-  #                                    unique(error4_data()$Year), "all_years"),".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error4_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Error 5 table filters, display and download functions 
-  # error5_filter <- reactive({
-  #   req(input$year5)
-  #   if (input$year5 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_5_table", year == input$year5)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "error_5_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # error5_data <- reactive({
-  #   error5_filter() %>%
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_5 <- DT::renderDataTable({
-  #   datatable(data = error5_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #               ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #   )
-  # })
-  # 
-  # output$download_smr02_error5 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error5_", ifelse(input$year5 %in% unique(smr02_diabetes$year), 
-  #                                    unique(error5_data()$Year), "all_years"),".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error5_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Error 6 table filters, display and download functions 
-  # error6_filter <- reactive({
-  #   req(input$year6)
-  #   if (input$year6 %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "error_6_table", year == input$year6)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "error_6_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # error6_data <- reactive({
-  #   error6_filter() %>%
-  #     rename("Healthboard" = "HBName", "Error Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # })
-  # 
-  # output$error_6 <- DT::renderDataTable({
-  #   datatable(data = error6_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #               ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #       )
-  # })
-  # 
-  # output$download_smr02_error6 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_error6_", 
-  #            ifelse(input$year6 %in% unique(smr02_diabetes$year), unique(error6_data()$Year), "all_years"),
-  #            ".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(error6_data(), row.names = FALSE, file)
-  #   }
-  # )
-  # 
-  # #Query 1 table filters, display and download functions 
-  # query1_filter <- reactive({
-  #   req(input$yearQ)
-  #   if (input$yearQ %in% unique(smr02_diabetes$year)){
-  #     smr02_diabetes %>%
-  #       filter(source == "query_1_table", year == input$yearQ)
-  #   }
-  #   
-  #   else {
-  #     smr02_diabetes %>%
-  #       filter(source == "query_1_table") %>% 
-  #       arrange(desc(year))
-  #   }
-  # })
-  # 
-  # query1_data <- reactive({
-  #   query1_filter() %>%
-  #     rename("Healthboard" = "HBName", "Query Count" = "error",
-  #            "Year" = "year", "Percentage" = "percentage") %>% 
-  #     select(-source)
-  # }) 
-  # 
-  # output$query <- DT::renderDataTable({
-  #   datatable(data = query1_data(),
-  #             escape = FALSE,
-  #             rownames = FALSE,
-  #             class="compact stripe hover",
-  #             selection = 'none',
-  #             options = list(
-  #               rowsGroup = list(0),
-  #               columnDefs = list(
-  #                 list(className = 'dt-center', targets = "_all")
-  #               ),
-  #               pageLength = 15,
-  #               dom = 'Bfrtip'
-  #             )
-  #   )
-  # })
-  # 
-  # output$download_smr02_query1 <- downloadHandler(
-  #   filename = function(){
-  #     paste0("smr02_query1_", 
-  #            ifelse(input$yearQ %in% unique(smr02_diabetes$year), unique(smr0()$Year), "all_years"),
-  #            ".csv")
-  #   },
-  #   content = function(file){
-  #     write.csv(query1_data(), row.names = FALSE, file)
-  #   }
-  # )
+
+  output$download_smr02_diabetes <- downloadHandler(
+    filename = function(){
+      paste0("smr02_diabetes_",Sys.Date(), ".csv")
+    },
+    content = function(file){
+      write.csv(smr02_diabetes, row.names = FALSE, file)
+    }
+  )
+
   
   # R Codes -----------------------------------------------------------------
   
@@ -812,7 +469,7 @@ shinyServer(function(input, output, session) {
              "Abdominal Pain and Vomiting" = "APV",
              "Collapse and Convulsions" = "collapse_convuls",
              "All R codes" = "all",
-             "All Multi-episode Stays" = "n..") 
+             "All Multi-episode Stays" = "all_multi") 
   })
 
   output$RCodes <- DT::renderDataTable({
