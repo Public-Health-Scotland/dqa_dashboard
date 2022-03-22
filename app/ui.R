@@ -162,10 +162,12 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                    The Submissions timetable can be found on the ",
                    tags$a(href = "https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/",
                           "PHS timeliness homepage", target = "_blank"),
-                   paste0("and contains the submission deadline for", substr(Sys.Date(),1,4), "."),
+                   paste0("and contains the submission deadline for ", substr(Sys.Date(),1,4), "."),
                    br(),
                    br(),
-                   "The following bullet chart and data give an overview of the number of records submitted by the target date, as well as the expected number of records from each health board of treatment.",
+                   paste0("The following bullet chart and data give an overview of the number of records submitted from 
+                   each health board of treatment by the target date. This snapshot was taken on the ", 
+                          substr(timeliness_info, 1, 10), "."),
                    br(),
                    br(),
                    tabsetPanel(
@@ -175,7 +177,7 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                                        selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
                                 ),
                                 column(4,
-                                       selectInput("timeliness_year_in", "Year", choices =c("(All)" , unique(timeliness$event_year)[order(-c(unique(timeliness$event_year)))]) )
+                                       selectInput("timeliness_year_in", "Year", choices =c(unique(timeliness$event_year)[order(-c(unique(timeliness$event_year)))]) )
                                 ),
                                 column(4,
                                        selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name))[order(unique(timeliness$event_month))])
