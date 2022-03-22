@@ -44,10 +44,14 @@ comp_barchart_dates <- read_csv(here::here("data", "comp_barchart_dates.csv"))
 #smr audit data
 smr_audit <- read_csv(here::here("data", "dashboard_smr_audit_data.csv"))
 
-#smr01 clinical coding data
-RCodes_table <- read_csv(here::here("data", "r_codes.csv"))
-
 #smr02 clinical coding data
 smr02_diabetes <- read_rds(here::here("data", "smr02_diabetes_data.rds")) %>% 
   select("Error", "Health Board", "Year", "Count", "Percentage")
+smr02_diabetes_info <- file.info(here::here("data", "smr02_diabetes_data.rds"))$ctime
+
+#smr01 clinical coding data
+RCodes_table <- read_csv(here::here("data", "r_codes.csv"))
+rcodes_table_info <- file.info(here::here("data", "r_codes.csv"))$ctime
+
+
 

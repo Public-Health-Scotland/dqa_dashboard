@@ -4,7 +4,7 @@ sb_width <- c(2,10) #sidebar width
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), 
                           mime = 'image/png') #encoding for phs logo
 
-#secure_app(
+secure_app(
 
     navbarPage(
       
@@ -271,6 +271,8 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                      "(i.e. the recorder selects a value from a drop-down menu). The following table 
                      provides counts of SMR02 records where the hard code value and the ICD10 code 
                      present conflicting information. Figures are aggregated by health board of treatment."),
+                   paste0("This snapshot was taken on the ", substr(smr02_diabetes_info, 1, 10), "."),
+                   br(),
                    br(),
                    p(tags$b('Error descriptions')),
                    tabsetPanel(#error decriptions
@@ -316,23 +318,26 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                    p('R05*, R06*, R07* - Respiratory and Chest'),
                    p('R10*, R11* - Abdominal Pain and Vomiting'),
                    p('R55*, R56* - Collapse and Convulsions'),
-                   
-                   fluidRow(
-                     column(6, 
-                            selectInput('yearR', 'Choose year:', 
+                   br(),
+                   paste0("This snapshot was taken on the ", substr(rcodes_table_info, 1, 10), "."),
+                   br(),
+                   br(),
+                   #fluidRow(
+                     column(12, align="left",
+                            selectInput('yearR', 'Choose a year:', 
                                         choices =c("(All)" , unique(RCodes_table$year)[order(-c(unique(RCodes_table$year)))])
                             )
                      ),
-                     column(6, 
+                     column(12, align="left",
                             downloadButton("download_smr01_rcodes", "Download CSV") 
-                     )
-                   ),
+                     ),
+                   #),
                    DT::dataTableOutput("RCodes")
           )
         )
       )
     )
-#) #secure app
+) #secure app
 
 
 
