@@ -31,6 +31,8 @@ library(shinymanager)
 
 #smr timeliness data
 timeliness <- read_csv(here::here("data","timeliness.csv"))
+#date timeliness data was extracted
+timeliness_info <- file.info(here::here("data","timeliness.csv"))$ctime
 
 #smr completeness table with sparkline plot html
 smr_completeness <- read_csv(here::here("data", "smr_completeness.csv")) %>%
