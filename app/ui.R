@@ -235,13 +235,13 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                      column(3,
                             selectInput("SMRaudit", "SMR", choices = c("(All)", unique(smr_audit$audit)))
                      ),
-                     column(3, selectInput("Year", "Year", choices = NULL)
+                     column(3, selectInput("Year", "Year", choices = c("(All)", unique(smr_audit$year)[order((unique(smr_audit$year)))]))
                      ),
                      
                      column(3, selectInput("Healthboard", "Health Board", choices = c("(All)",unique(smr_audit$healthboard)))
                      ),
                      
-                     column(3, selectInput("DataItemName", "Data Item", choices = NULL)
+                     column(3, selectInput("DataItemName", "Data Item", choices = c("(All)", unique(smr_audit$data_item_name)))
                      )
                    ),
                    fluidRow(
