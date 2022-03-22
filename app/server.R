@@ -117,7 +117,7 @@ shinyServer(function(input, output, session) {
     paste0("<h4>How to read this table</h4>",
     "<p> The 'Percentage Completeness' column contains figures for the month of ",
     comp_barchart_dates$max_month, " ", comp_barchart_dates$max_year,
-    ". The barcharts show percentage completenes trends from ",
+    "by health board of treatment. The bar charts show percentage completeness trends from ",
     comp_barchart_dates$min_month, " ", comp_barchart_dates$min_year,
     " to ", comp_barchart_dates$max_month, " ", comp_barchart_dates$max_year,
     ". </p>",
