@@ -53,7 +53,7 @@ secure_app(
                             ),
                             br(),
                             tags$a(href = "https://www.ndc.scot.nhs.uk/Dictionary-A-Z/",
-                                   "Data Dictionary for definitions of SMR data items", target = "_blank"
+                                   "Data Item Dictionary", target = "_blank"
                             ),
                             br(),
                             br(),
