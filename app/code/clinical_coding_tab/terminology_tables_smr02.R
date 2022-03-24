@@ -158,7 +158,17 @@ query_1_table <- query_1_table[, c("HBName", 'year', "error", "percentage")]
 smr02_diabetes_data <- append_source(c("error_1_table", "error_2_table", "error_3_table", 
                                        "error_4_table","error_5_table", "error_6_table", 
                                        "query_1_table"))
+smr02_diabetes_data$source <- factor(smr02_diabetes_data$source, 
+                                     levels = sort(unique(smr02_diabetes_data$source)),
+                                ordered=TRUE)
+smr02_diabetes_data$year <- factor(smr02_diabetes_data$year, levels = sort(unique(smr02_diabetes_data$year)), 
+                              ordered = TRUE)
+smr02_diabetes_data$HBName<- factor(smr02_diabetes_data$HBName, levels = sort(unique(smr02_diabetes_data$HBName)),
+                               ordered=TRUE)
+smr02_diabetes$Count <- as.integer(smr02_diabetes$error)
+
+colnames(smr02_diabetes_data) <- c("Health Board", "Year", "Count", "Percentage", "Error")
 
 # Write out all the error tables ------------------------------------------
 
-write_csv(smr02_diabetes_data, here::here("data", "smr02_diabetes_data.csv"))
+write_rds(smr02_diabetes_data, here::here("data", "smr02_diabetes_data.rds"))
