@@ -44,7 +44,7 @@ last_episode1 <- left_join(last_episode, hb_lookup[c(1:2)],
 
 all_multi_episodes <- last_episode1 %>% 
   group_by(HBName, year) %>%
-  summarise(n()) %>% 
+  summarise(all_multi = n()) %>% 
   ungroup()
 
 #summarise R code counts by clinical code groupings 
@@ -61,5 +61,6 @@ RCodes <- last_episode1 %>%
             collapse_convuls = sum(group == 'collapse/convuls'), all = sum(r_code == 1))
 
 RCodes_multi <- left_join(RCodes, all_multi_episodes)
+# colnames(RCodes_multi)[length(colnames(RCodes_multi))] <- "all_multi"
 
 write_csv(RCodes_multi, here::here("data", "r_codes.csv"))
