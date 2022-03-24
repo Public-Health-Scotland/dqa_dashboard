@@ -5,6 +5,7 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
                           mime = 'image/png') #encoding for phs logo
 
 secure_app(
+
     navbarPage(
       
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
@@ -102,25 +103,24 @@ secure_app(
           widths = sb_width,
           
           tabPanel("Completeness", 
-                   "This completeness metric portrays the degree to which required data is enterred in SMR datasets 
-                   (ie. percentage of completed entries per data item out of the total number of records submitted).",
+                   "This completeness metric portrays the degree to which required data is entered in SMR datasets 
+                   (i.e. percentage of completed entries per data item out of the total number of records submitted).",
                    br(),
-                   "All of the data items available in this table are recorded on a mandatory basis,
-                   except for main_operation which is conditionally mandatory and should only be recorded if an operation has taken place.",
+                   "All of the data items available in this table are recorded on a mandatory basis, 
+                   except for main operation which is conditionally mandatory and should only be recorded if an operation has taken place. ",
                    br(),
                    br(),
-                   fluidRow(column(12,uiOutput("completeness_key"))),
+                   fluidRow(column(12,uiOutput("completeness_key"))), #info on date range of data
                    br(),
                    fluidRow(
                      column(4, 
-                            selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr)))
+                            selectInput("smr_in", "SMR", choices = c("(All)", unique(smr_completeness$smr))[order(c("(All)", unique(smr_completeness$smr)))])
                      ),
                      column(4,
-                            selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name)))
+                            selectInput("hb_in", "Health Board", choices = c("(All)", unique(smr_completeness$hb_name))[order(c("(All)", unique(smr_completeness$hb_name)))])
                      ),
                      column(4,
-                            selectInput("data_item_in", "Data Item", choices = c("(All)",
-                                                                                 unique(smr_completeness$data_item)))
+                            selectInput("data_item_in", "Data Item", choices = c("(All)",unique(smr_completeness$data_item))[order(c("(All)",unique(smr_completeness$data_item)))])
                      )
                    ),
                    fluidRow(
@@ -155,15 +155,19 @@ secure_app(
                      )
                      )
                    #add icon colors
-                   
                    ),
           
           tabPanel("Timeliness", 
-                   "The Scottish Government target for SMR submission to ISD is 6 weeks (42 days) following discharge/transfer/death or clinic attendance.",
+                   "The Scottish Government target for SMR submission to ISD is 6 weeks (42 days) following the end of the month of the discharge/transfer/death or clinic attendance.
+                   The Submissions timetable can be found on the ",
+                   tags$a(href = "https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/",
+                          "PHS timeliness homepage", target = "_blank"),
+                   paste0("and contains the submission deadline for ", substr(Sys.Date(),1,4), "."),
                    br(),
                    br(),
-                   "The following bullet chart and data give an overview of the number of records submitted by the target date, 
-                   as well as the expected number of records from each healthboard.",
+                   paste0("The following bullet chart and data give an overview of the number of records submitted from 
+                   each health board of treatment by the target date. This snapshot was taken on the ", 
+                          substr(timeliness_info, 1, 10), "."),
                    br(),
                    br(),
                    tabsetPanel(
@@ -173,10 +177,10 @@ secure_app(
                                        selectInput("timeliness_smr_in", "SMR", choices = c(unique(timeliness$smr)))
                                 ),
                                 column(4,
-                                       selectInput("timeliness_year_in", "Year", choices = c(unique(timeliness$event_year)))
+                                       selectInput("timeliness_year_in", "Year", choices =c(unique(timeliness$event_year)[order(-c(unique(timeliness$event_year)))]) )
                                 ),
                                 column(4,
-                                       selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name)))
+                                       selectInput("timeliness_month_in", "Month", choices = c(unique(timeliness$event_month_name))[order(unique(timeliness$event_month))])
                                 )
                               ),
                               
@@ -202,7 +206,7 @@ secure_app(
                                        selectInput("timeliness_smr_in_2", "SMR", choices = c("(All)",unique(timeliness$smr)))
                                 ),
                                 column(4,
-                                       selectInput("timeliness_year_in_2", "Year", choices = c("(All)", unique(timeliness$event_year)))
+                                       selectInput("timeliness_year_in_2", "Year", choices =c("(All)" , unique(timeliness$event_year)[order(-c(unique(timeliness$event_year)))])  )
                                 ),
                                 column(4,
                                        selectInput("timeliness_month_in_2", "Month", choices = c("(All)",unique(timeliness$event_month_name)))
@@ -221,10 +225,10 @@ secure_app(
           ),
           
           tabPanel("Accuracy Scores from SMR Audits",
-                   "Scottish Morbidity Records (SMR) are routinely assessed on audits conducted by Public Health Scotland (PHS). The auditors are asked to assess a sample of records and mark down any errors. An accuracy score is then derived for each data item assessed. The table down below contains accuracy scores from SMR Audit reports published to date.",
+                   "Scottish Morbidity Records (SMR) are routinely assessed on audits conducted by Public Health Scotland (PHS). The auditors are asked to assess a sample of records and mark down any errors. An accuracy score is then derived for each data item assessed. The table down below contains accuracy scores from SMR Audit reports published to date by health board of treatment.",
                    br(),
                    br(),
-                   "More information about SMR audits and the derivation of the accuracy scores can be found on the", 
+                   "More information about SMR audits and accuracy scores can be found on the", 
                    tags$a(href = "https://beta.isdscotland.org/products-and-services/data-quality-assurance/",
                           "PHS Data Quality Assurance homepage.", target= "_blank"),
                    br(),
@@ -233,13 +237,13 @@ secure_app(
                      column(3,
                             selectInput("SMRaudit", "SMR", choices = c("(All)", unique(smr_audit$audit)))
                      ),
-                     column(3, selectInput("Year", "Year", choices = NULL)
+                     column(3, selectInput("Year", "Year", choices = c("(All)", unique(smr_audit$year)[order((unique(smr_audit$year)))]))
                      ),
                      
                      column(3, selectInput("Healthboard", "Health Board", choices = c("(All)",unique(smr_audit$healthboard)))
                      ),
                      
-                     column(3, selectInput("DataItemName", "Data Item", choices = NULL)
+                     column(3, selectInput("DataItemName", "Data Item", choices = c("(All)", unique(smr_audit$data_item_name)))
                      )
                    ),
                    fluidRow(
@@ -251,131 +255,83 @@ secure_app(
                      )
                    )
           )
-        )),
-      tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for terminology services
+        )
+      ),
+      tabPanel(
         title = "Coding Discrepancies and Issues",
         navlistPanel(
           id = "tabset",
           widths = sb_width,
+
           tabPanel("SMR02 Recording of Diabetes",
                    p("Diabetes in pregnancy is recorded by two different variables in the SMR02 dataset. 
-                     It's coded with an International Classification of Diseases (ICD10) code, and a", 
+                     It's coded with an International Classification of Diseases (ICD10) code, and a",
                      tags$a(href="https://www.ndc.scot.nhs.uk/Dictionary-A-Z/Definitions/index.asp?Search=D&ID=214&Title=Diabetes",
-                            "diabetes hard-code", target = "_blank"), 
-                     "(ie. the recorder selects a value from a drop-down menu). The following tables provides counts of 
-                     SMR02 records where the hard-code value and the ICD10 code present conflicting information."),
-                   tabsetPanel(
-                     tabPanel("Error 1", # one bar in the menu for each error
-                              p(
-                                tags$b('Error 1 is defined as: '),'Pre-existing diabetes is hard-coded, 
-                                but the recorded ICD10 code is not ‘pre-existing diabetes.’'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number
-                                of records with the hard-code for pre-existing diabetes'
-                              ),
-                              selectInput('year1', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error1", "Download CSV"),
-                              DT::dataTableOutput("error_1")),
-                     tabPanel("Error 2", 
-                              p(
-                                tags$b('Error 2 is defined as: '),'Gestational diabetes is hard-coded, 
-                                but the recorded ICD10 code is not ‘gestational diabetes’.'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number
-                                of records with the hard-code for gestational diabetes'
-                              ),
-                              selectInput('year2', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error2", "Download CSV"),
-                              DT::dataTableOutput("error_2")),
-                     tabPanel("Error 3", 
-                              p(
-                                tags$b('Error 3 is defined as: '),'Diabetes of unspecified onset is hard-coded, 
-                                but the recorded ICD10 code is not ‘unspecified diabetes in pregnancy.’'
-                              ),
-                              p(
-                                'The denominator in the percentage column is the total number of records with 
-                                the hard-code for diabetes of unspecified onset'
-                              ),
-                              selectInput('year3', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error3", "Download CSV"),
-                              DT::dataTableOutput("error_3")),
-                     tabPanel("Error 4",
-                              p(
-                                tags$b('Error 4 is defined as: '),"The hard-code for 'No diabetes during pregnancy' is present, 
-                                but an ICD10 code for diabetes in pregnancy (O24*) is recorded."
-                              ),
-                              p(
-                                "The denominator in the percentage column is the total number of records with 
-                                the hard-code for 'No diabetes during pregnancy'."
-                              ),
-                              selectInput('year4', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error4", "Download CSV"),
-                              DT::dataTableOutput("error_4")),
-                     tabPanel("Error 5",
-                              p(
-                                tags$b('Error 5 is defined as: '),'The mandatory diabetes hard-code is not recorded.'
-                              ),
-                              selectInput('year5', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error5", "Download CSV"),
-                              DT::dataTableOutput("error_5")),
-                     tabPanel("Error 6",
-                              p(
-                                tags$b('Error 6 is defined as: '),'An ICD10 diabetes code (E10-E14) is recorded instead
-                              of an ICD10 diabetes in pregnancy code (O24*).'
-                              ), 
-                              p(
-                                'The denominator in the percentage column is the total number of records 
-                                       for the given healthboard and selected year.'
-                              ),
-                              selectInput('year6', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_error6", "Download CSV"),
-                              DT::dataTableOutput("error_6")),
-                     tabPanel("Query 1", 
-                              p(
-                                tags$b('Query 1 is defined as: '),'Diabetes is hard-coded as ‘Not Known’, 
-                                        but an ICD10 diabetes in pregnancy code (O24*) is recorded.'
-                              ), 
-                              p(
-                                "The denominator in the percentage column is the total number of records
-                                       where diabetes is hard-coded as 'Not Known'."
-                              ),
-                              selectInput('yearQ', 'Choose year:', 
-                                          choices = c("(All)",sort(unique(smr02_diabetes$year))),
-                                          selected = max(unique(smr02_diabetes$year))
-                              ),
-                              downloadButton("download_smr02_query1", "Download CSV"),
-                              DT::dataTableOutput("query")))
+                            "diabetes hard-code", target = "_blank"),
+                     "(i.e. the recorder selects a value from a drop-down menu). The following table 
+                     provides counts of SMR02 records where the hard code value and the ICD10 code 
+                     present conflicting information. Figures are aggregated by health board of treatment."),
+                   paste0("This snapshot was taken on the ", substr(smr02_diabetes_info, 1, 10), "."),
+                   br(),
+                   br(),
+                   p(tags$b('Error descriptions')),
+                   tabsetPanel(#error decriptions
+                     tabPanel("Error 1",
+                              p('Pre-existing diabetes is hard-coded, but the recorded ICD10 code is not ‘pre-existing diabetes.’'),
+                              p('The denominator in the percentage column is the total number of records with the hard code for pre-existing diabetes.')
+                     ),        
+                     tabPanel("Error 2",
+                              p('Gestational diabetes is hard-coded, but the recorded ICD10 code is not ‘gestational diabetes’.'),
+                              p('The denominator in the percentage column is the total number of records with the hard code for gestational diabetes.')
                      ),
+                     tabPanel("Error 3",
+                              p('Diabetes of unspecified onset is hard-coded, but the recorded ICD10 code is not ‘unspecified diabetes in pregnancy.’'),
+                              p('The denominator in the percentage column is the total number of records with the hard code for diabetes of unspecified onset.')
+                     ),
+                     tabPanel("Error 4",
+                              p("The hard code for 'No diabetes during pregnancy' is present, but an ICD10 code for diabetes in pregnancy (O24*) is recorded."),
+                              p("The denominator in the percentage column is the total number of records with the hard code for 'No diabetes during pregnancy'.")
+                     ),
+                     tabPanel("Error 5",
+                              p('The mandatory diabetes hard code is not recorded.')
+                     ),
+                     tabPanel("Error 6",
+                              p('An ICD10 diabetes code (E10-E14) is recorded instead of an ICD10 diabetes in pregnancy code (O24*).'),
+                              p('The denominator in the percentage column is the total number of records for the given health board and selected year.')
+                     ),
+                     tabPanel("Query 1",
+                              p('Diabetes is hard coded as ‘Not Known’, but an ICD10 diabetes in pregnancy code (O24*) is recorded.'),
+                              p("The denominator in the percentage column is the total number of records where diabetes is hard coded as 'Not Known'.")
+                     ),id="error_descriptions"
+                 ),  
+                 br(),
+                 column(12, align="left",downloadButton("download_smr02_diabetes", "Download CSV")),
+                 column(12,  DT::dataTableOutput("diabetes02"))
+        ),
+        
           tabPanel("SMR01 ICD-10 Symptom R Codes",
-                   p('This table reports the number of R codes entered as a Main Condition in the last episode of multi-episode stays in SMR01 data. A multi-episode stay is a continuous inpatient stay (CIS) with more than one episode.'),
-                   p('R codes are symptomatic codes defined in the International Classification of Diseases (ICD10), this table also reports the counts for the following groupings of R codes'),
+                   p('This table reports the number of R codes entered as a Main Condition in the last episode of
+                     multi-episode stays in SMR01 data. A multi-episode stay is a 
+                     continuous inpatient stay (CIS) with more than one episode.'),
+                   p('R codes are symptomatic codes defined in the International Classification of Diseases (ICD10), 
+                     this table also reports the counts for the following groupings of R codes. '),
                    p('R05*, R06*, R07* - Respiratory and Chest'),
                    p('R10*, R11* - Abdominal Pain and Vomiting'),
                    p('R55*, R56* - Collapse and Convulsions'),
-                   selectInput('yearR', 'Choose year:', 
-                               choices = c('(All)', sort(unique(RCodes_table$year)))
-                   ),
-                   downloadButton("download_smr01_rcodes", "Download CSV"),
+                   br(),
+                   paste0("This snapshot was taken on the ", substr(rcodes_table_info, 1, 10), "."),
+                   br(),
+                   br(),
+                   #fluidRow(
+                     column(12, align="left",
+                            selectInput('yearR', 'Choose a year:', 
+                                        choices =c("(All)" , unique(RCodes_table$year)[order(-c(unique(RCodes_table$year)))])
+                            )
+                     ),
+                     column(12, align="left",
+                            downloadButton("download_smr01_rcodes", "Download CSV") 
+                     ),
+                   #),
                    DT::dataTableOutput("RCodes")
           )
         )
