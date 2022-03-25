@@ -50,7 +50,7 @@ diagnosis2 <- diagnosis2 %>%
 # Error Counts ------------------------------------------------------------
 non_error1 <- c("O240", "O241", "O242", "O243")
 exc_error1 <- c("O244", "O249") 
-years <- c('2017', '2018', '2019', '2020', '2021')
+years <- unique(diagnosis2$year)
 error_1_table <- diagnosis2 %>%
   group_by(HBName, year) %>%
   filter(DIABETES == 1, year %in% years) %>% 
