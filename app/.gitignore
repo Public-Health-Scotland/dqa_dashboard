@@ -8,7 +8,7 @@ credentials.rds
 app/admin/**
 app/data/**
 app/data_archive/**
-app/rsconnect/**
+rsconnect/**
 
 # csv files
 *.[cC][sS][vV]*
