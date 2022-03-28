@@ -8,6 +8,7 @@ credentials.rds
 app/admin/**
 app/data/**
 app/data_archive
+app/rsconnect
 
 # csv files
 *.[cC][sS][vV]*
@@ -58,4 +59,4 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
-app/.Rproj.user/**
+.Rproj.user/**
