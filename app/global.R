@@ -21,9 +21,10 @@ library(plotly)
 
 library(base64enc)  #needed to display png image of phs logo
 
-library(leaflet)    #both libraries necessary for creating maps
+   #both libraries necessary for creating maps
 library(rgdal)
-library(leaflegend)
+library(here)
+
 
 library(shinymanager)
 
