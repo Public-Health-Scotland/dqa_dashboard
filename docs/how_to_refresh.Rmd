@@ -1,0 +1,60 @@
+---
+title: "How to Refresh the Data Quality Dashboard"
+author: "Maiana Sanjuan"
+date: "05/04/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> This Guide covers how to:
+
+1. Refresh the dashboard data
+2. Update the dashboard login credentials
+3. Deploy the dashboard on the [Scotland ShinyApps Server](https://scotland.shinyapps.io/phs-dq-dashboard/)
+
+> Refresh The Data
+
+The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code to extract the data is in the `r here::here("code")` folder.
+
+* Timeliness Expected Submissions
+
+* SMR Data
+
+* Test
+Can you run the app? Notice any anomalies in the data? Notice any bugs or glitches in the dashboard functionalities?
+
+> Update the credentials
+
+*username and password get updated every month*
+
++ open *`r here::here("admin", "create_credentials.R")`*
++ change the username and password in the script
++ run the `credentials.R` script
++ run the app, check that you can open it with the new credentials
+
+
+> Deploy
+
+
+<!-- ## R Markdown -->
+
+<!-- This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. -->
+
+<!-- When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this: -->
+
+<!-- ```{r cars} -->
+<!-- summary(cars) -->
+<!-- ``` -->
+
+<!-- ## Including Plots -->
+
+<!-- You can also embed plots, for example: -->
+
+<!-- ```{r pressure, echo=FALSE} -->
+<!-- plot(pressure) -->
+<!-- ``` -->
+
+<!-- Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. -->
