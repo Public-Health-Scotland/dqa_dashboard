@@ -17,11 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 > Refresh The Data
 
-The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code to extract the data is in the `r here::here("code")` folder.
+The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code that extracts the data is in the `app/code` folder. The Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.
 
-* Timeliness Expected Submissions
+* Timeliness -- Expected Submissions  
+Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. 
+    + go to the [Timeliness Homepage](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/), download and open the timeliness charts for SMR00, SMR01, SMR02 and SMR04
+
+
+1. ordered list
+2. item 2
+    + sub-item 1
+    + sub-item 2 
 
 * SMR Data
+
 
 * Test
 Can you run the app? Notice any anomalies in the data? Notice any bugs or glitches in the dashboard functionalities?
@@ -30,7 +39,7 @@ Can you run the app? Notice any anomalies in the data? Notice any bugs or glitch
 
 *username and password get updated every month*
 
-+ open *`r here::here("admin", "create_credentials.R")`*
++ open the `create_credentials.R` script located in the `app/admin` folder
 + change the username and password in the script
 + run the `credentials.R` script
 + run the app, check that you can open it with the new credentials

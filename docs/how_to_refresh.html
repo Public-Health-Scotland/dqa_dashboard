@@ -196,9 +196,23 @@ summary {
 <blockquote>
 <p>Refresh The Data</p>
 </blockquote>
-<p>The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code to extract the data is in the /conf/Data_Quality_Dashboard/maiana/dqa_dashboard/code folder.</p>
+<p>The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code that extracts the data is in the <code>app/code</code> folder. The Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.</p>
 <ul>
-<li><p>Timeliness Expected Submissions</p></li>
+<li>Timeliness – Expected Submissions<br />
+Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit.
+<ul>
+<li>go to the <a href="https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/">Timeliness Homepage</a>, download and open the timeliness charts for SMR00, SMR01, SMR02 and SMR04</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>ordered list</li>
+<li>item 2
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2</li>
+</ul></li>
+</ol>
+<ul>
 <li><p>SMR Data</p></li>
 <li><p>Test Can you run the app? Notice any anomalies in the data? Notice any bugs or glitches in the dashboard functionalities?</p></li>
 </ul>
@@ -207,18 +221,10 @@ summary {
 </blockquote>
 <p><em>username and password get updated every month</em></p>
 <ul>
-<li>Update the username and password<br />
-</li>
-<li>open <em>/conf/Data_Quality_Dashboard/maiana/dqa_dashboard/admin/create_credentials.R</em>#</li>
+<li>open the <code>create_credentials.R</code> script located in the <code>app/admin</code> folder</li>
 <li>change the username and password in the script</li>
 <li>run the <code>credentials.R</code> script</li>
 <li>run the app, check that you can open it with the new credentials</li>
-</ul>
-<pre><code>{r, chunk-label, echo = FALSE, fig.height=4}
-here::here(&quot;admin&quot;, &quot;create_credentials.R&quot;)</code></pre>
-<ul>
-<li>Test<br />
-Run the app. Check that you can open it with the new username and password you just created</li>
 </ul>
 <blockquote>
 <p>Deploy</p>
