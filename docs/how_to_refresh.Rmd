@@ -21,13 +21,11 @@ The dashboard data is refreshed on a monthly basis. The majority of the dashboar
 
 * Timeliness -- Expected Submissions  
 Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. 
-    + go to the [Timeliness Homepage](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/), download and open the timeliness charts for SMR00, SMR01, SMR02 and SMR04
+    + Download and open the [timeliness charts](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/) for SMR00, SMR01, SMR02 and SMR04
+    + Open 
 
 
-1. ordered list
-2. item 2
-    + sub-item 1
-    + sub-item 2 
+
 
 * SMR Data
 
