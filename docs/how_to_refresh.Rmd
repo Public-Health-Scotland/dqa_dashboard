@@ -15,23 +15,41 @@ knitr::opts_chunk$set(echo = TRUE)
 2. Update the dashboard login credentials
 3. Deploy the dashboard on the [Scotland ShinyApps Server](https://scotland.shinyapps.io/phs-dq-dashboard/)
 
+> Setup
+
+To start, 
+
+* log into your RStudio account
+* open your project file for this app, check you are on the `main` branch [insert screenshot] 
+* click on the pull button on the git tab to pull the latest version of the code [insert screenshot]
+* open a new branch, you can call it `refresh-[this_month]` or something similar
+* [pull the latest version of the data, need to write a script]
+
+Now you can get to work. All the changes you make on this branch will not affect the code on the main branch.
+
 > Refresh The Data
 
-The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code that extracts the data is in the `app/code` folder. The Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.
+The dashboard data is refreshed on a monthly basis. The majority of the data is extracted directly from SMR databases. However, the Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.
 
 * Timeliness -- Expected Submissions  
 Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. 
-    + Download and open the [timeliness charts](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/) for SMR00, SMR01, SMR02 and SMR04
-    + Open 
-
+    + Download and open the [timeliness charts](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/) for SMR00, SMR01, SMR02 and SMR04 with the editor of your choice (eg.Excel)
+    + Open `expected_submissions.csv` in the `/data` folder with the editor of your choice
+    + Copy the expected number of records from the timeliness charts for the latest month in `expected_submissions.csv` like so: [insert screenshots]
+    + Once all the data has been added save `expected_submissions.csv` in the `/data` folder and close the file.
 
 
 
 * SMR Data
+    + in Rstudio, make sure the app project is open and that you are on your `refresh` branch
+    + open the `setup_environment.R` and `update_data.R` scripts in the `/code` folder
+    + run `setup_environment.R` by clicking 'source' or running `source(here::here("code", "setup_environment.R"))` in the console. This will load all the libraries and functions you need. [insert screenshot of source button]
+    + run `update_data.R` by clicking `source` or running `source(here::here("code", "update_data.R"))` 
+    in the console. This script runs all of the scripts in the `code` folder and saves the
+    data outputs to the `data` folder. It also stores a backup of the data in the `data_archive` folder.
+    + open one of the app files (`global.R`, `server.R`, or `ui.R`) and check that you can run the app. It 
+    should now display the data you've just updated.
 
-
-* Test
-Can you run the app? Notice any anomalies in the data? Notice any bugs or glitches in the dashboard functionalities?
 
 > Update the credentials
 
@@ -42,6 +60,16 @@ Can you run the app? Notice any anomalies in the data? Notice any bugs or glitch
 + run the `credentials.R` script
 + run the app, check that you can open it with the new credentials
 
+> Merge Changes
+
+If you are happy with the data and credentials refresh you can now merge your 
+changes into the main branch.
+
++ Make sure you've committed and pushed all the changes tracked by Git
++ Go to the [phs-dq-dashboard GitHub](https://github.com/Public-Health-Scotland/phs-dq-dashboard)
++ Go to the pull request tab and open a new pull request. Set the 'base' brach to 'main' 
+and the 'compare' branch to your 'refresh' branch
++ Assign a colleague to review. You can merge without a reviewer but 
 
 > Deploy
 

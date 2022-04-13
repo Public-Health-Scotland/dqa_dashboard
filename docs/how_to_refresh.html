@@ -194,18 +194,38 @@ summary {
 <li>Deploy the dashboard on the <a href="https://scotland.shinyapps.io/phs-dq-dashboard/">Scotland ShinyApps Server</a></li>
 </ol>
 <blockquote>
+<p>Setup</p>
+</blockquote>
+<p>To start,</p>
+<ul>
+<li>log into your RStudio account</li>
+<li>open your project file for this app, check you are on the <code>main</code> branch [insert screenshot]</li>
+<li>click on the pull button on the git tab to pull the latest version of the code [insert screenshot]</li>
+<li>open a new branch, you can call it <code>refresh-[this_month]</code> or something similar</li>
+<li>[pull the latest version of the data, need to write a script]</li>
+</ul>
+<p>Now you can get to work. All the changes you make on this branch will not affect the code on the main branch.</p>
+<blockquote>
 <p>Refresh The Data</p>
 </blockquote>
-<p>The dashboard data is refreshed on a monthly basis. The majority of the dashboard data is extracted directly from SMR databases. All of the code that extracts the data is in the <code>app/code</code> folder. The Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.</p>
+<p>The dashboard data is refreshed on a monthly basis. The majority of the data is extracted directly from SMR databases. However, the Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.</p>
 <ul>
 <li>Timeliness – Expected Submissions<br />
 Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit.
 <ul>
-<li>go to the <a href="https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/">Timeliness Homepage</a>, download and open the timeliness charts for SMR00, SMR01, SMR02 and SMR04</li>
-<li></li>
+<li>Download and open the <a href="https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/">timeliness charts</a> for SMR00, SMR01, SMR02 and SMR04 with the editor of your choice (eg.Excel)</li>
+<li>Open <code>expected_submissions.csv</code> in the <code>/data</code> folder with the editor of your choice</li>
+<li>Copy the expected number of records from the timeliness charts for the latest month in <code>expected_submissions.csv</code> like so: [insert screenshots]</li>
+<li>Once all the data has been added save <code>expected_submissions.csv</code> in the <code>/data</code> folder and close the file.</li>
 </ul></li>
-<li><p>SMR Data</p></li>
-<li><p>Test Can you run the app? Notice any anomalies in the data? Notice any bugs or glitches in the dashboard functionalities?</p></li>
+<li>SMR Data
+<ul>
+<li>in Rstudio, make sure the app project is open and that you are on your <code>refresh</code> branch</li>
+<li>open the <code>setup_environment.R</code> and <code>update_data.R</code> scripts in the <code>/code</code> folder</li>
+<li>run <code>setup_environment.R</code> by clicking ‘source’ or running <code>source(here::here(&quot;code&quot;, &quot;setup_environment.R&quot;))</code> in the console. This will load all the libraries and functions you need. [insert screenshot of source button]</li>
+<li>run <code>update_data.R</code> by clicking <code>source</code> or running <code>source(here::here(&quot;code&quot;, &quot;update_data.R&quot;))</code> in the console. This script runs all of the scripts in the <code>code</code> folder and saves the data outputs to the <code>data</code> folder. It also stores a backup of the data in the <code>data_archive</code> folder.</li>
+<li>open one of the app files (<code>global.R</code>, <code>server.R</code>, or <code>ui.R</code>) and check that you can run the app. It should now display the data you’ve just updated.</li>
+</ul></li>
 </ul>
 <blockquote>
 <p>Update the credentials</p>
