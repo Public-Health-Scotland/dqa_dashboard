@@ -31,6 +31,8 @@ Now you can get to work. All the changes you make on this branch will not affect
 
 The dashboard data is refreshed on a monthly basis. The majority of the data is extracted directly from SMR databases. However, the Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.
 
+NB. The `.gitignore` file ensures that data is saved on our local servers and not pushed to GitHub
+
 * Timeliness -- Expected Submissions  
 Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. 
     + Download and open the [timeliness charts](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/) for SMR00, SMR01, SMR02 and SMR04 with the editor of your choice (eg.Excel)
@@ -47,7 +49,7 @@ Before every SMR submission deadline the health boards give an estimate of the n
     + run `update_data.R` by clicking `source` or running `source(here::here("code", "update_data.R"))` 
     in the console. This script runs all of the scripts in the `code` folder and saves the
     data outputs to the `data` folder. It also stores a backup of the data in the `data_archive` folder.
-    + open one of the app files (`global.R`, `server.R`, or `ui.R`) and check that you can run the app. It 
+    + open one of the app files (`global.R`, `server.R`, or `ui.R`) and check that you can run the app. It
     should now display the data you've just updated.
 
 
@@ -69,9 +71,14 @@ changes into the main branch.
 + Go to the [phs-dq-dashboard GitHub](https://github.com/Public-Health-Scotland/phs-dq-dashboard)
 + Go to the pull request tab and open a new pull request. Set the 'base' brach to 'main' 
 and the 'compare' branch to your 'refresh' branch
-+ Assign a colleague to review. You can merge without a reviewer but 
++ Assign a reviewer to check the code and approve the pull request (recommended)
++ Resolve conflicts if there are any
++ Merge and close the pull request, delete the 'refresh' branch
+
+The main branch is now up to date with the new credentials
 
 > Deploy
+
 
 
 <!-- ## R Markdown -->
