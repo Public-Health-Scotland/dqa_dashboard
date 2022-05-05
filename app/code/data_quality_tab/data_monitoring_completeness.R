@@ -47,8 +47,8 @@ hb_lookup <- rbind(hb2019, hb_other)
 raw_smr00 <- dbGetQuery(con, statement = "SELECT clinic_date, hbtreat_currentdate, dob, sex, postcode, 
 ethnic_group, main_operation, mode_of_clinical_interaction, referral_type, specialty
                  FROM ANALYSIS.SMR00_PI
-                 WHERE clinic_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')
-                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -1)))" )%>%
+                 WHERE clinic_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))" )%>%
   clean_names()%>%
   rename("event_date"="clinic_date")
 
@@ -57,8 +57,8 @@ raw_smr01 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 main_condition, main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty
                  FROM ANALYSIS.SMR01_PI
-                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')
-                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -1)))" ) %>%
+                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))" ) %>%
   clean_names() %>%
   rename("event_date"="discharge_date")
 
@@ -68,8 +68,8 @@ raw_smr02 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 main_condition, main_operation, admission_type, significant_facility, admission_transfer_from, discharge_transfer_to,
 management_of_patient, specialty, condition_on_discharge
                  FROM ANALYSIS.SMR02_PI
-                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')
-                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -1)))" ) %>%
+                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))" ) %>%
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
@@ -78,8 +78,8 @@ raw_smr04 <- dbGetQuery(con, statement = "SELECT discharge_date, hbtreat_current
 ethnic_group, main_condition, main_operation, admission_type, significant_facility,
 admission_transfer_from, discharge_transfer_to, management_of_patient, specialty
                  FROM ANALYSIS.SMR04_PI
-                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -6)), 'MONTH')
-                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -1)))" ) %>%  
+                 WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))" ) %>%  
   clean_names() %>% 
   rename("event_date"="discharge_date")
 
