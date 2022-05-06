@@ -9,32 +9,30 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-> This Guide covers how to:
+#### This Guide covers how to:
 
 1. Refresh the dashboard data
 2. Update the dashboard login credentials
 3. Deploy the dashboard on the [Scotland ShinyApps Server](https://scotland.shinyapps.io/phs-dq-dashboard/)
 
-> Setup
+####  Setup
 
 To start, 
 
 * log into your RStudio account
-* open your project file for this app, check you are on the `main` branch [insert screenshot] 
+* open your project file for this app, check that you're on the `main` branch [insert screenshot] 
 * click on the pull button on the git tab to pull the latest version of the code [insert screenshot]
 * open a new branch, you can call it `refresh-[this_month]` or something similar
-* [pull the latest version of the data, need to write a script]
 
-Now you can get to work. All the changes you make on this branch will not affect the code on the main branch.
 
-> Refresh The Data
+All the changes you make on this branch will not affect the code on the main branch.
 
-The dashboard data is refreshed on a monthly basis. The majority of the data is extracted directly from SMR databases. However, the Timeliness tab also relies on the expected number of submissions which are published by the Data Monitoring team in their monthly Timeliness Charts.
+####  Refresh The Data
 
-NB. The `.gitignore` file ensures that data is saved on our local servers and not pushed to GitHub
+The dashboard data is refreshed on a monthly basis. The majority of the data is extracted directly from SMR databases. The `.gitignore` file ensures that data is saved on our local servers and not pushed to GitHub
 
 * Timeliness -- Expected Submissions  
-Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. 
+Before every SMR submission deadline the health boards give an estimate of the number of records they expect to submit. These estimates cannot be derived from SMR data and need to be retrieved from the Timeliness Charts published by the Data Monitoring team.
     + Download and open the [timeliness charts](https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/) for SMR00, SMR01, SMR02 and SMR04 with the editor of your choice (eg.Excel)
     + Open `expected_submissions.csv` in the `/data` folder with the editor of your choice
     + Copy the expected number of records from the timeliness charts for the latest month in `expected_submissions.csv` like so: [insert screenshots]
@@ -43,41 +41,56 @@ Before every SMR submission deadline the health boards give an estimate of the n
 
 
 * SMR Data
+The rest of the dashboard data is pulled from the SMR database in R.
     + in Rstudio, make sure the app project is open and that you are on your `refresh` branch
     + open the `setup_environment.R` and `update_data.R` scripts in the `/code` folder
-    + run `setup_environment.R` by clicking 'source' or running `source(here::here("code", "setup_environment.R"))` in the console. This will load all the libraries and functions you need. [insert screenshot of source button]
-    + run `update_data.R` by clicking `source` or running `source(here::here("code", "update_data.R"))` 
-    in the console. This script runs all of the scripts in the `code` folder and saves the
+    + run `setup_environment.R`. This will load all the libraries and functions you need. 
+    + run `update_data.R`. This script runs all of the scripts in the `/code` folder and saves the
     data outputs to the `data` folder. It also stores a backup of the data in the `data_archive` folder.
     + open one of the app files (`global.R`, `server.R`, or `ui.R`) and check that you can run the app. It
     should now display the data you've just updated.
+    
+    NB. You can run a script by clicking 'source' or run `source(here::here("code", "setup_environment.R"))` in the console [insert screenshot of source button].
 
 
-> Update the credentials
+####  Update the credentials
 
-*username and password get updated every month*
+The app is password protected and the credentials are changed every month.
 
-+ open the `create_credentials.R` script located in the `app/admin` folder
-+ change the username and password in the script
++ open the `create_credentials.R` script located in the `/app/admin` folder
++ choose a new username and password for the dashboard (the password should contain at least one uppercase letter, one special character and one number)
++ in the script, set `user` and `password` to the new credentials that you've just chosen
 + run the `credentials.R` script
 + run the app, check that you can open it with the new credentials
 
-> Merge Changes
+####  Merge Changes
 
 If you are happy with the data and credentials refresh you can now merge your 
-changes into the main branch.
+branch into the main branch.
 
 + Make sure you've committed and pushed all the changes tracked by Git
-+ Go to the [phs-dq-dashboard GitHub](https://github.com/Public-Health-Scotland/phs-dq-dashboard)
-+ Go to the pull request tab and open a new pull request. Set the 'base' brach to 'main' 
++ Go to the [phs-dq-dashboard GitHub](https://github.com/Public-Health-Scotland/phs-dq-dashboard) page
++ Click on the pull request tab and open a new pull request. Set the 'base' branch to 'main' 
 and the 'compare' branch to your 'refresh' branch
 + Assign a reviewer to check the code and approve the pull request (recommended)
-+ Resolve conflicts if there are any
-+ Merge and close the pull request, delete the 'refresh' branch
++ Resolve conflicts (if any)
++ Once the pull request has been reviewed and approved, merge and close the request. Test the main branch to make sure the app is running with the latest iteration of the data, then delete the 'refresh' branch.
 
 The main branch is now up to date with the new credentials
 
-> Deploy
+
+#### Deploy
+
+The app lives on the Scottish shiny apps server. Everytime the data is updated the app must be redeployed from RStudio. You need a token and a secret to deploy the app, [Russell Mcreath](mailto:Russell.Mccreath@phs.scot) or [Jaime Villacampa](mailto:Jaime.Villacampa@phs.scot) will be able to share them securely.  
+
++ Open the app project in RStudio and check that you're on the main branch
++ Open the `Deploying shiny app.R` script in the `/admin` folder
++ Insert the token and secret in the `rsconnect::setAccountInfo()` function
++ Check that `name` is set to "scotland"" in the `rsconnect::setAccountInfo()` function
++ Check that `appName` is set to "phs-dq-dashboard" and that `account` is set to "scotland" in the `rsconnect::deployApp()` function
++ Run the script. The console should prompt you "Update application currently deployed at
+https://scotland.shinyapps.io/phs-dq-dashboard/? [Y/n]", type `Y` then press `enter`
++ Check that the app has been successfully deployed [DQ Dasboard](https://scotland.shinyapps.io/phs-dq-dashboard/)
 
 
 
