@@ -19,6 +19,8 @@ secure_app(
       
       header = tags$head(includeCSS(here::here("www", "styles.css"))),
       
+      selected = "Home",
+      
       tabPanel( #at the top of every page to navigate through the entire dashboard, contains tabs for home
         
         tags$head(tags$style(HTML(".selectize-input {border: 1px solid #3F3685;}"))), #controls SelectInput boxes border color
@@ -164,12 +166,13 @@ secure_app(
                    The Submissions timetable can be found on the ",
                    tags$a(href = "https://beta.isdscotland.org/products-and-services/data-management-hospital-activity/smr-timeliness/",
                           "PHS timeliness homepage", target = "_blank"),
-                   paste0("and contains the submission deadline for ", substr(Sys.Date(),1,4), "."),
+                   paste0("and contains the submission deadline for ",
+                          substr(mtime_timeliness,1,10), "."), #retrieves the date the data was last modified on
                    br(),
                    br(),
                    paste0("The following bullet chart and data give an overview of the number of records submitted from 
                    each health board of treatment by the target date. This snapshot was taken on the ", 
-                          substr(timeliness_info, 1, 10), "."),
+                          substr(mtime_timeliness, 1, 10), "."),
                    br(),
                    br(),
                    tabsetPanel(
@@ -273,7 +276,7 @@ secure_app(
                      "(i.e. the recorder selects a value from a drop-down menu). The following table 
                      provides counts of SMR02 records where the hard code value and the ICD10 code 
                      present conflicting information. Figures are aggregated by health board of treatment."),
-                   paste0("This snapshot was taken on the ", substr(smr02_diabetes_info, 1, 10), "."),
+                   paste0("This snapshot was taken on the ", substr(mtime_diabetes, 1, 10), "."),
                    br(),
                    br(),
                    p(tags$b('Error descriptions')),
@@ -321,7 +324,7 @@ secure_app(
                    p('R10*, R11* - Abdominal Pain and Vomiting'),
                    p('R55*, R56* - Collapse and Convulsions'),
                    br(),
-                   paste0("This snapshot was taken on the ", substr(rcodes_table_info, 1, 10), "."),
+                   paste0("This snapshot was taken on the ", substr(mtime_rcodes, 1, 10), "."),
                    br(),
                    br(),
                    #fluidRow(
