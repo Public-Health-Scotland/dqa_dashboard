@@ -8,6 +8,8 @@ secure_app(
 
     navbarPage(
       
+      tags$head(includeHTML(("google_analytics.html"))),
+      
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
                          href= "https://www.publichealthscotland.scot/",
                          target = "_blank"),
