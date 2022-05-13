@@ -4,9 +4,11 @@ sb_width <- c(2,10) #sidebar width
 b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"), 
                           mime = 'image/png') #encoding for phs logo
 
-#secure_app(
+secure_app(
 
     navbarPage(
+      
+      tags$head(includeHTML(("google_analytics.html"))),
       
       title = div(tags$a(img(src=b64, width=120, alt = "Public Health Scotland logo"), 
                          href= "https://www.publichealthscotland.scot/",
@@ -337,7 +339,7 @@ b64 <- base64enc::dataURI(file=here::here("www", "phs_logo.png"),
         )
       )
     )
-#) #secure app
+) #secure app
 
 
 
