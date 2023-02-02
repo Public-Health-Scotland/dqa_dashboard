@@ -33,30 +33,30 @@ hb2019 <- read_csv("https://www.opendata.nhs.scot/dataset/9f942fdb-e59e-44f5-b53
 smr00_raw <- dbGetQuery(con, "SELECT referral_type, clinic_attendance, current_trust_dmu,
                         location, date_record_inserted, clinic_date, hbtreat_currentdate
                         FROM analysis.smr00_pi
-                        WHERE clinic_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
+                        WHERE clinic_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))" )%>%
               clean_names()
 
 smr01_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr01_pi
-                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))")%>%
             clean_names()
 
 smr02_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, condition_on_discharge,
                         discharge_date, hbtreat_currentdate
                         FROM analysis.smr02_pi
-                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))")%>%
               clean_names()
 
 smr04_raw <- dbGetQuery(con, "SELECT current_trust_dmu,
                         location, date_record_inserted, discharge_date, hbtreat_currentdate
                         FROM analysis.smr04_pi
-                        WHERE discharge_date BETWEEN {d to_date('2019-12-01', 'YYYY-MM-DD')}
-                        AND {d to_date('2021-11-30', 'YYYY-MM-DD')};")%>%
+                        WHERE discharge_date BETWEEN trunc((ADD_MONTHS(SYSDATE, -7)), 'MONTH')
+                        AND trunc(LAST_DAY(ADD_MONTHS(SYSDATE, -2)))")%>%
               clean_names()
 
 # Selection criteria -----------------------------------------------------------------
